@@ -1,0 +1,425 @@
+Reference: https://blog.runpanther.io/aws-iam-fundamentals/
+
+
+AWS IAM follows an incredibly granular approach in providing 
+	permissions and 
+	access control 
+within your environments. 
+IAM lets you control 
+	authentication
+		are you valid user?
+	authorization
+		what access do you have?
+
+We can create exceedingly secure environments using AWS.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Authentication in IAM
+---------------------
+	Permission can be granted to 
+		Users
+		Groups
+		Roles
+		
+	Users: 
+		An IAM user is a person 
+			needs to interact with your AWS 
+				resources or services 
+				either from the AWS Console or with the AWS CLI. 
+			While creating a new user, 
+				no credentials are assigned, 
+			and the user does not have any permission to access your AWS resources.
+	Groups: 
+		An IAM group is a collection of users 
+			and permissions assigned to those users. 
+		Convenient way to manage permissions for users with similar needs 
+			categorizing them according to their job 
+				function/role, 
+				department
+			Manage permissions for all those users through group.
+	Roles: 
+		Instead of assigning permissions to an entity (User/Group) directly
+		Roles allow an entity to be granted permissions temporarily 
+			(on an as-needed basis) to perform tasks. 
+		Enforces the least privilege principle which is based on both 
+			identity and 
+			time
+		Restrict entities 
+			minimum amount of access needed 
+			minimum amount of time needed 
+				to complete a task.
+
+		Defines a set of permissions (Permission's are a part of Authorization)
+			role can perform
+			entities can assume the role. 
+		Role 
+			NOT directly linked to a person or a service
+		Instead
+			Person or Service can do an operation which Role is allowed to
+		Role credentials are always temporary 
+		Rotated periodically by the AWS Session Token Service (STS). 
+		Recommendation
+			use roles over directly granting user or group permissions. 
+		Roles allow you to grant multi-account access to your AWS resources from 
+			users, 
+			services
+			apps that aren’t part of your business. 
+		
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Authorization in IAM
+--------------------
+	
+	Authorization in IAM is controlled by 
+		Policies that grant Permissions.
+		--------			------------
+
+	Policy
+	------
+	By default: user or group has no permissions 
+	Policy must be attached to User/Group to allow actions to be taken on AWS resources.
+	Policy grants/revokes permission
+	
+	Named Document with a set of rules
+	Each policy grants a specific set of permissions 
+	Can be attached to any of the IAM identities 
+		users, groups, and roles. 
+	Expressed in JSON or YAML format.
+
+	Types of policies:
+		Identity-based policies 
+		Resource-based policies 
+		Permissions boundaries 
+		Organizations SCPs 
+		Access control lists (ACLs)
+		Session policies 
+		
+	Identity-based policy types.	
+		Managed policies: 
+			Can be created and attached to multiple User/Group/Roles
+			Types of managed policies
+				AWS built-in policies.
+				Customer managed policies
+			Can also be mixed and matched 
+			Provide generalized access to User/Group/Roles
+
+		Inline policies: 
+			Policies applied to a single User/Group/Roles
+			Strict one-to-one relationship between a policy and an identity.
+				Non-reusable.
+			Deleted when you delete the User/Group/Roles
+
+	Recommendation: 
+		Use managed policies to generalize permissions
+
+	What are Permissions?
+	---------------------
+	Permissions enable you to perform actions on AWS resources. 
+	
+	Can assign permissions to all AWS identities 
+		(users, groups, and roles). 
+	
+	Permissions can be assigned in the following two ways:
+	Identity-based: 
+		Policies attached directly to users, groups, or roles
+	Resource-based: 
+		Policies attached to AWS resources
+			e.g. S3 Buckets, ECR Repositories, and more
+
+	
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Policy defines
+	Action
+	Effect
+	Resource
+	
+	
+e.g. of a specific policy
+{
+  "Statement": [
+    {
+      "Action": [
+        "iam:ChangePassword",
+        "iam:CreateLoginProfile",
+        "iam:DeleteLoginProfile",
+        "iam:GetLoginProfile",
+        "iam:GetUser",
+        "iam:UpdateLoginProfile"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:iam::*:user/${aws:username}",
+      "Sid": "AllowManageOwnPasswords"
+    }
+  ],
+  "Version": "2012-10-17"
+}
+
+e.g. of a generic policy
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "iam:*"
+      ],
+      "Resource": "*",
+      "Effect": "Allow",
+      "Sid": "IAMAdmin"
+    }
+  ]
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Setting up a EC2 instance create a policy
+-----------------------------------------
+
+Search for Iam in aws console
+
+The following IAM feature gets listed
+	Groups
+	Roles
+	Policies
+	Users
+
+Click on Policies
+
+Click on Create Policy
+	Option for 
+		Visual Editor
+		JSON
+			Here we can copy json like above
+	
+	
+	a. Click "Choose a service"
+		Enter EC2
+		
+	b. Choose appropriate (all) action
+	
+	c. Can select specific resource or all resources
+	Look at various resources which get listed
+	Select all resources
+	
+	d. Request condition
+		MFA would require an MFA compliant app
+		Instead go for Source IP.
+		Either go for all IP
+			0.0.0.0/0
+		Or search for My IP and give it.
+			e.g. 43.229.90.17/32
+			
+	Click Next 
+		skip tags
+	Click Next
+	
+	In Review
+		Name: CreateEC2InstancesFromMyIP
+		
+	Click Create Policy
+
+
+This produces a json like below.
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "ec2:*",
+            "Resource": "*",
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": "43.229.90.17/32"
+                }
+            }
+        }
+    ]
+}
+
+
+
+Account ID: 
+	
+	Click on your name and note down the account id.
+
+
+Create a user and try give above policy.
+Login as that user
+You will not be able to create ec2 instances..
+
+
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-iam.html
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now this policy should be attached to a user.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Create a user with admin privilege
+----------------------------------
+
+1. AWS console
+	Search for Groups
+		Create a Group with name "Administrator"
+		Add Policy: AdministratorAccess
+	Create a user with the name you like
+		add to the "Administrator"
+			"Next"
+		
+		Access Type: "Both"
+		Console pwd: "Custom"
+			"Next"
+		Select "Administrator"
+			"Next"
+			"Create User"
+			
+		Note down the Account ID.	
+			
+		Logout and Login 
+	
+	Verify creating an user.
+	
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create an user who can launch and terminate EC2 instance
+--------------------------------------------------------
+https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_ec2_instances-subnet.html
+
+
+	Create a Policy with JSON
+	
+	Give the name like "VilasCreateEC2Policy"
+	
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:Describe*",
+                "ec2:GetConsole*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "ec2:RunInstances",
+            "Resource": [
+                "arn:aws:ec2:*:*:subnet/subnet-subnet-id",
+				"arn:aws:ec2:*:*:image/*",
+				"arn:aws:ec2:*:*:snapshot/*",
+				"arn:aws:ec2:*:*:subnet/*",
+                "arn:aws:ec2:*:*:network-interface/*",
+                "arn:aws:ec2:*:*:instance/*",
+                "arn:aws:ec2:*:*:volume/*",
+                "arn:aws:ec2:*::image/ami-*",
+                "arn:aws:ec2:*:*:key-pair/*",
+                "arn:aws:ec2:*:*:security-group/*"
+            ]
+        }
+    ]
+}
+
+You can do everything but not launch an instance
+
+
+Create a user and attach to policy
+	"VilasCreateEC2Policy"
+	
+	HCvCoOtnyF2xlyFQuqItkHZT3qWgHkPywDbdZFWU
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Modify the policy as follows 
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "ec2:*",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "ec2:Describe*",
+      "Resource": "*"
+    }
+  ]
+}
+
+Retry. This kind of errors are very common in aws as you learn.
+N.B: The online references are all like below which doesn't work
+
+----------------------------------------
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "ec2:*",
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "ec2:ResourceTag/UserName": "${aws:username}"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": "ec2:Describe*",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Deny",
+      "Action": [
+        "ec2:CreateTags",
+        "ec2:DeleteTags"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

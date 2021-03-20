@@ -1,0 +1,2620 @@
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		
+AWS
+	AWS Training Objectives
+		• Compute (EC2)
+		• Storage (S3, EBS, EFS, Storage Gateway & Snowball)
+		• Database (RDS, DMS, Redshift)
+		• Network and Content Delivery (Route53 VPC &CloudFront)
+		• Management Tools (CloudWatch Cloud Formation Trusted Advisor)
+		• Security & Identity Compliance (IAM)
+		• Application Services (SWF, Elastic Transcoder, Cloud Formation)
+	
+AWS Training Overview
+
+Day 12
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Introduction to Cloud Computing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Introduction to cloud computing
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	Cloud Computing 
+		Delivery of computing services such as 
+			servers, 
+			storage, 
+			databases, 
+			networking, 
+			software, 
+			analytics, 
+			intelligence, 
+			and more, 
+		over the Cloud (Internet).
+		
+		An alternative to the on-premises datacentre. 
+		We don't need to manage everything such as 
+			purchasing and 
+			installing hardware, 
+			virtualization, 
+			installing the o/s and s/w
+			network set up
+			firewall configuration
+			storage setup 
+		and the hardware and software maintenance of all the above.
+		Pay as you use model
+		
+	Advantages of cloud computing
+	-----------------------------
+	Ease of Use:
+		Easily spin up, maintain and terminate services
+	Cost: 
+		Trade capital expense for variable expense.
+		Benefit from massive economies of scale
+	Speed and agility: 
+		Resources can be accessed in minutes, typically within a few clicks.
+		Go global in minutes
+	Scalability: 
+		Increase or decrease resources.
+		Stop guessing capacity
+	Productivity: 
+		Less [operational] effort from our side. 
+	Reliability: 
+		Less expensive Backup and recovery of data 
+		Very fast business continuity processes.
+	Security: 
+		Broad set of policies, technologies, and controls that strengthen our data security.	
+	
+	
+		
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Essential Characteristics of CloudComputing
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	1. On-demand self-service
+	2. Broad network access
+		Available over the internet
+	3. Multi-tenancy and resource pooling
+		Multiple customers to share the same applications or the same physical infrastructure 	
+			Maintaining privacy and security 
+		Multiple customers are serviced from the same physical resources. 
+	4. Scalability and rapid elasticity and scalability
+	5. Measured and reporting service
+		Metered and pay accordingly for what they have used. 
+	6. Maintenance
+	7. Security
+	8. Automation and ease of access
+	9. Availability and resilience
+	10. Economical
+
+	
+	
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Service Models in Cloud computing
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Infrastructure as a Service (IaaS): 
+		Rent IT infrastructures like 
+			servers
+			virtual machines (VMs), 
+			storage, 
+			networks
+		We get a h/w or s/w infrastructure 
+			we can choose to do what we want
+		Provides maximum flexibility
+		Effort and responsibility increases.
+	Platform as a Service (PaaS): 
+		On-demand environment for 
+			configuring,
+			developing, 
+			testing, 
+			delivering, and 
+			managing software applications on a 
+		platform provided by vendor. 
+		Engineer is responsible for the application
+		PaaS vendor provides the ability to deploy and run it. 
+		Flexibility reduces
+		Reduced operational efforts
+	Software as a Service (SaaS): 
+		Centrally hosted and managed software services 
+		e.g. gmail for an end user
+		Minimum operational cost and effort required
+		Least flexibility
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	• Deployment models in Cloud Computing
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	cloud computing deployment models
+	---------------------------------
+		Public	
+		Private	
+		VPC	
+		Community	
+		Hybrid
+
+
+	Public Cloud
+		Most widely used cloud service. 
+			Web applications are generally hosted on public cloud
+			The service provider owns and operates all the hardware 
+			Used in 
+				development 
+				testing. 
+			Cost effective 
+			Configured easily 
+			deployed quickly
+			Can be automated.
+
+		Advantages of Public Cloud
+		--------------------------
+		Low cost: 
+			Cheapest model on the market. 
+			Pay for the services they are using.
+		No hardware investment: 
+			Service providers fund the entire infrastructure.
+		No infrastructure management and team to manage it
+		
+		Disadvantages of Public Cloud
+		-----------------------------
+		Security and privacy concerns: 
+			Resource sharing
+			Open to public.
+		Reliability: 
+			Public clouds are prone to outages and malfunctions.
+		Poor customization: 
+			Public offerings have little to no customization. Clients can pick the operating system and the sizing of the VM (storage and processors), but they cannot customize ordering, reporting, or networking.
+		Limited resources: 
+			Public clouds have incredible computing power, but you share the resources with other tenants. There is always a cap on how much resources you can use, leading to scalability issues.
+
+
+
+		Private Cloud
+		-------------
+			Cloud infrastructure managed by a specific organization. 
+				Behind their firewall.
+			Organization controls and manages the system from their datacentre
+			
+		Advantages of Private Cloud
+
+			Customization: 
+				Can customize solution.
+			Data privacy: 
+				Only authorized internal personnel can access data. 
+				Ideal for storing highly secured corporate data.
+			Security: 
+				Separate sets of resources leading to high levels of 
+					security and 
+					access control.
+			Full control: 
+				Owner controls everything.
+			Legacy systems: 
+				Supports legacy applications that cannot function on a public cloud.
+
+		Disadvantages of Private Cloud
+			High cost: 
+				High cost for infrastructure and staff.
+			Fixed scalability: 
+				Scalability function of availability and investment.
+			High maintenance: 
+				Requires high maintenance.
+
+
+	
+		Virtual Private Cloud (VPC)
+		---------------------------
+		A VPC customer has exclusive access to a segment of a public cloud. 
+		Compromise between private and public model in terms of price and features.
+
+		Access to a virtual private platform 
+			typically given through a secure connection (e.g., VPN). 
+			can be restricted by the user’s physical location 
+				by firewalls and IP address whitelisting.
+
+
+		Advantages of Virtual Private Cloud
+		-----------------------------------
+			Cheaper than private clouds: 
+				Cheaper than private cloud.
+			More well-rounded than a public cloud: 
+				Better than public cloud in
+					flexibility, scalability, and security 
+			Maintenance and performance: 
+				Less maintenance than private cloud
+				Probably: better security and performance than public cloud.
+				
+		Disadvantages of Virtual Private Cloud
+		--------------------------------------
+			It is not a private cloud: 
+				VPC is restrictive in customization.
+			Typical public cloud problems: 
+				Outages and failures are more often in a VPC setup.
+	
+	
+			
+			Community Cloud
+			---------------
+		A public cloud that allows access to a specific group of users.
+			Can be hosted on-premises
+		Typically, all organizations in a community have same 
+			security policies, 
+			application types
+			legislative issues.
+
+		Advantages of Community Cloud
+		-----------------------------
+		Cost reductions: 
+			Comparable performance and cheaper than private 
+				Multiple companies share the bill
+		Setup benefits: 
+			Configuration and protocols - specific to industry. 
+			A collaborative space also allows clients to enhance efficiency.
+		
+		Disadvantages of Community Cloud
+		--------------------------------
+		Shared resources: 
+			Limited storage and bandwidth capacity
+		Still uncommon: 
+			Recently added. 
+			Not supported for all industry.
+	
+	https://phoenixnap.com/blog/cloud-deployment-models
+	https://medium.com/@manrai.tarun/cloud-computing-deployment-models-technical-know-how-33a3ad30cb66
+	https://www.w3schools.in/cloud-computing/deployment-models-in-cloud-computing/
+	https://www.rishabhsoft.com/blog/basics-of-cloud-computing-deployment-and-service-models
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Introduction to AWS
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	
+	
+	AWS – Amazon Web Services(AWS) 
+		Cloud service from Amazon, 
+		provides services in the form of building blocks
+			can be used to create and deploy any type of application in the cloud.
+
+	These services or building blocks are designed to work with each other, and result in applications that are sophisticated and highly scalable.
+
+	What are the services provided by AWS?
+	Services in AWS are categorized as domains
+	E.g. of domains are as follows
+		Compute
+		Storage
+		Database
+		Migration
+		Network and Content Delivery
+		Management Tools
+		Security & Identity Compliance
+		Messaging
+		Compute Services
+
+	Compute domain services:
+		EC2 (Elastic Compute Cloud)
+		Lambda
+		Elastic Beanstalk
+		Amazon LightSail
+		Storage Services
+
+	Storage domain services:
+		S3 (Simple Storage Service)
+		Elastic Block Store
+		Amazon Glacier
+		AWS Snowball
+		Database Services
+
+	Database domain services:
+		Amazon Aurora
+		Amazon RDS
+		Amazon DynamoDB
+		Amazon RedShift
+		Migration Services
+
+	The Migration domain 
+		transfer data to or from the AWS - includes the following services:
+
+		AWS Database Migration Service
+		AWS SnowBall
+
+	Networking and Content Delivery Services - includes the following services:
+		Amazon Route 53
+		AWS CloudFront
+
+	Management Tools - includes the following services:
+		AWS CloudWatch
+		AWS CloudFomation
+		AWS CloudTrail
+
+	Security & Identity, Compliance Services - includes:
+		AWS IAM
+		AWS KMS
+		AWS Shield
+	
+	Messaging Services
+		Amazon SQS
+		Amazon SNS
+		Amazon SES
+		Amazon Pinpoint
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• AWS Account creation &free tier limitations overview
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Identity Access Management
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	IAM users
+		Create a user
+			Grant permissions
+		Enable Multi-factor authentication
+		Create and use access key and secret keys for programmatic access
+	IAM Groups
+	IAM Policies
+		IAM policy basics
+		AWS managed vs Customer managed policies
+		inline policies
+	IAM Roles
+		Roles trust
+		Assume permission basics
+		
+	
+
+
+Amazon EC2 is hosted in multiple locations world-wide. 
+These locations are categorized as 
+	Regions, 
+	Availability Zones, 
+	Local Zones, 
+	AWS Outposts, 
+	and Wavelength Zones. 
+
+Reference:
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
+		
+	Regions
+		Each Region is a separate geographic area
+		Geographical location
+		one or more isolated locations
+		Consoles are region scoped
+			(except IAM, S3 and Route53)
+		When you work with an instance using the command line interface or API actions, you must specify its Regional endpoint.
+
+
+-----------------------------
+aws ec2 describe-regions
+aws ec2 describe-regions --all-regions
+
+Use the get-regions command as follows to describe the name of the specified Region.
+
+aws lightsail get-regions --query "regions[?name=='region-name'].displayName" --output text
+aws lightsail get-regions --query "regions[?name=='us-east-2'].displayName" --output text
+
+-----------------------------
+
+
+	Availability zones
+		Multiple, isolated locations within each Region.
+		Physical data center in a region
+		Each AZ are isolated 
+		Can Launch instances in an Availability Zone
+			While creating - Optionally specify the AZ.
+		Can Migrate an instance to another Availability Zone
+		
+-----------------------------------------
+aws ec2 describe-availability-zones --region region-name
+aws ec2 describe-availability-zones --all-availability-zones
+-----------------------------------------
+		
+
+
+	Local Zones 
+		Part of the Availability Zones.
+		Provide ability to place resources, 
+			compute and 
+			storage
+		Local Zones have their own connections to the internet 
+		Support AWS Direct Connect
+			resources created in a Local Zone can serve local users with low-latency communications.
+		A Local Zone is represented by a Region code followed by an identifier that indicates the location, for example, us-west-2-lax-1a.
+		To use a Local Zone, you must first enable it
+
+---------------------------------
+Use the describe-availability-zones command as follows to describe the Local Zones in the specified Region.
+
+aws ec2 describe-availability-zones --region region-name
+aws ec2 describe-availability-zones --all-availability-zones
+-----------------------------------------
+	AWS Outposts 
+		Brings native AWS services, 
+			infrastructure, 
+			operating models 
+		to 
+			virtually any data center, 
+			co-location space
+			on-premises facility.
+
+	Wavelength Zones 
+		Allow developers to build applications 
+			that deliver ultra-low latencies to 5G devices and end users. 
+		Wavelength deploys standard 
+			AWS compute and 
+			storage services 
+		to 
+			the edge of telecommunication carriers' 5G networks.
+		
+	Host applications
+		Across AZ and regions closer to customer.
+		Back up geographically.
+		
+	
+	AWS IAM (Identity and access management)
+		enables to access AWS services and resources securely.
+		IAM users
+			Has userid and pwd
+			Can access aws console
+
+	Types of users	
+		Root users
+		Administrator user
+			full access to all services
+		Normal users
+		
+	IAM Groups
+		Let you specify permissions for multiple users 
+			makes it easier to manage permission for user attached.
+	Permissions/Policies 
+		Policies: Attach to user and group. 	
+		
+		
+		
+	Login to aws
+		Regions
+		Search for IAM
+			First in Security
+			doesn't belong to a region
+				Global service
+		Click Users (left nav)
+		
+		
+	What is IAM?	
+	------------
+
+	IAM: Identity Access Management.
+	Allows to manage 
+		users and 
+		their access level 
+	to 
+		aws console
+		program access.
+	
+	Can set users
+		permissions (grant access) and 
+		roles. 
+
+	AWS Identity and Access Management is a web service 
+		Enables Amazon Web Services (AWS) customers to
+		manage users and user permissions in AWS.
+	
+	Organizations can centrally 
+		manage users, 
+		security credentials 
+			such as access keys, 
+		permissions 
+		
+	
+	organization can 
+		create multiple users, 
+		each with its own security credentials, 
+		controlled and billed to a single aws account. 
+
+
+Features of IAM
+	Authentication
+		AWS IAM lets you create and manage identities such as 
+			users, 
+			groups, and 
+			roles, 
+		Can manage authentication for 
+			resources, 
+			people, 
+			services
+			apps 
+			within your AWS account. 
+	Authorization: 
+		Access management or authorization in IAM is made of two primary components: 
+			Policies and 
+			Permissions. 
+
+			
+	Centralised control of your AWS account: 
+		Control 
+			creation, 
+			rotation, and 
+			cancellation 
+		of each user's security credentials. 
+		You can also control 
+			what data in the aws system users can access and 
+			how they can access.
+	Shared Access to your AWS account: 
+		Users can share the resources for the collaborative projects.
+		Organizations 
+			may have more than one AWS account
+			may need to delegate access between them. 
+		IAM lets you do this without sharing your credentials, and more recently, AWS released ControlTower to further simplify multi-account configurations. 
+	Granular permissions: 
+		Used to set a permission that user can use a particular service but not other services.
+		e.g.  
+			Sales team can view billing information
+			developer team full access to the EC2 service
+			marketing team access to selected S3 buckets. 
+		Using IAM, we can configure and tune these permissions.
+
+	Identity Federation: 
+		Use 
+			Facebook, 
+			Active Directory, 
+			LinkedIn, etc 
+		with IAM. 
+		Users can log in to the AWS Console with the credentials used to log in to 
+			Active Directory, Facebook, etc.
+	AWS Organizations: 
+		For fine-grained control for multiple AWS accounts, 
+		use AWS Organizations to segment accounts into 
+			groups and 
+			assign permission boundaries.
+	Multifactor Authentication: 
+		We need to enter the 
+			username, 
+			password
+			security check code 
+		to log in to the AWS Management Console.
+	Permissions based on Organizational groups: 
+		Users can be restricted to the AWS access based on their job duties, 
+			for example, admin, developer, etc.
+	Networking controls: 
+		IAM also ensures that the users can access the AWS resources 
+			within the organization's corporate network.
+		Provide temporary access for users/devices and services where necessary: 
+			If you are using a mobile app and storing the data in AWS account, 
+				you can do this only when you are using temporary access.
+	Integrates with many different aws services: 
+		IAM is integrated with many different aws services.
+	Supports PCI DSS Compliance: 
+		PCI DSS (Payment Card Industry Data Security Standard) is a compliance framework. 
+		For credit card information, pay for compliance with the framework.
+	Eventually Consistent: 
+		IAM service is eventually consistent 
+		Achieves high availability by replicating the data across multiple servers 
+			within the Amazon's data center around the world.
+	Free to use: 
+		AWS IAM is a feature of AWS account which is offered at no additional charge. 
+		We are charged only while accessing other AWS services by using IAM user.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+	• Root Account Vs IAM user
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html
+	
+	Root user credentials
+
+		Create an Amazon Web Services (AWS) account
+			Begin with a single sign-in identity 
+			Has complete access to all AWS services and resources 
+			This identity is called the AWS account root user 
+			Accessed by signing in with the email address and password.
+		Cannot use IAM policies to explicitly deny the root user access to resources. 
+		Use an AWS Organizations service control policy (SCP) 
+			to limit the permissions of the root user. 
+		Recommend that we create an IAM user with administrator permissions to use for everyday AWS tasks and lock away the access keys for the root user.
+
+		There are specific tasks that are restricted to the AWS account root user. 
+		For example, 
+			only the root user can close your account. 
+
+	IAM credentials
+
+		With IAM, securely control access to AWS services and resources for users 
+		For example, 
+			if you require administrator-level permissions, 
+				you can create an IAM user, 
+				grant that user full access, 
+				and then use those credentials to interact with AWS. 
+			If you need to modify or revoke your permissions, 
+				you can delete or modify the policies that are associated with that IAM user.
+
+		If you have multiple users that require access to your AWS account, 
+			create unique credentials for each user type
+			define who has access to which resources. 
+				e.g. User with read only access.
+
+	Tasks that require root user credentials
+	----------------------------------------
+	
+	Following can be done with root access only
+		Change your account settings. 
+			This includes the 
+				account name, 
+				email address, 
+				root user password, and 
+				root user access keys. 
+			Other account settings, such as 
+				contact information, 
+				payment currency preference
+				Regions
+			do not require root user credentials.
+
+			Restore IAM user permissions. 
+				If the only IAM administrator accidentally revokes their own permissions, you can sign in as the root user to edit policies and restore those permissions.
+
+			Activate IAM access to the Billing and Cost Management console.
+
+			View certain tax invoices. A
+				n IAM user with the aws-portal:ViewBilling permission can view and download VAT invoices from AWS Europe, but not AWS Inc or Amazon Internet Services Pvt. Ltd (AISPL).
+
+			Close your AWS account.
+
+			Change your AWS Support plan or Cancel your AWS Support plan. 
+			
+			Register as a seller in the Reserved Instance Marketplace.
+
+			Configure an Amazon S3 bucket to enable MFA (multi-factor authentication) Delete.
+
+			Edit or delete an Amazon S3 bucket policy that includes an invalid VPC ID or VPC endpoint ID.
+
+			Sign up for GovCloud.
+
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Multi Factor Authentication for Users
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		Enable alternate ways of authentication.
+			Time boxed number
+			
+		Once enabled it gives a QR that can be scanned by the mobile.
+		AWS will send couple of numbers to this mobile which needs to entered to get authenticated.
+
+
+	Access keys and secret keys: create s3 bucket using .
+	https://www.techrepublic.com/article/how-to-set-up-multi-factor-authentication-for-an-iam-user-in-aws/
+
+
+--------------------------------------------------------------------
+	Lab01_IamLab
+--------------------------------------------------------------------
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Password Policies
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+
+	Rules for setting a password policy
+	-----------------------------------
+	The IAM password policy does not apply to the AWS account 
+		root user password or 
+		IAM user access keys. 
+	
+	If a password expires
+		IAM user can't sign in to the AWS Management Console 
+	but 
+		can continue to use their access keys.
+
+	When you create or change a password policy, 
+		most of the password policy settings are enforced the 
+			next time your users change their passwords. 
+		Other settings are enforced immediately. 
+	
+	For example:
+		Modify minimum length and character type requirements change, 
+			enforced when users change their passwords. 
+			Users are not forced to change their existing passwords if they violate.
+				
+		Modify password expiration period, 
+			enforced immediately. 
+			Users are required to update their password the next time they sign in.
+
+	You can't create a "lockout policy" to lock a user out of the account 
+		after a specified number of failed sign-in attempts. 
+	
+	Recommendation for enhanced security
+		Combine a strong password policy
+	and
+		multi-factor authentication (MFA).
+
+
+
+
+	Permissions required to set a password policy
+	---------------------------------------------
+	
+	Configure permissions to allow an IAM entity (user or role) to 
+		view
+	or 
+		edit 
+	account password policy. 
+	
+	Include the following password policy actions in an IAM policy:
+		iam:GetAccountPasswordPolicy – 
+			Allows the entity to view the password policy for their account
+		iam:DeleteAccountPasswordPolicy – 
+			Allows the entity to delete the custom password policy for their account and revert to the default password policy
+		iam:UpdateAccountPasswordPolicy – 
+			Allows the entity to create or change the custom password policy for their account
+
+The following policy allows full access to view and edit the account password policy. 
+
+----------------------------------------------------------------------
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "FullAccessPasswordPolicy",
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetAccountPasswordPolicy",
+                "iam:DeleteAccountPasswordPolicy",
+                "iam:UpdateAccountPasswordPolicy"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+
+
+What are the Default password policy
+------------------------------------
+	If an administrator does not set a custom password policy, 
+	IAM user passwords must meet the default AWS password policy. 
+	The default password policy enforces the following conditions:
+		Minimum password length of 8 characters and a maximum length of 128 characters
+		Minimum of three of the following mix of character types: 
+			uppercase, 
+			lowercase, 
+			numbers, 
+			! @ # $ % ^ & * ( ) _ + - = [ ] { } | ' symbols
+		Not be identical to your AWS account name or email address
+
+
+
+	Custom password policy options
+	------------------------------------
+	While configuring a custom password policy 
+		we can specify the following conditions:
+
+	1. Password minimum length – 
+		Allows 
+			minimum of 6 characters 
+			maximum of 128 characters.
+
+	2. Password strength – 
+		Can select any of the following check boxes 
+
+			Require at least one uppercase letter from Latin alphabet (A–Z)
+			Require at least one lowercase letter from Latin alphabet (a–z)
+			Require at least one number
+			Require at least one nonalphanumeric character 
+				! @ # $ % ^ & * ( ) _ + - = [ ] { } | '
+
+	3. Enable password expiration – 
+		Can select and specify a 
+			minimum of 1 
+			maximum of 1,095 days 
+		IAM user passwords are valid after they are set. 
+		
+		
+		AWS Management Console warns IAM users 15 days before password expiration. 
+		IAM users can change their password at any time if they have permission. 
+		Once updated, the expiration period for that password starts over. 
+		Only one valid password at a time is allowed.
+
+	4. Password expiration requires administrator reset – 
+		Once checked
+			IAM users cannot modify passwords after the password expires. 
+			
+			N.B: Before checking this, 
+				confirm that your AWS account has more than one user with administrative permissions to reset IAM user passwords. 
+				Also consider providing access keys to allow administrators to reset IAM user passwords programmatically. 
+				
+	5. Allow users to change their own password – 
+		You can permit all IAM users in your account to use the 
+			IAM console to change their own passwords
+		Alternatively, 
+			allow only some users to manage passwords, of themselves and others.
+
+	6. Prevent password reuse – 
+		Can specify a minimum number of 1 and a maximum number of 24 previous passwords 
+			that can't be repeated.
+
+
+
+Setting a password policy
+-------------------------
+	Ways to set a policy
+		a. console
+		b. AWS CLI
+		c. AWS API
+		
+
+---------------------------------------------------------------------------
+Lab: 		
+Refer below url to work with password policy.
+	https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html
+---------------------------------------------------------------------------
+
+
+
+
+----------------------------------------------------------------------	
+	
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• What is Simple Storage Service(S3)
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Steps to create s3
+	https://www.javatpoint.com/aws-creating-s3-bucket
+	
+	
+	S3 (Simple Storage Service)
+		Scalable, 
+		high-speed, 
+		low-cost 
+		web-based service 
+			designed to store and archive data and application programs. 
+		Supports
+			images
+			texts
+			blobs
+			etc.
+		Stored in folders and sub folders
+		Easy for us to understanding
+		
+		Allows to 
+			upload, 
+			store
+			download 
+				any type of files. 
+		Amazon uses S3 to run its own web sites. 
+		The subscriber has control over the accessibility of data, i.e. 
+			privately/
+			publicly accessible.
+		AWS’ standard cloud storage service
+		offers file (opaque “blob”) storage of arbitrary numbers of files 
+		size supported 0 to 5TB. 
+		Items, or objects, are 
+			placed into named buckets 
+			stored with names 
+				called keys. 
+				The main content is the value.
+		Objects are created, deleted, or updated. 
+		Large objects can be streamed, 
+			but you cannot modify parts of data; 
+			need to update the whole object. 
+		Partial data access can work via S3 Select.
+		Every object also has metadata, 
+			defined as key-value pairs
+			used in a way similar to HTTP headers. 
+		
+		Some metadata is system-defined
+		Some are significant when serving HTTP content from buckets or CloudFront
+		We can define arbitrary metadata for your own use.
+
+		S3 URIs: 
+			Commonly
+				Bucket and key names are provided in APIs
+				Write an S3 location in the form 
+					's3://bucket-name/<path/to/key>' 
+					's3n://' 
+					's3a://' prefixes in Hadoop systems.
+		
+		--------------------------------|---------------------------------------		
+		Block Storage 		Vs 			|	Object Storage
+		--------------------------------|---------------------------------------
+Showroom with small boxes of rack		|	Big cots being stored not in rack	
+Can replace a small portion				|	Replace the whole object
+Ideal for frequent read/write operation	|	Ideal for write and rare reads
+e.g. S3 and glacier						|	e.g. EBS and EFS
+		--------------------------------|---------------------------------------
+
+
+		S3 vs Glacier Vs EBS Vs EFS: 
+		-------------------------------
+		AWS offers many storage services. 
+		
+		Block Storage
+			S3 
+			Glacier
+		Object Storage
+			EBS
+			EFS
+		
+		Object Storage
+		--------------
+		--------------------------------|---------------------------------------
+				S3						|	Glacier
+		--------------------------------|---------------------------------------
+										|	Type of S3. 
+		Frequent reads 					|	Very rare reads
+		Costly							| 	Cheaper
+		Stored in buckets				|	Stored in Vaults
+		Lifeycycle policy support		| 	Lifeycycle policy not supported
+		e.g. of Lifecycle support delete or archive after 30 days
+		--------------------------------|---------------------------------------
+
+
+		S3	
+			Write once read multiple times.
+			Scalable - 
+				size need not be planned.
+				Keep dumbing.
+			Not suitable for Hosting OS or DB.
+				Both requires frequent read/write
+				OS: ec2
+				DB: Use db services.
+			For relative more frequent reading.
+			Co
+		Glacier 
+			cheaper and infrequently accessed archival storage. 
+			
+		Block Storage
+		-------------
+		EBS
+			Elastic block storage
+				Type of block storage
+			unlike S3
+				Allows random access to file contents 
+					via a traditional filesystem.
+			Can be attached to one EC2 instance at a time
+				Works best as Server disk/Remote disk
+			High performance for frequent read/write
+			Need to size the storage
+		EFS 
+			Block level storage
+			NFS 
+				many instances can connect
+			higher cost	
+			Can be mounted to on-prem servers
+			Unlike EBS and like S3: no sizing required.
+			
+			
+	Amazon S3 Features
+	------------------
+		Low cost and Easy to Use − 
+			Store large amount of data at very low charges.
+			$0.023 (023 cents) per GB
+			Cost reduces as the size of the data increases
+			In-build redundancy with 99.(9 9's)
+				Replicated to 3 different AZ's
+
+		Secure − 
+			Data transfer over SSL
+			Data gets encrypted automatically once it is uploaded. 
+			Complete control over data 
+				configure bucket policies using AWS IAM.
+
+		Scalable − 
+			Store as much data as we have and access it anytime.
+
+		Higher performance − 
+			Amazon S3 is integrated with Amazon CloudFront (Edge locations)
+				distributes content to the end users with 
+					low latency (latency = total round trip time)
+					high data transfer speeds 
+					without any minimum usage commitments.
+
+		Integrated with AWS services −
+			Integrated with AWS services including 
+				Amazon CloudFront
+					Edge location
+				Amazon CLoudWatch
+					Monitoring service
+				Amazon Kinesis
+					Alternative to apache kafka
+					Capture and manage	
+						application logs
+						metrics
+						IoT
+						Clickstreams etc
+				Amazon RDS
+					DB: RDS
+				Amazon Route 53, 
+					DNS provider
+				Amazon VPC, 
+					Virtual public cloud
+				AWS Lambda
+					Server where automated code can be executed.
+					e.g. use cases
+						Serverless Website hosted on AWS Lambda
+				Amazon EBS
+					Elastic Block Storage
+				Amazon Dynamo DB, etc.
+					
+
+		Host static websites
+		Shift old data into long term storage 
+			reduce cost.
+	
+	Constraints
+		Bucket name should be unique globally.
+		
+		Keep it closer to where people will access
+		
+		Block all public access
+			Define bucket policies
+		Enable : never delete
+		
+		
+		After uploading - we can download the files from "Object actions"																																					
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Storage Classes
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	S3 storage classes 
+		Define backup and disaster recovery.
+		Maintain the integrity of the data using checksums.
+		Provides lifecycle management for the automatic migration of objects for cost savings.
+
+
+	While uploading a file 
+		scroll down to see the list of storage classes
+
+
+	Check the page 
+		While uploading a file you can see the list of storage classes
+		
+S3 contains four types of storage classes:
+	1. S3 Standard
+		general-purpose storage of frequently accessed data
+	2. S3 - Intelligent Tiering
+		data with unknown or changing access patterns
+		We can setup configurations to define intelligence
+			like move to glacier
+	3. S3 Standard IA (Infrequent Access) and 
+	S3 one zone-IA (infrequent access)
+		Long-lived, but less frequently accessed data
+	4. S3 Glacier and 
+	S3 Glacier Deep Archive
+		long-term archive and digital preservation
+	
+	Read https://aws.amazon.com/s3/storage-classes/ for more details.
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Versioning
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Lab: Enable versioning 
+		Upload same file twice.
+	
+	Allows to keep multiple versions of an object in the same S3 bucket. 
+	Can be used to 
+		retrieve, 
+		preserve and 
+		restore 
+	different version of an object in S3 bucket.
+
+
+	Versioning-enabled buckets allow you to recover the objects from the deletion or overwrite.
+	
+	If you delete an object, 
+		instead of deleting the object permanently, 
+			it creates a delete marker which becomes a current version of an object.
+		N.B: Instead try deleting the version.	
+	If you overwrite an object, 
+		it creates a new version of the object and also restores the previous version of the object.
+		
+		
+	Versioning state can be applied to all the objects in a bucket. 
+	Once the versioning state is enabled, all the objects in a bucket
+		will remain versioned, 
+		provided with the unique version ID. 
+	The bucket owner can suspend the versioning to stop the object versions. 
+	When you suspend/enabling versioning, existing objects are not affected.
+		existing version (including null) remains.
+		
+	
+	If the versioning state is not enabled, 
+		version ID of the objects is set to null. 
+		
+		
+---------------------------------------------------------------
+Lab reference:		
+	Refer https://www.javatpoint.com/aws-versioning for images..
+	Refer https://www.mygreatlearning.com/blog/amazon-s3/
+---------------------------------------------------------------	
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Life Cycle Management
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	Lifecycle Management helps to
+		store objects cost-effectively throughout their lifecycle.
+		automate the lifecycle workflow
+	Lifecycle configuration 
+		set of rules that define the actions applied by S3 to a group of objects.
+		
+	The lifecycle defines two types of actions:
+		Transition actions: 
+			Transition to another storage class. 
+			For e.g, 
+				define transit the objects to Standard IA/Glacier storage class 
+					30 days after you have created them 
+		Expiration actions: 
+			Define when objects expire, 
+			Amazon S3 deletes the expired object on your behalf.
+
+	Refer https://www.javatpoint.com/aws-lifecycle-management for labs
+
+
+
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Content Delivery Networks (Cloud Front)
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	CloudFront CDN (Computer Delivery Network) 
+		System of distributed servers 
+			caches and delivers web content closer to a user 
+			
+
+	Key Terminology of CloudFront CDN
+
+		Edge Location: 
+			Location where the content will be cached. 
+			Separate to an AWS Region or AWS availability zone.
+		Origin: 
+			Origin of all the files that CDN will distribute. 
+			Origin can be 
+				S3 bucket
+				EC2 instance 
+				Elastic Load Balancer.
+		Distribution: 
+			Name given to the CDN which consists of a collection of edge locations. 
+			When we create a new CDN in a network with aws means that we are creating a Distribution.
+	
+	The distribution can be of two types:
+		Web Distribution: 
+			Typically used for websites.
+		RTMP: 
+			Used for Media Streaming.
+
+	How CloudFront CDN works
+		Edge locations 
+			spread all around the world 
+			List of edge locations can be found below
+				https://aws.amazon.com/cloudfront/features/
+
+		First user requests to get the content
+			request goes to the nearest edge location. 
+			Edge location will be check if it contains the cached data 
+				Edge location pulls the data from remote S3 bucket or similar. 
+			This is  a delayed process.
+		Second user accesses the same file, 
+			data is returned from the cache.
+			
+		Amazon CloudFront CDN is 
+			optimized to work with 
+				S3
+				EC2
+				Elastic Load balancing 
+				Route 53 (DNS Server). Amazon CloudFront CDN also works with the non-AWS origin server which stores original and versions of the files.
+	
+
+	Attempt again
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Security & Encryption
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	(S3) Data encryption is a process for securing data by encoding information. 
+	Data is encoded using a 
+		password or 
+		encryption (cypher) key 
+	and 
+		special encryption algorithms. 
+		
+	The encrypted data can then be accessed by using the 
+		correct password or 
+		encryption (decryption) key. 
+	
+	Amazon recommends the use of 
+		S3 encryption when storing data in Amazon S3 buckets. 
+	
+	Advantages of encryption
+	------------------------
+	Security. 
+	Sharing data under law
+		Sometimes Amazon can be forced to share your data under the law
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Static Webhosting with S3 bucket
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	- Create s3 bucket
+	- upload welcome.html
+	- Update permissions policy
+		Make access public
+-------------------------------
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AddCannedAcl",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::573556470027:root"
+            },
+            "Action": [
+                "s3:PutObject",
+                "s3:PutObjectAcl"
+            ],
+            "Resource": "arn:aws:s3:::vilas1/*",
+            "Condition": {
+                "StringEquals": {
+                    "s3:x-amz-acl": "public-read"
+                }
+            }
+        },
+        {
+            "Sid": "PublicRead",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::573556470027:root"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": "arn:aws:s3:::vilas1/*"
+        }
+    ]
+}
+
+	- Update properties
+	- Edit "Static website hosting"
+	- Select bucket - Action - Make Public.
+	- Now try to access..
+		If required clear cache and retry.
+		
+		
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+https://medium.com/@kyle.galbraith/how-to-host-a-website-on-s3-without-getting-lost-in-the-sea-e2b82aa6cd38
+
+	 you configure your bucket as a static website, the website is available at the AWS Region-specific website endpoint of the bucket. Learn more
+
+-----------------------------
+{
+    "Version": "2008-10-17",
+    "Id": "PolicyForPublicWebsiteContent",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::vilasbucket/*"
+        }
+    ]
+}
+-----------------------------
+
+where 
+bucketname: vilasbucket
+arn name : arn:aws:s3:::vilasbucket (this can be found in the properties) 
+------------------------------------
+
+Day 13
+
+Compute
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Launch EC2 Instances
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	connect
+	https://docs.bitnami.com/aws-templates/faq/get-started/connect-ssh/
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• EC2 Instance Types
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		https://aws.amazon.com/ec2/instance-types/
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Security groups
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		A security group 
+			Virtual firewall 
+			Controls traffic to EC2 instances.
+			When you first launch an EC2 instance
+				associate it with one or more security groups.
+		A Security group 
+			first defence against hackers.
+			Can be created for a VPC 
+			If VPC is not selected, it belongs to EC2.
+		
+		Security group while creating Ec2 instance
+		Update security group after creating an ec2 instance.
+		
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Creating an Amazon Machine Images
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	An AMI: Amazon Machine Images.
+	
+	AMI's done through Snapshots
+	Snapshots of various resources are supported in aws.
+		Ec2 is just one of them.
+	Search for Snapshots in aws and be sure to select ec2.
+	
+	Virtual image used to create a virtual machine within an EC2 instance.
+	You can also create multiple instances using single AMI when you need instances with the same configuration.
+	You can also create multiple instances using different AMI when you need instances with a different configuration.
+	It also provides a template for the root volume of an instance.
+
+	AMI Lifecycle
+	First, you need to create and register an AMI.
+	You can use an AMI to launch EC2 instances.
+	You can also copy an AMI to some different region.
+	When AMI is no longer required, then you can also deregister it.
+	
+	https://www.javatpoint.com/aws-creating-an-ami
+	
+	
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Volumes and Snapshots
+
+	
+	
+	EBS: https://www.javatpoint.com/aws-ebs-volume
+	EBS Snapshot: https://cloud.netapp.com/blog/aws-snapshots-a-complete-introduction-to-amazon-ebs-snapshots
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Auto Scaling Groups
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	Auto Scaling group (ASG) 
+		Fleet of EC2 instances can scale out or in
+		Highly elastic 
+		Can define policies governing 
+			when to scale
+			how much to scale 
+			how to rely on the autohealing (self-healing)
+		replace unhealthy EC2 instances from service.
+	
+	Factors to Consider when Using Auto Scaling Groups
+	--------------------------------------------------
+	Design for the following
+		Operational Excellence
+		Security
+		Reliability
+		Performance Efficiency
+		Cost Optimization
+
+	Consider the following
+		Pick the Correct Instance Type & Size
+			Picking a wrong instance can get you in trouble
+		Design for Capacity & Scaling
+			Manual Scaling
+			Scheduled Scaling
+				Incrementing or decrementing scale based on predetermined timetables
+			Step Scaling
+				Scaling in predefined steps due to Cloudwatch alarms, 
+					based on the size of the alarm breach
+			Dynamic Scaling
+				Scaling based on Cloudwatch alarms from aggregated metrics across all instances in the Auto Scaling group
+		Operational Excellence, Performance Efficiency, & Cost Optimization with Auto Scaling Groups
+			Don't overprovision
+
+		Course in coursera
+			https://www.coursera.org/projects/create-aws-ec2-autoscaling-group-load-balancer
+			https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-register-lbs-with-asg.html
+----------------------------------------------
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html
+----------------------------------------------			
+			
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Cloud Watch
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		https://tutorialsdojo.com/amazon-cloudwatch/
+		Monitor AWS resources and applications
+		Display metrics
+		Create alarms
+			that watch metrics
+				send notifications
+				automatically take corrective actions
+		Does not aggregate data across regions.
+		
+		Concepts
+			Namespaces
+				Container for cloudwatch metrics
+				No default namespaces
+				uses naming conventions: AWS/service
+			Metrics
+				time-ordered set of data points 
+					published to cloudwatch
+				Region based: only in the region they are created.
+				Cannot be deleted	
+					automatically expire in 15 months
+						if no data are published
+			
+			Metric math 
+				enables to query multiple CloudWatch metrics 
+				use math expressions to create new time series based on these metrics.
+			Important note for EC2 metrics:
+				CloudWatch does not collect 
+					memory utilization and 
+					disk space usage metrics
+				
+			Dimensions – 
+				a name/value pair 
+					to uniquely identies a metric.
+				Can assign up to 10 dimensions to a m
+			
+		For more information please refer 
+			https://tutorialsdojo.com/amazon-cloudwatch/
+		
+		
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• AWS CLI
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		Command line interface for Amazon Web Services.
+		
+		1. Installation steps
+			https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+			
+		2. Configure aws cli 	
+			https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• IAM roles for EC2 
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		Refer Lab01_IamLab.txt
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Elastic File System
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		https://tutorialsdojo.com/amazon-efs/
+		
+		EFS 
+			Manages all the file storage infrastructure 
+			Avoid the complexity of 
+				deploying,
+				patching
+				maintaining 
+					complex file system congurations.
+			Supports NFS version 4 protocol.
+			Multiple Amazon EC2 instances 
+				simultaneously access an EFS.
+			Can store data and metadata across
+				multiple Availability Zones in an AWS Region.
+			Can host petabyte data, 
+			Drive high levels of throughput.
+			Provides file system access semantics e.g.
+				strong data consistency 
+				file locking.
+			Enables us to control access to our file systems
+				through Portable Operating System Interface (POSIX) permissions.
+			Moving your EFS file data 
+				can be managed simply with AWS DataSync 
+				AWS DataSync: Fast and Simple data movement between 
+					on premises storage and Amazon EFS.
+			Supports schedule automatic incremental backups using the EFS-to-EFS Backup solution.
+			Amazon EFS Infrequent Access (EFS IA) 
+				new storage class for Amazon EFS 
+				cost-optimized
+				for files that are accessed less frequently. 
+			
+			For more info. https://tutorialsdojo.com/amazon-efs/
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• AWS Lightsail
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		Easiest way to develop and deliver websites
+		Fine tuned for hosting websites.
+
+		Let's you selected
+			OS
+				Linux 
+				Windows
+			OS+ App or just O/S
+			If App
+				LAMP
+				Wordpress
+				Joomla
+				cPanel and WHM  ect options.
+	
+
+	AWS Lightsail service 
+		Make it simpler to setup and run websites or EC2 instances with
+		applications ready to be consumed for hosting on the web.
+
+	Amazon Lightsail launches virtual private servers, 
+		which are VMs with individual operating systems 
+		but restricted access to physical server resources. 
+		A customer can choose from few Lightsail plans with the following characteristics:
+			Memory ranging from min(512) MB to max(8) GB;
+			Processors with min(one) or  max(two) cores;
+			A solid-state drive with min(20) to  max(80) GB of storage;
+			Data transfer allowances of min(1) to  max(5) TB;
+			Prices from min($3.5) to  max($80) per month.
+
+	All Lightsail plans include 
+		static IP address, 
+		management console, 
+		secure shell terminal access and key management
+		domain name server management
+		server monitoring 
+	along with ability to integrate with other	
+		AWS tools
+
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Elastic Beanstalk
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		AWS Elastic Beanstalk 
+			an easy-to-use service for deploying and scaling 
+				web applications and 
+				services 
+			developed with 
+				Java, 
+				.NET, 
+				PHP, 
+				Node.js, 
+				Python, 
+				Ruby, 
+				Go, and 
+				Docker 
+			on familiar servers such as 
+				Apache, 
+				Nginx, 
+				Passenger, and 
+				IIS.
+
+		Simply upload our code 
+		Elastic Beanstalk automatically handles the deployment along with 
+			capacity provisioning
+			load balancing
+			auto-scaling 
+			application health monitoring. 
+		We retain full control over the 
+			AWS resources powering our application 
+		can access the underlying resources at any time.
+
+		No additional charge for Elastic Beanstalk - 
+			pay for the AWS resources needed to store and run your applications.
+
+
+		You run step by step through the process of creating a beanstalk
+		Result : A running web application.
+
+Route 53
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+	All 
+		websites, 
+		computers and 
+		connected devices 
+	communicated with each other using IP addresses
+	in an IP network (including Internet). 
+	IP address are difficult to remember, 
+		the IP address is assigned a domain name 
+
+	Traditional DNS management 
+		register website domains 
+		direct user requests to the hosting infrastructure
+		
+	
+	Amazon Route 53 
+		DNS with additional benefits
+		High available and scalable cloud Domain Name System (DNS) web service. 
+		Designed to give developers and businesses an extremely 
+			reliable and 
+			cost effective way to 
+		route end users to Internet applications 
+		Translates names like 
+			www.example.com into IP: 192.0.2.1 
+		Computers use to connect to each other. 
+		Amazon Route 53 is fully compliant with IPv6 as well.
+		Amazon Route 53 
+			connects user requests to infrastructure running in AWS – 
+			e.g. 
+				Amazon EC2 instances, 
+				Elastic load balancers
+				Amazon S3 buckets – 
+				and can also be used to route users to infrastructure outside of AWS. 
+			Can be configured for DNS health checks 
+				and route traffic to healthy endpoints or 
+				Monitor the health of your application and its endpoints. 
+			Supports Domain Name Registration 
+				Can register a new website with Route 53
+		
+
+		
+		
+
+			Manage traffic globally through a variety of routing types, 
+				e.g. 
+					Latency Based Routing, 
+					Geo DNS, 
+					Geoproximity, 
+					Weighted Round Robin
+					
+					All of the above can be combined with DNS Failover 
+						enables 
+							low-latency, 
+							fault-tolerant 
+			Has simple visual editor, 
+			Easily manage how your end-users are routed to your application’s endpoints—
+				whether in a single AWS region or distributed around the globe. 
+			Named so because Port 53 handles DNS for both the TCP and UDP traffic requests
+
+		Domain Name resolution
+		----------------------
+		Step by step process
+			Domain name 
+				first registered with AWS Route 53, 
+				which configures to route Internet traffic to the servers hosting the domain name. 
+				The servers can be both AWS public cloud or a private cloud infrastructure.
+				
+		#This flow is explained in more details latter...		
+		End-users enter the domain name or the complete URL into the browser search bar.
+			The ISP routes the request to a DNS resolver, a tool that converts the domain name into its IP address.
+		The DNS resolver then forwards the user request to a 
+			DNS root name server , 
+			request redirected to its Top Level Domain (TLD) (.com, .in resolver) server and 
+			ultimately, to AWS Route 53.
+		The Route 53 name server 
+			returns the IP address of the domain name to the DNS resolver.
+			
+		DNS resolver 
+			forward the user request to the appropriate server 
+			
+		DNS Failover checks 
+		-------------------
+		AWS Route 53 
+			can check the health of backend servers. 
+			Checks the endpoints for availability. 
+			If the endpoint is deemed unhealthy, 
+				Route 53 will route traffic to another healthy endpoint. 
+			An alarm will be triggered using the AWS CloudWatch to inform the specified recipient 
+				regarding the necessary actions.
+		
+		Summary AWS Route 53 Features:
+
+		Resolver: 
+			DNS resolution between 
+				local networks and 
+				VPC 
+			can be performed using the Route 53 Resolver. 
+			Users can forward DNS queries from the local network to a Route 53 Resolver and apply conditional configurations to forward DNS queries from AWS instances to a local network. AWS Route 53 supports both IPv4 and IPv6 formats.
+		Traffic Flow: 
+			Intelligent traffic routing based on key parameters including proximity, health of endpoints and latency, among others.
+		Geo DNS and Latency Based Routing: 
+			Reduce latency and improve end-user experience by routing traffic from servers closest to end-users.
+		Private DNS for Amazon VPC: 
+			Configure Route 53 to respond to DNS queries within private hosted VPC zones. As a result, the DNS resolution data is not exposed to the public networks.
+		Health Checks, Monitoring and Failover: 
+			Route 53 directs internet traffic to healthy target instances as per the specified configurations. In event of an outage, the health-checking agents will route the traffic to healthy endpoints. The health check feature generates CloudWatch metrics that can further trigger AWS Lambda functions to perform appropriate corrective actions.
+		Domain Registration: 
+			The scalable DNS management service allows users to transfer management of existing domains or register new domain names to AWS Route 53. This feature consolidates management and billing associated with delivering Web hosted services.
+		S3 and CloudFront Zone Apex Support: 
+			Create Custom SSL certificates without requirements for proprietary code or complicated configurations. Zone Apex support allows Route 53 to return requests for root domain such as example.com in the same was as the complete URL scheme of example.com without incurring any performance penalty as an additional proxy server is not required to access the backend servers.
+		Amazon ELB Integration: 
+			AWS Elastic Load Balancing capability allows the traffic load to be distributed between multiple AWS target instances to maximize service availability and performance. AWS ELB allows users to increase the fault tolerance of their Web services to healthy target instances within AWS and on-premise infrastructure resources.
+		Weighted Round Robin: 
+			A service for developers to configure how often a DNS response is returned. This capability is useful for service testing purposes as well as balancing traffic between target instances.
+		Management Console: 
+			A simple and intuitive management console allows users to view resources and perform operational tasks. The management console is also offered as a mobile app. Users can further manage Route 53 controls such as the DNS record modification permission using the AWS Identity and Access Management service.
+		
+		Amazon Route 53 capabilities of policy-based routing, health check and monitoring, support for bi-directional query resolution for hybrid cloud environments, and integration with an exhaustive set of AWS services give it a leading edge over its competition. Routing policies such as Multi-Value Routing and Weighted Routing give users more control and management capability over their internet traffic. Route 53 is also designed to work with a range of AWS services necessary to run apps hosted on the AWS infrastructure. The close integration of services allows users to perform changes to their architecture and scale resources to accommodate increasing Internet traffic volume without significant DNS resolution, configuration and management requirements.
+				
+
+		Amazon Route 53 Traffic Flow 
+			The subscription-based AWS service allows users to 
+				register domain names, 
+				apply routing policies, 
+				perform infrastructure health checks and 
+				manage configurations without coding requirements 
+			from AWS Management Console. 
+			Amazon Route 53, together with a range of AWS services, 
+				enables scalable, flexible, secure and manageable traffic routing.
+				
+
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• DNS Records overview
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	DNS stands for Domain Name System.
+	DNS is used to convert human-friendly domain names 
+		(such as https://www.google.com) into an 
+		Internet Protocol (IP) address.
+	IP addresses are used by computers to identify each other on the network.
+	IP addresses are of two types, i.e., Ipv4 and Ipv6.
+
+	Top Level Domains
+	-----------------
+	Domains are seperated by a string of characters seperated by dots. 
+		For example, 
+			google.com, 
+			gmail.com, 
+			etc.
+	The last word in a domain name is known as a Top Level Domain.
+		.com: .com is a top-level domain.
+		.edu: .edu is a top-level domain.
+		.gov: .gov is a top-level domain.
+		Comain names are controlled by IANA (Internet Assigned Numbers Authority).
+			IANA is a root zone database of all available top-level domains.
+			Refer below url for list of all top level domains
+				: http://www.iana.org/domains/root/db
+
+
+	The second word in a domain name is known as a second level domain name.
+		.co.uk: 
+			.uk is a top-level domain name while 
+			.co is a second level domain name.
+		.gov.uk: 
+			.gov is a second level domain name.
+		
+		
+	Domain Registrars
+	-----------------
+	Domain Registrar 
+		An authority that assigns the domain names 
+			directly under one or more top-level domains.
+		Ensures names in a domain are unique
+		Domain names are registered with interNIC, 
+			a service of ICANN, 
+			enforces uniqueness of domain name across the internet.
+		Each domain name is registered in a central database known as the WhoIS database.
+		The popular domain registrars include 
+			GoDaddy.com, 
+			123-reg.co.uk, etc.
+-----------------------------------------------------------------------------------
+Preferably skip this			
+	State Of Authority Record (SOA)
+		Stores the information in Domain Name System (zone) 
+			about the zone and other DNS records.
+			DNS zone 
+				space allocated for a particular type of server.
+				Each DNS zone consists of a single SOA record.
+				The name of the server that supplies the data for the zone.
+				The administrator of the zone, i.e., who is administering the zone.
+		The current version of the data file that contains the zone.
+		The default number of records for the time-to-live file on resource records. For example, when you are dealing with a DNS, then it always has a time-to-live. Time-to-live must be lower as possible because when you make changes, it then propagates quicker. Suppose the name of the website is Hindi100.com and its time-to-live is 60 seconds. By the end, you want to change its IP address then the time taken to achieve this is equal to the time-to-live.
+		The number of seconds a secondary name server has to wait before checking for the updates.
+		The maximum number of seconds that a secondary name server can use the data before it is either be refreshed or expire.
+-----------------------------------------------------------------------------------
+
+	NS (Name Server ) Records
+		Top Level Domain Servers uses NS Records to direct traffic to the Content DNS server
+
+	
+	Suppose the browser wants an IP address of hindi100.com. 
+	If ISP does not know the IP address of hindi100.com, 
+		ISP asks ".com" for the NS Record. 
+		".com" returns "NS record" and "time-to-live"
+			say 
+				time-to-live:172800 and 
+				NS record: ns.awsdns.com. 
+		ISP checks with NS record for the IP of hindi100.com
+			NS record points to Route53
+	In SOA, we have all the DNS types and 'A' records.
+
+
+	A Records
+		An 'A' record is a fundamental type of DNS record.
+		'A' stands for Address.
+		An 'A' record is used by the computer to convert the domain name into an IP address. 
+		For example, 
+			ping google.com : 172.217.167.174
+	TTL
+		The length that a DNS record is cached on either the Resolving power or the users owns local PC is equal to the value of the TTL in seconds.
+		The lower the time-to-live, the faster changes to DNS records take to propagate throughout the internet.
+	CNAMES
+		A CNAME can be used to resolve one domain name to another. For example, you may have a mobile website with a domain name http://m.devices.com which is used when users browse to your domain name on their mobile devices. You may also want the name http://mobile.devices.com to resolve the same address.
+	Alias Records
+		Used to map resource record sets in your hosted zone to 
+			Elastic load balancers, 
+			CloudFront distributions, or 
+			S3 buckets that are configured as websites.
+		Alias records work like a CNAME record in that you can map one DNS name (http://www.example.com) to another target DNS name (elb1234.elb.amazonaws.com).
+		The key difference between a CNAME and Alias Record is that a CNAME cannot be used for naked domain names (zone apex) record, i.e., it cannot be used when something is written infront of the domain name. For example, http://www.example.com contains a www infront of the domain name, therefore, it cannot be used for CNAME.
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Routing Policies
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		When you create a record, 
+		you choose a routing policy, 
+		which determines how Amazon Route 53 responds to queries:
+			Simple routing policy 
+				Use for a single resource that performs a given function for your domain, for example, a web server that serves content for the example.com website.
+			Weighted routing policy — 
+				Use to route traffic to multiple resources in proportions that you specify.
+			Latency routing policy — 
+				Use when you have resources in multiple AWS Regions and you want to route traffic to the region that provides the best latency.
+			Failover routing policy — 
+				Use when you want to configure active-passive failover.
+			Geolocation routing policy — 
+				Use when you want to route traffic based on the location of your users.
+			Geoproximity routing policy — 
+				Use when you want to route traffic based on the location of your resources and, optionally, shift traffic from resources in one location to resources in another.
+			Multivalue answer routing policy — 
+				Use when you want Route 53 to respond to DNS queries with up to eight healthy records selected at random.
+	
+	Refer below for images
+	https://medium.com/awesome-cloud/aws-amazon-route-53-routing-policies-overview-285cee2d4d3b
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Hosting sample Website
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Day 14
+Databases
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Launching a RDS Instance
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	AWS database service includes the following services:
+		Amazon Relational Database Service: It supports six commonly used database engines.
+		Amazon Aurora: It is a MySQL-Compatible relational database with five times performance.
+		Amazon DynamoDB: It is a fast and flexible NoSQL database service.
+		Amazon Redshift: It is a petabyte-scale data warehouse service.
+		Amazon Elasticache: It is an in-memory cache service with support for Memcached and Redis.
+		AWS Database Migration Service: It is a service that provides easy and inexpensive to migrate your databases to AWS cloud.
+	https://www.javatpoint.com/creating-an-rds-instance-in-aws
+	
+	connect from local machine
+	https://docs.bitnami.com/aws-templates/apps/wordpress/get-started/connect-rds/
+	or
+	https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToInstance.html
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Backups, Multi-AZ & Read Replicas
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	
+	 Amazon RDS Read Replicas for MySQL and MariaDB 
+		support Multi-AZ deployments. 
+	Combining Read Replicas with Multi-AZ 
+		enables you to build a 
+		resilient 
+		disaster recovery strategy and 
+		simplify your database engine upgrade process. 
+
+
+	There are various tools to backup 
+	backup.ninja is one example
+	https://backup.ninja/news/how-backup-your-amazon-rds-mysql-and-restore-your-own-server
+	
+	Multi-AZ
+	--------
+	Amazon RDS Multi-AZ deployments provide enhanced 
+		availability for database instances within a single AWS Region. 
+	Data is synchronously replicated to a standby in a different AZ with in the region.
+	In the event of an infrastructure failure (network issues), 
+		Amazon RDS performs an automatic fail-over to the standby, 
+		minimizing disruption to your applications without administrative intervention.
+	
+	Benefits of Multi-AZ deployment:
+	-------------------------------
+		Replication to a standby replica is synchronous and highly durable.
+		Endpoint of DB instance remains the same after a failover, 
+			the application can resume database operations without manual intervention.
+		If a failure occurs, 
+			your availability impact is limited to time that automatic failover takes to complete. 
+			This helps to achieve increased availability.
+		Reduces the impact of maintenance. 
+		RDS performs 
+			maintenance on the standby first, 
+			promotes the standby to primary master, 
+			and then performs maintenance on the old master which is now a standby replica.
+		To prevent any negative impact of the backup process on performance, 
+			Amazon RDS creates a backup from the standby replica.
+		When a problem is detected on the primary instance, 
+			it will automatically failover to the standby in the following conditions: 
+				1) The primary DB instance fails. 
+				2) An Availability Zone outage. 
+				3) The DB instance server type is changed. 
+				4) The operating system of DB instance is undergoing software patching. 
+				5) Manual failover of DB instance was initiated using reboot with failover.
+
+
+		Amazon RDS Read Replicas 
+			enable you to create one or more read-only copies of your database instance 
+			within the same or different AWS Region 
+		Updates made to the source database are then asynchronously copied to your Read Replicas
+		In addition to providing scalability for read-heavy workloads, 
+			Read Replicas can be promoted to become a standalone database instance when needed. 
+		Writes can happen in main database only and reads can happen in Read replica database.
+		When you create a Read Replica, 
+			you first specify an existing DB instance as the source. 
+		Then Amazon RDS takes a snapshot of the source instance and 
+			creates a read-only instance from the snapshot. 
+		The source DB must have automatic backups enabled for setting up read replica.
+
+		Benefits of Read Replicas
+			Read Replicas helps in decreasing load on the primary DB by serving read-only traffic.
+			You can create Read Replicas within AZ, Cross-AZ or Cross-Region.
+			Read Replica can be manually promoted as a standalone database instance.
+			Read Replicas support Multi-AZ deployments.
+			You can use Read Replicas to take logical backups, if you want to store the backups externally to RDS.
+			You can have Read Replicas of Read Replicas.
+			Read Replica helps to maintain a copy of databases in a different region for disaster recovery.
+			You can have up to five Read Replicas per master, 
+				each with own DNS endpoint. 
+			Unlike a Multi-AZ standby replica, you can connect to each Read Replica and use them for read scaling.
+
+		If an user (or a vulnerability ) deletes or truncates the data by mistake 
+			you cannot get it back from Multi-AZ deployment.
+			You may be able to get it back from Read replica's.
+
+		Read Replicas with Multi-AZ can be used for disaster recovery (DR) strategy 
+		
+		Combine Read Replicas with Multi-AZ for your database engine upgrade process. 
+		You can create a Read Replica of your production database instance and upgrade it to a new database engine version. When the upgrade is complete, you can stop applications, promote the Read Replica to a standalone database instance, and switch over your applications. Since the database instance is already a Multi-AZ deployment, no additional steps are needed.
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• DynamoDB
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	DynamoDB is a fully-managed NoSQL database service 
+		designed to deliver fast and predictable performance. 
+		It uses the Dynamo model in the essence of its design, 
+			and improves those features. 
+	It began as a way to manage website scalability challenges presented by the holiday season load.
+
+		This tutorial introduces you to key DynamoDB concepts necessary for creating and deploying a highly-scalable and performance-focused database.
+		
+		DynamoDB allows users to create databases capable of storing and retrieving any amount of data, and serving any amount of traffic. It automatically distributes data and traffic over servers to dynamically manage each customer's requests, and also maintains fast performance.
+		
+		DynamoDB uses a NoSQL model, which means it uses a non-relational system. The following table highlights the differences between DynamoDB and RDBMS
+		
+		
+	Connect to the Source
+		RDBMS: It uses a persistent connection and SQL commands.	
+		DynamoDB: It uses HTTP requests and API operations
+	Create a Table	
+		RDBMS: Its fundamental structures are tables, and must be defined.	
+		DynamoDB: It only uses primary keys, and no schema on creation. It uses various data sources.
+	Get Table Info	
+		RDBMS: All table info remains accessible	
+		DynamoDB: Only primary keys are revealed.
+	Load Table Data	
+		RDBMS: It uses rows made of columns.	
+		DynamoDB: In tables, it uses items made of attributes
+	Read Table Data	
+		RDBMS: It uses SELECT statements and filtering statements.	
+		zzzzzzzzzzzzzzzzzDynamoDB: It uses GetItem, Query, and Scan.
+	Manage Indexes	
+		RDBMS: It uses standard indexes created through SQL statements. Modifications to it occur automatically on table changes.	
+		DynamoDB: It uses a secondary index to achieve the same function. It requires specifications (partition key and sort key).
+	Modify Table Data	
+		RDBMS: It uses an UPDATE statement.	
+		DynamoDB: It uses an UpdateItem operation.
+	Delete Table Data	
+		RDBMS: It uses a DELETE statement.	
+		DynamoDB: It uses a DeleteItem operation.
+	Delete a Table	
+		RDBMS: It uses a DROP TABLE statement.	
+		DynamoDB: It uses a DeleteTable operation.
+		
+		
+		Advantages
+The two main advantages of DynamoDB are scalability and flexibility. It does not force the use of a particular data source and structure, allowing users to work with virtually anything, but in a uniform way.
+
+Its design also supports a wide range of use from lighter tasks and operations to demanding enterprise functionality. It also allows simple use of multiple languages: Ruby, Java, Python, C#, Erlang, PHP, and Perl.
+
+	Refer
+	https://www.tutorialspoint.com/dynamodb/dynamodb_overview.htm
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Redshift
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	What is Redshift?
+		Redshift is a fast and powerful, fully managed, petabyte-scale data warehouse service in the cloud.
+		Customers can use the Redshift for just $0.25 per hour with no commitments or upfront costs and scale to a petabyte or more for $1,000 per terabyte per year.
+
+OLAP
+	OLAP is an Online Analytics Processing System used by the Redshift.
+
+OLAP transaction Example:
+
+	Suppose we want to calculate the Net profit for EMEA and Pacific for the Mobile. This requires to pull a large number of records. Following are the records required to calculate a Net Profit:
+
+	Sum of Mobile sold in EMEA.
+	Sum of Mobile sold in Pacific.
+	Unit cost of Mobile  in each region.
+	Sales price of each mobile
+	Sales price - unit cost - tax
+
+	The complex queries are required to fetch the records given above. 
+	Data Warehousing databases use different type architecture both from a database perspective and infrastructure layer.
+
+	Refer https://www.javatpoint.com/aws-redshift
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Elastic cache
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Elasticache is a web service used to 
+		deploy, 
+		operate, and 
+		scale an 
+			in-memory cache in the cloud.
+	Improves the performance of web applications by allowing you to retrieve information from 
+		fast, 
+		managed 
+		in-memory cache 
+	Used to improve latency and throughput for many read-heavy application workloads 
+		(such as social networking, gaming, media sharing, and Q&A portals) or 
+		compute intensive workloads (such as a recommendation engine).
+	Caching improves application performance 
+		by storing critical pieces of data in memory for low latency access.
+	Cached information may include the results of 
+		I/O-intensive database queries or the 
+		results of computationally-intensive calculations.
+
+	Types of Elasticache
+		Memcached
+		Redis
+
+	Memcached
+		Amazon Elasticache for Memcached 
+			Memcached-compatible in-memory key-value store service 
+			used as a cache.
+		Easy-to-use, high performance, in-memory data store.
+		It can be used as a cache or session store.
+		It is mainly used in real-time applications such as 
+			Web, 
+			Mobile Apps, 
+			Gaming, 
+			Ad-Tech, and 
+			E-Commerce.
+	
+	
+	Working of Memcached
+		Databases are used to store the data on disk or SSDs while 
+		Memcached keeps its data in memory by eliminating the need to access the disk.
+		Since data is in-memory key-value store service 
+			can access the data in microseconds.
+		Distributed service 
+			can be scaled out by adding new nodes.
+		Multithreaded service 
+			can be scaled up by adding CPU. 
+		As a result of this, its speed, scalability, simple design, efficient memory management and API support for most popular languages make Memcached a popular choice for caching use cases.
+
+		Benefits of Memcached
+			Sub-millisecond response times
+			Simplicity
+			Scalability
+			Community
+			
+	Redis (Remote Dictionary Server)
+		Fast, open-source, and in-memory key-value data store.
+		Response time in millisecond, 
+		Serves the millions of requests per second for real-time applications 
+			e.g. Gaming, AdTech, Financial services, Health care, and IoT.
+		Used for 
+			caching, 
+				session management, gaming, leaderboards, real-time analytics, geospatial, etc.
+
+		Working of Redis
+			Redis keeps its data in-memory instead of storing the data in disk or SSDs. Therefore, it eliminates the need for accessing the data from the disk.
+			It avoids seek time delays, and data can be accessed in microseconds.
+			It is an open-source in-memory key-value data store that supports data structures such as sorted sets and lists.
+			
+		Benefits of Redis
+		
+			in-memory data store
+				Redis stores the data in-memory while the databases such as PostgreSQL, MongoDB, etc store the data in the disk.
+				It does not store the data in a disk. Therefore, it has a faster response time.
+				It takes less than a millisecond for read and write operations, and supports millions of requests per second.
+			Flexible data structures
+			Simplicity
+			Replication and Persistence
+			
+		Refer : https://www.javatpoint.com/aws-elasticache 
+			for difference between Memcached and Redis
+			
+
+
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Amazon Aurora
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	It is a database engine developed in RDS.
+	It is actually a spoke database engine developed by an Amazon.
+	It was announced in re: invent 2014.
+	It can run only on AWS infrastructure. It's not like a MySQL database that can be installed on a local device.
+	It is a MySQL -compatible, relational database engine that combines the speed and availability of high-end commercial databases with the simplicity and cost-effectiveness of open source databases.
+	It serves up to five times better performance than MySQL at a price one-tenth of that Commercial databases while delivering similar performance and availability.
+
+
+	Further details : https://www.javatpoint.com/aws-aurora
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Networking
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Basics of Networking
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Creating custom VPC
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		VPC stands for Virtual Private Cloud.
+Amazon Virtual Private Cloud (Amazon VPC) provides a logically isolated area of the AWS cloud where you can launch AWS resources in a virtual network that you define.
+You have complete control over your virtual networking environment, including a selection of your IP address range, the creation of subnets, and configuration of route tables and network gateways.
+You can easily customize the network configuration for your Amazon Virtual Private Cloud. For example, you can create a public-facing subnet for web servers that can access to the internet and can also place your backend system such as databases or application servers to a private-facing subnet.
+You can provide multiple layers of security, including security groups and network access control lists, to help control access to Amazon EC2 instances in each subnet.
+
+	Refer https://www.javatpoint.com/aws-vpc
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Application Services
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Simple Email Service
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Amazon Simple Email Service (Amazon SES) lets you send transactional email, marketing messages, or any other type of high-quality content to your customers.
+	Step by step
+		https://docs.bitnami.com/aws/how-to/use-ses/
+	or 
+		https://medium.com/@usamayousuf_62526/getting-started-with-aws-ses-4372f45da6e6
+	
+	Simple Email Service 
+		Highly scale-able 
+		cloud based email
+		Used by thousands of businesses and developers across the globe. 
+			e.g. HBO, Siemens, Careem etc. 
+		Integrates with other amazon services 
+			(like SNS, SQS, Lambda) 
+		Quite cheap as well, $0.10 for every 1,000 emails.
+		Pricing: https://aws.amazon.com/ses/pricing/
+
+		To protect customers from fraud and abuse, 
+			Amazon SES restricts unlimited Amazon SES usage to new users. 
+			e.g. Send email to and from verified email addresses 
+			limited to a maximum of 200 messages in every 24-hour period.
+
+			To remove these restriction on recipient addresses and increase the sending limits, 
+				https://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html
+		
+		
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Simple Queue Service
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Microservices would need to communicate with each other. These communication can be of two type
+		1: Synchronous 
+			communication which is basically application to application through APIs.
+		2: Asynchronous / 
+			Event based which is an application to queue to application.
+
+		Dis-advantages with Synchronous communication 
+			Fails at scale.
+				LB load can be significant as the number of microservice increases
+			Tight coupling between services
+				e.g. cannot plugin another consumer.
+				
+			SQS: Queue model
+			SNS: Pub(publish)/sub(subscribe) model
+			Kinesis: Real-time streaming model
+
+		What is SQS
+		-----------
+		Message queue web service
+			Temporary repo for messages that are waiting to be processed.
+		Store messages while waiting for a consumer to process them.
+		Distributed queue system 
+	
+	Advantages of Amazon SQS?
+		Security: 
+			Control who can send messages to and receive messages from an Amazon SQS queue.
+		Server-side encryption (SSE): 
+			It lets you transmit sensitive data by protecting the contents of messages in queues using keys managed in AWS Key Management Service (AWS KMS).
+		Durability: 
+			To ensure the safety of your messages, Amazon SQS stores them on multiple servers. Standard queues support at-least-once message delivery, and FIFO queues support exactly-once message processing.
+		Availability: 
+			Amazon SQS uses redundant infrastructure to provide highly-concurrent access to messages and high availability for producing and consuming messages.
+		Scalability: 
+			Amazon SQS can process each buffered request independently, scaling transparently to handle any load increases or spikes without any provisioning instructions.
+		Reliability: 
+			Amazon SQS locks your messages during processing so that multiple producers can send and multiple consumers can receive messages at the same time.
+		Customization: 
+			Your queues don’t have to be exactly alike — for example, you can set a default delay on a queue. You can store the contents of messages larger than 256 KB using Amazon Simple Storage Service (Amazon S3) or Amazon DynamoDB, with Amazon SQS holding a pointer to the Amazon S3 object, or you can split a large message into smaller messages.
+	
+		Types of Queue:
+			AWS SQS — Standard Queue
+				Fully managed
+				Scales from 1 message per second to 10,000s per second.
+				Default retention of messages: 
+					4 days, 
+					maximum of 14 days 
+					no limit on number of messages that can be in the queue.
+				It has low latency 
+					(<10 ms on publish and receive)
+					
+				Horizontal scaling in terms of number of consumers? 
+				At least once delivery
+					Occasionally repeat
+				Supports duplicate messages
+				Limitation of 256KB per message sent.
+			
+			AWS SQS — FIFO (First In First Out)
+				First-In-First-Out delivery 
+				Exactly-once processing. 
+				Remains until consumer processes delete it. 
+				Duplication not allowed in FIFO 
+				limited to 300 transactions/sec (TPS).
+				Name of the queue must end in .fifo 
+					Eg: MyTestFIFOQueue.fifo
+		SQS is pull based, not push based.
+	
+	How to Produce Messaging: SQS
+		We define the 
+			body, 
+			message attributes 
+				(metadata — optional), 
+			delay delivery (optional). 
+		We Get back 
+			message identifier and an MD5 hash of the body.
+	SQS — Consuming Messages
+		Poll SQS for messages 
+		Receive up to 10 messages at a time. 
+		Process the message within the visibility timeout Delete the message using the message ID and receipt handle.
+		
+	SQS — Visibility timeout
+		When a consumer polls a message from a queue, 
+			the message is “invisible” to other consumers for a defined period 
+			This is defined by "Visibility Timeout".
+			After this message is visible in the queue
+		Visibility Timeout: 
+			can be 0 seconds and 12 hours 
+			default 30 is seconds. 
+		
+		If it is too high (15 minutes) 
+			consumer fails to process the message, 
+			Next process would wait a long time before processing the message again
+		if it is too low (30 seconds) 
+			First consumer needs time to process the message There could be parallel processing
+			
+	AWS SQS — Delay Queue
+		Let's us postpone the delivery of new messages to a queue for a number of seconds. 
+		Messages delivered to delay queue remain invisible to consumers 
+			for the duration of the delay period. 
+		default delay is 0 seconds 
+		Can set a default queue level 
+		can override the default using DelaySeconds parameter.
+
+
+	AWS SQS — Dead Letter Queue
+		If consumer fails to process a message within the Visibility Timeout 
+		the message goes back to the queue.
+		Can set a threshold of how many times a message can go back to the queue 
+			Defined by “redrive policy”. 
+		Once threshold is exceeded, 
+			message goes into a dead letter queue (DLQ). 
+		We have to create a DLQ first and then designate it dead letter queue. 
+		Make sure to process the messages in the DLQ before they expire!
+	AWS SQS — Long Polling
+		When a consumer requests a message from the queue, 
+			it can optionally “wait” for messages to arrive and if there is nothing in the queue, 
+			this is called Long Polling. 
+		Reduces the number of API calls made to SQS 
+		Increases the efficiency and latency of your application. 
+		The wait time can be between 
+			1 sec to 20 sec 
+			(20 sec preferable). 
+		Long Polling is preferable to Short Polling. 
+		Can be enabled at 
+			queue level or 
+			API level 
+		using WaitTimeSeconds.
+
+
+	Short Polling:
+		Returned immediately even if no messages are in the Queue.
+	
+	SQS Extended Client:
+		Message size limit is 256KB, 
+		To send large messages? 
+			Use the SQS Extended Client (Java Library).
+		Send 
+			large messages to S3 
+			small metadata message to SQS Queue 
+		consume process 
+			the metadata message from Queue 
+			retrieves large message from S3.
+	
+	
+	AWS SQS Security
+		Encryption in flight using the HTTPS endpoint.
+		Enable SSE (Server Side Encryption) using KMS.
+		IAM policy must allow usage of SQS.
+		SQS queue access policy.
+		No VPC Endpoint
+		Must have internet access to access SQS.
+		
+	Demo in 
+https://medium.com/@kumargaurav1247/aws-integration-messaging-sqs-755763530bcb	
+	
+https://ystatit.medium.com/aws-sqs-walk-through-6414c2b15e40
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Simple Workflow Service
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Workflow?
+		A workflow is a sequence of actions 
+		It has decision making actions and activity actions.
+
+	AWS SWF
+		Static repository: maintains the state of workflow. No computing elements 
+		Maintains the entire history of the workflow.
+		We can configure decisions and actions 
+
+
+	Workflow is a commonly used paradigm in applications. 	
+	Used for coordinating work across distributed components. 
+	
+	Example Use Cases for Workflows
+		Expense management
+		
+		Order management systems
+		Multi-stage message processing systems
+		Billing management systems
+		Video encoding systems
+		Image conversion systems
+	Design of a workflow should improve
+		resiliency, 
+			ability of a strained body to recover from fault caused due to stress.
+		availability, 
+		fault tolerance and 
+		scale.
+		
+	Worflow PaaS Offerings in AWS
+		Simple Workflow Service (SWF)
+		Step Functions
+		
+	Consider followign while designing a Workflow Based System
+		Manage transition between states (Orchestration logic)
+		Monitor execution (Monitor state transition)
+		Control execution (Pause and start with a human action)
+		Scaling (Manage scaling at state level)
+		Error handling (Retry or fallback accordingly)
+		Integration with other services
+		Considering all the concerns above it’s a wise decision to use a platform or library that is built for this purpose rather re-inventing the wheel, And using a managed service would be even wiser since that would take away all the unnecessary burden require to maintain a platform like this by our own. Huh, now you probably know where I am getting at :)	
+		
+		For further read
+			https://medium.com/avmconsulting-blog/building-workflows-with-amazon-simple-workflow-service-vs-step-functions-83fdeac35555
+		
+	Cli based
+	https://medium.com/@schogini/aws-swf-simple-workflow-a-demonstration-using-aws-cli-ae4660a768a1
+
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Simple Notification Service
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	want to send one message to many receivers? 
+
+		Follows the publish-subscribe(pub-sub) messaging paradigm 
+		Notification delivered using a push mechanism 
+			Clients don't need to poll
+		To prevent the message from being lost
+			Messages published can be stored redundantly across multiple Availability Zones.
+		Can send messages to devices by sending push notifications to 
+			Apple, 
+			Google, 
+			Android,
+			Fire OS, 
+			Windows devices
+		Allows to group multiple recipients using topics 
+			topic: logical access point 
+			Clients subscribe to topics
+
+
+	SNS has three major components
+	Publisher/Producers
+		One to sends message
+			(e.g. CloudWatch Alarm, 
+			Any application or 
+			S3 events)
+	Topic
+		Object to which you publish your message
+		Default: SNS offers 100,000 topics per account 
+			(Soft limit)
+		Amazon SNS messages can contain up to 256 KB of text data, 
+			including XML, 
+			JSON and 
+			unformatted text
+			SMS messages is an exception - can be smaller, 
+	Subscriber
+		Subscribe to the topic to receive the message
+		An endpoint to a message is sent. 
+		Message are simultaneously pushed to the subscriber
+		Subscribers can be 
+			web servers, 
+			email addresses, 
+			Amazon SQS queues, 
+			AWS Lambda functions 
+		By default, SNS offers 10 million subscriptions per topic (Soft limit)
+
+
+	Benefits of SNS
+		Instantaneous delivery
+			Push-based delivery. 
+			key difference between SNS and SQS. 
+		Flexible
+			Supports multiple endpoint types. 
+			Multiple transport protocols such as 
+				email, 
+				SMS, 
+				Lambda, 
+				Amazon SQS, 
+				HTTP, etc.
+		Inexpensive
+			pay-as-you-go model, 
+			No up-front costs.
+		Ease of use
+			SNS service is very simple to use as Web-based AWS Management Console offers the simplicity of the point-and-click interface.
+		Simple Architecture
+			SNS is used to simplify the messaging architecture by offloading the message filtering logic from the subscribers and message routing logic from the publishers. Instead of receiving all the messages from the topic, SNS sends the message to subscriber-only of their interest.
+			
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+AWS Services &Backups
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	• Disaster Recovery
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Minimal interruption can mean disasterours
+	A disaster can be caused by a 
+		security attack, 
+		natural disaster 
+		human error 
+		Network issues/AWS issues. 
+	Business continuity is critical for any company in the cloud. 
+	A solid disaster recovery plan help organizations stay 
+	
+	
+	 Disaster Recovery Plan (DRP) 
+		structured and detailed set of instructions
+		Define how to recover system and networks in the event of failure or attack
+		Recover: services should be back to normal for user.
+	On-premises disaster recovery solution is costly
+
+	Most imp. advantages of AWS Disaster recovery1
+		Minimize data loss — protects critical data by establishing replication intervals
+		Quickly restores critical applications — minimizing downtime
+		Distributes the risk — by using AWS cross-region disaster recovery
+		Quick bounce back — requires minimal time to retrieve files and data, thus restoring operations
+	
+	Following can be considered for DRP
+	1. Identify critical resources and assets
+	2. Define your recovery time objective (RTO) and your recovery point objective (RPO)
+		RTO: how much system downtime your organization can afford
+		RPO: how much data loss your organization can absorb before incurring too much damage
+	3. Choose a disaster recovery planning method
+		Four main recovery method
+			Backup and restore — 
+				Use a managed solution to backup and restore data on a need-to-do basis. 
+				Time consuming.
+			Pilot light — 
+				Core of critical applications and data always up running 
+				quick retrieving in the event of a disaster.
+			Warm standby — 
+				Duplicate the system’s core elements and 
+				keep them running on standby always.
+				Very common with db.
+			Hot standby — 
+				Make a full replica of the data and applications, 
+				deploy it in two or more active locations. 
+	4. Define and implement security and corrective measures
+	5. Defint and Test your DRP plan 
+	6. Schedule maintenance
+	7. Backup your data
+		Cross-region/geography backups
+	8. Use multi-factor authentication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Micro Services Using AWS:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Introduction of Restful Webservice
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Introduction of microservice
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Introduction of AWS
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Introduction to microservices using aws
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Monolithic Architecture
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Features of Microservices Architecture
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Why Micro Services
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Advantages of Microservices Architecture
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Key design elements for Micro Services
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	AWS options for Micro Services
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	https://www.missioncloud.com/blog/how-to-build-microservices-on-aws
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	AWS option for Serverless Computing’s
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Simple Microservices Architecture on AWS
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	https://relevant.software/blog/microservices-on-aws/
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	User Interface
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Microservices
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Data Store
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Reducing Operational Complexity
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	API Implementation
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Serverless Microservices
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Deploying Lambda-Based Applications
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	AWS Lambda is a compute service that lets you run code without provisioning or managing servers. Lambda runs your code only when needed and scales automatically, from a few requests per day to thousands per second. You pay only for the compute time that you consume—there is no charge when your code is not running. With Lambda, you can run code for virtually any type of application or backend service, all with zero administration. Lambda runs your code on a high-availability compute infrastructure and performs all of the administration of the compute resources, including server and operating system maintenance, capacity provisioning and automatic scaling, code monitoring and logging. All you need to do is supply your code in one of the languages that Lambda supports.
+
+	You can use Lambda to run your code in response to events, such as changes to data in an Amazon Simple Storage Service (Amazon S3) bucket or an Amazon DynamoDB table; to run your code in response to HTTP requests using Amazon API Gateway; or to invoke your code using API calls made using AWS SDKs. With these capabilities, you can use Lambda to build data processing triggers for AWS services such as Amazon S3 and DynamoDB, process streaming data stored in Amazon Kinesis, or create your own backend that operates at AWS scale, performance, and security.
+
+	You can also build serverless applications composed of functions that are triggered by events, and automatically deploy them using AWS CodePipeline and AWS CodeBuild. 
+
+
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Distributed Systems Components
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Service Discovery
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Distributed Data Management
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Asynchronous Communication and Lightweight Messaging
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Distributed Monitoring
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Chattiness
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+Assignment:
+	1. Design a simple application in AWS.
+		https://aws.amazon.com/blogs/architecture/wordpress-best-practices-on-aws/
+		
+	Lift and shift application developed to AWS. Deploy it following industry best practices.
+
+
+
+Good references:
+
+Stream API	https://www.youtube.com/watch?v=9Orn0Pwp3YU&list=PLsyeobzWxl7otduRddQWYTQezVul0xIX6&index=13
+	
+	
+AWS git hub
+https://github.com/awsdocs/iam-user-guide	
+
+AWS docs
+https://docs.aws.amazon.com/
+
+https://github.com/dwyl/learn-amazon-web-services
+https://github.com/ricardbejarano/learn-aws
+https://github.com/vilasvarghese/aws-training
+
+AWS Documentation 
+https://camel.apache.org/components/3.4.x/aws-ses-component.html
