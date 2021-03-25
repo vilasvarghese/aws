@@ -2,8 +2,25 @@ https://docs.aws.amazon.com/efs/latest/ug/wt1-test.html
 
 
 Create EFS
+
+	while creating the EFS, it gets connected to a VPC - Note this VPC
+	this VPC should have inbound rules for ec2 instances.
+	
+		Search for security group (VPC feature)
+		Pick the default Security group
+			Ensure that inbound rules includes the id of the current security group 
+				(e.g. sg-e9af1f91)
+			Add my ip also into it.
+			
+			
+
 Create 2 Amazon ec2 instance because nfs utils are installed by default in it.
-	installation of nfs fails on centos.
+	(installation of nfs fails on centos).
+		Add to the default security group. 
+		
+	Create EFS attached to the same default security group.
+	Ensure that EC2 instances has an inbound rule allowing the IP range of EFS
+		e.g. 172.31.0.0/16
 
 
 DNS name of your EC2 instance
