@@ -1,0 +1,30 @@
+https://docs.aws.amazon.com/efs/latest/ug/wt1-test.html
+
+
+Create EFS
+Create 2 Amazon ec2 instance because nfs utils are installed by default in it.
+	installation of nfs fails on centos.
+
+
+DNS name of your EC2 instance
+ec2
+	ec2-xx-xxx-xxx-xx.aws-region.compute.amazonaws.com 
+		ec2-3-15-176-186.us-east-2.compute.amazonaws.com
+		ec2-3-17-176-35.us-east-2.compute.amazonaws.com
+
+
+DNS name of your file system
+efs
+	file-system-id.efs.aws-region.amazonaws.com
+		e.g. fs-f4c5df8c.efs.us-east-2.amazonaws.com
+
+
+
+mkdir ~/efs-mount-point 
+
+sudo mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-f4c5df8c.efs.us-east-2.amazonaws.com:/   ~/efs-mount-point  
+
+cd ~/efs-mount-point
+
+mkdir vilas in one machine.
+Verify it on another

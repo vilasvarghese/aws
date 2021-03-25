@@ -23,7 +23,7 @@ Authentication in IAM
 		Roles
 		
 	Users: 
-		An IAM user is a person 
+		An IAM user is a valid user who  
 			needs to interact with your AWS 
 				resources or services 
 				either from the AWS Console or with the AWS CLI. 
@@ -258,6 +258,8 @@ Now this policy should be attached to a user.
 
 Create a user with admin privilege
 ----------------------------------
+https://573556470027.signin.aws.amazon.com/console
+
 
 1. AWS console
 	Search for Groups

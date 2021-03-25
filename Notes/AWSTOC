@@ -9,7 +9,7 @@ AWS
 		• Network and Content Delivery (Route53 VPC &CloudFront)
 		• Management Tools (CloudWatch Cloud Formation Trusted Advisor)
 		• Security & Identity Compliance (IAM)
-		• Application Services (SWF, Elastic Transcoder, Cloud Formation)
+		• Application Services
 	
 AWS Training Overview
 
@@ -73,7 +73,7 @@ Introduction to Cloud Computing
 	• Essential Characteristics of CloudComputing
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	1. On-demand self-service
-	2. Broad network access
+	2. Broad/Narrow network access
 		Available over the internet
 	3. Multi-tenancy and resource pooling
 		Multiple customers to share the same applications or the same physical infrastructure 	
@@ -218,7 +218,6 @@ Introduction to Cloud Computing
 		Advantages of Virtual Private Cloud
 		-----------------------------------
 			Cheaper than private clouds: 
-				Cheaper than private cloud.
 			More well-rounded than a public cloud: 
 				Better than public cloud in
 					flexibility, scalability, and security 
@@ -233,8 +232,6 @@ Introduction to Cloud Computing
 			Typical public cloud problems: 
 				Outages and failures are more often in a VPC setup.
 	
-	
-			
 			Community Cloud
 			---------------
 		A public cloud that allows access to a specific group of users.
@@ -270,7 +267,6 @@ Introduction to Cloud Computing
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	
-	
 	AWS – Amazon Web Services(AWS) 
 		Cloud service from Amazon, 
 		provides services in the form of building blocks
@@ -289,7 +285,6 @@ Introduction to Cloud Computing
 		Management Tools
 		Security & Identity Compliance
 		Messaging
-		Compute Services
 
 	Compute domain services:
 		EC2 (Elastic Compute Cloud)
@@ -358,8 +353,8 @@ Identity Access Management
 		Roles trust
 		Assume permission basics
 		
-	
-
+Day 2	
+-------
 
 Amazon EC2 is hosted in multiple locations world-wide. 
 These locations are categorized as 
@@ -377,9 +372,23 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-z
 		Geographical location
 		one or more isolated locations
 		Consoles are region scoped
-			(except IAM, S3 and Route53)
+			(except for e.g. IAM, S3, Route53)
 		When you work with an instance using the command line interface or API actions, you must specify its Regional endpoint.
 
+----------------------------------------
+steps to install the aws cli
+
+https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+
+aws --version
+aws configure
+	provide the security credentials
+	Security credentials can be obtained from the users screen
+		Create an admin user
+			go to the security tab
+			Generate a security key if required
+				Only two keys can be created
+				so delete and create if required.
 
 -----------------------------
 aws ec2 describe-regions
@@ -399,7 +408,10 @@ aws lightsail get-regions --query "regions[?name=='us-east-2'].displayName" --ou
 		Each AZ are isolated 
 		Can Launch instances in an Availability Zone
 			While creating - Optionally specify the AZ.
-		Can Migrate an instance to another Availability Zone
+		Most objects can be migrated: an instance to another Availability Zone
+		
+		us-west-2a
+		us-west-2b
 		
 -----------------------------------------
 aws ec2 describe-availability-zones --region region-name
@@ -416,7 +428,7 @@ aws ec2 describe-availability-zones --all-availability-zones
 		Local Zones have their own connections to the internet 
 		Support AWS Direct Connect
 			resources created in a Local Zone can serve local users with low-latency communications.
-		A Local Zone is represented by a Region code followed by an identifier that indicates the location, for example, us-west-2-lax-1a.
+		A Local Zone is represented by a Region code followed by an identifier that indicates the location, for example, [us-west-2]-lax-1a.
 		To use a Local Zone, you must first enable it
 
 ---------------------------------
@@ -461,7 +473,7 @@ aws ec2 describe-availability-zones --all-availability-zones
 		Normal users
 		
 	IAM Groups
-		Let you specify permissions for multiple users 
+		Let's you specify permissions for multiple users 
 			makes it easier to manage permission for user attached.
 	Permissions/Policies 
 		Policies: Attach to user and group. 	
@@ -783,7 +795,7 @@ What are the Default password policy
 	1. Password minimum length – 
 		Allows 
 			minimum of 6 characters 
-			maximum of 128 characters.
+				maximum of 128 characters.
 
 	2. Password strength – 
 		Can select any of the following check boxes 
@@ -921,11 +933,11 @@ e.g. S3 and glacier						|	e.g. EBS and EFS
 		AWS offers many storage services. 
 		
 		Block Storage
+			EBS
+			EFS	
+		Object Storage
 			S3 
 			Glacier
-		Object Storage
-			EBS
-			EFS
 		
 		Object Storage
 		--------------
@@ -950,8 +962,7 @@ e.g. S3 and glacier						|	e.g. EBS and EFS
 				Both requires frequent read/write
 				OS: ec2
 				DB: Use db services.
-			For relative more frequent reading.
-			Co
+			For relative more frequent reading
 		Glacier 
 			cheaper and infrequently accessed archival storage. 
 			
@@ -1027,7 +1038,8 @@ e.g. S3 and glacier						|	e.g. EBS and EFS
 				Amazon EBS
 					Elastic Block Storage
 				Amazon Dynamo DB, etc.
-					
+					key-value and document database 
+					delivers single-digit millisecond performance at any scale.
 
 		Host static websites
 		Shift old data into long term storage 
@@ -1143,8 +1155,258 @@ Lab reference:
 	Refer https://www.javatpoint.com/aws-lifecycle-management for labs
 
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	EBS (Elastic Block Storage)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+EC2 machine may lose its root volume (main drive) when it is manually terminated. 
+Unexpected terminations might happen from time to time (AWS would email you).
+You may need to store your instance data somewhere else.
+An EBS (Elastic Block Store) Volume is a network drive you can attach
+	to your instances while they run. 
+	It allows your instances to persist data.
+Amazon Elastic Block Store (Amazon EBS) 
+	provides persistent block storage volumes for use with Amazon EC2 instances in the AWS Cloud.
 
 
+Persistent storage?
+--------------------
+A data storage device that retains data after power to that device is shut off. 
+Also referred to as non-volatile storage. 
+Hard disk drives and solid-state drives are common types of persistent storage.
+Once attached, you can create file system on top of these volumes, run a DB etc. 
+EBS are AZ specfic 
+	automatically replicated within its AZs to protect you from component failure
+		offering high availability and durability.
+Consistent and low-latency performance. 
+scale your usage up or down within minutes — 
+	pay for only what you provision.
+
+Few Points for EBS Volume:
+	It’s a network drive (i.e. not a physical drive).
+	It uses the network to communicate with the instance
+		latency possible when compared to physical hard disk.
+	Can be detached from an EC2 instance and attached to another one quickly.
+	It’s locked to an Availability Zone (AZ).
+		An EBS Volume in us-east-1a cannot be attached to us-east-1b.
+		To move a volume across, you first need to snapshot it.
+	Have a provisioned capacity (size in GBs, and IOPS).
+	You get billed for all the provisioned capacity.
+	You can increase the capacity of the drive over time.
+
+
+Types of EBS:
+------------------------------------------------------------------------
+IOPS: measures the number of read and write operations per second
+throughput: measures the number of bits read or written per second. 
+------------------------------------------------------------------------
+Basically two types:
+	SSD:
+		SSD-backed volumes 
+		optimized for transactional workloads involving frequent read/write 
+			with small I/O size
+				where the dominant performance attribute is IOPS
+	HDD:
+		HDD-backed volumes optimized for large streaming workloads 
+			where throughput (measured in MiB/s) is a better performance measure than IOPS.
+
+	SSD has two types:
+		1: General Purpose SSD- gp2
+		2: Provisioned IOPS SSD (io1)
+	HDD has also types:
+		1: Throughput Optimized HDD (st1)
+		2: Cold HDD (sc1)
+
+The default volume type is General Purpose SSD (gp2)!!
+	General Purpose SSD:
+		Balances price and performance for a wide variety of workloads.
+		Recommended for most workloads, 
+			System boot volumes, 
+			Virtual desktops, 
+			Low-latency interactive apps, 
+			Development and test environments, 
+				1 GiB — 16 TiB, Small gp2 volumes can burst IOPS to 3000, Max IOPS is 16,000
+	Provisioned IOPS SSD:
+		It is for low-latency or high-throughput workloads.
+		Critical business applications that require sustained IOPS performance, 
+			or more than 16,000 IOPS per volume (gp2 limit).
+		Use cases: Large database workloads, such as: 
+			MongoDB, Cassandra, Microsoft SQL Server, MySQL, PostgreSQL, Oracle.
+	Throughput Optimized HDD:
+		Low-cost HDD volume designed for frequently accessed, throughput-intensive workloads
+	Cold HDD:
+		Lowest cost HDD volume designed for less frequently accessed workloads!!
+
+
+
+
+EBS Snapshots:
+	Snapshot: 
+		The snapshot is simply the AMI. 
+		Snapshot is a backup of an EC2 volume that’s stored in S3. 
+		We can create a new volume using data stored in a snapshot by entering the snapshot’s ID. 
+		Search for public snapshots by typing text in the Snapshot field. 
+		Descriptions are case-sensitive.
+		So, snapshots are typically used for backups images.
+
+	Points about EBS Snapshot:
+		Works Incremental — only backup changed blocks.
+		EBS backups use IO 
+			don't run them while your application is handling a lot of traffic.
+		Snapshots will be stored in S3 (but you won’t directly see them).
+		Not necessary to detach volume to do snapshot, but recommended.
+		Max 100,000 snapshots.
+		Can copy snapshots across AZ or Region.
+		Can make Image (AMI) from Snapshot.
+		Snapshots can be automated using Amazon Data LifeCycle Manager.
+
+	EBS Migration-
+		EBS Volumes are only locked to a specific AZ.
+		To migrate it to a different AZ (or region):
+			Snapshot the volume.
+		Copy the volume to a different region.
+		Create a volume from the snapshot in the AZ of your choice.
+
+	EBS Encryption
+		When you create an encrypted EBS volume, you get the following:
+		• Data at rest is encrypted inside the volume
+		• All the data in flight moving between the instance and the volume is encrypted
+		• All snapshots are encrypted
+		• All volumes created from the snapshot
+		• Encryption and decryption are handled transparently (you have nothing to do)
+		• Encryption has a minimal impact on latency
+		• EBS Encryption leverages keys from KMS (AES-256)
+		• Copying an unencrypted snapshot allows encryption
+		• Snapshots of encrypted volumes are encrypted.
+
+	Steps encrypt an unencrypted EBS volume
+		• Create an EBS snapshot of the volume.
+		• Encrypt the EBS snapshot ( using copy ).
+		• Create new ebs volume from the snapshot 
+			the volume will also be encrypted.
+		• Now you can attach the encrypted volume to the original instance.
+
+	EBS vs Instance Store
+		• Some instance do not come with Root EBS volumes
+		• Instead, they come with “Instance Store” (= ephemeral storage)
+		• Instance store is physically attached to the machine (EBS is a network drive)
+		Pros:
+			• Better I/O performance
+			• Good for buffer / cache / scratch data / temporary content
+			• Data survives reboots
+		Cons:
+			• On termination, the instance store is lost.
+			• You can’t resize the instance store.
+			• Backups must be operated by the user.
+
+Point to Note:
+	EBS is redundant storage (replicated within an AZ),But what if you want to increase IOPS to say 100 000 IOPS?
+	What if you want to mirror your EBS volumes?
+	You would mount volumes in parallel in RAID settings!
+	RAID is possible as long as your OS supports it.
+	Some RAID options are:
+	RAID 0, RAID 1, RAID 5 & RAID 6 (not recommended for EBS)
+	RAID 0 (increase performance)
+	RAID 1 (increase fault tolerance)
+
+
+Lab for EBS
+https://cloud.netapp.com/blog/ebs-volumes-5-lesser-known-functions
+
+N.B: Ensure to create EBS in the same AZ (Availability zone) and not region.
+"Subnet " field in "Step 3: Configure Instance Details" can help us decide the AZ.
+
+Reference: https://medium.com/@eddies_47682/what-is-ebs-b6b2a8e33442
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	EFS (Elastic File System)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+EFS advantages are:
+	Fully managed by AWS.
+	Low cost, pay for what you use.
+	High available & durable
+	Automatically scale up or down.
+	Scalable performance
+	
+	
+	Amazon Elastic File System (Amazon EFS) 
+		Amazon's NFS
+		share file data without provisioning or managing storage. 
+		Can be used with 
+			AWS Cloud services 
+			on-premises resources
+		built to scale on demand to petabytes. 
+		Scale-out and scale-in file systems automatically 
+			as you add and remove files
+		No need to provision and manage capacity to accommodate growth.
+
+		Choice of creating files system 
+			Standard 
+		or 
+			One Zone storage classes. 
+		
+		Standard storage classes 
+			store data 
+				within and 
+				across 
+					multiple availability zones (AZ). 
+		One Zone storage classes 
+			store data redundantly within a single AZ, 
+			at a 47% lower price compared to Standard storage classes
+		Standard storage classes
+			stores data redundantly across AZ's
+			Costly compared to One Zone SC
+
+Amazon EFS offers four storage classes: 
+	two Standard storage classes, 
+		Amazon EFS Standard and 
+		Amazon EFS Standard-Infrequent Access (EFS Standard-IA)
+	two One Zone storage classes, 
+		Amazon EFS One Zone
+		Amazon EFS One Zone-Infrequent Access (EFS One Zone-IA).
+
+While workload patterns vary, 
+	customers typically find that 
+		80% of files are infrequently accessed 
+			(suitable for infrequent access storage classes)
+		20% are actively used 
+			(suitable for EFS Standard and EFS One Zone storage classes), 
+		Amazon EFS transparently serves files from both 
+			frequently accessed and 
+			infrequent accessed storage classes 
+				in a common file system namespace. 
+		Saving money.
+
+Amazon EFS is designed to 
+	provide massively parallel shared access to thousands of 
+		Amazon EC2 instances
+		AWS containers 
+		serverless compute services including 
+			Amazon Elastic Container Service (ECS)
+			Amazon Elastic Kubernetes Service (EKS)
+			AWS Fargate
+			AWS Lambda
+				enabling your applications to achieve high levels of aggregate 
+					throughput and 
+					IOPS 
+						with consistent low latencies.
+
+-----------------------------------------------------------------------------
+Lab: 
+
+1. https://docs.aws.amazon.com/efs/latest/ug/wt1-test.html
+Refer Lab02_EFS.txt
+-----------------------------------------------------------------------------
+Other references
+
+2. https://securitywing.com/how-to-mount-amazon-efs-in-ec2-centos-instance/
+
+3. https://geekflare.com/aws-efs/
+4. https://thenewstack.io/tutorial-configure-and-mount-an-efs-file-system-in-amazon-ec2-instance/
+
+5. More detailed
+https://github.com/aws-samples/amazon-efs-tutorial
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	• Content Delivery Networks (Cloud Front)
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1376,6 +1638,9 @@ Compute
 			how much to scale 
 			how to rely on the autohealing (self-healing)
 		replace unhealthy EC2 instances from service.
+
+	Further read and labs
+		https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html
 	
 	Factors to Consider when Using Auto Scaling Groups
 	--------------------------------------------------
@@ -1478,7 +1743,7 @@ https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.htm
 					complex file system congurations.
 			Supports NFS version 4 protocol.
 			Multiple Amazon EC2 instances 
-				simultaneously access an EFS.
+				simultaneously access an EFS (Fundamental diff. with EBS).
 			Can store data and metadata across
 				multiple Availability Zones in an AWS Region.
 			Can host petabyte data, 
@@ -1506,20 +1771,20 @@ https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.htm
 		Easiest way to develop and deliver websites
 		Fine tuned for hosting websites.
 
-		Let's you selected
+		Let's you select
 			OS
 				Linux 
 				Windows
 			OS+ App or just O/S
 			If App
-				LAMP
+				LAMP: Linux, Apache, MySQL, and PHP
 				Wordpress
 				Joomla
 				cPanel and WHM  ect options.
 	
 
 	AWS Lightsail service 
-		Make it simpler to setup and run websites or EC2 instances with
+		Makes it simpler to setup and run websites or EC2 instances with
 		applications ready to be consumed for hosting on the web.
 
 	Amazon Lightsail launches virtual private servers, 
@@ -1577,13 +1842,83 @@ https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.htm
 		No additional charge for Elastic Beanstalk - 
 			pay for the AWS resources needed to store and run your applications.
 
-
 		You run step by step through the process of creating a beanstalk
 		Result : A running web application.
 
-Route 53
+
+-------------------------------------------------------------------
+
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_Java.html
+https://www.baeldung.com/spring-boot-deploy-aws-beanstalk
+
+
+AWS Elastic Beanstalk supports two platforms for Java applications.
+
+	Tomcat 
+		A platform based on Apache Tomcat			
+	Java SE 
+		A platform for applications that don't use 
+			a web container
+			or use one other than Tomcat, 
+			such as Jetty or GlassFish. 
+		We can include any library Java Archives (JARs) used by your application in the source bundle that you deploy to Elastic Beanstalk. 
+
+Recent branches of both the Tomcat and Java SE platforms are based on Amazon Linux 2
+Use Corretto—the AWS Java SE distribution. 
+Names of these branches in the platform lists include the word Corretto instead of Java
+	for example, Corretto 11 with Tomcat 8.5.
+
+AWS provides several tools for working with Java and Elastic Beanstalk. 
+Regardless of the platform branch that you choose
+	we can use the AWS SDK for Java to work with other AWS services 
+The AWS SDK for Java 
+	set of libraries that allow you to use AWS APIs from your application code 
+		without writing the raw HTTP calls from scratch.
+
+Use the Eclipse integrated development environment (IDE) to 
+	develop your Java application
+	get the AWS Toolkit for Eclipse. 
+		open source plug-in that lets you manage AWS resources, 
+			including Elastic Beanstalk applications and environments
+				from within the Eclipse IDE.
+
+If the command line is more your style, install the Elastic Beanstalk Command Line Interface (EB CLI) and use it to create, monitor, and manage your Elastic Beanstalk environments from the command line. If you run multiple environments for your application, the EB CLI integrates with Git to let you associate each of your environments with a different Git branch.
+
+
+	
+
+Lab: 
+Deploy spring boot application
+	
+	Best option
+	https://vaadin.com/learn/tutorials/modern-web-apps-with-spring-boot-and-vaadin/deploy-spring-boot-on-aws-elastic-beanstalk
+	N.B: 
+	1. Deploy only a security app: app where security is enabled.
+	2. environment variables are not mandatory
+	3. Mysql is not required.
+	4. Deploying a Java application is good enough 
+		Combination of tomcat and no-security didn't work.
+	5. Uploading a .war file is supported.
+	
+	
+	https://developer.okta.com/blog/2019/08/07/deploy-a-spring-boot-app-with-aws-elastic-beanstalk
+	
+----------------------------------------------
+This step is not
+Creating an Elastic Beanstalk environment
+	https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.environments.html
+----------------------------------------------
+
+	https://www.baeldung.com/spring-boot-deploy-aws-beanstalk
+-------------------------------------------------------------------
+
+
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Route 53
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Can register websites with Route 53.
 
 	All 
 		websites, 
@@ -1608,23 +1943,22 @@ Route 53
 		route end users to Internet applications 
 		Translates names like 
 			www.example.com into IP: 192.0.2.1 
-		Computers use to connect to each other. 
+		Computers use Route 53 to connect to each other. 
 		Amazon Route 53 is fully compliant with IPv6 as well.
 		Amazon Route 53 
-			connects user requests to infrastructure running in AWS – 
-			e.g. 
-				Amazon EC2 instances, 
-				Elastic load balancers
-				Amazon S3 buckets – 
-				and can also be used to route users to infrastructure outside of AWS. 
+			connects user requests to infrastructure 
+				running in AWS – 
+					e.g. 
+						Amazon EC2 instances, 
+						Elastic load balancers
+						Amazon S3 buckets – 
+				running outside of AWS. 
 			Can be configured for DNS health checks 
-				and route traffic to healthy endpoints or 
+				Can recognize outage of a network or endpoint.
+					and route traffic to healthy endpoints or 
 				Monitor the health of your application and its endpoints. 
 			Supports Domain Name Registration 
 				Can register a new website with Route 53
-		
-
-		
 		
 
 			Manage traffic globally through a variety of routing types, 
@@ -1649,7 +1983,9 @@ Route 53
 			Domain name 
 				first registered with AWS Route 53, 
 				which configures to route Internet traffic to the servers hosting the domain name. 
-				The servers can be both AWS public cloud or a private cloud infrastructure.
+				The servers can be both 
+					AWS public cloud or a 
+					private cloud infrastructure.
 				
 		#This flow is explained in more details latter...		
 		End-users enter the domain name or the complete URL into the browser search bar.
@@ -1675,33 +2011,89 @@ Route 53
 				regarding the necessary actions.
 		
 		Summary AWS Route 53 Features:
-
-		Resolver: 
+		-----------------------------
+		1. Resolver: 
 			DNS resolution between 
 				local networks and 
 				VPC 
 			can be performed using the Route 53 Resolver. 
-			Users can forward DNS queries from the local network to a Route 53 Resolver and apply conditional configurations to forward DNS queries from AWS instances to a local network. AWS Route 53 supports both IPv4 and IPv6 formats.
-		Traffic Flow: 
-			Intelligent traffic routing based on key parameters including proximity, health of endpoints and latency, among others.
-		Geo DNS and Latency Based Routing: 
-			Reduce latency and improve end-user experience by routing traffic from servers closest to end-users.
-		Private DNS for Amazon VPC: 
-			Configure Route 53 to respond to DNS queries within private hosted VPC zones. As a result, the DNS resolution data is not exposed to the public networks.
-		Health Checks, Monitoring and Failover: 
-			Route 53 directs internet traffic to healthy target instances as per the specified configurations. In event of an outage, the health-checking agents will route the traffic to healthy endpoints. The health check feature generates CloudWatch metrics that can further trigger AWS Lambda functions to perform appropriate corrective actions.
-		Domain Registration: 
-			The scalable DNS management service allows users to transfer management of existing domains or register new domain names to AWS Route 53. This feature consolidates management and billing associated with delivering Web hosted services.
-		S3 and CloudFront Zone Apex Support: 
-			Create Custom SSL certificates without requirements for proprietary code or complicated configurations. Zone Apex support allows Route 53 to return requests for root domain such as example.com in the same was as the complete URL scheme of example.com without incurring any performance penalty as an additional proxy server is not required to access the backend servers.
-		Amazon ELB Integration: 
-			AWS Elastic Load Balancing capability allows the traffic load to be distributed between multiple AWS target instances to maximize service availability and performance. AWS ELB allows users to increase the fault tolerance of their Web services to healthy target instances within AWS and on-premise infrastructure resources.
-		Weighted Round Robin: 
-			A service for developers to configure how often a DNS response is returned. This capability is useful for service testing purposes as well as balancing traffic between target instances.
-		Management Console: 
-			A simple and intuitive management console allows users to view resources and perform operational tasks. The management console is also offered as a mobile app. Users can further manage Route 53 controls such as the DNS record modification permission using the AWS Identity and Access Management service.
+			Users can forward DNS queries from the local network to a 
+				Route 53 Resolver 
+					apply conditional configurations to forward 
+						DNS queries from AWS instances to a local network. 
+			AWS Route 53 supports both IPv4 and IPv6 formats.
+		2. Traffic Flow: 
+			Intelligent traffic routing based on key parameters including 
+				proximity, 
+				health of endpoints and 
+				latency
+					etc.
+		3. Geo DNS and Latency Based Routing: 
+					Reduce latency 
+			improve end-user experience 
+			routing traffic from servers closest to end-users.
+
+		4. Private DNS for Amazon VPC: 
+			Configure Route 53 to respond to DNS queries within 
+				private hosted VPC zones. 
+			As a result, the DNS resolution data is not exposed to the public networks.
+
+		5. Health Checks, Monitoring and Failover: 
+			Route 53 directs internet traffic to healthy target instances 
+				according to the configurations. 
+			In event of an outage, 
+				the health-checking agents will route the traffic to healthy endpoints. 
+			The health check feature generates CloudWatch metrics 
+				can further trigger AWS Lambda functions to 
+					perform appropriate corrective actions.
+		6. Domain Registration: 
+			The scalable DNS management service 
+			Users can 
+				transfer management of existing domains 
+			or
+				register new domain names to AWS Route 53. 
+				This feature consolidates management and billing 
+					associated with delivering Web hosted services.
+		7. S3 and CloudFront Zone Apex Support: 
+			Create Custom SSL certificates 
+				No proprietary code required 
+				No complicated configurations. 
+			Zone Apex support 
+				Route 53 can return requests for root domain such as example.com 
+					without any performance impact
+				Additional proxy server is not required to access the backend servers.
+		8. Amazon ELB Integration: 
+			AWS Elastic Load Balancing capability 
+			Allows the traffic load to be distributed between 
+				multiple AWS target instances 
+			maximize service availability and performance. 
+			AWS ELB allows 
+				increase the fault tolerance of their Web services 
+					by forwarding request to healthy target instances within AWS 
+					and on-premise infrastructure resources.
+		9. Weighted Round Robin: 
+			A service for developers to configure how often a DNS response is returned. 
+			Why use it? 
+				Testing services
+				Balancing traffic between target instances.
+		10. Management Console: 
+			A simple and intuitive management console 
+			Allows users to view resources and perform operational tasks. 
+			mobile app support available. 
+			Users can further manage Route 53 controls 
+				e.g. DNS record modification permission 
+					using the AWS Identity and Access Management service.
 		
-		Amazon Route 53 capabilities of policy-based routing, health check and monitoring, support for bi-directional query resolution for hybrid cloud environments, and integration with an exhaustive set of AWS services give it a leading edge over its competition. Routing policies such as Multi-Value Routing and Weighted Routing give users more control and management capability over their internet traffic. Route 53 is also designed to work with a range of AWS services necessary to run apps hosted on the AWS infrastructure. The close integration of services allows users to perform changes to their architecture and scale resources to accommodate increasing Internet traffic volume without significant DNS resolution, configuration and management requirements.
+		Amazon Route 53 supports 
+			policy-based routing, 
+			health check and monitoring, 
+			support for 
+				bi-directional query resolution for hybrid cloud environments
+					talk to other DNS
+				integration with an exhaustive set of AWS services 
+			Routing policies such as 
+				Multi-Value Routing 
+				Weighted Routing give 
 				
 
 		Amazon Route 53 Traffic Flow 
@@ -1737,13 +2129,13 @@ Route 53
 		.com: .com is a top-level domain.
 		.edu: .edu is a top-level domain.
 		.gov: .gov is a top-level domain.
-		Comain names are controlled by IANA (Internet Assigned Numbers Authority).
+		Domain names are controlled by IANA (Internet Assigned Numbers Authority).
 			IANA is a root zone database of all available top-level domains.
 			Refer below url for list of all top level domains
 				: http://www.iana.org/domains/root/db
 
 
-	The second word in a domain name is known as a second level domain name.
+	The second w				ord in a domain name is known as a second level domain name.
 		.co.uk: 
 			.uk is a top-level domain name while 
 			.co is a second level domain name.
@@ -1842,7 +2234,7 @@ Preferably skip this
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	• Hosting sample Website
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
+		Already covered in S3. Doing it with a public IP would be costly.
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Day 14
@@ -1851,19 +2243,27 @@ Databases
 	• Launching a RDS Instance
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	AWS database service includes the following services:
-		Amazon Relational Database Service: It supports six commonly used database engines.
-		Amazon Aurora: It is a MySQL-Compatible relational database with five times performance.
-		Amazon DynamoDB: It is a fast and flexible NoSQL database service.
-		Amazon Redshift: It is a petabyte-scale data warehouse service.
-		Amazon Elasticache: It is an in-memory cache service with support for Memcached and Redis.
-		AWS Database Migration Service: It is a service that provides easy and inexpensive to migrate your databases to AWS cloud.
+		Amazon Relational Database Service: 
+			Supports six commonly used database engines.
+		Amazon Aurora: 
+			It is a MySQL-Compatible relational database with five times performance.
+		Amazon DynamoDB: 
+			It is a fast and flexible NoSQL database service.
+		Amazon Redshift: 
+			It is a petabyte-scale data warehouse service.
+		Amazon Elasticache: 
+			It is an in-memory cache service with support for Memcached and Redis.
+		AWS Database Migration Service: 
+			It is a service that provides easy and inexpensive to migrate your databases to AWS cloud.
+			
+---------------------------------------------			
 	https://www.javatpoint.com/creating-an-rds-instance-in-aws
 	
 	connect from local machine
 	https://docs.bitnami.com/aws-templates/apps/wordpress/get-started/connect-rds/
 	or
 	https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToInstance.html
-	
+---------------------------------------------	
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	• Backups, Multi-AZ & Read Replicas
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1957,8 +2357,6 @@ Databases
 		It uses the Dynamo model in the essence of its design, 
 			and improves those features. 
 	It began as a way to manage website scalability challenges presented by the holiday season load.
-
-		This tutorial introduces you to key DynamoDB concepts necessary for creating and deploying a highly-scalable and performance-focused database.
 		
 		DynamoDB allows users to create databases capable of storing and retrieving any amount of data, and serving any amount of traffic. It automatically distributes data and traffic over servers to dynamically manage each customer's requests, and also maintains fast performance.
 		
@@ -1966,7 +2364,6 @@ Databases
 		
 		
 	Connect to the Source
-		RDBMS: It uses a persistent connection and SQL commands.	
 		DynamoDB: It uses HTTP requests and API operations
 	Create a Table	
 		RDBMS: Its fundamental structures are tables, and must be defined.	
@@ -1979,7 +2376,7 @@ Databases
 		DynamoDB: In tables, it uses items made of attributes
 	Read Table Data	
 		RDBMS: It uses SELECT statements and filtering statements.	
-		zzzzzzzzzzzzzzzzzDynamoDB: It uses GetItem, Query, and Scan.
+		DynamoDB: It uses GetItem, Query, and Scan.
 	Manage Indexes	
 		RDBMS: It uses standard indexes created through SQL statements. Modifications to it occur automatically on table changes.	
 		DynamoDB: It uses a secondary index to achieve the same function. It requires specifications (partition key and sort key).
@@ -2137,7 +2534,10 @@ Networking
 Amazon Virtual Private Cloud (Amazon VPC) provides a logically isolated area of the AWS cloud where you can launch AWS resources in a virtual network that you define.
 You have complete control over your virtual networking environment, including a selection of your IP address range, the creation of subnets, and configuration of route tables and network gateways.
 You can easily customize the network configuration for your Amazon Virtual Private Cloud. For example, you can create a public-facing subnet for web servers that can access to the internet and can also place your backend system such as databases or application servers to a private-facing subnet.
-You can provide multiple layers of security, including security groups and network access control lists, to help control access to Amazon EC2 instances in each subnet.
+You can provide multiple layers of security, including 
+	security groups 
+	network access control lists
+		help control access to Amazon EC2 instances in each subnet.
 
 	Refer https://www.javatpoint.com/aws-vpc
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2174,7 +2574,8 @@ Application Services
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	• Simple Queue Service
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	Microservices would need to communicate with each other. These communication can be of two type
+	Microservices would need to communicate with each other. 
+	These communication can be of two type
 		1: Synchronous 
 			communication which is basically application to application through APIs.
 		2: Asynchronous / 
@@ -2199,11 +2600,20 @@ Application Services
 	
 	Advantages of Amazon SQS?
 		Security: 
-			Control who can send messages to and receive messages from an Amazon SQS queue.
+			Control who can 
+				send messages to and 
+				receive messages from 
+					an Amazon SQS queue.
 		Server-side encryption (SSE): 
-			It lets you transmit sensitive data by protecting the contents of messages in queues using keys managed in AWS Key Management Service (AWS KMS).
+			Can transmit sensitive data 
+				protecting the contents of messages in queues using keys 
+					managed in AWS Key Management Service (AWS KMS).
 		Durability: 
-			To ensure the safety of your messages, Amazon SQS stores them on multiple servers. Standard queues support at-least-once message delivery, and FIFO queues support exactly-once message processing.
+			To ensure messages are not lost, 
+				Amazon SQS stores them on multiple servers. 
+			Standard queues support 
+				at-least-once message delivery
+				FIFO queues support exactly-once message processing.
 		Availability: 
 			Amazon SQS uses redundant infrastructure to provide highly-concurrent access to messages and high availability for producing and consuming messages.
 		Scalability: 
@@ -2241,12 +2651,12 @@ Application Services
 		SQS is pull based, not push based.
 	
 	How to Produce Messaging: SQS
-		We define the 
+		We define the producer message
 			body, 
 			message attributes 
 				(metadata — optional), 
 			delay delivery (optional). 
-		We Get back 
+		Response we get
 			message identifier and an MD5 hash of the body.
 	SQS — Consuming Messages
 		Poll SQS for messages 
@@ -2337,7 +2747,9 @@ https://ystatit.medium.com/aws-sqs-walk-through-6414c2b15e40
 		It has decision making actions and activity actions.
 
 	AWS SWF
-		Static repository: maintains the state of workflow. No computing elements 
+		Static repository: 
+			maintains the state of workflow. 
+			No computing elements 
 		Maintains the entire history of the workflow.
 		We can configure decisions and actions 
 
@@ -2371,7 +2783,10 @@ https://ystatit.medium.com/aws-sqs-walk-through-6414c2b15e40
 		Scaling (Manage scaling at state level)
 		Error handling (Retry or fallback accordingly)
 		Integration with other services
-		Considering all the concerns above it’s a wise decision to use a platform or library that is built for this purpose rather re-inventing the wheel, And using a managed service would be even wiser since that would take away all the unnecessary burden require to maintain a platform like this by our own. Huh, now you probably know where I am getting at :)	
+		Considering all the concerns above 
+			it's better to use a platform or library that is built for this purpose 
+			rather re-inventing the wheel
+			Use a managed service would be even wiser	
 		
 		For further read
 			https://medium.com/avmconsulting-blog/building-workflows-with-amazon-simple-workflow-service-vs-step-functions-83fdeac35555
@@ -2530,10 +2945,15 @@ Micro Services Using AWS:
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Key design elements for Micro Services
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	D:\PraiseTheLord\HSBGInfotech\micro-services\Design Patterns in Microservices.txt
+		Design Patterns in Microservices
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	AWS options for Micro Services
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	https://www.missioncloud.com/blog/how-to-build-microservices-on-aws
+	
+	Microservices is not a new technology which has to be solved with a new tool.
+	Every service in aws and outside aws can participate in it.
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	AWS option for Serverless Computing’s
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
