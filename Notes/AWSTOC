@@ -2792,7 +2792,7 @@ https://ystatit.medium.com/aws-sqs-walk-through-6414c2b15e40
 			https://medium.com/avmconsulting-blog/building-workflows-with-amazon-simple-workflow-service-vs-step-functions-83fdeac35555
 		
 	Cli based
-	https://medium.com/@schogini/aws-swf-simple-workflow-a-demonstration-using-aws-cli-ae4660a768a1
+		https://medium.com/@schogini/aws-swf-simple-workflow-a-demonstration-using-aws-cli-ae4660a768a1
 
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	• Simple Notification Service
@@ -2915,6 +2915,43 @@ AWS Services &Backups
 	7. Backup your data
 		Cross-region/geography backups
 	8. Use multi-factor authentication
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Micro Services Using AWS:
