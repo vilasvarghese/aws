@@ -1,0 +1,930 @@
+https://us06web.zoom.us/j/81359479858?pwd=a1EyeUdFaytCbFczb3VabzNjSW9ndz09
+
+Name:
+	comfort with aws
+	free account
+	current role
+	
+	Alvin
+	2nd session
+	created
+	devops
+	aws: yes
+	
+	Dhon Jon
+	familiar with aws
+	
+	Donj
+	full stack dev.
+	
+	Ed Hipolito
+	developer	in training
+	
+	Emman
+	web developer	in training
+	
+	Jeremiah
+	bit experience in aws
+	s/w engg
+	
+	Kevin
+	web developer	in training
+	
+	Paul Leonard
+	web developer	in training
+	
+	Ralph
+	devops role
+	
+	Ronald
+	lead architect
+	
+	Ryan 
+	developer	in training
+	
+	Seage
+	web developer under training
+	
+	Dorothy
+		web developer
+		aws
+		
+	Sherwin
+		software architect
+	
+	incoming initiative
+		amazon house
+		kubernetes 
+
+Breaks
+	10:0 -10:30 15 min		7:30 - 8 am 
+	12:30 - 1:30 			10 am - 11
+	3:30 - 15 min.			1 pm - 15 min.
+	
+	
+	aws iam add-user-to-group --user-name Bob --group-name ec2ands3access
+	aws iam attach-group-policy --policy-arn <policy arn> --group-name ec2ands3access
+	--------------------------------------------------------
+	
+AWS: Amazon web service
+	Azure
+	GCP (Google public cloud)
+
+Lot of different types of services
+	compute
+		like a computer
+		virtual machine
+	storage
+	database
+		sql 
+		no sql
+	analytics
+	networking
+		subnetting
+	IAM
+	mobile
+	developer tools
+	IoT
+	security
+	monitoring
+	
+	
+	aws 
+		scalable
+			grow
+			know the spec.
+			vertical scale
+				easier to scale
+				don't need to design for this.
+			horizontal scale
+				higher limit
+				only if your application is designed to scale horizontally
+			elasticity		
+				automatically grow/reduce
+		reliability
+		190+ countries	
+	memory
+	hard disk
+	
+AWS (2006)	
+	
+What is cloud?
+	on-demand 
+		services
+	access over internet
+	pay as you go
+	
+	rapid access to platform
+		flexible 
+		low cost IT services
+	no large upfront investment
+	move between different configuration
+	access (1000) huge limit of machine
+	
+	fixed initila expenditure vs variable expenses
+	adv. of scale
+	don't guess capacity 
+		plan for max.
+	increased speed and agility
+	geographically 
+	
+	
+Cloud Service Models
+--------------------
+IaaS (Infrastructure as a service)
+	rent out virtual infrastructure
+		servers
+		networking
+		dns
+			Domain name service
+		firewall
+	highest of 
+		freedom 
+		flexiblity
+	control 
+	similar to existing IT hardware
+		
+PaaS (Platform as a service)
+	infrastructure maintained by the cloud provider
+	manage and configure a platform 
+		customers to use
+	don't need to maintain the hardware
+	customer
+		resource procurement
+		hardware maintainance
+		capacity planning
+		patching
+		
+		reduces heavy lifting
+	AWS Elastic beanstalk
+		artifacts
+			.war, .jar, gem, .soln
+	Force.com
+	Openshift
+	
+SaaS (Software as a service)
+	customer
+		gets a complete software
+		
+all cloud access it through 
+	browser
+	cli (command line interface)
+	api 
+	
+	IaC (Infrastructure as Cod)
+		Infrastructure provisioning tools
+			Terraform
+			Cloudformation
+		Configuration management
+			Ansible 
+			Puppet
+			Chef
+	
+Cloud computing deployment models
+---------------------------------
+	Public cloud
+		anybody can access
+		arguably less secured
+		over the internet
+			to 
+				general public
+				or industries
+		access it easily
+		getting instances/service are easy
+			subscription 
+		Advantages of Public cloud
+			ease of access
+			available to wider audience
+				websites
+			minimal investment
+			Low/No setup 
+			No infrastructure management : cloud provider
+			No maintenance required
+			Dynamic scale
+		Dis advantages of Public cloud
+			Less secured/Higher chance of hacking
+			May have less performance
+			Low customization 
+			
+			
+	Private cloud
+		accessible only to a single customer
+			one-to-one environment
+			no sharing of resources
+			entire cloud is within your boundary
+				not accessible to others
+		Cloud platform 
+			implemented in a cloud-based secure environment
+			protected using 
+				vpn's
+				firewalls
+			supervised by a network or security engineer
+			great flexibility 
+				customize 
+		
+		Advantages
+			sole owner
+			better control
+			complete control
+				service integration/replacement
+				IT operations
+				policies and customer behaviour
+			Data security 
+				critical services may use private cloud
+				segment resources
+					improve 
+						performance
+						access
+			Much better in security
+			Integrate with legacy application
+		Disadanvantages
+			Cost 
+				people 
+				infrastructure
+			maintance 
+				by the customer
+			less scalable
+			may need to have certain software to access
+				e.g. vpn
+				ide 
+				
+	Hybrid cloud
+		bridge/combination 
+			public and 
+			private
+		generally 
+			get best of both 
+		move data between cloud provider solutions
+		Advantages
+			Adv. of both
+				accessibblity of servies to public
+			cost 
+				if using public for hosting
+			security 	
+		disadv.
+			difficult to manage 
+			slow data tranission 
+			cost
+	Community cloud
+		multiple tenants are sharing a platform 
+			distributed sytem
+		Advantages
+			cost 
+			reporting
+				under one big cloud is
+				share 
+					resources 
+					best practices
+					solutions
+			security
+			maintanance 
+		Disadvantage
+			complicated
+			initial invest can be high
+			many times you are the first person (torch bearers)
+				costly 
+				security challenges
+			difficult to hunt
+			rigid in customization 
+	Multi-cloud
+		use multiple cloud providers
+			generally for 
+				redundancy 
+				reliability
+		utilize best of both/all the providers
+		Advantages
+			utilize best
+			reduce vendor lock in.
+			high availability 
+			flexible
+			reduced latency
+				services from multiple clouds
+					belong to same region
+		Disadvantages
+			complexity
+			cost
+			cloud provider specific
+			security
+	
+AWS specific advantages
+-----------------------
+	First cloud provider
+		more matured
+		tested by a higher customers
+			variety of customer
+				
+			for longer period of time.
+		higher number of services
+			200 fully featured 
+			
+		vareity 
+			micro
+			nano
+		widest variety 
+		Most secured
+		
+	
+
+	ec2
+		elastic cloud compute
+			virtual machine/servers
+			compute infrastructure
+				processors
+				memory, 
+				ebs
+			highly secure
+				ssh
+			reliabile 
+			access other services 
+				s3 - ec2
+				
+	s3
+		object storage
+		
+		EBS
+			Elastic block store
+			attached to ec2
+		EFS
+			NFS
+		S3
+			access huge quantity
+			stored with buckets 
+				different patterns to reduce cost
+				s3 bucket
+					access
+			data is highly secure
+			audit and compliance requirement
+			ACL
+				version of data
+				rules
+					prevent accidental delete of data
+	
+	
+	AWS RDS 
+		MySQL
+			faster than mysql 
+				5 times than mysql
+			self healing
+		PstegreSQL 
+		MSSQL
+		Oracle
+			compatible with relational database
+			high performance
+			claim faster than mysql
+			
+	
+	Dynamo DB
+		
+		
+		
+		3.14.79.22
+		
+		
+AWS region
+	separate geographically data center (us-east-2)
+	Availability zones
+		isolated data center
+		(us-east-2a, b, c)
+		services
+			ec2
+			s3 - storage
+			
+	Edge locations / Local zones
+		cache data on the local zones
+			improve performance
+	AWS Outposts
+		brings aws native services to virtual data centers
+	Wavelength zones
+		allow developers to build applications 
+			5G devices support
+			
+	AWS_DEFAULT_REGION
+	set AWS_DEFAULT_REGION="us-east-1"
+	export AWS_DEFAULT_REGION="us-east-1"
+	
+	echo $PATH
+	export PATH=$PATH:$PWD
+	
+	aws ec2 describe-availability-zones --region us-west-2
+	
+	
+	
+AWS IAM (Identity access managment)
+-----------------------------------
+	web service
+	centrally manage permissions
+	iam control
+		authentication 
+			who the user?
+			credentials
+				user-id, password
+				access key, secret key
+				federation
+		authorization
+			do yo have the permission?
+			data is maintained aws
+	root
+		complete authority
+		keep it safe
+		don't use it for normal operations
+		create a new user
+		
+	User
+	Groups
+	Policies
+	Roles
+	
+IAM features
+	1. Shared access to your aws account
+		grant minute permissions
+			user: password
+	2. Granular permissions
+		list ec2
+	3. Secure access to aws resources
+	4. MFA (Multi factor authentication)
+	5. Identity federation
+		third party authentication
+			google 
+			microsoft
+		sso
+	6. Tracking services
+	7. PCI DSS compliance
+		Payment Card industry and Data security standard.
+	8. nice integration with all services in aws
+	9. Eventual consistency
+	10. Free IAM 
+	
+	Access IAM
+		aws management console
+		aws command line tool
+			powershell 
+			awscli
+				linux
+				windows
+				mac
+		aws sdk
+			boto3
+				Java, Python, Ruby, .NET, iOS, Android
+		https (REST api's)
+	
+	
+	
+Flow chart
+	Evaluate all applicable policies
+	(default: no access to anything)
+	if explicit deny
+		deny access
+		no explicit deny
+			if policy allows
+				SCP (boundary)
+				permission bounday?
+				ACL's
+				
+policies can be stored in 
+	json 
+	other formats
+	
+
+6 different types of policies
+	identity based policies
+		grant permssions to 
+			user
+			group
+			roles
+			
+			group 
+				s3
+				ec2
+				
+				aws-managed policies
+				customer-manager policies
+				
+	resource based policies
+		policies attached a resource 
+	permission boundaries
+		define a permission boundary 
+			for an IAM entity
+				user/group/role
+		do not define 
+			maximum permission that a resource based policy to an entity
+			
+	Organization SCP
+		maximum permissions
+			each account member 
+				in the organization unit would get
+	ACL's
+		what principals
+			in other account can access 
+				in the host account 
+		doesn't use json 
+		
+	session policies
+		Pass advanced session policies
+			cli or api 
+			what permission can be granted to a particular sessions
+			
+			
+api mode of operation
+---------------------
+	two modes
+		standalone context 
+		organization context
+	
+	standalone	
+		user permission or role permissions
+			modify attributes 
+			automatically account id
+				aws cli
+				aws sdk
+	organization	
+		user permission or role permissions
+			modify attributes 
+			automatically account id
+			management account of the remote user 
+			
+	arn::::::267092042432:root/Test		
+	
+Identity Center	
+---------------
+	
+AWS Cognito
+-----------
+user management and authentication service
+	can be integrated to 
+		web 
+		mobile 
+			applications
+	supports feberatino
+		can authenticate user through 
+			external providers
+				google
+				apple
+				amazon
+				corporate network
+				etc.
+		protocol
+			SAML 
+			openID connect
+	how does it work?	
+		authenticated external providers
+			JWT  token 
+				JSON web token 
+			
+User pools
+	user directory
+		according to industry standards
+			sign in 
+		directory of user in a particular region
+	Token 
+		can contain scopes and groups
+		min. five minutes
+		24 hours
+		
+		
+Identity pools				
+	federated users to use your aws services
+	grant temporary access 
+		s3
+		dynamodb
+	anonymous guest access
+		
+		
+Access Advisor
+--------------
+	Track for security 
+	auditing of activities done by a user
+	what user, resouces and policies were accessed by the user
+	
+Best practices IAM
+-------------------
+1. Root user 
+	don't use them as much as possible 
+	don't enable secret and access for root user
+	enable MFA root user
+		root account: cannot restrict
+Normal user
+	give min. permissions required
+	don't give programmatic access if not required
+	don't generate access keys if not required
+	never share access keys
+	enable MFA
+	create user for individual user
+	create admin. user 
+		give all admin permission
+		
+	groups
+		min. permission 
+		define boundaries 
+		deny roles
+		create policies and roles appropriately
+		
+	
+IP Address: routable address over IP network
+		IP network : any network which follows ip protocol
+		
+	
+Private IP
+	recognize internally
+	can't under over the internet
+	dedicated IP
+	get this from subnet cidr (range in subnet)
+	defined in RFC 1918 addresses
+	[0-255.0-255.0-255.0-255]
+		localhost: 127.0.0.1
+	
+	private ip
+		ec2
+		range in subnet
+		vpc
+	accessible within it's own vpc
+	
+Public IP
+	like mobile number/passport number
+	people all over the world 
+		can identify
+	can change
+	routable 
+	accessible over the internet
+	stop and start 
+		get a diff. ip address
+		
+Elastic IP
+	stop and start 
+		get the same address
+	independent resource	
+	can be disassocated from ec2
+	belongs an account 
+	range for elastic ip that you create:5
+	
+
+Security boundary
+-----------------
+	Big concern in cloud world
+	Data is handled by cloud provider
+		assume it is encrypted.
+		we handle data 
+			we should encrypt
+			accessible only through
+				proxy 
+				broker
+					define boundaries
+						incoming requests 
+						outgoing requests
+						
+			
+		CSA (Cloud security alliance)
+		-----------------------------
+		Iaas
+			most basic level of service
+		Paas
+			provides platform 
+				cloud provider may provide services
+		SaaS
+			high 
+				responsibility reduces
+				
+		Data should secured
+			motion
+				with in cloud premises
+				outside
+			rest
+				storage
+					with in cloud
+					client 
+						(mobile)
+						web
+							jwt 
+	Take care of 
+		Access control
+			authentication 
+			authorization 
+				cookies
+				tokens
+				certificates
+				credentials
+					etc.
+		auditing
+		
+Isolated access data
+	data stored cloud
+		should not be directly access to external world
+			proxy 
+			brokers
+			
+			
+	Always implement layered security
+
+
+Advantages of moving cloud
+--------------------------
+1. Responsibility of managing and maintaing good part of our service can be moved to cloud providers
+	Industry standards solutions
+2. On-demand service 
+3. Lower upfront investment 
+	less risk taken by business
+4. Resource pooling 
+	sharing cost, 
+		cost of security
+5. Pay-per-user pricing 
+6. Measured services
+	track, monitor
+7. Security
+	bastion host 
+	firewalls
+	
+8. Broad network access
+	easy to setup
+9. Global access
+	you can access globally
+	create services globally
+10. Flexibility
+
+BCP and DRP
+-----------
+Business continuity plan and Disaster recovery plan
+
+IaC (Infrastructure as code)
+----------------------------
+	1. Infrastructure provisioning tools
+		Terraform
+		Cloudformation
+		
+	2. Configuration management tools
+		Ansible
+		Puppet
+		Chef
+	
+	
+Organization 
+	collection of aws accounts 
+		organize into hierarchy
+		manage from a single place
+	
+	identity center
+	
+	User:
+		aws user 
+			identity
+			iam 
+		federated user
+			
+			
+			
+Instance types
+	General purpose
+		Most used ec2 instances
+		wide balance of
+			computing power 
+			memory 
+			storage
+		
+			a1 
+				arm based 
+				processor
+					graviton 
+				use cases: 
+					program execution 
+						java
+						python 
+			m5
+				latest general purpose additions
+				Intel Xeon® Platinum 8175M processors.
+				use cases: 
+					cloud computing
+			
+			t3/t3a
+				Up to 3.1 GHz Intel Xeon Scalable processor (Skylake 8175M or Cascade Lake 8259CL)
+				Burstable CPU, governed by CPU Credits, and consistent baseline performance
+				cheaper machines, less power
+				use cases: 
+					long lasting applications
+		
+	Compute optimized 
+		e.g. 
+			web server
+				image processing 
+				compression
+			scientific modeling
+		
+		C5
+			C5 and C5d 12xlarge, 24xlarge, and metal instance sizes feature custom 2nd generation Intel Xeon Scalable Processors
+			use cases:
+				sceintific modeling
+				online gaming
+				bitcoing minning
+				media computing 
+				25% better speed than C4
+				
+		c6
+			graviton2 processor
+			40% improvement in price-performance ratio C5	
+		c7	
+			graviton3e processor
+			video processing
+				
+			
+		
+	Memory optimized
+		large data 
+		e.g. 
+			Big data analytics
+			Data warehousing 
+				hadoop
+				apache spark
+					map reduce operation
+		R7
+			graviton 3
+		R6
+			graviton 2
+			MySQL, Redis, memcache
+			custom build processor 
+				working with memory
+		X1
+			Intel Xeon family
+			SAP HANA 
+			
+	Accelerated computing
+		additinoal hardware to accelerate 
+			like 
+				use cases: 
+					graphics processing units (GPU)
+					Field programmable gate arrays (FPGA)
+						1000's of computing cores
+					space research 
+						analyse huge with high precision
+					AI 
+						
+				
+				
+	Storage optimized
+		capacity
+		disk throughput
+			video
+			
+			video
+			content delivery networks (CDN's)
+				offload content delivery 
+					to a processor closer to the end user
+				e.g. github
+					dedicated cdn's
+			
+			im4gn
+				Powered by AWS Graviton2 processors that enable the best price performance for workloads in Amazon EC2
+Featuring up to 30 TB of NVMe SSD instance storage with AWS Nitro SSDs that provide up to 60% lower I/O latency and up to 75% reduced latency variability compared to I3 and I3en instances and feature always-on encryption
+
+
+			
+	HPC optimized
+	
+	
+key Pairs
+---------
+secured?
+
+
+		abc
+		0283402asdldfj
+		
+		encryption 
+			key
+			decrypt only with the key
+			symmetric key
+			asymmetic keys
+				2 keys
+					public key
+					private key
+		
+	EC2 Networking
+		security groups
+			firewalls
+			ingress	
+				incoming requests allowed
+			egress
+				outgoing requests allowed
+				
+
+----------------------------
+IOPS Volumes
+------------
+	solid state drives
+	better performance for ebs
+	low latency
+		IOPS (number input/output operations per second)
+			eye-ops
+	
+io2 volumes
+	since 2020
+	maximum of 64000 iops 
+	100x higher durability 
+		99.999% 
+		
+Snapshot
+--------
+	backup of ebs into s3
+	really fast
+	take multiple snapshots
+	
+	
+how to automate snapshot using cloudwatch
+
+	
