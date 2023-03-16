@@ -1,0 +1,15 @@
+https://bobbyhadz.com/blog/aws-cli-create-role
+
+aws iam create-role --role-name role-example --assume-role-policy-document file://trust-policy.json
+aws iam put-role-policy --role-name role-example --policy-name read-dynamodb --policy-document file://read-dynamodb.json
+aws iam list-role-policies --role-name role-example
+aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole --role-name role-example
+aws iam list-attached-role-policies --role-name role-example
+aws iam create-policy --policy-name read-s3 --policy-document file://read-s3.json
+aws iam attach-role-policy --policy-arn YOUR_POLICY_ARN --role-name role-example
+	aws iam attach-role-policy --policy-arn arn:aws:iam::267092042432:policy/read-s3 --role-name role-example
+
+aws iam list-attached-role-policies --role-name role-example
+aws iam list-role-policies --role-name role-example
+
+For more refer https://bobbyhadz.com/blog/aws-cli-create-role

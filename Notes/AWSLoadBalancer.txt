@@ -1,0 +1,73 @@
+Load balancer in ec2
+--------------------
+What is load balancing?
+
+Can be 
+	open source or
+		nginx
+		haproxy ect
+	commercially available
+		aws loadbalancers
+		
+	Distribute incoming traffic 
+		to target (between group of) servers 
+	Support traffic distribution algorithm
+	Ability to add/remove servers to target group.
+	be scalable
+	
+AWS Elastic load balancer (ELB) provides
+	distribute traffic to 
+		ec2 instances or
+		other target types
+	Instances can be multiple AZ's
+	Elastic
+		no single point of failure
+	Internet facing or Internal
+From a deployment perspective
+	Highly resilient application deployment model
+	Configurable traffic distribution options
+	Canary deployment of application features and services
+	Integrate 3rd party appliances & support identity provider integrations
+
+
+
+Application Load balancer
+	works at Layer 7: application layer
+	supports http or https
+	e.g. path based routing	
+		https://customer/doSomething
+		http://order/doSomething
+	Loadbalancer
+		listener1 (80) http
+			rules on listener
+			rules/algorithm can be configured.
+			distribute traffic based on the rules
+		listener2 (443) https
+		
+	ec2 instances
+		can be distributed across multiple AZ's
+		health check runs in target
+		
+	setup across atleast 2 AZ's
+	Target can have
+		symmetric or 
+		assymetric 
+			distribution of instances
+		a microservice may have less instances while another has lot more.
+		
+		ALB can support cross zone load balancing
+		
+		Configure the /health url on the target group.
+		Loadbalancer calls this end point to confirm that the node is healthy.
+		Target may respond 200 for health and error for not being healthy.
+		
+		Back preassure
+			dynamically route traffic to other healthy instances by potentially analyzing the congestion.
+			i.e. a target can take itself out of service 
+				(if the load is more ect)
+			How? 
+				Send an error message when the /health is called.
+				Start sending 200 when things are back safe.
+				
+		
+		
