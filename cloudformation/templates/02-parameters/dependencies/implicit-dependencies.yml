@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation Template with Implicit Dependency
+
+Resources:
+  MyKeyPair:
+    Type: AWS::EC2::KeyPair
+    Properties:
+      KeyName: my-key-pair
+      PublicKeyMaterial: |
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDDW38ZM+j
+        --- Data masked -------- 
+        use ssh-keygen to generate this 
+        -----------koZGuu4TKpp5zK3l3MWq4Ais/RziymstFOwiLsaoovEZG/JEQwBP06eO8U= user@LAP
+
+  MyInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-069d73f3235b535bd
+      KeyName: !Ref MyKeyPair

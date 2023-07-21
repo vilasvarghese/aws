@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation Template with Mappings
+
+Mappings:
+  RegionToAMIMap:
+    us-east-1:
+      AMI: ami-06ca3ca175f37dd66
+    us-east-2:
+      AMI: ami-069d73f3235b535bd
+    eu-west-1:
+      AMI: ami-0fd61683ae1a27a64
+
+Parameters:
+  Region:
+    Type: String
+    Description: AWS region for the EC2 instance
+    Default: us-east-1
+    AllowedValues:
+      - us-east-1
+      - us-east-2
+      - eu-west-1
+#Remember to select the region you are executing it 
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: !FindInMap [RegionToAMIMap, !Ref Region, AMI]

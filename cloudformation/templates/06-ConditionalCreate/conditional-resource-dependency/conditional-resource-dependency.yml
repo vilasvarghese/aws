@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Conditionally creating DB instance from a DB snapshot.
+Parameters:
+  DbSnapshot:
+    Type: String
+  UseSnapshot:
+    Type: String
+    AllowedValues: [ true, false ]
+  MasterUsername:
+    Type: String
+  MasterUserPassword:
+    Type: String
+Conditions:
+  UseSnapshotSelected: !Equals [ !Ref UseSnapshot, 'true' ]
+Resources:
+  DbInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      AllocatedStorage: 20
+      DBInstanceClass: db.t2.micro
+      Engine: mysql
+      MasterUsername: !Ref MasterUsername
+      MasterUserPassword: !Ref MasterUserPassword
+      DBSnapshotIdentifier: !If [ UseSnapshotSelected, !Ref DbSnapshot, !Ref 'AWS::NoValue' ]
+      #A db snapshot with this name should exist. Hence this may fail.

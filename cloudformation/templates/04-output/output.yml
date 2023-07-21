@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation Template with Outputs
+
+Resources:
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+
+Outputs:
+  BucketName:
+    Description: Name of the created S3 bucket
+    Value: !Ref MyS3Bucket
+  BucketURL:
+    Description: URL to access the S3 bucket
+    Value: !GetAtt MyS3Bucket.WebsiteURL

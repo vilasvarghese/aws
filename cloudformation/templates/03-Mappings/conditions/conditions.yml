@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation Template with Conditional Resource Configuration
+
+Mappings:
+  EnvironmentToInstanceType:
+    development:
+      InstanceType: t2.micro
+    production:
+      InstanceType: t2.small
+
+Parameters:
+  Environment:
+    Type: String
+    Description: Environment type (development or production)
+    Default: development
+    AllowedValues:
+      - development
+      - production
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !FindInMap [EnvironmentToInstanceType, !Ref Environment, InstanceType]
+      ImageId: ami-0c55b159cbfafe1f0

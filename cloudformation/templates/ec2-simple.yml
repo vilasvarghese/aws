@@ -1,0 +1,9 @@
+---
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t3.micro
+      AvailabilityZone: us-east-2b
+      ImageId: ami-069d73f3235b535bd
+      KeyName: bitsohio

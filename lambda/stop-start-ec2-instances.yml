@@ -1,0 +1,24 @@
+def lambda_handler(event, context):
+    # Define the region where your EC2 instances are located
+    region = 'us-east-1'  # Replace with your desired region
+    
+    # Create EC2 client
+    ec2_client = boto3.client('ec2', region_name=region)
+    
+    # Stop running instances
+    response = ec2_client.describe_instances(Filters=[{'Name': 'instance-state-name', 'Values': ['running']}])
+    instance_ids = []
+    for reservation in response['Reservations']:
+        for instance in reservation['Instances']:
+            instance_ids.append(instance['InstanceId'])
+    if instance_ids:
+        ec2_client.stop_instances(InstanceIds=instance_ids)
+    
+    # Start stopped instances
+    response = ec2_client.describe_instances(Filters=[{'Name': 'instance-state-name', 'Values': ['stopped']}])
+    instance_ids = []
+    for reservation in response['Reservations']:
+        for instance in reservation['Instances']:
+            instance_ids.append(instance['InstanceId'])
+    if instance_ids:
+        ec2_client.start_instances(InstanceIds=instance_ids)

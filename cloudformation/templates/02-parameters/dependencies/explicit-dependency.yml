@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation Template with Explicit Dependency
+
+Resources:
+  MyInstance1:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-069d73f3235b535bd
+
+  MyInstance2:
+    Type: AWS::EC2::Instance
+    DependsOn: MyInstance1  # Explicit dependency on MyInstance1
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-069d73f3235b535bd

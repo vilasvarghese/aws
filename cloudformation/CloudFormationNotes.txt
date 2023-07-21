@@ -1,0 +1,1956 @@
+
+https://github.com/awslabs/aws-cloudformation-templates
+
+Refer : D:\PraiseTheLord\HSBGInfotech\Others\vilas\devops\jenkins
+
+----------------------------------------------------------------------------------------------------------------------
+Cloud Formation
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+Introduction to Cloud Formation:
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	What is Cloud Formation ?
+----------------------------------------------------------------------------------------------------------------------
+AWS CloudFormation 
+	service provided by Amazon Web Services (AWS) 
+	allows to 
+		define and provision 
+			AWS infrastructure resources 
+	
+	stack: can 
+		create, 
+		update, and 
+		manage 
+			a collection of related AWS resources 
+				as a single unit
+		referred to as a stack.
+
+We write code in 
+	template file 
+		can be JSON or YAML format 
+		describe the desired state 
+		defines 
+			resources
+			their configurations
+			relationships between them. 
+	Way to define infrastructure as code (IaC)
+	
+	treat your infrastructure 
+		as version-controlled and 
+		reproducible artifacts.
+
+Key aspects and benefits of AWS CloudFormation:
+	Infrastructure as Code (IaC): 
+		define your infrastructure 
+			in a template file
+		can be 
+			version-controlled, 
+			reviewed, and 
+			shared like any other code. 
+		Why? 
+			repeatability, 
+			consistency
+			change your infrastructure in a controlled manner.
+	Declarative Language: 
+		Uses a declarative language 
+		define your 
+			infrastructure resources 
+			their configurations. 
+		Define desired end state
+		CloudFormation takes care of 
+			provisioning and 
+			managing 
+				the resources to achieve that state.
+	Automation and Orchestration: 
+		Automates the process of 
+			creating and configuring AWS resources
+			reduce manual effort 
+			eliminating manual provisioning. 
+			
+	Stack Management: 
+		CloudFormation 
+			organizes your resources into stacks
+				logical groups 
+					represent a single application or system. 
+		Can 
+			create, update, and delete stacks as a whole, allowing you to manage and control your infrastructure at a higher level of abstraction.
+	Resource Dependency Management: 
+		CloudFormation manages dependencies between resources defined in your template. It automatically determines the correct order for provisioning resources based on their dependencies, ensuring that resources are created in the right sequence.
+	Change Management and Rollbacks: 
+		CloudFormation tracks changes made to your infrastructure through the use of change sets. It allows you to preview and review the changes before applying them, reducing the risk of unintended modifications. In case of failures, CloudFormation can automatically roll back the changes and revert the stack to its previous state.
+	Integration with AWS Services: 
+		CloudFormation integrates with a wide range of AWS services, enabling you to provision and configure resources such as EC2 instances, RDS databases, S3 buckets, IAM roles, and more, all through a single CloudFormation template.
+
+
+----------------------------------------------------------------------------------------------------------------------
+	Benefits of using Cloud Formation
+----------------------------------------------------------------------------------------------------------------------
+
+Infrastructure as Code (IaC): CloudFormation allows you to define your infrastructure using code, bringing the principles of software development to infrastructure management. Infrastructure becomes version-controlled, easily reviewable, and shareable, promoting best practices such as collaboration, testing, and code reuse.
+
+Automation and Consistency: CloudFormation automates the provisioning and configuration of AWS resources. By defining your infrastructure as a template, you can consistently and reliably create and update resources, eliminating manual provisioning and reducing the risk of human errors.
+
+Scalability and Flexibility: CloudFormation templates are scalable and flexible. You can easily replicate environments by deploying the same template multiple times, enabling consistent setups across development, testing, and production environments. Templates can also be customized to accommodate specific requirements and varying resource configurations.
+
+Dependency Management: CloudFormation manages dependencies between resources defined in the template. It determines the correct order of resource creation, ensuring that resources are provisioned in a way that satisfies dependencies. This simplifies the management of complex infrastructures with interrelated resources.
+
+Infrastructure Updates and Rollbacks: CloudFormation enables controlled updates to your infrastructure. You can modify the template or its parameters, preview the changes through change sets, and then apply the changes. If an update fails, CloudFormation can automatically roll back the changes, minimizing the impact of failed updates.
+
+Visibility and Auditability: CloudFormation provides a centralized view of your infrastructure through stack management. You can track the history and status of your stacks, monitor changes made to resources, and review the events and logs generated during stack creation and updates. This enhances visibility, troubleshooting, and compliance auditing.
+
+Integration with AWS Services: CloudFormation integrates with various AWS services, allowing you to provision and configure a wide range of resources through a single template. This includes compute resources (e.g., EC2 instances, ECS clusters), networking (e.g., VPCs, subnets, security groups), databases (e.g., RDS instances), storage (e.g., S3 buckets, EBS volumes), and more. This integration simplifies the management of complex infrastructures with multiple interconnected services.
+
+Collaboration and Reusability: CloudFormation templates can be shared and reused across teams and projects. This promotes collaboration by enabling teams to adopt and build upon existing templates, reducing duplication of effort. Shared templates can serve as a foundation for creating standardized architectures and best practices within organizations.
+
+By leveraging AWS CloudFormation, you can achieve efficient, consistent, and automated infrastructure provisioning and management, resulting in improved agility, reduced manual effort, and increased reliability of your AWS deployments.
+
+
+----------------------------------------------------------------------------------------------------------------------
+	Cloud Formation vs. traditional infrastructure provisioning
+----------------------------------------------------------------------------------------------------------------------
+
+	Automation and Consistency: CloudFormation enables you to automate the provisioning and configuration of your infrastructure. It eliminates the manual effort involved in setting up resources and ensures consistency across environments. Traditional provisioning often involves manual steps, making it prone to human error and inconsistencies.
+
+Scalability and Flexibility: CloudFormation templates are scalable and flexible. You can easily replicate environments by deploying the same template multiple times, making it straightforward to scale up or down based on demand. Traditional provisioning may require manual replication, resulting in time-consuming and error-prone processes.
+
+Infrastructure as Code (IaC): CloudFormation allows you to define your infrastructure as code using JSON or YAML templates. This brings the benefits of software development practices to infrastructure management, such as version control, collaboration, and testing. In contrast, traditional provisioning often relies on manual configuration or scripting, lacking the benefits of version control and standard development practices.
+
+Dependency Management: CloudFormation handles dependency management between resources defined in the template. It automatically determines the order of resource provisioning based on their dependencies, reducing the complexity of managing interrelated resources. In traditional provisioning, managing dependencies can be challenging, requiring manual coordination and sequencing.
+
+Change Management and Rollbacks: CloudFormation enables controlled updates to your infrastructure. You can modify the template or its parameters, preview the changes, and then apply them. If an update fails, CloudFormation can automatically roll back the changes, providing a safety net. In traditional provisioning, tracking changes and performing rollbacks can be more cumbersome and error-prone.
+
+Infrastructure Visibility and Auditing: CloudFormation provides a centralized view of your infrastructure through stack management. You can track the history and status of stacks, monitor changes, and review events and logs. This enhances visibility, troubleshooting, and compliance auditing. Traditional provisioning may lack centralized visibility and auditing capabilities, requiring more manual effort to track changes.
+
+Infrastructure Reusability: CloudFormation templates can be shared and reused across teams and projects. This promotes collaboration, standardization, and the ability to quickly adopt best practices. In traditional provisioning, reusability often involves manual replication or scripting, which can be time-consuming and error-prone.
+
+----------------------------------------------------------------------------------------------------------------------
+Stack:
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	Understanding the concept of a stack
+----------------------------------------------------------------------------------------------------------------------
+	    Template: A stack is defined by a template, which is a JSON or YAML file specifying the desired resources, their configurations, and the relationships between them. The template serves as the blueprint for the infrastructure provisioning process.
+
+    Resource Dependencies: Resources within a stack often have dependencies on one another. For example, an EC2 instance might depend on a VPC and security group. CloudFormation intelligently manages these dependencies and provisions resources in the correct order.
+
+    Provisioning and Management: Once you define the stack template, you can use CloudFormation to create, update, or delete the entire stack. CloudFormation handles resource creation and configuration based on the template's specifications. It also provides rollback mechanisms in case of failures during stack updates.
+
+    Stack Instances: You can have multiple instances of the same stack, each representing a separate deployment environment, such as development, staging, or production. Stack instances allow you to manage and version infrastructure configurations across different environments.
+
+    Infrastructure as Code (IaC): The use of stack templates in CloudFormation embodies the concept of Infrastructure as Code. The template files are stored in version control systems and treated like source code, allowing for versioning, collaboration, and reproducibility.
+
+----------------------------------------------------------------------------------------------------------------------
+	Creating a stack
+----------------------------------------------------------------------------------------------------------------------
+Create a stack using template present in D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates
+
+----------------------------------------------------------------------------------------------------------------------
+	Updating a stack
+----------------------------------------------------------------------------------------------------------------------
+Modify t2.micro to t3.micro and update it
+----------------------------------------------------------------------------------------------------------------------
+	Deleting a stack
+----------------------------------------------------------------------------------------------------------------------
+Delete the stck.
+----------------------------------------------------------------------------------------------------------------------
+Stack policies and protection
+----------------------------------------------------------------------------------------------------------------------
+
+
+    AWS CloudFormation Stack Policies:
+        security feature 
+		can control updates to specific resources 
+			within a CloudFormation stack.
+        Default
+			CloudFormation allows all resources in a stack 
+				to be updated 
+				during a stack update operation.
+        With a Stack Policy
+			can explicitly specify 
+				which resources 
+					can be updated
+					can't be modified
+					can only have certain properties changed.
+        Stack Policies 
+			expressed in JSON 
+			attached to a stack 
+				during its creation or update.
+        Stack Policy
+			can enforce compliance
+			prevent accidental changes
+			ensure that only authorized updates are made to critical resources.
+
+    Stack Protection (Termination Protection):
+        Stack Protection / Termination Protection
+			prevents accidental deletion of a CloudFormation stack.
+        When Stack Protection is enabled for a stack
+			it blocks the execution of any stack deletion operations.
+        safeguard important stacks 
+			from accidental deletion, 
+			protect critical resources and configurations.
+        Stack Protection can be set 
+			via 
+				AWS Management Console, 
+				AWS CLI, or 
+				SDK.
+        Disabling Stack Protection 
+			resume stack deletion operations.
+
+----------------------------------------------------------------------------------------------------------------------
+StackSets:
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	Introduction to StackSets
+----------------------------------------------------------------------------------------------------------------------
+
+    StackSet: 
+		container 
+			holds one or more CloudFormation stacks. 
+		Represents deployment and management for multiple stacks 
+			across accounts and regions. 
+		You define a StackSet 
+			using a CloudFormation template
+			similar to a regular stack.
+
+    StackSet Operation: 
+		An action performed on a StackSet
+		e.g. 
+			creating, 
+			updating, or 
+			deleting 
+				stacks. 
+		When you initiate a StackSet operation, CloudFormation deploys or modifies stacks in the target accounts and regions based on the StackSet template.
+
+    Target Accounts and Regions: 
+		StackSets allow you to specify target AWS accounts and regions where the stacks should be created or updated. You can include or exclude specific accounts and regions based on your requirements.
+
+    StackSet Instances: 
+		A StackSet Instance represents the actual deployment of a stack in a target account and region. Each StackSet Instance corresponds to a deployed stack in an AWS account. CloudFormation tracks the state of each instance and allows you to view and manage them.
+
+    Permissions: 
+		You need appropriate IAM permissions to create and manage StackSets. This includes permissions to perform StackSet operations in the target accounts and regions. The service-linked role "AWSCloudFormationStackSetAdministrationRole" is used to delegate permissions for StackSet operations.
+
+Benefits of using StackSets include:
+
+    Simplified Management: 
+		StackSets allow you to manage infrastructure across multiple accounts and regions from a centralized location, making it easier to maintain consistent configurations and enforce governance policies.
+
+    Efficiency and Consistency: 
+		Deploying stacks through StackSets eliminates the need to manually repeat the same CloudFormation deployment process in each account or region, ensuring consistent infrastructure and reducing administrative overhead.
+
+    Automated Updates: 
+		StackSets support automatic updates, enabling you to easily roll out changes to multiple stacks across accounts and regions simultaneously.
+
+    Visibility and Control: 
+		CloudFormation provides visibility into the status and progress of StackSet operations, allowing you to monitor and manage the state of deployed stacks efficiently.
+
+
+Advanced Lab: 
+D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates\stackset
+Do it latter.
+
+----------------------------------------------------------------------------------------------------------------------
+	Creating and managing StackSets
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	Deploying stacks across multiple accounts and regions
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	StackSet operations and considerations
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+How Cloud Formation works:
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	High-level overview of Cloud Formation workflow
+----------------------------------------------------------------------------------------------------------------------
+The CloudFormation workflow 
+	structured process for 
+		creating, 
+		managing, and 
+		updating 
+			AWS resources 
+		using CloudFormation templates. 
+	It involves several steps to 
+		define, 
+		provision, and 
+		maintain 
+			infrastructure 
+		in a controlled and reproducible manner. 
+	Here's an overview of the CloudFormation workflow:
+		Template Authoring: 
+			The process starts with authoring a CloudFormation template. This template is a JSON or YAML file that describes the desired AWS resources, their properties, and any dependencies between them.
+
+		Template Validation: 
+			Done by aws
+			Once the template is created or modified, it should be validated to ensure its syntax is correct and all resource references are valid. Validation helps catch errors and potential issues before deploying the stack.
+
+		Stack Creation: 
+			The next step is to create a CloudFormation stack 
+				based on the template. 
+			The stack represents a collection of resources provisioned as a single unit. During stack creation, AWS provisions the specified resources and configures them according to the template.
+
+		Stack Monitoring: 
+			While the stack is being created, 
+				you can monitor its progress using 
+					CloudFormation console, 
+					CLI, or 
+					API. 
+			Stack monitoring provides real-time updates on the creation status, and you can view events and track the overall progress.
+
+		Stack Updates: 
+			Over time, you may need to modify the stack's configuration or add/remove resources. CloudFormation supports stack updates, allowing you to make changes to the template, properties, or resource definitions. Stack updates ensure that your infrastructure remains up-to-date and can be scaled or adjusted as needed.
+
+		Change Sets: 
+			Before applying stack updates, it's recommended to create a change set. A change set is a summary of the proposed changes to the stack. It allows you to review the impact of the changes, assess potential risks, and ensure the modifications align with your requirements.
+
+		Stack Deletion: 
+			If you no longer need a stack, you can delete it. CloudFormation gracefully removes all the associated resources and cleans up the infrastructure. It's important to monitor the stack deletion process to ensure that all resources are properly removed.
+
+Throughout the workflow, CloudFormation provides comprehensive logging and error handling. 
+	It records events and status updates for each stack, making it easier to troubleshoot issues, track changes, and maintain a historical record of deployments.
+
+The CloudFormation workflow simplifies infrastructure management, promotes infrastructure as code practices, and allows for consistent and reproducible deployments. It provides a robust framework for defining, provisioning, and managing AWS resources, helping organizations automate and streamline their infrastructure operations.
+
+----------------------------------------------------------------------------------------------------------------------
+	Cloud Formation templates and their structure
+----------------------------------------------------------------------------------------------------------------------
+
+
+CloudFormation templates are JSON or YAML files that define the AWS resources and their configurations needed to create and manage an infrastructure stack. The structure of a CloudFormation template follows a specific format and includes various sections and key elements. Here's an overview of the structure of a CloudFormation template:
+
+    AWSTemplateFormatVersion: 
+		This section specifies the version of the CloudFormation template format being used. For example, "AWSTemplateFormatVersion: '2010-09-09'".
+
+    Description: 
+		Optional. This section allows you to provide a description of the template and its purpose. It helps document the purpose and intent of the template for future reference.
+
+    Metadata: 
+		Optional. This section allows you to include arbitrary metadata about the template. It can be useful for providing additional information or annotations.
+
+    Parameters: 
+		Optional. This section defines input parameters that can be passed to the template at runtime. Parameters allow for dynamic customization of the stack's behavior and configurations.
+
+    Mappings: 
+		Optional. 
+		defines key-value mappings 
+		can be referenced within the template. 
+		Mappings can be used to map different values based on conditions or criteria.
+
+    Conditions: 
+		Optional. This section allows you to define conditions based on which resources or properties are evaluated during stack creation or update. Conditions enable conditional logic within the template.
+
+    Transform: 
+		Optional. This section specifies one or more AWS CloudFormation transforms to be applied to the template. Transforms allow you to use pre-defined macros or templates to simplify resource configurations.
+
+    Resources: 
+		This section is mandatory and defines the AWS resources that will be created or managed by the template. Each resource is defined by a logical name, resource type, and properties specific to that resource type.
+
+    Outputs: 
+		Optional. This section defines the values that are outputted by the template. Outputs can be used to expose important information, such as resource identifiers or endpoint URLs, after the stack is created.
+
+    Conditions, Mappings, and Metadata: 
+		These sections allow for advanced template customization, including the use of conditions, mappings, and metadata.
+
+The CloudFormation template structure follows a hierarchical organization, with sections defining different aspects of the stack and resources. The Resources section is typically the most critical, as it defines the AWS resources that will be created. The other sections provide flexibility and customization options for the template.
+
+CloudFormation templates provide a declarative way to define and manage infrastructure as code, making it easier to version control, share, and reproduce infrastructure configurations. The structure and sections of the template allow for flexibility, parameterization, and conditional logic, enabling dynamic and scalable infrastructure deployments.
+
+
+
+
+
+CloudFormation works with Templates 
+While creating a stack we can define the following 
+	This makes it very easy.
+	For e.g. we can 
+		add tags 
+			tags get passed to all resources 
+			easy for us to query, manage resource
+		Permissions	
+			can give relevant but limited permission to cloudformation 
+			individual user's need not be granted permission 
+			security 
+		Notification options 
+			notify the status of stack through SNS
+		Timeout
+			if the stack creation takes longer
+		Rollback on failure
+			rollback by default on failure
+			Can be disabled
+		Rollback can be configured
+			Monitoring time 
+			CloudWatch Alarm
+				before rollback
+		Stack Policy 
+		Termination Protection 
+			protect from accidental termination 
+		Quick-start Link 
+		
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+	Template formats (JSON and YAML)
+----------------------------------------------------------------------------------------------------------------------
+CloudFormation templates support two formats: JSON (JavaScript Object Notation) and YAML (YAML Ain't Markup Language). Both formats allow you to define infrastructure resources and their configurations in a structured manner. Here's an overview of each format:
+
+    JSON (JavaScript Object Notation):
+        JSON is a lightweight data interchange format.
+        It uses a syntax similar to JavaScript object literals.
+        JSON templates use curly braces {} to define objects and square brackets [] to define arrays.
+        Each resource and its properties are defined as key-value pairs within the template.
+        JSON templates are strict with syntax requirements and do not support comments.
+
+Example of a JSON CloudFormation template:
+
+json
+
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Sample CloudFormation template in JSON format",
+  "Resources": {
+    "MyEC2Instance": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "ImageId": "ami-12345678",
+        "InstanceType": "t2.micro"
+      }
+    }
+  }
+}
+
+    YAML (YAML Ain't Markup Language):
+        YAML is a human-readable data serialization format.
+        It uses indentation and whitespace to define structure and hierarchy.
+        YAML templates allow for more concise and readable syntax compared to JSON.
+        YAML supports comments, making it easier to document and explain template sections.
+        YAML templates are less strict with syntax requirements and provide more flexibility.
+
+Example of a YAML CloudFormation template:
+
+yaml
+
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Sample CloudFormation template in YAML format
+Resources:
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: ami-12345678
+      InstanceType: t2.micro
+
+Both JSON and YAML formats are widely used for CloudFormation templates. The choice between them often depends on personal preference, readability, and ease of maintenance. CloudFormation provides equivalent functionality and features regardless of the chosen for
+
+
+----------------------------------------------------------------------------------------------------------------------
+	Cloud Formation Designer tool
+----------------------------------------------------------------------------------------------------------------------
+
+The CloudFormation Designer is a visual tool provided by AWS to create, view, and modify CloudFormation templates graphically. It offers a visual representation of the infrastructure resources and their relationships, allowing you to design and visualize your stacks using a drag-and-drop interface. Here are some key features and benefits of the CloudFormation Designer tool:
+
+    Visual Interface: The CloudFormation Designer provides a graphical interface that represents your infrastructure resources as boxes (nodes) connected by lines (edges). You can easily add, edit, or delete resources and define their properties using the intuitive drag-and-drop functionality.
+
+    Resource Relationship Visualization: The Designer displays the relationships between resources, allowing you to visualize how they are interconnected. You can easily identify dependencies and understand the impact of changes to specific resources.
+
+    Template Validation: The Designer performs real-time validation of the template, helping you identify syntax errors, circular dependencies, and other issues. It provides feedback and suggestions to ensure the template is correctly structured and compliant with CloudFormation requirements.
+
+    Template Generation: You can generate a CloudFormation template from an existing visual design in the Designer. This feature allows you to create the initial structure visually and then export it as a JSON or YAML template for further customization or version control.
+
+    Template Import: You can also import existing CloudFormation templates into the Designer to visualize and modify them graphically. This allows you to gain a better understanding of the template structure and make changes more easily.
+
+    Collaboration: The Designer supports collaboration among team members. Multiple users can work on the same template simultaneously, making it easier to collaborate and iterate on infrastructure designs.
+
+    Template Export: Once you have designed or modified your infrastructure visually, you can export the resulting CloudFormation template in JSON or YAML format. The exported template can be used directly with CloudFormation for stack creation or further modifications.
+
+The CloudFormation Designer complements the traditional JSON or YAML template editing by providing a visual interface that simplifies the design and modification of infrastructure stacks. It can be particularly helpful for users who prefer a visual representation or for complex infrastructure designs with many interconnected resources. However, it's important to note that the Designer tool may not support all CloudFormation features and may not be suitable for all scenarios, especially when working with large or highly complex templates.
+
+Lab: 
+	EC2	
+		instances
+		Following from ec2 
+			EIP (Elastic IP)
+			SecurityGroup
+	
+
+	
+Field in an AWS CloudFormation template:
+---------------------------------
+    AWSTemplateFormatVersion:
+        Specifies the version of the CloudFormation template format being used. 
+		For example, "2010-09-09" indicates the initial template format version.
+
+    Description (optional):
+        description of the template's purpose. 
+		It helps users understand the template's intent.
+
+    Metadata (optional):
+        A JSON object 
+		provides additional information about the template. 
+		AWS CloudFormation 
+			doesn't use it during stack creation or update.
+
+    Parameters (optional):
+        Allows users to input values during stack creation or update. 
+		Parameters enable customization and dynamic behavior for the stack.
+        Parameters are defined with a logical name, data type, and optional constraints, default values, and descriptions.
+
+    Mappings (optional):
+        Enables the definition of static values that can be looked up using key-value pairs. 
+		Mappings can be used to create conditional behavior based on specified keys.
+
+    Conditions (optional):
+        Define conditions/tests 
+			determine whether certain resources are created 
+			or how they are configured.
+        Conditions use intrinsic functions like 
+			Fn::Equals, 
+			Fn::If, 
+			Fn::Not, 
+			Fn::And, and 
+			Fn::Or.
+        Defines conditions based on 
+			input parameters, 
+			resource attributes, or 
+			any other value. 
+		These conditions are used to control resource creation and configuration based on the evaluated conditions.
+
+    Transform (optional):
+        Specifies the AWS CloudFormation macro or transformation to apply to the template. 
+		A transform allows you to use specialized macros or custom resources in your template.
+
+    Resources:
+        The main section of the template 
+			define AWS resources to be 
+				created or 
+				managed 
+					as part of the stack.
+        Resources are defined with logical IDs
+			e.g., 
+				AWS::EC2::Instance, 
+				AWS::S3::Bucket)
+				properties that configure the resources.
+
+    Outputs (optional):
+        Allows you to define values to be exported from the stack. 
+		These outputs can be used as references in other stacks or for external purposes.
+
+
+    Rules (optional):
+        Defines rules for AWS CloudFormation StackSets. It specifies the stack set regions and accounts and any deployment options.
+
+
+Lab: 
+	D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates\03-Mappings\conditions
+
+----------------------------------------------------------------------------------------------------------------------
+Parameters:
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	Introduction to Cloud Formation parameters
+----------------------------------------------------------------------------------------------------------------------
+
+CloudFormation parameters 	
+	allow to customize the behavior and configurations of your CloudFormation templates 
+		during stack creation or update. 
+	Parameters act as variables 
+	can be provided at runtime
+	allow you to make your templates more flexible and reusable. 
+	Helps reuse 
+	Reduce code duplication and hardcoding
+	Prevent errors
+	
+	
+	Here are some key points about CloudFormation parameters:
+
+		Definition: 
+			Parameters are 
+				defined in the "Parameters" section 
+					in CloudFormation template. 
+			Each parameter has 
+				name, 
+				type, and 
+				optional properties 
+				e.g. 
+					default values, 
+					allowed values, and 
+					descriptions.
+
+		User Input: 
+			Designed to be provided by the user 
+				when launching a CloudFormation stack. 
+			can specify parameter values 
+				either through the 				
+					AWS Management Console, 
+					AWS CLI, AWS SDKs, or 
+					CloudFormation APIs.
+
+		Types: 
+			Supported parameter types include 
+				string, 
+				number, 
+				list, 
+				comma-delimited list, 
+				AWS-specific types (
+					e.g. EC2 key pair and ARN), and etc. 
+					
+					The parameter type determines the data format and validation rules for the input value.
+
+		Default Values: 
+			Parameters can have default values defined, which are used when a user does not provide a value during stack creation. Default values provide a convenient way to set reasonable defaults for your templates.
+
+		Allowed Values: 
+			Parameters can have a list of allowed values defined, which restricts the valid input options. This ensures that only specific values are accepted for a parameter, providing control and validation for user input.
+
+		Parameter References: 
+			Within the template, you can reference parameter values using the "Ref" function. This allows you to use parameter values in resource definitions, property values, conditions, mappings, and other sections of the template.
+
+		Parameterization: 
+			Parameters enable template parameterization, allowing you to create reusable templates that can be customized for different environments or deployment scenarios. By using parameters, you can create generic templates and provide specific parameter values for each stack instantiation.
+
+		Stack Updates: 
+			Parameters can be updated during a stack update. This allows you to modify parameter values without having to recreate the entire stack. The changes to parameters can trigger updates to associated resources, ensuring that the stack remains consistent with the modified parameters.
+
+CloudFormation parameters provide a powerful way to customize your templates and make them more flexible. They allow you to create dynamic, reusable, and user-friendly templates that can be tailored to different environments and requirements. By leveraging parameters, you can create stacks that are easily configurable and adaptable to various use cases.
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+	Defining parameters in templates
+----------------------------------------------------------------------------------------------------------------------
+
+To define parameters in a CloudFormation template, you use the "Parameters" section. Here's an example of how to define parameters in both JSON and YAML formats:
+
+JSON Format:
+
+json
+
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "MyParameter1": {
+      "Type": "String",
+      "Description": "This is an example parameter.",
+      "Default": "default-value"
+    },
+    "MyParameter2": {
+      "Type": "Number",
+      "Description": "This is another example parameter.",
+      "MinValue": 0,
+      "MaxValue": 100,
+      "AllowedValues": [10, 20, 30, 40, 50]
+    }
+  },
+  "Resources": {
+    // Define your resources here
+  }
+}
+
+YAML Format:
+
+yaml
+
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  MyParameter1:
+    Type: String
+    Description: This is an example parameter.
+    Default: default-value
+  MyParameter2:
+    Type: Number
+    Description: This is another example parameter.
+    MinValue: 0
+    MaxValue: 100
+    AllowedValues: [10, 20, 30, 40, 50]
+Resources:
+  # Define your resources here
+
+In the above example, we have defined two parameters: MyParameter1 and MyParameter2.
+
+    MyParameter1 is of type String. It has a description and a default value specified. When creating a stack, if a value is not provided for MyParameter1, it will default to "default-value".
+
+    MyParameter2 is of type Number. It has a description, and we have specified additional properties like MinValue, MaxValue, and AllowedValues. These properties define the range and allowed values for the parameter. During stack creation, users will be restricted to providing a value within the specified range or from the allowed values list.
+
+You can add more parameters to the "Parameters" section as needed, specifying their types, descriptions, default values, and any additional properties. These parameters can then be referenced within the template using the Ref function, allowing you to use the parameter values in resource definitions, property values, conditions, and other sections of the template.
+
+
+
+Parameters can be controlled using 
+	Type 
+		String 
+		Number 
+		CommaDelimitedList
+		List<Number>
+		AWS-Specific Parameter
+			e.g. AWS::EC2::SecurityGroup
+		List<AWS-Specific Parameter>
+		SSM Parameter 
+			get parameter values from SSM Parameter store 
+	Description
+	ConstraintDescription (String)
+	Min/MaxLength
+	Min/MaxValue
+	Default
+	AllowedValues (array)
+	AllowedPattern (regex)
+	NoEcho (Boolean)
+	
+	
+Lab: 
+	D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates\02-parameters
+	
+	
+
+----------------------------------------------------------------------------------------------------------------------
+	Setting default values and constraints
+----------------------------------------------------------------------------------------------------------------------
+
+To set default values and constraints for parameters in a CloudFormation template, you can use properties like "Default", "AllowedValues", "MinValue", and "MaxValue". Here's an example that demonstrates how to set default values and constraints for parameters in both JSON and YAML formats:
+
+JSON Format:
+
+json
+
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "MyParameter1": {
+      "Type": "String",
+      "Description": "This parameter has a default value and allowed values.",
+      "Default": "default-value",
+      "AllowedValues": ["value1", "value2", "value3"]
+    },
+    "MyParameter2": {
+      "Type": "Number",
+      "Description": "This parameter has minimum and maximum value constraints.",
+      "MinValue": 0,
+      "MaxValue": 100,
+      "Default": 50
+    }
+  },
+  "Resources": {
+    // Define your resources here
+  }
+}
+
+YAML Format:
+
+yaml
+
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  MyParameter1:
+    Type: String
+    Description: This parameter has a default value and allowed values.
+    Default: default-value
+    AllowedValues: [value1, value2, value3]
+  MyParameter2:
+    Type: Number
+    Description: This parameter has minimum and maximum value constraints.
+    MinValue: 0
+    MaxValue: 100
+    Default: 50
+Resources:
+  # Define your resources here
+
+In the above example:
+
+    MyParameter1 is a string parameter with a default value of "default-value". It also has a set of allowed values defined as an array (["value1", "value2", "value3"]). When creating a stack, users can select a value for MyParameter1 from the allowed values or provide the default value if no input is provided.
+
+    MyParameter2 is a number parameter with a default value of 50. It has minimum and maximum value constraints set using the MinValue and MaxValue properties. During stack creation, users will be restricted to providing a value between 0 and 100 for MyParameter2, with 50 as the default value if not specified.
+
+By setting default values and constraints, you can define preconfigured values and enforce specific ranges or allowed options for your CloudFormation parameters. These properties help ensure that your stacks are created with appropriate values and provide flexibility for customization within defined boundaries.
+
+
+
+D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates\02-parameters\constraints-default-parameter.yml
+
+----------------------------------------------------------------------------------------------------------------------
+	Dynamic parameter values using intrinsic functions
+----------------------------------------------------------------------------------------------------------------------
+
+es, you can use intrinsic functions in CloudFormation templates to dynamically set parameter values based on other conditions or resources within the stack. Intrinsic functions allow you to perform transformations and calculations at runtime. Here's an example of using intrinsic functions to set dynamic parameter values:
+
+JSON Format:
+
+json
+
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "InstanceType": {
+      "Type": "String",
+      "Description": "Instance type",
+      "Default": "t2.micro",
+      "AllowedValues": ["t2.micro", "t2.small", "t2.medium"]
+    },
+    "EnableHighPerformance": {
+      "Type": "String",
+      "Description": "Enable high performance",
+      "Default": "false",
+      "AllowedValues": ["true", "false"]
+    },
+    "DesiredCount": {
+      "Type": "Number",
+      "Description": "Desired count",
+      "Default": { "Fn::If": ["EnableHighPerformance", "3", "1"] },
+      "MinValue": { "Fn::If": ["EnableHighPerformance", 2, 1] },
+      "MaxValue": { "Fn::If": ["EnableHighPerformance", 5, 1] }
+    }
+  },
+  "Resources": {
+    // Define your resources here
+  }
+}
+
+YAML Format:
+
+yaml
+
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  InstanceType:
+    Type: String
+    Description: Instance type
+    Default: t2.micro
+    AllowedValues: [t2.micro, t2.small, t2.medium]
+  EnableHighPerformance:
+    Type: String
+    Description: Enable high performance
+    Default: false
+    AllowedValues: [true, false]
+  DesiredCount:
+    Type: Number
+    Description: Desired count
+    Default: !If [EnableHighPerformance, 3, 1]
+    MinValue: !If [EnableHighPerformance, 2, 1]
+    MaxValue: !If [EnableHighPerformance, 5, 1]
+Resources:
+  # Define your resources here
+
+In the above example:
+
+    The DesiredCount parameter is set to a dynamic value using the Fn::If intrinsic function. If the EnableHighPerformance parameter is set to "true", the DesiredCount will be set to 3 as the default value, with a minimum value of 2 and a maximum value of 5. If EnableHighPerformance is set to "false", the DesiredCount will default to 1, and the minimum and maximum values will be 1.
+
+    The Fn::If function evaluates a condition and returns a value based on the condition's result. It takes three parameters: the condition, the value to return if the condition is true, and the value to return if the condition is false.
+
+Using intrinsic functions like Fn::If, you can dynamically set parameter values based on conditions, resource properties, or other factors within your CloudFormation stack. This flexibility allows for more dynamic and adaptable stack deployments.
+
+
+----------------------------------------------------------------------------------------------------------------------
+	Importing and exporting parameters
+
+----------------------------------------------------------------------------------------------------------------------
+
+CloudFormation does not provide direct built-in support for importing or exporting parameters between stacks. However, you can achieve similar functionality by leveraging AWS Systems Manager Parameter Store or AWS CloudFormation Stack Outputs. Here's an overview of how you can import and export parameters in CloudFormation:
+
+    AWS Systems Manager Parameter Store:
+        With Systems Manager Parameter Store, you can store and retrieve parameter values securely.
+        In the source stack, you can create a Systems Manager parameter and set its value to the desired parameter value.
+        In the target stack, you can reference the Systems Manager parameter using the AWS::SSM::Parameter::Value function to import the parameter value.
+        Note that you need to grant appropriate permissions to the stack's execution role to access the Systems Manager parameter.
+
+    AWS CloudFormation Stack Outputs:
+        In the source stack, you can define outputs for the parameters you want to export using the Outputs section in the CloudFormation template.
+        In the target stack, you can import the parameter value using the Fn::ImportValue function and the exported output name.
+        The exported output value can be referenced in the target stack's template or used as a parameter value for other resources.
+        Ensure that the source stack is created before the target stack, as the target stack needs the exported output value to be available.
+
+By using Systems Manager Parameter Store or CloudFormation Stack Outputs, you can effectively share parameter values between stacks. This enables better decoupling and modularization of your infrastructure, allowing you to manage and reuse parameter values across multiple CloudFormation stacks.
+
+Remember to handle dependencies correctly and ensure the required stacks are created or updated in the correct order to avoid any issues with importing the parameter values.
+
+----------------------------------------------------------------------------------------------------------------------
+Resources:
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	Understanding Cloud Formation resources
+----------------------------------------------------------------------------------------------------------------------
+In AWS CloudFormation, resources represent the AWS infrastructure components that you want to create or manage as part of your stack. Resources are defined within the "Resources" section of a CloudFormation template and are created, updated, or deleted as a single unit.
+
+Here are some key points to understand about CloudFormation resources:
+
+    Resource Types: 
+		AWS provides a wide range of resource types that you can define in your CloudFormation templates. Examples include EC2 instances, S3 buckets, RDS databases, IAM roles, Lambda functions, and more. Each resource type has specific properties and configurations associated with it.
+
+    Resource Properties: 
+		Resources have properties that define their configurations, such as the instance type for an EC2 instance or the bucket name for an S3 bucket. Properties are defined within the resource's block and can be static values or references to other resources or parameters.
+
+    Resource Relationships: 
+		CloudFormation allows you to define relationships and dependencies between resources. For example, you can specify that an EC2 instance depends on an IAM role, or an S3 bucket triggers a Lambda function upon object creation. These relationships ensure that resources are created and managed in the correct order.
+
+    Resource Metadata: 
+		Resources can have metadata associated with them. Metadata provides additional information or instructions for the resource but doesn't affect the resource's behavior. Metadata is defined within the resource's block and can be used for documentation purposes or for custom processing outside of CloudFormation.
+
+    Resource Creation and Management: 
+		CloudFormation manages the lifecycle of resources defined in the template. When you create or update a stack, CloudFormation provisions the specified resources according to their definitions and properties. CloudFormation also handles resource updates, such as modifying properties or configurations. When a stack is deleted, CloudFormation removes the associated resources.
+
+    Resource Attributes: Resources often have attributes that provide information or outputs. For example, an EC2 instance resource may have an attribute that provides the instance ID or the IP address. These attributes can be referenced and used in other parts of the template or accessed outside of CloudFormation for further processing.
+
+CloudFormation simplifies the management of infrastructure resources by allowing you to define them declaratively in templates. It automates the provisioning, configuration, and updating of resources, ensuring consistency and reproducibility. By defining resources in CloudFormation templates, you can manage your entire infrastructure as code and easily replicate or modify it as needed.
+
+
+----------------------------------------------------------------------------------------------------------------------
+	Declaring resources in templates
+----------------------------------------------------------------------------------------------------------------------
+
+In a CloudFormation template, resources are declared within the "Resources" section using a specific syntax. Here's an example of how to declare resources in both JSON and YAML formats:
+
+JSON Format:
+
+json
+
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "MyEC2Instance": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "ImageId": "ami-12345678",
+        "InstanceType": "t2.micro",
+        "KeyName": "my-key-pair"
+        // Other properties specific to the resource type
+      }
+    },
+    "MyS3Bucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "my-bucket"
+        // Other properties specific to the resource type
+      }
+    },
+    // Declare more resources here
+  }
+}
+
+YAML Format:
+
+yaml
+
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: ami-12345678
+      InstanceType: t2.micro
+      KeyName: my-key-pair
+      # Other properties specific to the resource type
+  MyS3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: my-bucket
+      # Other properties specific to the resource type
+  # Declare more resources here
+
+In the above examples, we have declared two resources: MyEC2Instance and MyS3Bucket.
+
+    MyEC2Instance is an EC2 instance resource (AWS::EC2::Instance). It has properties like ImageId, InstanceType, KeyName, and potentially other properties specific to the EC2 instance resource type.
+
+    MyS3Bucket is an S3 bucket resource (AWS::S3::Bucket). It has properties like BucketName and potentially other properties specific to the S3 bucket resource type.
+
+You can declare additional resources within the "Resources" section, following the same structure. Each resource is identified by a unique logical name (MyEC2Instance, MyS3Bucket, etc.) and has a specified type (AWS::EC2::Instance, AWS::S3::Bucket, etc.) along with their corresponding properties.
+
+By declaring resources in a CloudFormation template, you define the desired AWS infrastructure components that will be provisioned and managed as part of your stack.
+
+----------------------------------------------------------------------------------------------------------------------
+	Configuring properties for different resource types
+----------------------------------------------------------------------------------------------------------------------
+
+
+Configuring properties for different resource types in CloudFormation involves specifying the appropriate properties based on the resource type you are defining. Each AWS resource type has its own set of properties that can be customized to configure the behavior and characteristics of the resource. Here are a few examples of configuring properties for different resource types:
+
+    EC2 Instance (AWS::EC2::Instance):
+        Properties: ImageId, InstanceType, KeyName, SecurityGroupIds, SubnetId, etc.
+        Example:
+
+yaml
+
+Resources:
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: ami-12345678
+      InstanceType: t2.micro
+      KeyName: my-key-pair
+      SecurityGroupIds:
+        - sg-12345678
+      SubnetId: subnet-12345678
+
+    S3 Bucket (AWS::S3::Bucket):
+        Properties: BucketName, AccessControl, BucketEncryption, LoggingConfiguration, Tags, etc.
+        Example:
+
+yaml
+
+Resources:
+  MyS3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: my-bucket
+      AccessControl: Private
+      LoggingConfiguration:
+        DestinationBucketName: logs-bucket
+        LogFilePrefix: s3-logs/
+      Tags:
+        - Key: Environment
+          Value: Production
+
+    DynamoDB Table (AWS::DynamoDB::Table):
+        Properties: TableName, AttributeDefinitions, KeySchema, ProvisionedThroughput, GlobalSecondaryIndexes, etc.
+        Example:
+
+yaml
+
+Resources:
+  MyDynamoDBTable:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      TableName: my-table
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: N
+        - AttributeName: name
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+These examples demonstrate how to configure properties for different resource types in a CloudFormation template. You can refer to the AWS documentation for each resource type to explore the available properties and their descriptions. By customizing these properties, you can tailor the behavior and configurations of your AWS resources to meet your specific requirements.
+
+----------------------------------------------------------------------------------------------------------------------
+	Managing dependencies and relationships
+----------------------------------------------------------------------------------------------------------------------
+
+In CloudFormation, managing dependencies and relationships between resources is crucial to ensure the correct order of resource creation, update, and deletion. CloudFormation provides several mechanisms to handle dependencies and establish relationships between resources within a stack. Here are some approaches to manage dependencies and relationships:
+
+    Implicit Dependencies: 
+		CloudFormation automatically determines dependencies based on the resource references within the template. For example, if you reference a security group ID in an EC2 instance resource, CloudFormation understands that the instance depends on the security group. It handles the creation or update of resources in the correct order based on these implicit dependencies.
+
+    Explicit Dependencies: 
+		You can define explicit dependencies using the DependsOn attribute. By setting the DependsOn attribute of a resource, you explicitly declare its dependency on other resources within the stack. This ensures that the dependent resource is created or updated only after the resources it depends on have been successfully created or updated.
+
+Lab: 
+	D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates\02-parameters\dependencies
+
+    Using the Fn::DependsOn Intrinsic Function: 
+		The Fn::DependsOn intrinsic function allows you to specify dependencies between resources dynamically. It takes a list of resource logical names as input and establishes the dependency relationships. This function can be particularly useful when you have complex or dynamic dependency requirements.
+
+    Wait Conditions and Wait Condition Handlers: 
+		Wait conditions allow you to create dependencies between resources across different stacks or stack sets. A wait condition can be used to pause the stack creation process until a specified condition is met. You can also use wait condition handlers to signal the completion or failure of a wait condition, allowing dependent resources to proceed accordingly.
+
+    Resource Creation Policies: 
+		CloudFormation provides resource creation policies that allow you to specify additional conditions or signals for resource creation. For example, you can define a creation policy that waits for a specific signal from an AWS Lambda function before proceeding with the creation of subsequent resources.
+
+By effectively managing dependencies and relationships, you ensure that resources are created, updated, and deleted in the correct order and that the overall stack behaves as expected. This helps maintain the integrity and consistency of your infrastructure deployments. Consider the interdependencies between resources carefully when designing your CloudFormation templates to avoid issues related to resource creation or update order.
+User
+
+
+----------------------------------------------------------------------------------------------------------------------
+	Using metadata and tags
+----------------------------------------------------------------------------------------------------------------------
+In CloudFormation, you can use metadata and tags to provide additional information, annotations, or instructions about your resources. Here's how you can leverage metadata and tags in your CloudFormation templates:
+
+    Metadata:
+        Metadata allows you to include arbitrary data and annotations about your resources.
+        You can add metadata to a resource by defining a "Metadata" property within the resource's block in the template.
+        The metadata can include any key-value pairs that provide additional information or instructions.
+        Metadata does not affect the resource's behavior but can be used for documentation or for custom processing outside of CloudFormation.
+        Here's an example of adding metadata to an EC2 instance resource:
+
+    yaml
+
+Resources:
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: ami-12345678
+      InstanceType: t2.micro
+      Metadata:
+        MyCustomKey: MyCustomValue
+        Description: This instance is for testing purposes.
+
+Tags:
+
+    Tags are key-value pairs that you can assign to your resources for categorization and organization.
+    Tags provide additional metadata that can be used for resource management, cost allocation, and access control.
+    You can add tags to a resource by defining a "Tags" property within the resource's block in the template.
+    Tags can be specified as an array of key-value pairs.
+    Here's an example of adding tags to an S3 bucket resource:
+
+yaml
+
+    Resources:
+      MyS3Bucket:
+        Type: 'AWS::S3::Bucket'
+        Properties:
+          BucketName: my-bucket
+          Tags:
+            - Key: Environment
+              Value: Production
+            - Key: Department
+              Value: Finance
+
+    Accessing Metadata and Tags:
+        You can access metadata and tags using intrinsic functions or by using the AWS Management Console, AWS CLI, SDKs, or APIs.
+        Within the CloudFormation template, you can use the Fn::FindInMap, Fn::ImportValue, or other intrinsic functions to reference metadata or tags as input for other resources or conditions.
+
+Both metadata and tags provide a way to annotate and categorize your resources, making it easier to manage, track, and organize your infrastructure. They help provide additional context, information, or instructions for resources within your CloudFormation stacks.
+
+----------------------------------------------------------------------------------------------------------------------
+Mappings:
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	Working with Cloud Formation mappings
+----------------------------------------------------------------------------------------------------------------------
+In CloudFormation, mappings are a way to create lookup tables or mappings of key-value pairs within your templates. Mappings allow you to associate a key with a corresponding set of values, which can be used to customize resource configurations based on different conditions. Here's how you can work with mappings in CloudFormation:
+
+    Defining Mappings:
+        Mappings are defined within the "Mappings" section of a CloudFormation template.
+        Each mapping consists of a logical name and a collection of key-value pairs.
+        The logical name is used to reference the mapping in other parts of the template.
+        The key-value pairs represent the mapping entries, with each entry specifying a key and its corresponding value.
+        Here's an example of defining mappings in a CloudFormation template:
+
+    yaml
+
+Mappings:
+  RegionMap:
+    us-east-1:
+      AMI: ami-12345678
+      InstanceType: t2.micro
+    us-west-2:
+      AMI: ami-87654321
+      InstanceType: t3.small
+
+Referencing Mappings:
+
+    You can reference mappings within your template using the Fn::FindInMap intrinsic function.
+    The Fn::FindInMap function takes three arguments: the mapping logical name, the top-level key, and the second-level key.
+    The function retrieves the corresponding value based on the provided keys.
+    Here's an example of referencing a mapping in an EC2 instance resource:
+
+yaml
+
+    Resources:
+      MyEC2Instance:
+        Type: 'AWS::EC2::Instance'
+        Properties:
+          ImageId: !FindInMap [RegionMap, !Ref 'AWS::Region', AMI]
+          InstanceType: !FindInMap [RegionMap, !Ref 'AWS::Region', InstanceType]
+
+    In this example, the ImageId and InstanceType properties of the EC2 instance are dynamically assigned based on the region (AWS::Region). The Fn::FindInMap function retrieves the corresponding values from the "RegionMap" mapping.
+
+Mappings provide a way to centralize and manage configurable values within your CloudFormation templates. They enable you to define different values based on conditions or regions and make your templates more flexible and reusable. By using mappings, you can customize resource configurations easily without modifying the entire template structure.
+
+Lab:
+
+D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates\03-Mappings
+----------------------------------------------------------------------------------------------------------------------
+	Defining and using mappings in templates
+----------------------------------------------------------------------------------------------------------------------
+
+To define and use mappings in a CloudFormation template, you need to follow a specific syntax. Here's an example of how to define and use mappings in both JSON and YAML formats:
+
+JSON Format:
+
+json
+
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Mappings": {
+    "RegionMap": {
+      "us-east-1": {
+        "AMI": "ami-12345678",
+        "InstanceType": "t2.micro"
+      },
+      "us-west-2": {
+        "AMI": "ami-87654321",
+        "InstanceType": "t3.small"
+      }
+    }
+  },
+  "Resources": {
+    "MyEC2Instance": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "ImageId": { "Fn::FindInMap": ["RegionMap", { "Ref": "AWS::Region" }, "AMI"] },
+        "InstanceType": { "Fn::FindInMap": ["RegionMap", { "Ref": "AWS::Region" }, "InstanceType"] }
+      }
+    }
+  }
+}
+
+YAML Format:
+
+yaml
+
+AWSTemplateFormatVersion: '2010-09-09'
+Mappings:
+  RegionMap:
+    us-east-1:
+      AMI: ami-12345678
+      InstanceType: t2.micro
+    us-west-2:
+      AMI: ami-87654321
+      InstanceType: t3.small
+Resources:
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: !FindInMap [RegionMap, !Ref 'AWS::Region', AMI]
+      InstanceType: !FindInMap [RegionMap, !Ref 'AWS::Region', InstanceType]
+
+In the above examples:
+
+    Mappings:
+        The Mappings section is defined at the top-level of the CloudFormation template.
+        Inside the Mappings section, you define your mapping logical name (in this case, "RegionMap") and its corresponding key-value pairs.
+        Each key-value pair represents an entry within the mapping, where the key represents the top-level key and the value is an object containing the second-level keys and their values.
+
+    Referencing Mappings:
+        To reference a mapping, you use the Fn::FindInMap intrinsic function.
+        The Fn::FindInMap function takes three arguments: the mapping logical name, the top-level key, and the second-level key.
+        The function retrieves the corresponding value based on the provided keys.
+        In the example, the ImageId and InstanceType properties of the MyEC2Instance resource are set using the Fn::FindInMap function, referencing the "RegionMap" mapping and the current AWS region (AWS::Region).
+
+By defining and using mappings in your CloudFormation templates, you can create flexible and reusable templates that can adapt to different conditions or regions. Mappings allow you to centralize configurable values and customize resource properties based on specific mappings, making your templates more dynamic and adaptable.
+
+
+Lab: 
+	same as above
+	D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates\03-Mappings
+
+----------------------------------------------------------------------------------------------------------------------
+	Mapping keys and values
+----------------------------------------------------------------------------------------------------------------------
+
+In CloudFormation, mapping keys and values are used to define and retrieve specific values from mappings within your templates. Here's how mapping keys and values work in CloudFormation:
+
+    Mapping Keys:
+        Mapping keys represent the top-level keys within a mapping definition.
+        Each mapping key is used to group a set of related values.
+        Mapping keys can be any string value that uniquely identifies a specific set of values.
+        The mapping keys are used to access the corresponding values within the template.
+		
+		In the below example, the mapping key is RegionMap
+		It contains two sets of values 
+			us-east-1 and 
+			us-west-2
+
+    Mapping Values:
+        Mapping values represent the second-level keys and their associated values within a mapping definition.
+        Mapping values are defined as key-value pairs under each mapping key.
+        The values can be of any data type supported by CloudFormation, such as strings, numbers, booleans, or even complex data structures.
+        You can use the values within your template by referencing the mapping using the Fn::FindInMap intrinsic function.
+
+Here's an example to illustrate mapping keys and values in a CloudFormation template:
+
+yaml
+
+Mappings:
+  RegionMap:
+    us-east-1:
+      InstanceType: t2.micro
+      SubnetId: subnet-12345678
+    us-west-2:
+      InstanceType: t3.small
+      SubnetId: subnet-98765432
+
+In the above example, the mapping key is RegionMap, and it contains two sets of values identified by the region: us-east-1 and us-west-2. Each region has its own set of second-level keys (InstanceType and SubnetId) with their respective values.
+
+To retrieve a specific value from the mapping, you can use the Fn::FindInMap function. For example:
+
+yaml
+
+Resources:
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: !FindInMap [RegionMap, !Ref 'AWS::Region', InstanceType]
+      SubnetId: !FindInMap [RegionMap, !Ref 'AWS::Region', SubnetId]
+
+In the above example, the InstanceType and SubnetId properties of the MyEC2Instance resource are set using the Fn::FindInMap function. The function references the RegionMap mapping and retrieves the values based on the current AWS region (AWS::Region).
+
+By leveraging mapping keys and values, you can create flexible templates that adapt to different regions, conditions, or requirements. Mappings allow you to centralize and manage configurable values, making your CloudFormation templates more reusable and versatile.
+
+----------------------------------------------------------------------------------------------------------------------
+	Conditional resource configuration using mappings
+----------------------------------------------------------------------------------------------------------------------
+In CloudFormation, you can use mappings to define conditional resource configurations based on different conditions or inputs. By leveraging mappings and the Fn::FindInMap function, you can dynamically set resource properties and values within your templates. Here's an example of how you can achieve conditional resource configuration using mappings:
+
+yaml
+
+Mappings:
+  EnvironmentConfig:
+    Production:
+      InstanceType: t2.large
+      SecurityGroupId: sg-prod
+    Development:
+      InstanceType: t2.micro
+      SecurityGroupId: sg-dev
+
+Resources:
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: !FindInMap [EnvironmentConfig, !Ref 'Environment', InstanceType]
+      SecurityGroupId: !FindInMap [EnvironmentConfig, !Ref 'Environment', SecurityGroupId]
+      # Other properties for the EC2 instance
+
+In the above example, we define a mapping called "EnvironmentConfig" that has two sets of values based on the environment: "Production" and "Development". Each environment has its own instance type and security group ID.
+
+The resource, MyEC2Instance, uses the Fn::FindInMap function to dynamically set the InstanceType and SecurityGroupId properties based on the selected environment. The !Ref 'Environment' expression references a parameter named "Environment" that allows you to select the desired environment (e.g., "Production" or "Development") during stack creation.
+
+By referencing the appropriate mapping key and using the Fn::FindInMap function, you can conditionally set resource properties based on the chosen environment or any other condition specified in the mapping. This enables you to have different configurations for different environments or scenarios within a single CloudFormation template.
+
+Remember to ensure that the mapping keys align with the values of the condition or input you are using to determine the configuration. This allows you to easily switch between different configurations based on the provided input, making your templates more flexible and adaptable.
+
+
+Lab: 
+	D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates\03-Mappings\conditions
+
+----------------------------------------------------------------------------------------------------------------------
+Outputs:
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	Using Cloud Formation outputs
+----------------------------------------------------------------------------------------------------------------------
+CloudFormation outputs allow you to retrieve and display important information about your stack after it has been created or updated. Outputs can be useful for displaying resource identifiers, endpoint URLs, generated values, or any other information you want to expose to users or other parts of your infrastructure. Here's how you can define and use CloudFormation outputs:
+
+    Defining Outputs:
+        Outputs are defined within the "Outputs" section of your CloudFormation template.
+        Each output has a logical name and a value associated with it.
+        The value can be a reference to a resource attribute, a parameter value, or a computed value using intrinsic functions.
+        Here's an example of defining outputs in a CloudFormation template:
+
+    yaml
+
+Outputs:
+  BucketName:
+    Value: !Ref MyS3Bucket
+    Description: The name of the S3 bucket
+  WebsiteURL:
+    Value: !Sub "http://${MyLoadBalancer.DNSName}/"
+    Description: The URL of the website
+
+Referencing Outputs:
+
+    You can reference the output values in other parts of your CloudFormation template or use them outside of CloudFormation.
+    To reference an output value within the template, you can use the Fn::ImportValue or !Ref functions, depending on the output type.
+    Outside of CloudFormation, you can retrieve the output values using the AWS Management Console, AWS CLI, SDKs, or APIs.
+    Here's an example of referencing outputs within the template:
+
+yaml
+
+    Resources:
+      MyEC2Instance:
+        Type: 'AWS::EC2::Instance'
+        Properties:
+          SecurityGroupIds:
+            - !ImportValue BucketName
+
+    In this example, the MyEC2Instance resource uses the output value of BucketName as one of its security group IDs.
+
+    Retrieving Outputs:
+        After the stack is created or updated, you can retrieve the output values using various methods:
+            AWS Management Console: Go to the CloudFormation stack details page and view the Outputs tab.
+            AWS CLI: Use the aws cloudformation describe-stacks command to retrieve the outputs.
+            AWS SDKs or APIs: Use the appropriate method or API call to retrieve the outputs programmatically.
+
+By defining and using CloudFormation outputs, you can provide important information and values from your stack to other resources, users, or systems. Outputs enhance the usability and integration of your CloudFormation templates, making it easier to access and utilize stack-related information.
+----------------------------------------------------------------------------------------------------------------------
+	Defining outputs in templates
+----------------------------------------------------------------------------------------------------------------------
+
+To define outputs in a CloudFormation template, you need to specify the desired outputs within the "Outputs" section of the template. Here's an example of how to define outputs in both JSON and YAML formats:
+
+JSON Format:
+
+json
+
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    // Define your resources here
+  },
+  "Outputs": {
+    "BucketName": {
+      "Value": {
+        "Ref": "MyS3Bucket"
+      },
+      "Description": "The name of the S3 bucket"
+    },
+    "WebsiteURL": {
+      "Value": {
+        "Fn::Sub": "http://${MyLoadBalancer.DNSName}/"
+      },
+      "Description": "The URL of the website"
+    }
+  }
+}
+
+YAML Format:
+
+yaml
+
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  # Define your resources here
+Outputs:
+  BucketName:
+    Value: !Ref MyS3Bucket
+    Description: The name of the S3 bucket
+  WebsiteURL:
+    Value: !Sub "http://${MyLoadBalancer.DNSName}/"
+    Description: The URL of the website
+
+In the above examples:
+
+    The "Outputs" section is defined at the top-level of the CloudFormation template.
+    Each output is identified by a unique logical name, such as "BucketName" and "WebsiteURL".
+    For each output, you specify the "Value" and "Description" properties.
+    The "Value" property determines the value of the output. It can be a reference to a resource attribute using !Ref, or a computed value using intrinsic functions like Fn::Sub.
+    The "Description" property provides a description or explanation of the output.
+
+You can define multiple outputs within the "Outputs" section, depending on the information you want to expose from your stack. These outputs can be used by other resources within the template or accessed outside of CloudFormation for further processing or integration.
+
+Remember to provide meaningful descriptions for your outputs to provide clarity and understanding to users or consumers of your CloudFormation template.
+
+----------------------------------------------------------------------------------------------------------------------
+	Exporting output values
+----------------------------------------------------------------------------------------------------------------------
+
+To export output values from a CloudFormation stack, you can use the Export property in the output definition. This allows you to make the output value available for other stacks or resources to reference. Here's an example of how to export output values in a CloudFormation template:
+
+yaml
+
+Outputs:
+  BucketName:
+    Value: !Ref MyS3Bucket
+    Description: The name of the S3 bucket
+    Export:
+      Name: !Sub "${AWS::StackName}-BucketName"
+  WebsiteURL:
+    Value: !Sub "http://${MyLoadBalancer.DNSName}/"
+    Description: The URL of the website
+    Export:
+      Name: !Sub "${AWS::StackName}-WebsiteURL"
+
+In the example above, the Export property is used to specify the export name for each output. The Name property within Export defines the unique identifier for the export. By incorporating the ${AWS::StackName} intrinsic function, we create an export name that includes the stack name to ensure uniqueness.
+
+Once the stack is created or updated, you can use the exported output values in other stacks or resources by referencing the export name using the Fn::ImportValue intrinsic function. For example:
+
+yaml
+
+Resources:
+  MyLambdaFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      Environment:
+        Variables:
+          BUCKET_NAME: !ImportValue MyStack-BucketName
+          WEBSITE_URL: !ImportValue MyStack-WebsiteURL
+
+In the above example, the MyLambdaFunction resource imports the exported output values, BucketName and WebsiteURL, from the stack named MyStack. These values can then be used within the Lambda function's environment variables or other resource configurations.
+
+By exporting output values, you can share information between stacks and enable better integration and communication among resources in different CloudFormation stacks. Remember to ensure the export names are unique within the AWS account to avoid conflicts or naming collisions.
+
+
+Lab: 
+	D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates\05-Export
+----------------------------------------------------------------------------------------------------------------------
+	Referencing outputs in other stacks
+----------------------------------------------------------------------------------------------------------------------
+
+When referencing outputs from other CloudFormation stacks, you can use the Fn::ImportValue intrinsic function along with the export name to retrieve the output value. This allows you to establish connections and dependencies between different stacks. Here's an example of how to reference outputs from other stacks:
+
+yaml
+
+Resources:
+  MyLambdaFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      Environment:
+        Variables:
+          BUCKET_NAME: !ImportValue OtherStack-BucketName
+          WEBSITE_URL: !ImportValue OtherStack-WebsiteURL
+
+In the example above, the MyLambdaFunction resource references the output values BucketName and WebsiteURL from a different stack named OtherStack. The Fn::ImportValue function is used to import the exported output values by specifying the export name, which includes the stack name (OtherStack) and the output logical name (BucketName or WebsiteURL).
+
+Make sure that the stack containing the output values (OtherStack in this case) is created and the outputs are successfully exported before referencing them in other stacks. Otherwise, the import will fail.
+
+Note that the stack containing the referenced outputs must be in the same AWS region as the stack that imports them.
+
+By referencing outputs from other stacks, you can establish cross-stack relationships and utilize information from one stack in another. This allows for better modularity, reusability, and coordination of resources across multiple CloudFormation stacks.
+
+----------------------------------------------------------------------------------------------------------------------
+Conditions:
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	Conditional resource creation and configuration
+----------------------------------------------------------------------------------------------------------------------
+
+In CloudFormation, you can conditionally create or configure resources based on specific conditions or inputs using intrinsic functions and conditionals. Here are a few ways to achieve conditional resource creation and configuration:
+
+    Conditions:
+        Conditions allow you to define logical conditions based on input parameters, resource properties, or other values.
+        Conditions are defined in the "Conditions" section of the template.
+        You can use conditions in resource definitions using the Condition property.
+        Here's an example of conditionally creating an S3 bucket based on a condition:
+
+    yaml
+
+Conditions:
+  CreateBucketCondition: !Equals [!Ref CreateBucket, "true"]
+
+Resources:
+  MyS3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Condition: CreateBucketCondition
+    Properties:
+      # S3 bucket properties
+
+In this example, the CreateBucketCondition condition is evaluated based on the value of the CreateBucket parameter. If the parameter value is "true", the S3 bucket resource will be created; otherwise, it will be skipped.
+
+Resource Properties with Conditionals:
+
+    You can use conditionals within resource properties to configure them based on specific conditions.
+    Intrinsic functions like Fn::If, Fn::Equals, and Fn::Condition can be used to conditionally assign values to properties.
+    Here's an example of conditionally configuring an EC2 instance's instance type:
+
+yaml
+
+Resources:
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType:
+        Fn::If:
+          - CreateLargeInstanceCondition
+          - t2.large
+          - t2.micro
+      # Other properties for the EC2 instance
+
+In this example, the InstanceType property is conditionally set to t2.large if the CreateLargeInstanceCondition is true; otherwise, it is set to t2.micro.
+
+AWS CloudFormation Function for Conditional Resource Creation:
+
+    You can use the AWS::CloudFormation::Init resource and the AWS::CloudFormation::Init function to conditionally create or configure resources based on a condition.
+    The AWS::CloudFormation::Init function allows you to define metadata and configuration tasks for resources.
+    By using conditionals in the metadata section, you can control whether a resource should be created or configured.
+    Here's an example of conditionally creating an EC2 instance using the AWS::CloudFormation::Init resource:
+
+yaml
+
+    Resources:
+      MyEC2Instance:
+        Type: 'AWS::EC2::Instance'
+        Metadata:
+          'AWS::CloudFormation::Init':
+            config:
+              commands:
+                createInstance:
+                  command: !If [CreateInstanceCondition, "echo 'Creating EC2 instance'", "echo 'Skipping EC2 instance creation'"]
+        # Other properties for the EC2 instance
+
+    In this example, the CreateInstanceCondition controls whether the createInstance command is executed as part of the instance configuration. The command echoes a message based on the condition result.
+
+By using conditions, conditionals, and intrinsic functions, you can control the creation and configuration of resources in your CloudFormation templates based on specific conditions or inputs. This flexibility allows you to tailor your infrastructure deployments to meet various requirements and scenarios.
+
+Lab: 
+	D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates\06-ConditionalCreate
+
+----------------------------------------------------------------------------------------------------------------------
+	Using conditions in templates
+----------------------------------------------------------------------------------------------------------------------
+
+Conditions in CloudFormation templates allow you to define logical expressions and evaluate them to determine whether certain resources or properties should be created or configured. Conditions can be based on input parameters, resource attributes, environment variables, or any other value accessible within the template. Here's how you can use conditions in CloudFormation templates:
+
+    Defining Conditions:
+        Conditions are defined within the "Conditions" section of the CloudFormation template.
+        Each condition is assigned a logical ID and defined using intrinsic functions and operators.
+        You can use various intrinsic functions like Fn::Equals, Fn::Not, Fn::And, Fn::Or, Fn::If, etc., to create complex conditions.
+        Here's an example of defining conditions in a CloudFormation template:
+
+    yaml
+
+Conditions:
+  CreateBucketCondition: !Equals [!Ref CreateBucket, "true"]
+  LargeInstanceCondition: !Equals [!Ref InstanceSize, "large"]
+  EnableLoggingCondition: !And [!Ref EnableLogging, !Not [!Equals [!Ref LogBucketName, ""]]]
+
+In this example, three conditions are defined:
+
+    CreateBucketCondition evaluates whether the CreateBucket parameter is set to "true".
+    LargeInstanceCondition evaluates whether the InstanceSize parameter is set to "large".
+    EnableLoggingCondition evaluates whether both the EnableLogging parameter is true and the LogBucketName parameter is not empty.
+
+Using Conditions in Resources:
+
+    You can apply conditions to resources using the Condition property within the resource definition.
+    The Condition property references the logical ID of the condition defined in the "Conditions" section.
+    Resources with conditions set to false will be skipped during stack creation or update.
+    Here's an example of applying conditions to an S3 bucket and an EC2 instance:
+
+yaml
+
+Resources:
+  MyS3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Condition: CreateBucketCondition
+    Properties:
+      # S3 bucket properties
+
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Condition: LargeInstanceCondition
+    Properties:
+      # EC2 instance properties
+
+In this example, the S3 bucket resource (MyS3Bucket) will only be created if the CreateBucketCondition is true. Similarly, the EC2 instance resource (MyEC2Instance) will only be created if the LargeInstanceCondition is true.
+
+Using Conditions with Intrinsic Functions:
+
+    Conditions can be used in combination with intrinsic functions to define more complex expressions.
+    Functions like Fn::If, Fn::And, Fn::Or, and others can incorporate conditions for conditional behavior.
+    Here's an example of using the Fn::If function with a condition:
+
+yaml
+
+    Resources:
+      MyEC2Instance:
+        Type: 'AWS::EC2::Instance'
+        Properties:
+          InstanceType: !If [LargeInstanceCondition, t2.large, t2.micro]
+          # Other properties for the EC2 instance
+
+    In this example, the InstanceType property of the EC2 instance will be set to t2.large if the LargeInstanceCondition is true; otherwise, it will be set to t2.micro.
+
+By using conditions in your CloudFormation templates, you can create dynamic and flexible infrastructure deployments. Conditions allow you to control the creation and configuration of resources based on specific conditions or inputs, making your templates more versatile and adaptable to different scenarios and requirements.
+
+No lab planned
+
+----------------------------------------------------------------------------------------------------------------------
+	Evaluating conditions based on parameters and mappings
+----------------------------------------------------------------------------------------------------------------------
+
+In CloudFormation, you can evaluate conditions based on parameters and mappings using intrinsic functions and operators. By combining these features, you can create powerful conditionals that allow you to dynamically control the behavior of your CloudFormation templates. Here's how you can evaluate conditions based on parameters and mappings:
+
+    Using Parameters in Conditions:
+        Parameters allow you to accept input values during stack creation or update.
+        You can reference parameters in conditions to make decisions based on user-provided input.
+        Here's an example of evaluating a condition based on a parameter:
+
+    yaml
+
+Parameters:
+  Environment:
+    Type: String
+    Default: Dev
+    AllowedValues: [Dev, Prod]
+
+Conditions:
+  CreateResourcesCondition: !Equals [!Ref Environment, "Prod"]
+
+Resources:
+  MyResource:
+    Type: AWS::SomeResourceType
+    Condition: CreateResourcesCondition
+    Properties:
+      # Resource properties
+
+In this example, the CreateResourcesCondition condition evaluates whether the value of the Environment parameter is "Prod". If it matches, the MyResource resource will be created; otherwise, it will be skipped.
+
+Using Mappings in Conditions:
+
+    Mappings allow you to define key-value pairs to customize resource configurations based on different conditions.
+    You can reference mappings in conditions to evaluate conditions based on specific mappings.
+    Here's an example of evaluating a condition based on a mapping:
+
+yaml
+
+    Mappings:
+      RegionToInstanceType:
+        us-east-1: t2.micro
+        us-west-2: t2.small
+
+    Conditions:
+      CreateLargeInstanceCondition: !Equals [!FindInMap [RegionToInstanceType, !Ref 'AWS::Region'], "t2.large"]
+
+    Resources:
+      MyInstance:
+        Type: AWS::EC2::Instance
+        Condition: CreateLargeInstanceCondition
+        Properties:
+          InstanceType: !FindInMap [RegionToInstanceType, !Ref 'AWS::Region']
+          # Other properties
+
+    In this example, the CreateLargeInstanceCondition condition evaluates whether the instance type specified for the current AWS region is "t2.large" based on the RegionToInstanceType mapping. If the condition is true, the MyInstance resource will be created with the specified instance type; otherwise, it will be skipped.
+
+By leveraging parameters and mappings in conditions, you can make your CloudFormation templates more flexible and adaptable. Conditions based on user-provided parameters and mappings allow you to customize resource creation and configuration based on specific inputs or conditions, ensuring that your infrastructure deployments are tailored to your requirements.
+
+Lab: 
+	D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates\06-ConditionalCreate\condition-parameter-mapping
+
+	
+
+
+----------------------------------------------------------------------------------------------------------------------
+	Conditional resource dependencies
+----------------------------------------------------------------------------------------------------------------------
+In CloudFormation, you can establish conditional resource dependencies using the DependsOn attribute. The DependsOn attribute allows you to specify dependencies between resources, ensuring that certain resources are created or updated only after the specified dependencies have been successfully created. Here's how you can establish conditional resource dependencies:
+
+    Basic Dependencies:
+        You can establish basic dependencies by specifying the DependsOn attribute for a resource.
+        The DependsOn attribute takes the logical IDs of the resources on which the current resource depends.
+        This ensures that the dependent resources are created or updated before the current resource.
+        Here's an example of establishing a basic dependency:
+
+    yaml
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      # EC2 instance properties
+
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+    DependsOn: MyEC2Instance
+    Properties:
+      # S3 bucket properties
+
+In this example, the MyS3Bucket resource has a dependency on the MyEC2Instance resource. It ensures that the EC2 instance is created or updated before the S3 bucket is created or updated.
+
+Conditional Dependencies:
+
+    You can conditionally specify dependencies based on conditions using the DependsOn attribute.
+    By using conditions and intrinsic functions, you can dynamically control the dependencies.
+    Here's an example of establishing a conditional dependency:
+
+yaml
+
+    Conditions:
+      CreateBucketCondition: !Equals [!Ref CreateBucket, "true"]
+
+    Resources:
+      MyEC2Instance:
+        Type: AWS::EC2::Instance
+        Properties:
+          # EC2 instance properties
+
+      MyS3Bucket:
+        Type: AWS::S3::Bucket
+        DependsOn: MyEC2Instance
+        Condition: CreateBucketCondition
+        Properties:
+          # S3 bucket properties
+
+    In this example, the MyS3Bucket resource has a dependency on the MyEC2Instance resource, but the dependency is conditional based on the CreateBucketCondition condition. If the condition evaluates to true, the dependency will be enforced; otherwise, the MyS3Bucket resource will be created or updated without considering the dependency.
+
+By establishing dependencies between resources, you ensure that the resources are created or updated in the correct order, considering any dependencies they have. Conditional dependencies allow you to control the dependency relationships based on specific conditions, providing flexibility and customization in your CloudFormation templates.
+
+
+Lab: 
+	D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates\06-ConditionalCreate\conditional-resource-dependency
+
+----------------------------------------------------------------------------------------------------------------------
+Rules:
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	Introduction to Cloud Formation rules
+----------------------------------------------------------------------------------------------------------------------
+
+In CloudFormation, rules are a set of conditions or constraints that are applied to your template during stack creation or update. These rules help enforce best practices, security requirements, or other policies that you want to ensure are followed when deploying your infrastructure. Here are some key points about CloudFormation rules:
+
+    Rule Types:
+        AWS CloudFormation supports two types of rules: Stack-level rules and Rule groups.
+        Stack-level rules are evaluated on the entire stack, whereas Rule groups are evaluated on individual resources within the stack.
+
+    Rule Evaluation:
+        Rules are evaluated before CloudFormation creates or updates the stack.
+        If a rule is violated, CloudFormation generates an error message and fails the stack creation or update process.
+
+    Rule Examples:
+        AWS CloudFormation provides predefined rule types for common use cases, such as checking resource configurations, security requirements, and naming conventions.
+        Example rule types include AWS CloudFormation Best Practices, AWS Config Rules, and AWS Service Catalog Constraints.
+
+    Custom Rule Authoring:
+        You can also create custom rules by using AWS Config rules, AWS Lambda functions, or AWS CloudFormation templates.
+        Custom rules allow you to define your own checks or validations on the stack or resource configurations.
+
+    Rule Application:
+        You can apply rules at the stack level by specifying them in the stack policy or by using the AWS CloudFormation StackSets feature.
+        Rule groups can be applied at the resource level within the CloudFormation template.
+
+    Rule Outputs:
+        When a rule is evaluated, it can provide outputs or diagnostic information to help identify the specific violation.
+        The outputs can be used for troubleshooting or to provide additional information about the rule failure.
+
+By leveraging CloudFormation rules, you can enforce policies, ensure compliance, and maintain the desired configuration state of your infrastructure. They help you validate your CloudFormation templates and ensure that the deployed resources adhere to your organization's guidelines and requirements.
+----------------------------------------------------------------------------------------------------------------------
+	Rule sets and rule groups
+----------------------------------------------------------------------------------------------------------------------
+I apologize for any confusion caused. As of my knowledge cutoff in September 2021, AWS CloudFormation does not have native support for "Rule sets" or "Rule groups" as specific features within the CloudFormation service. However, there are other AWS services that provide similar capabilities for managing and enforcing rules. Let's take a brief look at some relevant services:
+
+    AWS Config Rules:
+    AWS Config Rules is a service that enables you to define and enforce rules for resource configuration compliance. It allows you to create custom rules or use pre-defined rules to evaluate the configuration of your AWS resources. AWS Config Rules continuously monitors resource configurations and generates compliance reports based on the defined rules.
+
+    AWS Service Control Policies (SCPs):
+    AWS Service Control Policies allow you to create and apply rule sets or policy sets at the AWS Organization level or at specific organizational units (OUs). SCPs enable you to define fine-grained permissions and restrictions on what actions and services can be accessed or used by AWS accounts within your organization.
+
+    AWS Firewall Manager:
+    AWS Firewall Manager provides centralized management and enforcement of security policies across multiple AWS accounts. It allows you to define rule groups and security policies for AWS WAF (Web Application Firewall), AWS Shield Advanced, and AWS Config. Firewall Manager helps you maintain consistent security configurations and policies across your organization.
+
+    AWS Config Rule Groups (Preview):
+    AWS Config recently introduced a preview feature called Config Rule Groups. It allows you to group and manage AWS Config rules together, making it easier to apply and manage a set of rules across your resources.
+
+These services can help you define and enforce rules, policies, and compliance requirements across your AWS infrastructure. While they may not be directly integrated into CloudFormation, you can incorporate them into your overall infrastructure management strategy to ensure compliance and rule enforcement. It's recommended to refer to the official AWS documentation for the latest updates and guidance on using these services effectively.
+
+
+Lab: 
+	D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates\07-rules
+
+----------------------------------------------------------------------------------------------------------------------
+	Rule types and their usage
+----------------------------------------------------------------------------------------------------------------------
+
+In AWS CloudFormation, there are four types of rules that you can use to enforce constraints on your template during stack creation or update. These rules help you validate your template and ensure that the resources are created according to the specified conditions. Here are the four types of rules and their usage:
+
+AssertRule:
+
+The AssertRule type allows you to define a condition that must be true for the rule to pass.
+You can use intrinsic functions like Fn::Equals, Fn::Not, Fn::And, Fn::Or, etc., to define the condition.
+If the condition evaluates to true, the rule passes. If the condition evaluates to false, the rule fails, and the stack creation or update will be rolled back.
+Use !Ref and !Condition functions to refer to parameters and conditions within the rule condition.
+Example:
+yaml
+Copy code
+Rules:
+  MyAssertRule:
+    Assertions:
+      - Assert: !Equals [!Ref MyParameter, "expected_value"]
+        AssertDescription: "The parameter value must be 'expected_value'."
+AssertWith:
+
+The AssertWith rule allows you to use a custom Lambda function to define the rule condition.
+You specify the Lambda function's ARN and any required input parameters for the function.
+The function should return true for the rule to pass and false for the rule to fail.
+If the rule fails (function returns false), the stack creation or update will be rolled back.
+Example:
+yaml
+Copy code
+Rules:
+  MyAssertWithRule:
+    Assertions:
+      - AssertWith:
+          AssertDescription: "Custom Lambda function condition check."
+          FunctionArn: "arn:aws:lambda:region:account-id:function:function-name"
+          FunctionPayload:
+            Key: "value"
+AssertCapabilities:
+
+The AssertCapabilities rule is used to verify whether the template specifies required capabilities.
+It checks whether the stack creation or update requires any IAM capability (CAPABILITY_IAM, CAPABILITY_NAMED_IAM) or custom capabilities.
+If the template requires capabilities and they are not provided during stack creation or update, the rule fails.
+Example:
+yaml
+Copy code
+Rules:
+  MyCapabilitiesRule:
+    Assertions:
+      - AssertCapabilities:
+          AssertDescription: "The template requires CAPABILITY_IAM capability."
+          Capabilities:
+            - CAPABILITY_IAM
+AssertValue:
+
+The AssertValue rule checks whether a specific template parameter value matches an expected value.
+It can be useful to enforce specific parameter values for stack creation.
+If the parameter value does not match the expected value, the rule fails, and the stack creation or update will be rolled back.
+Example:
+yaml
+Copy code
+Rules:
+  MyAssertValueRule:
+    Assertions:
+      - AssertValue:
+          AssertDescription: "The parameter value must be 'expected_value'."
+          Value: !Ref MyParameter
+          Expected: "expected_value"
+It's important to note that rules are evaluated during stack creation and stack update, and if any rule fails, the operation will be rolled back, and the stack will not be created or updated. By using rules, you can enforce various conditions and constraints on your CloudFormation templates, ensuring that the stacks are deployed securely and efficiently.
+----------------------------------------------------------------------------------------------------------------------
+	Defining and managing rules in templates
+----------------------------------------------------------------------------------------------------------------------
+already covered above
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+Real world use cases of Rules and Conflicts:
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+Enforcing Security Compliance:
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	Rule: Require all EC2 instances to have specific security group rules.
+----------------------------------------------------------------------------------------------------------------------
+
+We define a parameter MySecurityGroup, which allows you to specify the ID of the specific security group to associate with the EC2 instances.
+
+We create two EC2 instance resources MyEC2Instance1 and MyEC2Instance2.
+
+For each EC2 instance, we use the SecurityGroups property to associate the specified security group with the instance. In this case, we are using the MySecurityGroup parameter.
+
+We define an AssertRule named MyAssertRule, which contains two assertions:
+
+The first assertion checks whether MyEC2Instance1 has the specified security group (MySecurityGroup).
+The second assertion checks whether MyEC2Instance2 has the specified security group (MySecurityGroup).
+When you create the CloudFormation stack using this template, CloudFormation will enforce the rule defined in MyAssertRule. If any of the EC2 instances does not have the specified security group, the stack creation will fail with an error message indicating the requirement.
+
+This example demonstrates how you can use an AssertRule in AWS CloudFormation to ensure that all EC2 instances created in the stack have a specific security group associated with them.
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+	Conflict: A developer creates a Cloud Formation template that provisions an EC2 instance without the required security group rules.
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	Action: The rule conflict detects the non-compliance and prevents the stack from being created or updated, ensuring the required security group rules are always in place.
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+Ensuring Resource Naming Conventions:
+
+	Rule: Enforce a naming convention for S3 buckets, where the bucket name must include a specific prefix.
+
+	Conflict: A Cloud Formation template creates an S3 bucket with a name that doesn't match the required prefix.
+	Action: The rule conflict triggers an error, preventing the stack creation/update and enforcing the naming convention consistently across all S3 buckets.
+	
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	
+Enabling Cost Optimization:
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+	Rule: Enforce the use of specific instance types for production environments to optimize costs. Conflict: A Cloud Formation template attempts to create EC2 instances with a different, more expensive instance type for a production stack.
+	
+	Action: The rule conflict detects the non-compliant instance type and either prevents the stack creation/update or triggers a notification for further review, ensuring cost optimization measures are followed.
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+
+
+Practicals on 
+	Stack policies and protection
+	StackSet
+	
+	
+Other good github references:
+		https://github.com/awslabs/aws-cloudformation-templates

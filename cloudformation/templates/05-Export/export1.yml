@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation Template to export vpc id
+
+Resources:
+  # First, a VPC:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.1.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+      - Key: Name
+        Value:  VilasVPC
+Outputs:
+  VpcId:
+    Value: !Ref VPC
+    Export:
+      Name: MyVpcId #this will be the export name

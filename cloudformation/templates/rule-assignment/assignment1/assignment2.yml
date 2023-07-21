@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation Template with Rule for Specific Security Group
+
+Parameters:
+  MySecurityGroup:
+    Type: AWS::EC2::SecurityGroup::Id
+    Description: The ID of the specific security group to associate with EC2 instances.
+
+Resources:
+  MyEC2Instance1:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0c55b159cbfafe1f0
+      SecurityGroupIds:
+        - !Ref MySecurityGroup
+      # Add other properties as needed
+
+  MyEC2Instance2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0c55b159cbfafe1f0
+      SecurityGroupIds:
+        - !Ref MySecurityGroup
+      # Add other properties as needed
+
+Rules:
+  MyAssertRule:
+    Assertions:
+      - Assert: !Equals
+          - !Ref MySecurityGroup
+          - sg-01dc0aa19f6cce850
+#          - !GetAtt MyEC2Instance1.SecurityGroupIds.0
+        AssertDescription: "MyEC2Instance1 must have the specific security group."
+      - Assert: !Equals
+          - !Ref MySecurityGroup
+          - sg-01dc0aa19f6cce850                                                                        #          - !GetAtt MyEC2Instance2.SecurityGroupIds
+        AssertDescription: "MyEC2Instance2 must have the specific security group."

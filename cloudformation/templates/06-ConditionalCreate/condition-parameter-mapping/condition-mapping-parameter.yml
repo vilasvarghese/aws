@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation Template with Conditional Resource Configuration
+
+Mappings:
+  RegionToInstanceType:
+    us-east-1:
+      development: t2.micro
+      production: t2.small
+    us-east-2:
+      development: t2.nano
+      production: t2.micro
+
+Parameters:
+  Environment:
+    Type: String
+    Description: Environment type (development or production)
+    Default: development
+    AllowedValues:
+      - development
+      - production
+
+  Region:
+    Type: String
+    Description: AWS region for the EC2 instance
+    Default: us-east-2
+    AllowedValues:
+      - us-east-1
+      - us-east-2
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !FindInMap [RegionToInstanceType, !Ref Region, !Ref Environment]
+      ImageId: ami-0c55b159cbfafe1f0

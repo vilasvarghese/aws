@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Simple CloudFormation Template with Parameters
+
+Parameters:
+  InstanceType:
+    Description: EC2 instance type for the server
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - t2.small
+      - m5.large
+    ConstraintDescription: Must be a valid EC2 instance type.
+
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      ImageId: ami-069d73f3235b535bd  # Replace with your desired AMI ID

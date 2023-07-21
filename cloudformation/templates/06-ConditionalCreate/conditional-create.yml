@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation Template with Conditional Resource Creation
+
+Parameters:
+  CreateBucket:
+    Type: String
+    Description: Set to 'true' to create the S3 bucket, 'false' otherwise
+    Default: 'true'
+    AllowedValues:
+      - true
+      - false
+
+Conditions:
+  ShouldCreateBucket:
+    !Equals [!Ref CreateBucket, 'true']
+
+Resources:
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+    Condition: ShouldCreateBucket
+
+Outputs:
+  BucketName:
+    Description: Name of the created S3 bucket
+    Value: !If [ShouldCreateBucket, !Ref MyS3Bucket, 'Not Created']
