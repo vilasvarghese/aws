@@ -1,0 +1,7 @@
+Get amazon linux 2 connecting to same security group
+	yum upate -y 
+	yum install mysql -y
+	
+
+mysql -h <endpoint> -P 3306 -u root -p 
+mysql -h database-1.ca3hd2rqifcx.us-east-2.rds.amazonaws.com -P 3306 -u root -p 
