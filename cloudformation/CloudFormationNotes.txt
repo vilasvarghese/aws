@@ -66,7 +66,7 @@ Key aspects and benefits of AWS CloudFormation:
 		Automates the process of 
 			creating and configuring AWS resources
 			reduce manual effort 
-			eliminating manual provisioning. 
+			eliminate manual provisioning. 
 			
 	Stack Management: 
 		CloudFormation 
@@ -87,21 +87,29 @@ Key aspects and benefits of AWS CloudFormation:
 	Benefits of using Cloud Formation
 ----------------------------------------------------------------------------------------------------------------------
 
-Infrastructure as Code (IaC): CloudFormation allows you to define your infrastructure using code, bringing the principles of software development to infrastructure management. Infrastructure becomes version-controlled, easily reviewable, and shareable, promoting best practices such as collaboration, testing, and code reuse.
+Infrastructure as Code (IaC): 
+	CloudFormation allows you to define your infrastructure using code, bringing the principles of software development to infrastructure management. Infrastructure becomes version-controlled, easily reviewable, and shareable, promoting best practices such as collaboration, testing, and code reuse.
 
-Automation and Consistency: CloudFormation automates the provisioning and configuration of AWS resources. By defining your infrastructure as a template, you can consistently and reliably create and update resources, eliminating manual provisioning and reducing the risk of human errors.
+Automation and Consistency: 
+	CloudFormation automates the provisioning and configuration of AWS resources. By defining your infrastructure as a template, you can consistently and reliably create and update resources, eliminating manual provisioning and reducing the risk of human errors.
 
-Scalability and Flexibility: CloudFormation templates are scalable and flexible. You can easily replicate environments by deploying the same template multiple times, enabling consistent setups across development, testing, and production environments. Templates can also be customized to accommodate specific requirements and varying resource configurations.
+Scalability and Flexibility: 
+	CloudFormation templates are scalable and flexible. You can easily replicate environments by deploying the same template multiple times, enabling consistent setups across development, testing, and production environments. Templates can also be customized to accommodate specific requirements and varying resource configurations.
 
-Dependency Management: CloudFormation manages dependencies between resources defined in the template. It determines the correct order of resource creation, ensuring that resources are provisioned in a way that satisfies dependencies. This simplifies the management of complex infrastructures with interrelated resources.
+Dependency Management: 
+	CloudFormation manages dependencies between resources defined in the template. It determines the correct order of resource creation, ensuring that resources are provisioned in a way that satisfies dependencies. This simplifies the management of complex infrastructures with interrelated resources.
 
-Infrastructure Updates and Rollbacks: CloudFormation enables controlled updates to your infrastructure. You can modify the template or its parameters, preview the changes through change sets, and then apply the changes. If an update fails, CloudFormation can automatically roll back the changes, minimizing the impact of failed updates.
+Infrastructure Updates and Rollbacks: 
+	CloudFormation enables controlled updates to your infrastructure. You can modify the template or its parameters, preview the changes through change sets, and then apply the changes. If an update fails, CloudFormation can automatically roll back the changes, minimizing the impact of failed updates.
 
-Visibility and Auditability: CloudFormation provides a centralized view of your infrastructure through stack management. You can track the history and status of your stacks, monitor changes made to resources, and review the events and logs generated during stack creation and updates. This enhances visibility, troubleshooting, and compliance auditing.
+Visibility and Auditability: 
+	CloudFormation provides a centralized view of your infrastructure through stack management. You can track the history and status of your stacks, monitor changes made to resources, and review the events and logs generated during stack creation and updates. This enhances visibility, troubleshooting, and compliance auditing.
 
-Integration with AWS Services: CloudFormation integrates with various AWS services, allowing you to provision and configure a wide range of resources through a single template. This includes compute resources (e.g., EC2 instances, ECS clusters), networking (e.g., VPCs, subnets, security groups), databases (e.g., RDS instances), storage (e.g., S3 buckets, EBS volumes), and more. This integration simplifies the management of complex infrastructures with multiple interconnected services.
+Integration with AWS Services: 
+	CloudFormation integrates with various AWS services, allowing you to provision and configure a wide range of resources through a single template. This includes compute resources (e.g., EC2 instances, ECS clusters), networking (e.g., VPCs, subnets, security groups), databases (e.g., RDS instances), storage (e.g., S3 buckets, EBS volumes), and more. This integration simplifies the management of complex infrastructures with multiple interconnected services.
 
-Collaboration and Reusability: CloudFormation templates can be shared and reused across teams and projects. This promotes collaboration by enabling teams to adopt and build upon existing templates, reducing duplication of effort. Shared templates can serve as a foundation for creating standardized architectures and best practices within organizations.
+Collaboration and Reusability: 
+	CloudFormation templates can be shared and reused across teams and projects. This promotes collaboration by enabling teams to adopt and build upon existing templates, reducing duplication of effort. Shared templates can serve as a foundation for creating standardized architectures and best practices within organizations.
 
 By leveraging AWS CloudFormation, you can achieve efficient, consistent, and automated infrastructure provisioning and management, resulting in improved agility, reduced manual effort, and increased reliability of your AWS deployments.
 
@@ -110,17 +118,23 @@ By leveraging AWS CloudFormation, you can achieve efficient, consistent, and aut
 	Cloud Formation vs. traditional infrastructure provisioning
 ----------------------------------------------------------------------------------------------------------------------
 
-	Automation and Consistency: CloudFormation enables you to automate the provisioning and configuration of your infrastructure. It eliminates the manual effort involved in setting up resources and ensures consistency across environments. Traditional provisioning often involves manual steps, making it prone to human error and inconsistencies.
+	Automation and Consistency: 
+		CloudFormation enables you to automate the provisioning and configuration of your infrastructure. It eliminates the manual effort involved in setting up resources and ensures consistency across environments. Traditional provisioning often involves manual steps, making it prone to human error and inconsistencies.
 
-Scalability and Flexibility: CloudFormation templates are scalable and flexible. You can easily replicate environments by deploying the same template multiple times, making it straightforward to scale up or down based on demand. Traditional provisioning may require manual replication, resulting in time-consuming and error-prone processes.
+Scalability and Flexibility: 
+	CloudFormation templates are scalable and flexible. You can easily replicate environments by deploying the same template multiple times, making it straightforward to scale up or down based on demand. Traditional provisioning may require manual replication, resulting in time-consuming and error-prone processes.
 
-Infrastructure as Code (IaC): CloudFormation allows you to define your infrastructure as code using JSON or YAML templates. This brings the benefits of software development practices to infrastructure management, such as version control, collaboration, and testing. In contrast, traditional provisioning often relies on manual configuration or scripting, lacking the benefits of version control and standard development practices.
+Infrastructure as Code (IaC): 
+	CloudFormation allows you to define your infrastructure as code using JSON or YAML templates. This brings the benefits of software development practices to infrastructure management, such as version control, collaboration, and testing. In contrast, traditional provisioning often relies on manual configuration or scripting, lacking the benefits of version control and standard development practices.
 
-Dependency Management: CloudFormation handles dependency management between resources defined in the template. It automatically determines the order of resource provisioning based on their dependencies, reducing the complexity of managing interrelated resources. In traditional provisioning, managing dependencies can be challenging, requiring manual coordination and sequencing.
+Dependency Management: 
+	CloudFormation handles dependency management between resources defined in the template. It automatically determines the order of resource provisioning based on their dependencies, reducing the complexity of managing interrelated resources. In traditional provisioning, managing dependencies can be challenging, requiring manual coordination and sequencing.
 
-Change Management and Rollbacks: CloudFormation enables controlled updates to your infrastructure. You can modify the template or its parameters, preview the changes, and then apply them. If an update fails, CloudFormation can automatically roll back the changes, providing a safety net. In traditional provisioning, tracking changes and performing rollbacks can be more cumbersome and error-prone.
+Change Management and Rollbacks: 
+	CloudFormation enables controlled updates to your infrastructure. You can modify the template or its parameters, preview the changes, and then apply them. If an update fails, CloudFormation can automatically roll back the changes, providing a safety net. In traditional provisioning, tracking changes and performing rollbacks can be more cumbersome and error-prone.
 
-Infrastructure Visibility and Auditing: CloudFormation provides a centralized view of your infrastructure through stack management. You can track the history and status of stacks, monitor changes, and review events and logs. This enhances visibility, troubleshooting, and compliance auditing. Traditional provisioning may lack centralized visibility and auditing capabilities, requiring more manual effort to track changes.
+Infrastructure Visibility and Auditing: 
+	CloudFormation provides a centralized view of your infrastructure through stack management. You can track the history and status of stacks, monitor changes, and review events and logs. This enhances visibility, troubleshooting, and compliance auditing. Traditional provisioning may lack centralized visibility and auditing capabilities, requiring more manual effort to track changes.
 
 Infrastructure Reusability: CloudFormation templates can be shared and reused across teams and projects. This promotes collaboration, standardization, and the ability to quickly adopt best practices. In traditional provisioning, reusability often involves manual replication or scripting, which can be time-consuming and error-prone.
 
@@ -132,13 +146,17 @@ Stack:
 ----------------------------------------------------------------------------------------------------------------------
 	    Template: A stack is defined by a template, which is a JSON or YAML file specifying the desired resources, their configurations, and the relationships between them. The template serves as the blueprint for the infrastructure provisioning process.
 
-    Resource Dependencies: Resources within a stack often have dependencies on one another. For example, an EC2 instance might depend on a VPC and security group. CloudFormation intelligently manages these dependencies and provisions resources in the correct order.
+    Resource Dependencies: 
+		Resources within a stack often have dependencies on one another. For example, an EC2 instance might depend on a VPC and security group. CloudFormation intelligently manages these dependencies and provisions resources in the correct order.
 
-    Provisioning and Management: Once you define the stack template, you can use CloudFormation to create, update, or delete the entire stack. CloudFormation handles resource creation and configuration based on the template's specifications. It also provides rollback mechanisms in case of failures during stack updates.
+    Provisioning and Management: 
+		Once you define the stack template, you can use CloudFormation to create, update, or delete the entire stack. CloudFormation handles resource creation and configuration based on the template's specifications. It also provides rollback mechanisms in case of failures during stack updates.
 
-    Stack Instances: You can have multiple instances of the same stack, each representing a separate deployment environment, such as development, staging, or production. Stack instances allow you to manage and version infrastructure configurations across different environments.
+    Stack Instances: 
+		You can have multiple instances of the same stack, each representing a separate deployment environment, such as development, staging, or production. Stack instances allow you to manage and version infrastructure configurations across different environments.
 
-    Infrastructure as Code (IaC): The use of stack templates in CloudFormation embodies the concept of Infrastructure as Code. The template files are stored in version control systems and treated like source code, allowing for versioning, collaboration, and reproducibility.
+    Infrastructure as Code (IaC): 
+		The use of stack templates in CloudFormation embodies the concept of Infrastructure as Code. The template files are stored in version control systems and treated like source code, allowing for versioning, collaboration, and reproducibility.
 
 ----------------------------------------------------------------------------------------------------------------------
 	Creating a stack

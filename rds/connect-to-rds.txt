@@ -1,5 +1,6 @@
 Get amazon linux 2 connecting to same security group
-	yum upate -y 
+	sudo su 
+	yum update -y 
 	yum install mysql -y
 	
 
