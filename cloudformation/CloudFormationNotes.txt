@@ -76,11 +76,33 @@ Key aspects and benefits of AWS CloudFormation:
 		Can 
 			create, update, and delete stacks as a whole, allowing you to manage and control your infrastructure at a higher level of abstraction.
 	Resource Dependency Management: 
-		CloudFormation manages dependencies between resources defined in your template. It automatically determines the correct order for provisioning resources based on their dependencies, ensuring that resources are created in the right sequence.
+		CloudFormation 
+			manages dependencies 
+				between resources defined in your template. 
+		Can automatically determine the correct order for provisioning resources 
+			implicitly 
+		or
+			based on their dependencies
+		Ensure resources are created in the right sequence.
 	Change Management and Rollbacks: 
-		CloudFormation tracks changes made to your infrastructure through the use of change sets. It allows you to preview and review the changes before applying them, reducing the risk of unintended modifications. In case of failures, CloudFormation can automatically roll back the changes and revert the stack to its previous state.
+		CloudFormation 
+			tracks changes made to your infrastructure 
+				through the use of change sets. 
+		Preview and review the changes 
+			before applying them
+			reduce the risk of unintended modifications. 
+		In case of failures
+			CloudFormation can automatically roll back 
+				revert the stack to its previous state.
 	Integration with AWS Services: 
-		CloudFormation integrates with a wide range of AWS services, enabling you to provision and configure resources such as EC2 instances, RDS databases, S3 buckets, IAM roles, and more, all through a single CloudFormation template.
+		CloudFormation 
+			integrates with a wide range of AWS services
+			enable you to provision and configure resources such as 
+				EC2 instances
+				RDS databases
+				S3 buckets
+				IAM roles
+				more, all through a single CloudFormation template.
 
 
 ----------------------------------------------------------------------------------------------------------------------
@@ -88,19 +110,44 @@ Key aspects and benefits of AWS CloudFormation:
 ----------------------------------------------------------------------------------------------------------------------
 
 Infrastructure as Code (IaC): 
-	CloudFormation allows you to define your infrastructure using code, bringing the principles of software development to infrastructure management. Infrastructure becomes version-controlled, easily reviewable, and shareable, promoting best practices such as collaboration, testing, and code reuse.
+	CloudFormation 
+		allows you to define your infrastructure using code
+		bringing the principles of software development to infrastructure management. 
+	Infrastructure becomes 	
+		version-controlled
+		easily reviewable, and 
+		shareable, 
+		promoting best practices like 
+			collaboration, 
+			testing, and 
+			code reuse.
 
 Automation and Consistency: 
-	CloudFormation automates the provisioning and configuration of AWS resources. By defining your infrastructure as a template, you can consistently and reliably create and update resources, eliminating manual provisioning and reducing the risk of human errors.
+	CloudFormation 
+		automates the provisioning and configuration of AWS resources. 
+		By defining your infrastructure as a template
+		you can consistently and reliably create and update resources
+		eliminate manual provisioning and reducing the risk of human errors.
 
 Scalability and Flexibility: 
-	CloudFormation templates are scalable and flexible. You can easily replicate environments by deploying the same template multiple times, enabling consistent setups across development, testing, and production environments. Templates can also be customized to accommodate specific requirements and varying resource configurations.
+	CloudFormation templates are 
+		scalable and flexible. 
+	You can easily replicate environments 
+		by deploying the same template multiple times
+		enabling consistent setups across development
+		testing, and production environments. 
+	Templates 
+		can also be customized to accommodate specific requirements and varying resource configurations.
 
 Dependency Management: 
-	CloudFormation manages dependencies between resources defined in the template. It determines the correct order of resource creation, ensuring that resources are provisioned in a way that satisfies dependencies. This simplifies the management of complex infrastructures with interrelated resources.
+	CloudFormation 
+		manages dependencies between resources defined in the template. 
+	It determines the correct order of resource creation, ensuring that resources are provisioned in a way that satisfies dependencies. This simplifies the management of complex infrastructures with interrelated resources.
 
 Infrastructure Updates and Rollbacks: 
-	CloudFormation enables controlled updates to your infrastructure. You can modify the template or its parameters, preview the changes through change sets, and then apply the changes. If an update fails, CloudFormation can automatically roll back the changes, minimizing the impact of failed updates.
+	CloudFormation 
+		enables controlled updates to your infrastructure. 
+	You can modify the template or its parameters, preview the changes through change sets, and then apply the changes. If an update fails, CloudFormation can automatically roll back the changes, minimizing the impact of failed updates.
 
 Visibility and Auditability: 
 	CloudFormation provides a centralized view of your infrastructure through stack management. You can track the history and status of your stacks, monitor changes made to resources, and review the events and logs generated during stack creation and updates. This enhances visibility, troubleshooting, and compliance auditing.
@@ -122,7 +169,10 @@ By leveraging AWS CloudFormation, you can achieve efficient, consistent, and aut
 		CloudFormation enables you to automate the provisioning and configuration of your infrastructure. It eliminates the manual effort involved in setting up resources and ensures consistency across environments. Traditional provisioning often involves manual steps, making it prone to human error and inconsistencies.
 
 Scalability and Flexibility: 
-	CloudFormation templates are scalable and flexible. You can easily replicate environments by deploying the same template multiple times, making it straightforward to scale up or down based on demand. Traditional provisioning may require manual replication, resulting in time-consuming and error-prone processes.
+	CloudFormation templates are scalable and flexible. 
+	Deploying the same template multiple times
+		Easy to scale up or down based on demand. 
+	Traditional provisioning may require manual replication, resulting in time-consuming and error-prone processes.
 
 Infrastructure as Code (IaC): 
 	CloudFormation allows you to define your infrastructure as code using JSON or YAML templates. This brings the benefits of software development practices to infrastructure management, such as version control, collaboration, and testing. In contrast, traditional provisioning often relies on manual configuration or scripting, lacking the benefits of version control and standard development practices.
@@ -134,7 +184,21 @@ Change Management and Rollbacks:
 	CloudFormation enables controlled updates to your infrastructure. You can modify the template or its parameters, preview the changes, and then apply them. If an update fails, CloudFormation can automatically roll back the changes, providing a safety net. In traditional provisioning, tracking changes and performing rollbacks can be more cumbersome and error-prone.
 
 Infrastructure Visibility and Auditing: 
-	CloudFormation provides a centralized view of your infrastructure through stack management. You can track the history and status of stacks, monitor changes, and review events and logs. This enhances visibility, troubleshooting, and compliance auditing. Traditional provisioning may lack centralized visibility and auditing capabilities, requiring more manual effort to track changes.
+	CloudFormation 
+		centralized view of your infrastructure through stack management. 
+		can 
+			track the history and status of stacks
+			monitor changes, and 
+			review events and logs. 
+		Enhances 
+			visibility, 
+			troubleshooting, and 
+			compliance auditing. 
+		Traditional provisioning 
+			may lack 
+				centralized visibility and 
+				auditing capabilities, 
+				requiring more manual effort to track changes.
 
 Infrastructure Reusability: CloudFormation templates can be shared and reused across teams and projects. This promotes collaboration, standardization, and the ability to quickly adopt best practices. In traditional provisioning, reusability often involves manual replication or scripting, which can be time-consuming and error-prone.
 
@@ -144,16 +208,32 @@ Stack:
 ----------------------------------------------------------------------------------------------------------------------
 	Understanding the concept of a stack
 ----------------------------------------------------------------------------------------------------------------------
-	    Template: A stack is defined by a template, which is a JSON or YAML file specifying the desired resources, their configurations, and the relationships between them. The template serves as the blueprint for the infrastructure provisioning process.
+	    Template: 
+			A stack is defined by a template
+				can be JSON or YAML file 
+			specify the 
+				desired resources, 
+				their configurations, and the 
+				relationships between them. 
+			blueprint for the infrastructure provisioning process.
 
     Resource Dependencies: 
-		Resources within a stack often have dependencies on one another. For example, an EC2 instance might depend on a VPC and security group. CloudFormation intelligently manages these dependencies and provisions resources in the correct order.
+		Resources within a stack often have dependencies on one another. 
+		For example, 
+			EC2 instance might depend on a VPC and security group. 
+			CloudFormation intelligently manages these dependencies and provisions resources in the correct order.
 
     Provisioning and Management: 
-		Once you define the stack template, you can use CloudFormation to create, update, or delete the entire stack. CloudFormation handles resource creation and configuration based on the template's specifications. It also provides rollback mechanisms in case of failures during stack updates.
+		Once you define the stack template
+		use CloudFormation to 
+			create, 
+			update, or 
+			delete the entire stack. 
+		CloudFormation handles resource creation and configuration based on the template's specifications. It also provides rollback mechanisms in case of failures during stack updates.
 
     Stack Instances: 
-		You can have multiple instances of the same stack, each representing a separate deployment environment, such as development, staging, or production. Stack instances allow you to manage and version infrastructure configurations across different environments.
+		You can have multiple instances of the same stack
+		each representing a separate deployment environment, such as development, staging, or production. Stack instances allow you to manage and version infrastructure configurations across different environments.
 
     Infrastructure as Code (IaC): 
 		The use of stack templates in CloudFormation embodies the concept of Infrastructure as Code. The template files are stored in version control systems and treated like source code, allowing for versioning, collaboration, and reproducibility.
@@ -238,16 +318,24 @@ StackSets:
 			updating, or 
 			deleting 
 				stacks. 
-		When you initiate a StackSet operation, CloudFormation deploys or modifies stacks in the target accounts and regions based on the StackSet template.
+		When you initiate a StackSet operation
+		CloudFormation deploys or modifies stacks in the target accounts and regions based on the StackSet template.
 
     Target Accounts and Regions: 
-		StackSets allow you to specify target AWS accounts and regions where the stacks should be created or updated. You can include or exclude specific accounts and regions based on your requirements.
+		StackSets 
+			allow you to specify target AWS accounts and regions where the stacks should be created or updated. 
+		You can include or exclude specific accounts and regions based on your requirements.
 
     StackSet Instances: 
-		A StackSet Instance represents the actual deployment of a stack in a target account and region. Each StackSet Instance corresponds to a deployed stack in an AWS account. CloudFormation tracks the state of each instance and allows you to view and manage them.
+		A StackSet Instance represents the actual deployment of a stack in a target account and region. 
+		Each StackSet Instance corresponds to a deployed stack in an AWS account. 
+		CloudFormation tracks the state of each instance and allows you to view and manage them.
 
     Permissions: 
-		You need appropriate IAM permissions to create and manage StackSets. This includes permissions to perform StackSet operations in the target accounts and regions. The service-linked role "AWSCloudFormationStackSetAdministrationRole" is used to delegate permissions for StackSet operations.
+		You need appropriate IAM permissions 
+			to create and manage StackSets. 
+		This includes permissions to perform StackSet operations in the target accounts and regions. 
+		The service-linked role "AWSCloudFormationStackSetAdministrationRole" is used to delegate permissions for StackSet operations.
 
 Benefits of using StackSets include:
 
@@ -255,13 +343,21 @@ Benefits of using StackSets include:
 		StackSets allow you to manage infrastructure across multiple accounts and regions from a centralized location, making it easier to maintain consistent configurations and enforce governance policies.
 
     Efficiency and Consistency: 
-		Deploying stacks through StackSets eliminates the need to manually repeat the same CloudFormation deployment process in each account or region, ensuring consistent infrastructure and reducing administrative overhead.
+		Deploying stacks through StackSets 
+			eliminates the need to manually repeat the same CloudFormation 
+			consistent infrastructure and 
+			reduce administrative overhead.
 
     Automated Updates: 
-		StackSets support automatic updates, enabling you to easily roll out changes to multiple stacks across accounts and regions simultaneously.
+		StackSets support 
+			automatic updates
+			enable you to easily roll out changes 
+				to multiple stacks across accounts and regions simultaneously.
 
     Visibility and Control: 
-		CloudFormation provides visibility into the status and progress of StackSet operations, allowing you to monitor and manage the state of deployed stacks efficiently.
+		CloudFormation provides 
+			visibility into the status and progress of StackSet operations, 
+			allow you to monitor and manage the state of deployed stacks efficiently.
 
 
 Advanced Lab: 
@@ -280,6 +376,8 @@ Do it latter.
 ----------------------------------------------------------------------------------------------------------------------
 How Cloud Formation works:
 ----------------------------------------------------------------------------------------------------------------------
+
+
 ----------------------------------------------------------------------------------------------------------------------
 	High-level overview of Cloud Formation workflow
 ----------------------------------------------------------------------------------------------------------------------
@@ -1509,6 +1607,11 @@ Note that the stack containing the referenced outputs must be in the same AWS re
 
 By referencing outputs from other stacks, you can establish cross-stack relationships and utilize information from one stack in another. This allows for better modularity, reusability, and coordination of resources across multiple CloudFormation stacks.
 
+
+Lab: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/walkthrough-crossstackref.html
+
+#ensure to create this not in us-east-2 region as there is no data mentioned for it.
+
 ----------------------------------------------------------------------------------------------------------------------
 Conditions:
 ----------------------------------------------------------------------------------------------------------------------
@@ -1655,6 +1758,7 @@ yaml
 By using conditions in your CloudFormation templates, you can create dynamic and flexible infrastructure deployments. Conditions allow you to control the creation and configuration of resources based on specific conditions or inputs, making your templates more versatile and adaptable to different scenarios and requirements.
 
 No lab planned
+#Lot of labs covered D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\cloudformation\templates\06-ConditionalCreate
 
 ----------------------------------------------------------------------------------------------------------------------
 	Evaluating conditions based on parameters and mappings
@@ -1972,3 +2076,164 @@ Practicals on
 	
 Other good github references:
 		https://github.com/awslabs/aws-cloudformation-templates
+		
+		
+-----------------------------------
+AWS Service Catalog is a service offered by Amazon Web Services (AWS) that allows organizations to create and manage a curated collection of approved IT services and resources. It helps administrators and developers provision, govern, and manage commonly used resources and applications across their organization while ensuring compliance and standardization.
+
+Key features and components of AWS Service Catalog:
+
+    Products and Portfolios: AWS Service Catalog allows you to define and group resources, products, and applications into "Portfolios." A portfolio is a collection of related products that can be offered to end-users.
+
+    Products: Each product represents a service or resource that users can request through AWS Service Catalog. These products are defined using AWS CloudFormation templates, which enables the creation of complex and customizable resources.
+
+    Constraints: You can apply constraints to products to control their usage and configurations. Constraints can include IAM roles, S3 bucket locations, tags, and more, ensuring that resources are provisioned within predefined guidelines.
+
+    Versioning: Service Catalog supports versioning of products. This enables you to update and release new versions of products while providing control over which version is available to users.
+
+    Access Control: Service Catalog integrates with AWS Identity and Access Management (IAM) to manage access control. You can control who has permission to view and launch products based on IAM policies.
+
+    Tag Options: Tag options help you enforce standardized tagging on provisioned resources. Administrators can define allowed tags and tag groups, promoting consistency and enabling cost tracking.
+
+    Associations: You can define associations between products to model dependencies. This allows you to create relationships between products and ensure that related resources are provisioned together.
+
+    End-user Interface: AWS Service Catalog provides a customizable end-user interface, which enables users to browse and request products in a self-service manner.
+
+Benefits of using AWS Service Catalog:
+
+    Standardization and Governance: AWS Service Catalog enables organizations to maintain control over the resources that users can provision, ensuring compliance with company policies and standards.
+
+    Self-Service Provisioning: With a user-friendly interface, Service Catalog allows end-users to find and request the resources they need without needing deep knowledge of AWS services.
+
+    Increased Productivity: By offering pre-approved and standardized products, AWS Service Catalog reduces the time spent on manual provisioning and approval processes.
+
+    Cost Control: Standardized products and tagging options help track and manage costs effectively across the organization.
+
+    Consistency: Service Catalog ensures that resources are provisioned with consistent configurations, reducing potential errors and misconfigurations.
+
+    Version Control: The ability to version products facilitates controlled updates and changes to resources.
+
+Overall, AWS Service Catalog is a powerful tool for IT administrators and organizations seeking to centralize and streamline the process of provisioning and managing AWS resources while maintaining governance and compliance.		
+
+
+Use Cases:
+
+    Standardized Infrastructure:
+    Organizations can use AWS Service Catalog to offer predefined templates and configurations for commonly used infrastructure setups, such as web servers, databases, and networking setups. This ensures that teams adhere to best practices and company policies.
+
+    Application Stacks:
+    Service Catalog can be used to package and deploy entire application stacks, including the necessary AWS resources and custom configurations. This streamlines the process of deploying complex applications with multiple dependencies.
+
+    Security and Compliance:
+    By enforcing constraints and permissions on products, AWS Service Catalog helps organizations ensure that resources are provisioned securely and in compliance with regulatory requirements.
+
+    Hybrid Cloud Deployments:
+    AWS Service Catalog can be used to manage resources in hybrid cloud environments, allowing organizations to provision resources both in the AWS cloud and on-premises data centers.
+
+    DevOps and CI/CD:
+    Service Catalog can be integrated into the CI/CD pipeline, enabling developers to self-service provision resources for development, testing, and production environments.
+
+In summary, AWS Service Catalog is a powerful tool that empowers organizations to manage and govern IT resources effectively. It provides a user-friendly interface for resource provisioning, promotes standardization and compliance, and enhances overall efficiency and control in resource management.
+
+
+-----------------
+AWS Service Catalog and AWS CloudFormation are both powerful services offered by Amazon Web Services (AWS), but they serve different purposes and have distinct use cases. Let's compare them based on various aspects:
+
+1. Purpose:
+
+    AWS Service Catalog: The main purpose of AWS Service Catalog is to create and manage a curated catalog of pre-approved IT services and resources. It allows administrators to offer a selection of standardized products that end-users can self-service provision while maintaining governance and compliance.
+    AWS CloudFormation: CloudFormation is a service that enables users to define and provision AWS infrastructure as code using templates. It allows you to create and manage AWS resources and entire infrastructures in a repeatable and automated way.
+
+2. Use Cases:
+
+    AWS Service Catalog: It is best suited for organizations that want to provide a self-service interface for users to provision pre-approved resources and applications. Service Catalog is ideal for maintaining control, standardization, and compliance in a multi-account or multi-team environment.
+    AWS CloudFormation: CloudFormation is designed for managing the lifecycle of AWS resources in a repeatable and automated manner. It is useful for creating, updating, and deleting AWS resources as a single, cohesive stack or in a nested and interconnected fashion.
+
+3. Resource Management:
+
+    AWS Service Catalog: Service Catalog provides a higher-level abstraction for end-users, offering pre-defined and curated products. Users can select these products, and Service Catalog handles the underlying CloudFormation template deployment for them.
+    AWS CloudFormation: CloudFormation operates at a lower level, allowing users to define the complete infrastructure and resources with CloudFormation templates. It offers more granular control and flexibility, but it requires users to understand the underlying AWS resource configurations.
+
+4. User Interface:
+
+    AWS Service Catalog: Service Catalog provides a user-friendly self-service interface that enables end-users to browse, search for, and request approved products from the catalog.
+    AWS CloudFormation: CloudFormation is typically used through the AWS Management Console, AWS Command Line Interface (CLI), or API calls. It doesn't have a user-friendly end-user interface like AWS Service Catalog.
+
+5. Governance and Compliance:
+
+    AWS Service Catalog: It is built with governance and compliance in mind. Administrators can enforce constraints, access controls, and standardized tagging through Service Catalog to ensure resources are provisioned according to company policies.
+    AWS CloudFormation: While CloudFormation provides mechanisms like stack policies for control, it requires additional layers of governance and compliance enforcement beyond the basic template deployment.
+
+6. Application Deployment:
+
+    AWS Service Catalog: Service Catalog is more focused on infrastructure provisioning and application stack deployment, where the application components are pre-configured as products.
+    AWS CloudFormation: CloudFormation excels at deploying entire application stacks, including the infrastructure and application code. It supports advanced features like nested stacks and cross-stack references for complex application architectures.
+
+7. User Roles:
+
+    AWS Service Catalog: Primarily caters to end-users who want to provision resources and applications from the approved catalog. Administrators curate the products and define the constraints.
+    AWS CloudFormation: Targeted at developers, administrators, and DevOps teams who define and manage AWS resources using infrastructure-as-code principles.
+
+In summary, AWS Service Catalog and AWS CloudFormation complement each other in managing AWS resources. AWS Service Catalog simplifies resource provisioning for end-users with pre-approved products, while AWS CloudFormation provides full control and automation capabilities for developers and administrators to define and manage complex infrastructures and application stacks. The choice between them depends on the specific requirements of resource management and governance within your organization.
+
+
+--------------------
+e.g. Use case of using a service catalog
+
+Let's walk through an example of using AWS Service Catalog to create a catalog of pre-approved products for end-users to provision. In this example, we will create a Service Catalog portfolio that includes a standardized EC2 instance product.
+
+Step 1: Create an AWS CloudFormation Template for the EC2 Instance:
+
+First, we need to create a CloudFormation template that defines the properties of the EC2 instance we want to offer as a product. Let's assume we want to offer a t2.micro EC2 instance running Amazon Linux 2.
+
+yaml
+
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Service Catalog EC2 Instance Product'
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0c55b159cbfafe1f0  # Amazon Linux 2 AMI ID
+      SecurityGroupIds:
+        - sg-xxxxxxxx  # Replace with the appropriate security group ID
+
+Step 2: Create an AWS Service Catalog Portfolio:
+
+Next, let's create a Service Catalog portfolio that will contain our EC2 instance product. We'll also add some tags to the portfolio for better organization.
+
+    Go to the AWS Service Catalog console.
+    Click on "Portfolios" in the left navigation pane.
+    Click the "Create portfolio" button.
+    Provide a name and description for the portfolio.
+    Optionally, add tags to the portfolio for better organization (e.g., "Environment: Production", "Department: DevOps", etc.).
+    Click "Create portfolio."
+
+Step 3: Add the EC2 Instance Product to the Portfolio:
+
+Now, we'll add the CloudFormation template we created earlier as a product in the portfolio.
+
+    In the AWS Service Catalog console, navigate to the portfolio you created in the previous step.
+    Click the "Upload new product" button.
+    Choose "CloudFormation template" as the product type.
+    Upload the CloudFormation template file (from Step 1).
+    Fill in the required details, such as product name, description, and owner.
+    Optionally, add tags to the product for better organization (e.g., "Environment: Production", "Project: MyApp", etc.).
+    Review the product details and click "Create product."
+
+Step 4: Launch the EC2 Instance Product:
+
+Now that the product is added to the portfolio, end-users can launch the EC2 instance through the AWS Service Catalog.
+
+    As an end-user, go to the AWS Service Catalog console.
+    Click on "Products" in the left navigation pane.
+    Browse or search for the EC2 instance product you want to launch.
+    Click the "Launch product" button.
+    Fill in any required parameters or options for the EC2 instance (e.g., instance name, key pair, etc.).
+    Click "Launch product."
+
+AWS Service Catalog will use the CloudFormation template defined in the product to provision the EC2 instance with the selected configurations.
+
+By following these steps, you've created a simple example of using AWS Service Catalog to offer a pre-approved EC2 instance as a product that end-users can self-service provision. The Service Catalog ensures that the instance is launched with standardized configurations and governance controls, providing a more controlled and efficient resource provisioning process for your organization.

@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+    stages {
+        stage('Submit Stack') {
+            steps {
+            sh "aws cloudformation create-stack --stack-name vilasnetwork --template-url https://s3.amazonaws.com/cloudformation-examples/user-guide/cross-stack/SampleNetworkCrossStack.template --region 'us-east-2'"
+              }
+             }
+            }
+            }
+			
+			
+#cp -R .aws /var/lib/jenkins/			
+#chown jenkins:jenkins -R /var/lib/jenkins/.aws
