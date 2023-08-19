@@ -1,0 +1,20 @@
+https://www.youtube.com/watch?v=UmvwUIoFgu4
+
+nice series for beginners
+https://github.com/olibob/cfntutorial
+https://github.com/thinegan/cloudformation
+
+a playlist - not sure be useful
+	https://www.youtube.com/@SrceCde/playlists
+	https://github.com/srcecde/aws-tutorial-code
+
+Infrastructure as code is 
+	process of managing and provisioning 
+	computer data centers
+	through machine readable definition files 
+	rather than physical hardware configuration
+	
+	
+mvn archetype:generate -DgroupId=com.staragile.test	-DartifactId=test -DarchetypeArtifactId=maven-archetype-webapp	  -DinteractiveMode=false	
+
+

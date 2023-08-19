@@ -9,6 +9,3 @@ pipeline {
             }
             }
 			
-			
-#cp -R .aws /var/lib/jenkins/			
-#chown jenkins:jenkins -R /var/lib/jenkins/.aws

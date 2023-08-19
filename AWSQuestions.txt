@@ -1,0 +1,121 @@
+Cloud Computing Basics:
+
+    What is cloud computing?
+    Explain the differences between public cloud, private cloud, and hybrid cloud.
+    What are the main advantages of cloud computing?
+    Describe the concept of scalability in cloud computing.
+    What is the difference between Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS)?
+    How does cloud computing help with cost optimization?
+
+AWS Overview:
+
+    What does AWS stand for?
+    Compare AWS, Azure, and Google Cloud Platform (GCP).
+    What is the AWS Free Tier?
+    Explain the global infrastructure of AWS regions and availability zones.
+    Describe the AWS Management Console.
+
+AWS Services:
+
+    What is IAM (Identity and Access Management)?
+    How does IAM ensure security in AWS?
+    What is EC2 (Elastic Compute Cloud)?
+    What are EC2 instance types and how do they differ?
+    What is Amazon RDS (Relational Database Service)?
+    Describe the storage options in AWS, such as S3 and EBS.
+    Explain the concept of public and private IPs.
+    What is an Elastic IP in AWS?
+    What is CloudFront and how does it improve content delivery?
+    Describe what an Elastic Load Balancer (ELB) does.
+    What is Amazon EKS (Elastic Kubernetes Service)?
+    Explain Azure Container Registry (ACR).
+
+Practical Tasks:
+
+    How do you create an AWS Free Tier account?
+    Describe the steps to create an IAM user.
+    Walk through the process of creating an EC2 instance.
+    How do you configure security groups for an EC2 instance?
+    Explain the steps to create a database using Amazon RDS.
+    How do you connect to an EC2 instance using SSH?
+    How do you connect to a database created with RDS?
+    What is Amazon S3 (Simple Storage Service)?
+    Walk through the process of creating an S3 bucket.
+
+AWS Pricing and Usage:
+
+    Explain AWS pricing models, including on-demand, reserved, and spot instances.
+    How does the AWS Free Tier work?
+    Describe the AWS Cost Explorer and Budgets features.
+    How can you optimize costs in AWS?
+
+IAM Service:
+
+    What is IAM in AWS?
+    Explain the concepts of users, groups, and roles in IAM.
+    What is an IAM policy?
+    How do you control access to AWS resources using IAM?
+
+EC2 Service:
+
+    What is Amazon EC2?
+    How do you choose the appropriate EC2 instance type?
+    Explain the concept of Amazon Machine Images (AMIs).
+    How do you launch and terminate EC2 instances?
+    What are security groups and how do they enhance security for EC2 instances?
+
+RDS Service:
+
+    What is Amazon RDS?
+    How do you select the appropriate database engine for RDS?
+    Describe the process of creating and configuring an RDS instance.
+    What is a multi-AZ deployment in RDS?
+
+Cloud Storages:
+
+    What is Amazon S3?
+    Explain the use cases for Amazon EBS (Elastic Block Store).
+    Describe the difference between S3 and EBS.
+    What is Amazon EFS (Elastic File System)?
+
+Networking:
+
+    Explain the concepts of public and private IPs.
+    What is an Elastic IP in AWS?
+    How does Amazon VPC (Virtual Private Cloud) work?
+
+Content Delivery:
+
+    What is Amazon CloudFront?
+    How does CloudFront improve content delivery?
+    What is an Origin in CloudFront?
+
+Elastic Load Balancing:
+
+    What is an Elastic Load Balancer (ELB)?
+    Explain the types of ELBs: Classic, Network, and Application Load Balancers.
+    How does an ELB distribute traffic to instances?
+
+Containerization and Orchestration:
+
+    What is Amazon EKS?
+    How do you create an EKS cluster?
+    What is Azure Container Registry (ACR)?
+    How do you push and pull Docker images to/from ACR?
+
+Practical Steps:
+
+    How do you create an AWS account for free-tier access?
+    Explain the process of creating an IAM user with appropriate permissions.
+    Walk through the steps to launch an EC2 instance.
+    How do you configure security groups for an EC2 instance to allow SSH access?
+    Describe the process of creating an RDS instance with a specific database engine.
+    How do you connect to an EC2 instance using SSH?
+    How do you connect to an RDS database from an EC2 instance?
+    Walk through the steps of creating an S3 bucket and uploading files.
+    How can you secure an S3 bucket with proper access policies?
+
+AWS Management:
+
+    What is the AWS Management Console used for?
+    How can you monitor resources and usage in AWS?

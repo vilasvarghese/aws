@@ -396,11 +396,17 @@ The CloudFormation workflow
 		in a controlled and reproducible manner. 
 	Here's an overview of the CloudFormation workflow:
 		Template Authoring: 
-			The process starts with authoring a CloudFormation template. This template is a JSON or YAML file that describes the desired AWS resources, their properties, and any dependencies between them.
+			The process starts with authoring a CloudFormation template. 
+			JSON or YAML file 
+			describes the desired AWS resources
+				their properties, and 
+				any dependencies between them.
 
 		Template Validation: 
 			Done by aws
-			Once the template is created or modified, it should be validated to ensure its syntax is correct and all resource references are valid. Validation helps catch errors and potential issues before deploying the stack.
+			Once the template is created or modified
+				it should be validated 
+					to ensure its syntax is correct and all resource references are valid. Validation helps catch errors and potential issues before deploying the stack.
 
 		Stack Creation: 
 			The next step is to create a CloudFormation stack 
