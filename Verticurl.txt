@@ -1,0 +1,3208 @@
+https://docs.google.com/spreadsheets/d/1UCocQ2Bq98HFT4zHRdf42J_hMeb0eJX58mQxSOttZRM/edit#gid=1450392222f
+
+
+
+Breaks:
+	1:00 pm to 2:00 pm (Lunch)
+	4:00 pm to 4:20 pm (20 min)
+	
+1. Hypervisor 
+2. Virtualization
+3. Infastructure as a Service 
+	e.g. storage, compute etc., network 
+	
+4. Platform as a service 
+	e.g. Beanstalk 
+5. Software as a service 
+	Google drive, photos, zoom 
+
+6. Function as a service
+	Lambda, micro services , 
+7. Containers as a service 
+
+
+1. EC2
+2. s3 for storage 
+3. lambda for functions 
+4. 
+
+
+Deployment models
+-----------------
+Public 
+	accessible for everyone in the internet 
+		based on whom you gave access
+Private
+	belogs to org.
+	only the org. can access
+	Limited access
+	
+Hybrid 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Week 1		Foundations of Cloud Computing & Basic Operations
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+	1	Introduction to Cloud Computing (refresher from previous intro and more hands on)
+-------------------------------------------------------------------------------------------------------------------------
+
+
+Cloud computing is a transformative technology that has revolutionized the way businesses and individuals access and manage computing resources. It involves the delivery of various computing services, including servers, storage, databases, networking, software, analytics, and intelligence, over the internet. Instead of owning and maintaining physical hardware and software, users can rent or lease these resources from cloud service providers. This model offers numerous advantages, making it a fundamental part of modern IT infrastructure.
+
+
+
+1. What is Cloud Computing?
+Cloud computing refers to the delivery of computing services, including servers, storage, databases, networking, software, and more, over the internet. These services are hosted and managed by cloud service providers, and users access them remotely, typically on a pay-as-you-go basis. Cloud computing offers several advantages, such as scalability, cost-efficiency, and flexibility.
+
+2. Key Components of Cloud Computing:
+
+    Hypervisor: A hypervisor is a crucial component in cloud computing that allows multiple virtual machines (VMs) to run on a single physical server. It acts as a layer of virtualization between the hardware and the VMs, enabling efficient resource allocation and isolation.
+
+    Virtualization: Virtualization technology abstracts physical resources (such as CPU, memory, and storage) and creates virtualized instances of these resources. This allows for the creation of multiple VMs on a single physical server, each running its own operating system and applications.
+
+    Infrastructure as a Service (IaaS): IaaS provides virtualized computing resources over the internet. Users can rent virtual machines, storage, and networking infrastructure. Hypervisors play a critical role in managing these virtual resources.
+
+    Platform as a Service (PaaS): PaaS offers a platform that includes development tools, databases, and middleware. Developers can build, deploy, and manage applications without worrying about the underlying infrastructure, as the cloud provider manages the hypervisors and hardware.
+
+    Software as a Service (SaaS): SaaS delivers software applications over the internet. Users access these applications through web browsers, and all underlying infrastructure and hypervisor management are handled by the SaaS provider.
+
+3. Types of Hypervisors:
+
+    Type 1 Hypervisor (Bare-Metal Hypervisor): Type 1 hypervisors run directly on the physical hardware without the need for an underlying operating system. They are highly efficient and are typically used in enterprise environments and data centers. Examples include VMware vSphere/ESXi, Microsoft Hyper-V, and Xen.
+
+    Type 2 Hypervisor (Hosted Hypervisor): Type 2 hypervisors run on top of an existing operating system. They are often used for development and testing purposes or on personal computers. Examples include Oracle VirtualBox and VMware Workstation.
+
+4. Benefits of Hypervisors in Cloud Computing:
+
+    Resource Isolation: Hypervisors ensure that each virtual machine is isolated from others, preventing one VM from affecting the performance or stability of others on the same physical server.
+
+    Resource Allocation: Hypervisors allocate CPU, memory, and storage resources to virtual machines as needed, allowing for efficient utilization of hardware.
+
+    Flexibility: Virtual machines can be easily created, cloned, and moved between physical servers, providing flexibility in managing workloads.
+
+    Cost Savings: Hypervisors enable server consolidation, reducing the need for multiple physical servers, which can lead to significant cost savings in terms of hardware and maintenance.
+
+    High Availability: Hypervisors often include features for load balancing and failover, ensuring that workloads remain available even in the event of hardware failures.
+
+In summary, cloud computing relies on hypervisors, which are essential for virtualization and efficient resource management in the cloud. They enable the creation and management of virtual machines, making it possible to deliver cloud services such as IaaS, PaaS, and SaaS. Understanding hypervisors is fundamental to comprehending the foundational technology behind cloud computing.
+
+
+Here are key components and concepts of cloud computing:
+
+
+
+    Common Cloud Computing Use Cases:
+
+        Web Hosting: Hosting websites and web applications.
+
+        Data Backup and Recovery: Storing and protecting data in case of disasters.
+
+        Big Data and Analytics: Processing and analyzing large datasets.
+
+        IoT (Internet of Things): Collecting and processing data from IoT devices.
+
+        Machine Learning and AI: Training and deploying machine learning models.
+
+        Content Delivery: Distributing content globally to users with low latency.
+
+Cloud computing has transformed the IT landscape, enabling organizations to innovate faster, reduce costs, and focus on their core competencies. As technology continues to evolve, cloud computing is likely to play an even more central role in the digital transformation of businesses and the delivery of services to individuals and communities.
+
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Overview of cloud computing: Benefits, challenges, and service models.
+-------------------------------------------------------------------------------------------------------------------------
+Benefits
+https://cloud.google.com/learn/advantages-of-cloud-computing
+
+    Benefits of Cloud Computing:
+
+        Scalability: Cloud resources can be easily scaled up or down to meet changing demands, ensuring efficient resource utilization.
+
+        Cost-Efficiency: Users pay only for the resources they consume, eliminating the need for large upfront investments in hardware and reducing operational costs.
+
+        Flexibility and Agility: Cloud services can be provisioned and deployed rapidly, enabling organizations to respond quickly to market changes and opportunities.
+
+        Reliability and Availability: Leading cloud providers offer high levels of service uptime and redundancy, reducing the risk of downtime.
+
+        Security: Cloud providers invest in robust security measures and compliance certifications to protect data and infrastructure.
+
+
+challenges
+	
+While cloud computing offers numerous benefits, it also presents several challenges that organizations need to consider when adopting and managing cloud services. Here are some of the key challenges of cloud computing:
+
+    Security and Privacy:
+        Data Security: Storing sensitive data in the cloud raises concerns about unauthorized access or data breaches. Ensuring the security of data at rest and in transit is a top priority.
+        Compliance: Meeting regulatory requirements, such as GDPR or HIPAA, can be challenging when data is stored in the cloud. Cloud providers often offer compliance certifications, but organizations must also take steps to ensure their own compliance.
+
+    Data Management:
+        Data Governance: Managing data across multiple cloud services and on-premises systems can be complex. Organizations need effective data governance strategies to maintain data quality, consistency, and security.
+        Data Transfer Costs: Moving large volumes of data in and out of the cloud can result in significant data transfer costs.
+
+    Downtime and Reliability:
+        Downtime: While cloud providers offer high availability, no service is immune to outages. Organizations need to plan for downtime and implement strategies for business continuity and disaster recovery.
+        Dependence on Providers: Relying on third-party providers means that organizations have limited control over the underlying infrastructure. They must trust their providers' reliability and security measures.
+
+    Cost Management:
+        Uncontrolled Costs: Cloud resources are typically billed on a pay-as-you-go basis, and costs can spiral out of control if not monitored carefully. Organizations need to implement cost management and optimization practices to control expenses.
+        Hidden Costs: Some cloud services have hidden or unexpected costs, such as data transfer fees, support fees, and licensing costs for certain software.
+
+    Vendor Lock-In:
+        Proprietary Services: Using proprietary cloud services and APIs can lead to vendor lock-in, making it challenging to migrate to a different cloud provider or bring services back in-house.
+        Interoperability: Ensuring interoperability between different cloud services and on-premises systems can be complex.
+
+    Performance and Scalability:
+        Resource Contention: In a multi-tenant environment, resource contention can occur, leading to performance bottlenecks. Organizations need to monitor and manage resource usage to maintain consistent performance.
+        Scalability Challenges: Scaling applications and workloads in the cloud may require redesigning or refactoring applications to take full advantage of cloud resources.
+
+    Compliance and Legal Issues:
+        Data Jurisdiction: Determining where data is physically stored and which jurisdiction's laws apply can be complex in a global cloud environment.
+        Legal and Contractual Issues: Understanding and negotiating cloud service contracts, service level agreements (SLAs), and liability terms is critical to protecting the organization's interests.
+
+    Skills and Training:
+        Skills Gap: Managing cloud resources effectively requires a different skill set compared to traditional IT. Organizations may need to invest in training and hiring to bridge the skills gap.
+
+    Data Loss and Recovery:
+        Data Loss: While cloud providers offer data redundancy, data loss can still occur due to various factors, including human error. Organizations must have robust backup and recovery strategies.
+
+    Network and Connectivity:
+        Network Reliability: Cloud services depend on internet connectivity. Organizations may experience performance issues or downtime if their network connections are unreliable.
+        Latency: Latency can be a concern for applications that require real-time responsiveness.
+
+	Cost:
+	
+	
+	Despite these challenges, many organizations find that the benefits of cloud computing outweigh the drawbacks. Effective planning, governance, and risk management are essential to navigate these challenges successfully and harness the full potential of cloud technology.
+
+
+service models
+
+	    Cloud Service Models:
+
+        IaaS Services: Virtual machines, storage, load balancers, and network resources.
+
+        PaaS Services: Development platforms, databases, and application hosting environments.
+
+        SaaS Services: Email, productivity software, customer relationship management (CRM), and other applications.
+    Service Models:
+
+        Infrastructure as a Service (IaaS): Provides virtualized computing resources over the internet. Users can rent virtual machines, storage, and networking infrastructure.
+
+        Platform as a Service (PaaS): Offers a platform that includes development tools, databases, and middleware. Developers can build, deploy, and manage applications without worrying about the underlying infrastructure.
+
+        Software as a Service (SaaS): Delivers software applications over the internet. Users access these applications through web browsers, eliminating the need for local installations.
+
+	Infrastructure as a Service (IaaS)
+	----------------------------------
+Infrastructure as a Service (IaaS) 
+	basic building blocks for cloud IT and 
+	access to (virtual)
+		networking features, 
+		computers 
+			(virtual or on dedicated hardware), and 
+		data storage space. 
+	
+	IaaS provides 
+		highest level of flexibility 
+		management control on IT resources 
+		most similar to existing IT resources 
+			
+e.g. 
+	AWS EC2.
+	Rackspace.
+	Google Compute Engine (GCE).
+	Digital Ocean.
+	Microsoft Azure.
+	Magento 1 Enterprise Edition*.
+
+
+	Platform as a Service (PaaS)
+	----------------------------
+Platform as a Service (PaaS) 
+	manage the underlying infrastructure 
+		(usually hardware and operating systems) and 
+		we can focus on 
+			deployment and 
+			management 
+				of your applications. 
+			
+		we don’t need to worry about 
+			resource procurement, 
+			capacity planning, 
+			software maintenance, 
+			patching, 
+		or 
+			any of the other undifferentiated heavy lifting involved in running your application.
+e.g.
+	AWS Elastic Beanstalk.
+	Heroku.
+	Windows Azure (mainly used as PaaS).
+	Force.com.
+	Google App Engine.
+	OpenShift.
+	Apache Stratos.
+	Adobe Magento Commerce Cloud.
+
+	Software as a Service (SaaS)
+	----------------------------
+	Software as a Service (SaaS) 
+		provides you with a completed product 
+			run and 
+			managed 
+				by the service provider. 
+	mostly end-user applications. 
+	e.g.
+		web-based email 
+			send and receive email 
+
+
+
+------------------------------
+
+    Deployment Models:
+
+        Public Cloud: Services are provided by third-party cloud providers and are available to anyone over the internet. Examples include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP).
+
+        Private Cloud: Resources are dedicated to a single organization and can be hosted on-premises or by a third-party provider. Private clouds offer greater control and security.
+
+        Hybrid Cloud: Combines both public and private cloud resources, allowing data and applications to move between them. This model provides flexibility and scalability.
+
+
+
+
+Deployment Models 
+The cloud deployment model 
+	identifies the specific type of cloud environment 
+	based on 
+		ownership, 
+		scale, and 
+		access, as 
+		cloud’s nature and purpose. 
+		location of the servers 
+		who controls them 
+			defined by a cloud deployment model. It specifies how your cloud infrastructure will look, what you can change, and whether you will be given services or will have to create everything yourself. Relationships between the infrastructure and your users are also defined by cloud deployment types. 
+
+Different types of cloud computing deployment models are:
+	Public cloud 
+	Private cloud
+	Hybrid cloud
+	Community cloud
+	Multi-cloud 
+
+
+
+
+Public Cloud 
+	anybody can access services. 
+	[arguably] may be less secure 
+		as it is open to everyone. 
+	cloud infrastructure services provided over the internet 
+		to general people or 
+		major industry groups. 
+	
+	infrastructure 
+		owned by the cloud provider
+		not by the consumer. 
+		allows customers and users 
+			to easily access systems and services. 
+		
+		storage backup and retrieval services are 
+			given for free
+			as a subscription, 
+			or on a per-user basis. 
+			Example: Google App Engine etc.
+
+	Advantages of Public Cloud Model:
+
+		Minimal Investment: 
+		No setup cost: 
+		No Infrastructure Management 
+		No maintenance: 
+		Dynamic Scalability:  
+
+	Disadvantages of Public Cloud Model:
+		Arguably Less secure: 
+			Public cloud is less secure as resources are public so there is no guarantee of high-level security.
+		Low customization: 
+			It is accessed by many public so it can’t be customized according to personal requirements. 
+
+
+Private Cloud 
+
+	exact opposite of the public cloud deployment model. 
+	one-on-one environment 
+		for a single user (customer). 
+	don't share your hardware 
+	access systems and services 
+		within a given border or organization. 
+	The cloud platform 
+		implemented in a cloud-based secure environment 
+		protected by powerful firewalls and 
+		under the supervision of an organization’s IT department. 
+		greater flexibility of control over cloud resources.
+
+	Advantages of Private Cloud Model:
+		Better Control: 
+			sole owner of the property. 
+			complete command over 
+				service integration, 
+				IT operations, 
+				policies, and 
+				user behavior. 
+		Data Security and Privacy: 
+			suitable for storing critical corporate information 
+				only authorized staff have access. 
+			segment resources 
+				improved access and 
+				security can be achieved.
+		Supports Legacy Systems: 
+			designed to work with legacy systems 
+				that are unable to access the public cloud. 
+		Customization: 
+			Unlike a public cloud deployment, 
+			private cloud allows a company to tailor its solution to meet its specific needs.
+	Disadvantages of Private Cloud Model:
+		Less scalable: 
+			scaled in a range as 
+				less number of clients.
+		Costly: 
+			costly 
+			as you provide personalized facilities.
+ 
+Hybrid Cloud 
+	bridge 
+		public and private cloud 
+	gives the best of both worlds. 
+	host the app in a safe environment 
+		save cost using public cloud’s . 
+	move data and applications 
+		between different clouds 
+			using a combination of 
+				two or more cloud deployment methods.
+	Advantages of  Hybrid Cloud Model:
+		Flexibility and control: 
+			Businesses with more flexibility 
+			can design personalized solutions 
+				that meet their particular needs.
+		Cost: 
+			public clouds provide scalability
+		Security: 
+			data is properly separated
+			chances of data theft 
+				reduced. 
+	Disadvantages of Hybrid Cloud Model:
+		Difficult to manage: 
+			combination of both 
+			So, it is complex.
+		Slow data transmission: 
+			Data transmission through the public cloud 
+			so latency occurs.
+		Cost: 	
+			pay for extra capacity 
+			and continous data transfer
+
+Community Cloud
+	allows systems and services 
+		to be accessible by a 
+			group of organizations. 
+	distributed system 
+		created by integrating the services of 
+			different clouds 
+				to address the specific needs of a 
+					community, 
+					industry, or 
+					business. 
+	infrastructure of the community 
+		could be shared between 
+			organization which has shared concerns or tasks. 
+	generally managed by 
+		third party 
+	or 
+		combination of multiple organizations in the community. 
+
+	Advantages of Community Cloud Model:
+		Cost Effective: 
+			shared by multiple organizations or communities.
+		Security: 
+			Community cloud provides better security.
+		Shared resources: 
+			share 
+				resources, 
+				infrastructure, 
+				etc. with 
+					multiple organizations.
+		Collaboration and data sharing: 
+			suitable for both collaboration and data sharing.
+	Disadvantages of Community Cloud Model:
+		Limited Scalability: 
+			relatively less scalable 
+				as many organizations share the same resources 
+					according to their collaborative interests. 
+		Rigid in customization: 
+			everybody should agree
+			
+Multi-cloud 
+	Use multiple cloud providers 
+		at the same time 
+	similar to hybrid cloud 
+	public cloud providers 
+		provide numerous tools 
+			improve the reliability of their 
+				services, 
+				mishaps still occur. 
+	Highly unlikely 
+		two distinct clouds 
+		would have an incident at the same moment. 
+		improves the high availability of your services even more. 
+
+	Advantages of a Multi-Cloud Model:
+		mix and match 
+			the best features  
+		Reduced Latency: 
+			To reduce latency 
+				improve user experience
+				choose cloud regions and zones 
+					that are close to your clients. 
+		High availability of service: 
+			two distinct clouds 
+				would not have an incident 
+					at the same moment. 
+	Disadvantages of Multi-Cloud Model:
+		Complex: 
+			
+		Security issue: 
+			complex structure
+				there may be loopholes 
+			hacker may take advantage 
+
+-------------------------------------------------------------------------------------------------------------------------
+		
+		Introduction to AWS and Azure: Key services and differences.
+-------------------------------------------------------------------------------------------------------------------------
+Amazon Web Services (AWS) and Microsoft Azure are two of the most prominent and widely used cloud computing platforms in the world. They offer a vast array of cloud services and solutions to individuals, businesses, and organizations. Let's provide a brief introduction to each of them:
+
+Amazon Web Services (AWS):
+
+    Overview: AWS is a comprehensive cloud computing platform offered by Amazon.com. It was launched in 2006 and has since become one of the leading cloud service providers globally.
+
+    Services: AWS offers a wide range of cloud services organized into several categories, including:
+        Compute: 
+			Services for virtual servers (EC2), containers (ECS and EKS), and serverless computing (AWS Lambda).
+        Storage: 
+			Scalable and durable storage solutions like Amazon S3 and EBS.
+        Databases: 
+			Managed database services, including Amazon RDS and DynamoDB.
+        Networking: 
+			Virtual private cloud (VPC), content delivery (Amazon CloudFront), and load balancing.
+        Analytics: 	
+			Big data processing and analytics tools such as Amazon Redshift and EMR.
+        Machine Learning: 
+			Services like Amazon SageMaker for building and deploying machine learning models.
+        Security: Identity and access management (IAM) and various security and compliance tools.
+        IoT: Services to build, deploy, and manage IoT applications.
+        DevOps: Tools for automating application deployment and management.
+
+    Global Reach: AWS has a vast global network of data centers and regions, making it accessible to customers all over the world. Customers can choose from multiple availability zones within each region for redundancy and fault tolerance.
+
+    Pricing: AWS employs a pay-as-you-go pricing model, where users are billed for the resources they consume, making it cost-effective and scalable for a wide range of users.
+
+    Market Dominance: AWS is known for its extensive market share and customer base, ranging from startups to large enterprises. It has a rich ecosystem of third-party tools and partners.
+
+Microsoft Azure:
+
+    Overview: Microsoft Azure is a cloud computing platform and service offered by Microsoft. It was initially launched in 2010 and has since grown into one of the largest cloud providers in the world.
+
+    Services: Azure provides a comprehensive set of cloud services, including:
+        Compute: 
+			Virtual machines (Azure VMs), containers (Azure Kubernetes Service), and serverless computing (Azure Functions).
+        Storage: 
+			Scalable object storage (Azure Blob Storage) and file storage (Azure Files).
+        Databases: 
+			Managed database services like Azure SQL Database and Cosmos DB.
+        Networking: 
+			Virtual networks (Azure VNet), content delivery (Azure Content Delivery Network), and load balancing.
+        Analytics: 
+			Data analytics and big data solutions, including Azure Data Lake and HDInsight.
+        AI and Machine Learning: 
+			Azure Machine Learning and Cognitive Services.
+        Security and Identity: Azure Active Directory (AD) and security tools.
+        IoT: 
+			Azure IoT Hub for managing IoT devices and data.
+        DevOps: 
+			Azure DevOps for application lifecycle management.
+
+    Global Presence: Azure has a vast network of data centers and regions globally, similar to AWS. Customers can choose from multiple availability zones for high availability.
+
+    Hybrid Cloud Capabilities: Azure offers hybrid cloud solutions, allowing organizations to integrate on-premises infrastructure with cloud services seamlessly.
+
+    Integration with Microsoft Products: Azure integrates well with Microsoft's extensive software ecosystem, making it a natural choice for organizations already using Microsoft technologies.
+
+    Pricing: Azure follows a pay-as-you-go pricing model, similar to AWS, allowing customers to pay for resources on-demand.
+
+Both AWS and Azure are highly respected and offer robust, reliable, and secure cloud services. The choice between them often depends on an organization's specific needs, existing technology stack, and strategic goals. Many businesses use a combination of both AWS and Azure, known as a multi-cloud strategy, to leverage the strengths of each platform.
+
+
+Get started from here
+
+		Key services
+-------------------------------------------------------------------------------------------------------------------------
+Amazon Web Services (AWS) offers a vast array of cloud services designed to meet various computing, storage, database, networking, analytics, machine learning, security, and management needs. Here are some of the key AWS services across different categories:
+
+1. Compute Services:
+
+    Amazon Elastic Compute Cloud (EC2): Provides resizable virtual servers (instances) for running applications.
+    AWS Lambda: Allows you to run code in response to events without provisioning or managing servers (serverless computing).
+
+2. Storage Services:
+
+    Amazon S3 (Simple Storage Service): Scalable object storage for data storage, backup, and retrieval.
+    Amazon EBS (Elastic Block Store): Block-level storage volumes for use with EC2 instances.
+    Amazon Glacier: Low-cost storage for archiving and long-term backup.
+
+3. Database Services:
+
+    Amazon RDS (Relational Database Service): Managed relational database service supporting multiple database engines like MySQL, PostgreSQL, and SQL Server.
+    Amazon DynamoDB: Fully managed NoSQL database service.
+    Amazon Redshift: Data warehousing service for analytics and reporting.
+
+4. Networking Services:
+
+    Amazon VPC (Virtual Private Cloud): Provides isolated network resources for creating private networks within AWS.
+    Amazon Route 53: Scalable domain name system (DNS) web service.
+    AWS Direct Connect: Dedicated network connection between on-premises data centers and AWS.
+
+5. Analytics Services:
+
+    Amazon EMR (Elastic MapReduce): Managed big data platform for processing and analyzing vast datasets.
+    Amazon Athena: Query service for analyzing data in Amazon S3 using SQL.
+    Amazon Kinesis: Real-time data streaming and processing service.
+
+6. Machine Learning and AI Services:
+
+    Amazon SageMaker: Fully managed service for building, training, and deploying machine learning models.
+    AWS Rekognition: Image and video analysis service for object and facial recognition.
+    Amazon Comprehend: Natural language processing (NLP) service for sentiment analysis and text extraction.
+
+7. Security and Identity Services:
+
+    AWS IAM (Identity and Access Management): Service for managing user access and permissions.
+    Amazon Cognito: Identity and user management for mobile and web applications.
+    Amazon Inspector: Automated security assessment service for resources.
+
+8. Developer and DevOps Services:
+
+    AWS CodeDeploy: Automated deployment service for applications to EC2 instances.
+    AWS CodePipeline: Continuous integration and continuous delivery (CI/CD) service.
+    AWS CloudFormation: Infrastructure as code (IAC) service for defining and deploying AWS resources.
+
+9. Internet of Things (IoT) Services:
+
+    AWS IoT Core: Managed cloud platform for connecting and managing IoT devices.
+    Amazon FreeRTOS: Real-time operating system for IoT devices.
+
+10. Management and Monitoring Services:
+- Amazon CloudWatch: Monitoring and observability service for AWS resources.
+- AWS CloudTrail: Audit trail service for tracking API calls made on your account.
+
+11. AWS ECS and EKS:
+	Containerization and orchestration
+
+These are just a few of the many AWS services available. AWS continues to expand and innovate its offerings, providing solutions for a wide range of use cases across industries, from startups to enterprises. Users can choose and combine these services to build scalable, reliable, and cost-effective cloud-based applications and solutions.
+
+
+Microsoft Azure is a comprehensive cloud computing platform offering a wide range of services to meet various IT infrastructure, development, and data management needs. Here are some key Azure services categorized by their functionalities:
+
+1. Compute Services:
+
+    Azure Virtual Machines (VMs): Provides scalable virtual machines running Windows or Linux.
+    Azure Functions: Serverless compute service for event-driven applications.
+    Azure Kubernetes Service (AKS): Managed Kubernetes container orchestration.
+
+2. Storage Services:
+
+    Azure Blob Storage: Scalable object storage for unstructured data.
+    Azure Table Storage: NoSQL data storage for semi-structured data.
+    Azure Files: Managed file shares for cloud and on-premises deployments.
+
+3. Database Services:
+
+    Azure SQL Database: Managed relational database service.
+    Azure Cosmos DB: Globally distributed NoSQL database.
+    Azure Database for MySQL/PostgreSQL: Managed database services for these engines.
+
+4. Networking Services:
+
+    Azure Virtual Network (VNet): Private network for Azure resources.
+    Azure Load Balancer: Load balancing service for high availability.
+    Azure Application Gateway: Web traffic load balancer with web application firewall (WAF).
+
+5. Analytics Services:
+
+    Azure Synapse Analytics (formerly SQL Data Warehouse): Data warehousing and analytics service.
+    Azure Databricks: Apache Spark-based analytics platform.
+    Azure Data Lake Storage: Scalable data lake for big data analytics.
+
+6. Machine Learning and AI Services:
+
+    Azure Machine Learning: Machine learning service for building, training, and deploying models.
+    Azure Cognitive Services: Suite of AI services for computer vision, speech, language, and more.
+    Azure Bot Service: Service for building intelligent, conversational bots.
+
+7. Security and Identity Services:
+
+    Azure Active Directory (AD): Identity and access management service.
+    Azure Key Vault: Securely manage keys, secrets, and certificates.
+    Azure Security Center: Threat protection and security management service.
+
+8. Developer and DevOps Services:
+
+    Azure DevOps Services: Tools for planning, developing, testing, and delivering software.
+    Azure Functions: Serverless compute for event-driven applications.
+    Azure Logic Apps: Workflow automation service.
+
+9. Internet of Things (IoT) Services:
+
+    Azure IoT Hub: Managed service for IoT device messaging and management.
+    Azure IoT Central: SaaS solution for IoT application development.
+
+10. Management and Monitoring Services:
+- Azure Monitor: Comprehensive monitoring and analytics service.
+- Azure Policy: Policy enforcement service to enforce organizational standards.
+- Azure Resource Manager: Management layer for organizing and deploying Azure resources.
+
+These services represent only a subset of Azure's extensive offerings. Azure continues to expand and innovate, offering solutions for various industries and use cases. Organizations can leverage these services to build, deploy, and manage applications and infrastructure in a flexible and scalable manner.
+
+
+
+
+---------------------------------
+
+
+Service #1. Amazon EC2 [Elastic Compute Cloud]
+	AWS EC2 AWS Service Amazon EC2 
+		virtual servers 
+		computing infrastructure 
+			with the best suitable 
+				processors, 
+				networking facilities, and 
+				storage systems. 
+		highly secure, 
+		reliable, 
+		performing computing infrastructure 
+			meeting business demands. 
+		access resources quickly and 
+		dynamically scale capacities as per demands.
+
+Service #2. Amazon S3
+	Amazon S3 
+		object storage AWS service
+		highly scalable. 
+		access any quantity of data from anywhere. 
+		data is stored in ‘storage classes’ 
+			to reduce costs 
+			no extra investment and 
+			manage it comfortably. 
+		data is highly secured and 
+		supports meeting audit and compliance requirements. 
+		handle any volume of data 
+			with Amazon S3’s 
+			robust access controls, 
+			replication tools, and 
+			higher visibility. 
+		maintain data version controls and 
+		preventing accidental deletion.
+	
+	
+Service #3. AWS Aurora
+	AWS RDS AWS Service  
+	MySQL and PostgreSQL compatible relational database 
+		high performance. 
+	five times faster than standard MySQL databases. 
+	can automate crucial tasks 
+		e.g. 
+			hardware provisioning, 
+			database setup and 
+			backups, and 
+			patching. 
+	Amazon Aurora 
+		distributed, 
+		fault-tolerant, 
+		self-healing 
+			storage system 
+	can scale automatically as per needs. 
+	reduce costs significantly 
+	enhance databases' 
+		security, 
+		availability, and 
+		reliability.	
+	
+Service #4. Amazon DynamoDB
+	DynamoDB AWS Service DynamoDB 
+		fully managed and 
+		serverless NoSQL database AWS service. 
+		fast and flexible database system 
+		low cost. 
+		single-digit millisecond performance 
+		with unlimited throughput and storage. 
+		in-built tools to generate 
+			actionable insights, 
+			useful analytics, and 
+			monitor traffic trends in applications.	
+	
+	
+Service #5. Amazon RDS
+	AWS RDS 
+	managed Relational Database 
+		for 
+			MySQL, 
+			PostgreSQL, 
+			Oracle, 
+			SQL Server, and 
+			MariaDB. 
+		allows the 
+			setup, 
+			operation, and 
+			scale of a 
+				relational database in the cloud quickly. 
+		high performance 
+			by automating the tasks such as 
+				hardware provisioning, 
+				database setup, 
+				patching, and 
+				backups. 
+	don’t need to 
+		install and 
+		maintain 
+			the database software. 
+	can optimize costs 
+	high availability, 
+	security, and 
+	compatibility for your resources.	
+	
+	
+Service #6. Amazon Lambda
+	AWS Lambda 
+	serverless and event-driven computing AWS service. 
+	run codes automatically 
+	without worrying about servers and clusters. 
+	codes can be uploaded directly 
+		don't need to provision or manage infrastructure. 
+	automatically accepts 'code execution requests' 
+	pay the price only for the computed time
+	effective cost-control.	
+	
+
+Service #7. Amazon VPC
+	AWS VPC 
+		Virtual Private Cloud
+		
+		controls the virtual networking environment
+			resource placement, 
+			connectivity, and 
+			security. 
+	build and manage compatible VPC networks 
+		across cloud AWS resources and on-premise resources. 
+	improves security 
+		inbound and 
+		outbound connections. 
+	monitors VPC flow logs 
+		delivered to Amazon S3 and Amazon Cloudwatch 
+		gain visibility over network dependencies and traffic patterns. 
+	Amazon VPC 
+		detects anomalies in the 
+			patterns, 
+			prevents data leakage, and 
+			troubleshoots network connectivity and 
+			configuration issues.
+
+
+Service #8. Amazon CloudFront
+	Amazon CloudFront 
+		delivers content globally, 
+		high performance and security. 
+		delivers data with high speed and low latency. 
+		content is delivered to destinations successfully 
+			with automated network mapping and 
+			intelligent routing mechanisms. 
+		Improved security of data 
+			with traffic encryption 
+			access controls. 
+	data can be transferred within milliseconds 
+		with its in-built 
+			data compression, 
+			edge computing capabilities, and 
+			field-level encryption. 
+	stream high-quality video using AWS media services 
+		to any device 
+			quickly and consistently using Amazon CloudFront.
+
+Service #9. AWS Elastic Beanstalk
+	Supports running and managing web applications. 
+		on an aws service
+	we deploy code
+		web app infrastructure managed by aws
+	allows easy deployment of applications from 
+		capacity provisioning, 
+		load balancing
+		auto-scaling 
+		application health monitoring. 
+		
+	auto-scaling properties
+	manage peaks in workloads and traffic 
+		with minimum costs. 
+	developer-friendly tool 
+		manages 
+			servers, 
+			load balancers, 
+			firewalls, and 
+			networks simply. 
+			
+
+Service #10. Amazon EC2 Auto-scaling
+	scales computing capacity 
+		add or remove EC2 instances automatically. 
+	two types of scaling 
+		dynamic scaling and 
+			responds to the presently changing demands
+		predictive scaling. 
+			responds based on predictions. 
+			e.g. increase based on time etc.
+	Through Amazon EC2 Auto-scaling
+		identify the unhealthy EC2 instances, 
+		terminate them
+		replace them with new instances.
+
+
+Service #11. Amazon ElastiCache
+	 fully-managed, flexible, in-memory caching AWS service. 
+	 supports increasing the performance of your applications and database. 
+	 reduce the load in a database 
+		by caching data in memory. 
+	in-memory with 
+	high speed, 
+	microsecond latency
+	high throughput. 
+	reduce costs and 
+	eliminate the operational overhead of your business.
+
+Service #12. Amazon S3 Glacier
+	archive storage in the cloud 
+		at a low cost. 
+	built with three storage classes 
+		S3 Glacier instant retrieval, 
+			supports immediate access 
+		flexible retrieval, and 
+		deep archive. 
+	to data, and the flexible class allows flexible access within minutes to hours with no cost. The third one, deep archive, helps archive compliance data and digital media. Overall, they support you to access data from archives faster.
+
+Service #13. Amazon Lightsail
+
+	website and applications building AWS service. 
+	offers 
+		Virtual Private Server instances, 
+		containers, 
+		databases, and 
+		storage. 
+	serverless computing service with AWS Lambda. 
+	Can create websites 
+		using pre-configured applications such as 
+			WordPress, 
+			Magento, 
+			Prestashop, 
+			Joomla in a few clicks and at a low cost. 
+	In addition to this, it is the best tool for testing, so you can create, test, and delete sandboxes with your new ideas.
+
+Service #14. Amazon Sagemaker
+	allows building, training, and deploying Machine Learning (ML) models at a large capacity. 
+	It is an analytical tool that functions based on Machine Learning power to analyze data more efficiently. With its single tool-set, you can build high-quality ML models quickly. Amazon Sagemaker not only generates reports but provides the purpose for generating predictions too. In addition, Amazon Ground Truth Plus creates datasets without labeling applications.
+
+Service #15. Amazon SNS
+	Amazon Simple Notification Service (SNS). 
+	messaging service 
+		between Application to Application (A2P) and 
+		Application to Person (A2Person). 
+	A2P 
+		many-to-many messaging 
+			between 
+				distributed systems, 
+				microservices, and 
+				event-driven serverless applications. 
+		supports applications to send messages to many users via 
+			mail, 
+			SMS, etc. 
+	For instance
+		can send up to ten messages in a single API request. 
+	effective filtering systems
+		subscribers will receive messages that they are interested in. 
+	Besides, Amazon SNS works alongside Amazon SQS to deliver messages accurately and consistently.
+
+Service #16. Amazon EBS
+	AWS EBS AWS Service Amazon Elastic Block Store (EBS) 
+		block storage service. 
+	It supports scaling high-performance workloads such as SAP, Oracle, and Microsoft products. And it provides better protection against failures up to 99.999%. It helps to resize clusters for big data analytics engines such as Hadoop and Spark. Also, you can build storage volumes, optimize storage performance, and reduce costs. Amazon EBS’s lifecycle management creates policies that help create and manage backups effectively.
+
+Service #17. Amazon Kinesis
+	AWS Kinesis AWS Service  It is the AWS service that analyses the video as well as data streams. Amazon Kinesis collects, processes, and analyzes all types of streaming data. Here, the data may be audio, video, application logs, website clickstreams, and IoT telemetry. Then, it generates real-time insights within seconds once the data has arrived. With the help of Amazon Kinesis, you could stream and process a large quantity of real-time data with low latencies, very simply.
+
+Service #18. Amazon Elastic File System (EFS) 
+	Amazon Elastic File System AWS Service  Amazon EFS is the fully managed file system for Amazon EC2. And it is a simple and serverless elastic file system. You can create and configure file systems without provisioning, deploying, patching, and maintenance using Amazon EFS. Here, files can be added and deleted as per the scaling needs. Especially, you can pay only for the used space, hence this service helps to reduce costs.
+
+Service #19. AWS IAM
+	AWS IAM AWS Service  It is the Identity and Access Management (IAM) service offered by AWS to securely access the applications and resources. It regulates access to various resources based on roles and access policies; as a result, you can achieve a fine-grained access control on your resources. The AWS IAM access analyzer helps streamline permission management through setting, verifying, and refining. In addition, AWS IAM attribute-based access control helps create fine-grained permissions based on user attributes such as department, job role, team name, etc.
+
+Service #20. Amazon SQS
+	AWS SQS AWS Service  Amazon SQS is a fully-managed message queuing service. There are two types of message queuing services: SQS Standard and SQS FIFO. Here, the SQS standard offers the features such as maximum throughput, best-effort ordering, and quick delivery. And SQS FIFO processes messages only once in the same order by which they have been sent. Also, Amazon SQS allows decoupling or scaling microservices, distributed systems, and serverless applications. It helps you send, receive and manage messages in a large volume. Moreover, there is no need to install and maintain other messaging software, reducing costs significantly. Besides, scaling is carried out quickly and automatically in this service.
+
+Service #21. Amazon RedShift
+	AWS Redshift AWS Service Amazon Redshift is a quick, simple, and cost-effective data warehousing service. You can gain insights about cloud data warehousing in an easy, faster, and more secure way. It allows analysis of all the data in operational databases, data lakes, data warehouses, and third-party data. And Amazon Redshift helps analyze a large volume of data and run complex analytical queries. With its automation capabilities, this service increases query speed and provides the best price performance.
+
+Service #22. Amazon Cloudwatch
+	Amazon Cloudwatch AWS Service  This AWS service monitors the cloud resources and applications keenly. It is a single platform that helps to monitor all AWS resources and applications; it increases visibility to respond to issues quickly. Mainly, Amazon Cloudwatch provides actionable insights to optimize monitoring applications, systemwide performance changes, and resource utilization. And you can get a complete view of the health of AWS resources, applications, and services running on AWS and on-premises. In addition, Amazon Cloudwatch helps to detect anomalies in the behavior of the cloud environment, set alarms, visualize logs and metrics, make automated actions, troubleshoot issues, and discover insights.
+
+Service #23. Amazon Chime
+	Amazon Chime AWS Service Amazon Chime is a communication service. It is a single solution that offers audio calling, video calling, and screen sharing capabilities. With the help of this service, you can make quality meetings, chat, and video calls both inside and outside of your organization. And more features can be added to this service as per your business needs. Mainly, you can set calls for a pre-defined time to automatically make calls on time. Amazon Chime helps you not to miss a meeting amidst your hectic schedule at work. Besides, you can pay as per the usage of resources by which you can reduce the costs significantly.
+
+Service #24. Amazon Cognito
+	amazon cognito aws service It is the identity management AWS service. Amazon Cognito manages identities for accessing your applications and resources. Mainly, this service helps add sign-in, sign-up, and access control the web and mobile apps quickly. It can support millions of users to sign in with familiar applications such as Apple, Facebook, Google, and Amazon. In Amazon Cognito, the feature ‘Cognito user pools’ can be set up quickly without any infrastructure, and the pool members will have a directory profile. It supports multi-factor authentication and encryption of data-at-rest and data-in-transit.
+
+Service #25. Amazon Inspector 
+	Amazon Inspector AWS Service Amazon Inspector is an automated vulnerability management service. This service offers continuous and automated vulnerability management for Amazon EC2 and Amazon ECR. It allows scanning AWS workloads for software vulnerabilities and unwanted network exposure. Amazon Inspector quickly identifies vulnerabilities, which helps to take immediate actions to resolve them before it worsens the applications. Moreover, it supports meeting compliance requirements and reduces meantime-to-remediate vulnerabilities. And it provides you with accurate risk scores and streamlined workflow.
+
+Service #26. AWS Firewall Manager
+	AWS Firewall Manager AWS Service It is the central management service of firewall rules. The firewall manager supports managing firewall rules across all the applications and accounts. The common security rules help to manage new applications included over time. It is the one-time solution for consistently creating firewall rules and security policies and implementing them across the infrastructure. AWS firewall manager helps you audit VPC security groups for compliance requirements and control network traffic effectively.
+
+Service #27. Amazon Appflow
+	Amazon Appflow AWS Service Amazon Appflow is a no-code service that allows the integration of SaaS applications and AWS services effortlessly. To be more precise, it securely automates dataflows integrating third-party applications and AWS services without using codes. You can transfer data between SaaS applications such as Salesforce, SAP, Zendesk, etc. since Amazon Appflow can be integrated with other applications in a few clicks. Especially, a large volume of data can be moved without breaking it up into batches using this service.
+
+Service #28. Amazon Route 53
+	Amazon Route53 AWS Service It is a scalable cloud Domain Name System (DNS) service. It allows end-users to connect with Amazon EC2, Elastic load balancers, Amazon S3 buckets, and even outside AWS. In this service, the feature ‘Route 53 application recovery controllers’ configure DNS health checks and helps to monitor the ability of systems to recover from failures. And ‘Route 53 traffic flow’ helps manage traffic across the globe using routing methods such as latency-based routing, Geo DNS, Geoproximity, and weighted round-robin.
+
+Service #29. AWS Cloud Formation
+	Amazon Inspector AWS ServiceThis AWS service creates and manages resources with templates. It is a single platform that can handle all AWS accounts across the globe. It automates resource management with AWS service integration and offers turnkey application distribution and governance controls. Also, AWS Cloud Formation can automate, test, and deploy infrastructure with continuous integration and delivery. And you can run applications right from AWS EC2 to complex multi-region applications using this service.
+
+Service #30. AWS Key Management Service (KMS)
+	AWS KMS AWS Service AWS KMS manages the creation and control of encryption keys. It means that AWS KMS creates cryptographic keys and controls their uses across various applications. You can achieve a secure and resilient service using hardware resilient modules to protect keys. This service can be integrated with AWS Cloudtrail to provide logs of all key usage to precisely fulfil compliance and regulatory requirements.
+
+
+		differences
+-------------------------------------------------------------------------------------------------------------------------
+https://www.geeksforgeeks.org/comparisons-between-azure-vs-aws/
+
+Compare azure vm vs aws ec2
+https://www.linkedin.com/pulse/one-comparison-aws-ec2-vs-azure-vm-continuuminnovations/
+
+Azure Virtual Machines (VMs) and Amazon Elastic Compute Cloud (EC2) are both cloud infrastructure services that offer virtualized computing resources, but they differ in their technical details and internal implementations. Here are some technical differentiators:
+
+1. Hypervisor Technology:
+
+    Azure Virtual Machines: Azure primarily uses Microsoft's Hyper-V as its hypervisor technology. Hyper-V is a type-1 hypervisor, which means it runs directly on the hardware without requiring an underlying operating system. It provides efficient resource isolation and management for VMs.
+
+    Amazon EC2: EC2 instances run on a hypervisor based on the Xen virtualization platform. Xen is also a type-1 hypervisor known for its performance and security. AWS has customized Xen to optimize it for its cloud environment.
+
+2. Virtual Machine Types and Sizes:
+
+    Azure Virtual Machines: Azure offers a variety of VM types optimized for different workloads, including General Purpose, Compute Optimized, Memory Optimized, and more. Each type has multiple sizes with varying CPU, memory, and storage configurations.
+
+    Amazon EC2: EC2 provides a wide range of instance types optimized for specific use cases, such as Compute Optimized, Memory Optimized, Storage Optimized, and GPU instances. Each instance type is designed with specific hardware configurations to meet different workload requirements.
+
+3. Availability Zones:
+
+    Azure Virtual Machines: Azure Availability Zones provide high availability by distributing VM instances across physically separate data centers within a region. This architecture enhances fault tolerance and redundancy.
+
+    Amazon EC2: AWS offers a similar concept called Availability Zones, where instances can be placed in different data centers within a region. This provides resiliency and availability for EC2 instances.
+
+4. Operating Systems and Marketplace:
+
+    Azure Virtual Machines: Azure provides a marketplace with a wide range of pre-configured virtual machine images for various operating systems, including Windows Server, Linux distributions, and third-party software. You can also bring your own custom images.
+
+    Amazon EC2: EC2 offers a vast marketplace with a plethora of Amazon Machine Images (AMIs) for various operating systems and applications. This includes Amazon Linux, Windows, and a wide selection of third-party AMIs.
+
+5. Integration with Ecosystem:
+
+    Azure Virtual Machines: Azure VMs integrate seamlessly with other Azure services, such as Azure Blob Storage, Azure SQL Database, and Azure Active Directory. Azure Resource Manager (ARM) templates are used for deployment and management.
+
+    Amazon EC2: EC2 instances are part of the broader AWS ecosystem, which includes services like Amazon S3, Amazon RDS, and AWS IAM. AWS CloudFormation is used for infrastructure as code (IAC) management.
+
+6. Management Tools:
+
+    Azure Virtual Machines: Managed using the Azure Portal, Azure PowerShell, Azure CLI, and ARM templates. Azure Automation can also be used for scripting and automation.
+
+    Amazon EC2: Managed through the AWS Management Console, AWS CLI, and AWS CloudFormation templates. AWS also provides third-party integrations and development kits.
+
+While both Azure Virtual Machines and Amazon EC2 offer similar core capabilities, these technical differences and considerations may influence your choice depending on your specific use case, existing infrastructure, and familiarity with the respective platforms.
+
+
+aws s3 vs azure block storage 
+	https://learn.microsoft.com/en-us/azure/architecture/aws-professional/storage
+	https://stonefly.com/blog/comparison-aws-s3-infrequent-access-azure-cool-blob-storage/
+	
+	
+Amazon Simple Storage Service (S3) and Amazon Elastic Block Store (EBS) are both storage services provided by Amazon Web Services (AWS), but they serve different purposes and have distinct technical differences:
+
+Amazon Simple Storage Service (S3):
+
+    Object Storage: Amazon S3 is an object storage service designed for storing and retrieving large amounts of unstructured data, such as images, videos, documents, and backups.
+
+    Scalability: S3 is highly scalable and can store an unlimited number of objects in various "buckets." Objects can range from a few bytes to several terabytes in size.
+
+    Durability: S3 offers high durability, with data automatically replicated across multiple data centers within an AWS region. It provides 11 nines (99.999999999%) of data durability.
+
+    Access Control: S3 allows fine-grained access control through access policies and bucket policies. You can define permissions at the bucket and object levels.
+
+    Data Access: S3 data is accessed over HTTP/HTTPS using RESTful API calls, and it's suitable for use cases like web hosting, data lakes, and content distribution.
+
+    Storage Classes: S3 offers different storage classes, such as Standard, Intelligent-Tiering, Glacier, and more, to optimize costs based on data access patterns.
+
+    Lifecycle Policies: You can configure S3 to automatically transition objects between storage classes or delete them based on defined policies.
+
+Amazon Elastic Block Store (EBS):
+
+    Block Storage: EBS provides block-level storage volumes that are attached to Amazon EC2 instances. It's designed for applications that require low-latency, high-performance storage.
+
+    Volume Types: EBS offers several volume types optimized for different use cases, including General Purpose (SSD), Provisioned IOPS (SSD), Throughput Optimized HDD, and Cold HDD.
+
+    Scalability: EBS volumes can be attached to EC2 instances and can range in size from a few gigabytes to multiple terabytes. You can resize volumes on the fly.
+
+    Persistence: EBS volumes are persistent; data remains even if the associated EC2 instance is stopped or terminated.
+
+    Snapshots: EBS allows you to create point-in-time snapshots of volumes, which can be used for data backup, disaster recovery, and creating new volumes.
+
+    Block-Level Access: EBS provides block-level access, making it suitable for traditional filesystems, databases, and applications that require direct control over the block storage.
+
+    Latency: EBS volumes have low-latency characteristics, making them well-suited for applications that require fast and consistent I/O performance.
+
+    Encryption: EBS volumes can be encrypted at rest using AWS Key Management Service (KMS) for security.
+
+In summary, the primary technical difference between Amazon S3 and Amazon EBS is their use case and access patterns. S3 is designed for scalable object storage accessible over the internet, while EBS offers block-level storage volumes optimized for EC2 instances and direct control over individual blocks of data. Your choice between the two depends on your specific storage needs and application requirements.
+
+
+
+VNET to VPC
+https://devblogs.microsoft.com/premier-developer/differentiating-between-azure-virtual-network-vnet-and-aws-virtual-private-cloud-vpc/
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Setting up AWS and Azure accounts, navigating dashboards.
+-------------------------------------------------------------------------------------------------------------------------
+Setting Up an AWS Account:
+
+    Create an AWS Account:
+        Visit the AWS website (https://aws.amazon.com/) and click on "Create an AWS Account."
+        Follow the on-screen instructions to create your AWS account, providing necessary information and payment details.
+
+    Access the AWS Management Console:
+        Once your AWS account is created, you can access the AWS Management Console by signing in with your account credentials.
+
+    Dashboard Navigation:
+        The AWS Management Console is the central hub for managing AWS services. Here's how to navigate it:
+            Services Menu: Click on "Services" in the top-left corner to access a dropdown menu of AWS services categorized by type.
+            Search Bar: Use the search bar at the top to quickly find and access specific AWS services.
+            Regions: In the top-right corner, select the AWS region you want to work in. Different regions offer different availability zones and services.
+            Billing and Cost Management: You can access billing and cost management information from the "Billing & Cost Management" section.
+
+Setting Up an Azure Account:
+
+    Create an Azure Account:
+        Go to the Azure website (https://azure.com/) and click on "Start free."
+        Follow the instructions to create your Azure account. You'll need to provide payment information, but Azure often offers a free trial with credits.
+
+    Access the Azure Portal:
+        After creating your Azure account, you can access the Azure Portal by signing in with your credentials.
+
+    Dashboard Navigation:
+        The Azure Portal is the interface for managing Azure services. Here's how to navigate it:
+            Azure Services: Click on "All services" on the left sidebar to access a list of all Azure services, organized by category.
+            Search Bar: Use the search bar at the top to quickly find and access specific Azure services.
+            Resource Groups: Azure organizes resources into resource groups. You can manage resources within these groups.
+            Cost Management + Billing: Access billing and cost management information from the "Cost Management + Billing" section.
+
+Navigating the Dashboards:
+
+Both AWS and Azure offer a wide range of services, and their dashboards are designed to help you manage and interact with these services efficiently. Here are some common tasks you can perform:
+
+    Creating Resources: You can create virtual machines, databases, storage accounts, and more by navigating to the respective service in the dashboard and following the setup wizard.
+
+    Monitoring and Management: The dashboards provide tools for monitoring the performance and health of your resources. You can set up alerts, view logs, and access performance metrics.
+
+    Security and Identity: Configure access control, user permissions, and security settings to protect your resources.
+
+    Billing and Cost Management: Monitor your usage and costs. Both AWS and Azure provide cost estimation tools and billing dashboards.
+
+    Support and Documentation: Access support resources, documentation, and communities for assistance with using the services.
+
+It's important to explore and familiarize yourself with the AWS and Azure dashboards as you start working with cloud services. Each cloud provider may have specific terminology and features, so taking time to learn the navigation is beneficial. Additionally, be mindful of any free tier options or trial credits to manage costs while learning and experimenting.
+
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+	2	Computing, Networking & Storage
+-------------------------------------------------------------------------------------------------------------------------
+
+Cloud computing 
+	on-demand delivery of 
+		compute power, 
+		database, 
+		storage, 
+		applications, and 
+		other IT resources 
+	through a 
+		cloud services platform 
+	via 
+		the internet 
+	with 
+		pay-as-you-go pricing. 
+	
+
+	cloud services platform 
+		provides rapid access 
+			to flexible and low-cost IT resources. 
+	don’t make large upfront investments 
+		in hardware and 
+		spend a lot of time on the heavy lifting of managing that hardware. 
+	provision exactly the right type and size of computing resources 
+		you need to power your newest bright idea 
+		or operate your IT department. 
+	access as many resources as you need, 
+		almost instantly
+		pay for what you use.
+
+
+"Computing, Networking & Storage" are fundamental components of cloud computing and data center infrastructure. They encompass various services and technologies that enable organizations to build, manage, and scale their IT resources in a flexible and cost-effective manner. Here's an overview of these components:
+Computing:
+
+    Virtual Machines (VMs):
+        Virtual machines are virtualized instances of physical servers. They allow you to run operating systems and applications in isolated environments, providing flexibility and scalability.
+        Cloud providers like AWS, Azure, and Google Cloud offer VM services where you can launch and manage virtual machines as needed.
+
+    Containers:
+        Containers are lightweight, portable, and consistent runtime environments for applications and their dependencies. Docker is a popular containerization technology.
+        Container orchestration platforms like Kubernetes help manage and scale containerized applications.
+
+    Serverless Computing:
+        Serverless computing abstracts server management away from developers. It allows you to run code in response to events without provisioning or managing servers.
+        AWS Lambda, Azure Functions, and Google Cloud Functions are examples of serverless platforms.
+
+Networking:
+
+    Virtual Private Cloud (VPC) / Virtual Network (VNet):
+        VPCs and VNets are private, isolated network environments within a cloud provider's infrastructure. They allow you to define your own network topology, IP addressing, and security rules.
+        VPCs and VNets provide the foundation for building secure and isolated cloud-based networks.
+
+    Load Balancers:
+        Load balancers distribute incoming network traffic across multiple servers or instances to ensure high availability, scalability, and reliability.
+        Cloud providers offer load balancer services like AWS Elastic Load Balancing and Azure Load Balancer.
+
+    Content Delivery Network (CDN):
+        CDNs cache and deliver content (e.g., web pages, images, videos) from edge locations closer to end-users. This reduces latency and improves performance.
+        Services like AWS CloudFront and Azure Content Delivery Network offer CDN capabilities.
+
+    Firewalls and Security Groups:
+        Firewalls and security groups are used to control inbound and outbound traffic to resources within a VPC or VNet. They help enforce network security policies.
+        AWS Security Groups and Azure Network Security Groups are examples of such services.
+
+Storage:
+
+    Object Storage:
+        Object storage is used to store and manage unstructured data, such as files, images, and videos. Data is stored in containers called "buckets" (AWS S3, Azure Blob Storage).
+
+    Block Storage:
+        Block storage provides raw storage volumes that can be attached to virtual machines. It's used for file systems, databases, and applications (AWS EBS, Azure Disk Storage).
+
+    File Storage:
+        File storage systems allow multiple virtual machines to access shared file systems simultaneously. It's useful for data sharing among instances (AWS EFS, Azure File Storage).
+
+    Database Storage:
+        Cloud providers offer managed database services with scalable and highly available storage (AWS RDS, Azure SQL Database).
+
+    Backup and Data Recovery:
+        Services for data backup, snapshotting, and disaster recovery are essential for data protection and business continuity.
+
+    Storage Tiers and Lifecycle Policies:
+        Cloud providers offer storage tiers with different performance and cost characteristics. Lifecycle policies help automate data movement between tiers.
+
+These components form the backbone of modern cloud computing and data center infrastructure. Organizations leverage these services and technologies to build scalable, reliable, and secure IT solutions that meet their specific needs. The choice of computing, networking, and storage components depends on factors like workload requirements, performance, scalability, and cost considerations.
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+		AWS: EC2 (VMs), VPC, EBS.
+-------------------------------------------------------------------------------------------------------------------------
+
+https://www.youtube.com/watch?v=MUMyZ3FFfdg
+
+https://aws.amazon.com/about-aws/global-infrastructure/
+
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html
+
+Refer image in above link
+Amazon cloud computing resources 
+	hosted in multiple locations world-wide. 
+	locations 
+		AWS Regions,
+			separate geographic area
+		Availability Zones, 
+			Each AWS Region has 
+				multiple, isolated locations 
+					known as Availability Zones
+		Local Zones (like edge locations). 
+			can place resources 
+				e.g.
+					compute and 
+					storage, 
+						in multiple locations 
+							closer to your users. 
+		Amazon RDS 
+				enables you to place resources like 
+					DB instances, and 
+					data 
+						in multiple locations. 
+		N.B: Resources aren't replicated across AWS Regions unless you do so specifically.
+			
+			aws ec2 describe-regions	# Regions that are enabled for your account.
+			aws ec2 describe-regions --all-regions
+
+--------------------------
+aws ec2 run-instances  --image-id ami-0cc87e5027adcdca8 --count 1  --instance-type t2.micro  --key-name vilas  --security-group-ids sg-07570e17ab8331f13 \
+    --subnet-id subnet-00b5ede5e160caa59 \
+    --block-device-mappings "[{\"DeviceName\":\"/dev/sdf\",\"Ebs\":{\"VolumeSize\":30,\"DeleteOnTermination\":false}}]" \
+    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=demo-server}]' 'ResourceType=volume,Tags=[{Key=Name,Value=demo-server-disk}]'	
+--------------------------
+
+		Find name of the us-east-2 Region.
+			aws lightsail get-regions --query "regions[?name=='us-east-2'].displayName" --output text
+				ans: ohio
+				
+				
+
+		(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html)
+		AWS Outposts 
+			brings native AWS 
+				services, 
+				infrastructure, and 
+				operating models 
+					to virtually any data center, 
+						co-location space, 
+					or 
+						on-premises facility.
+
+		Wavelength Zones 
+			allow developers to build applications that 
+				deliver ultra-low latencies to 5G devices and end users. 
+			Wavelength deploys 
+				standard AWS compute and storage services 
+					to the edge of telecommunication carriers' 5G networks.
+
+
+
+	Amazon operates 
+		state-of-the-art, highly-available data centers. 
+	Rare but failures can occur 
+		affect availability of [DB] instances 
+			that are in the same location. 
+	If you host all your DB instances in one location 
+		none of your DB instances will be available.
+
+
+
+	AWS Region 
+		completely independent. 
+
+		For e.g. any Amazon RDS activity you initiate 
+			(for example, creating database instances or listing available database instances) 
+			runs only in your current default AWS Region. 
+			default AWS Region 
+				can be changed in the console
+			or 
+				set the AWS_DEFAULT_REGION environment variable. 
+			Or 
+				override by using the 
+					--region parameter 
+					with the AWS Command Line Interface (AWS CLI). 
+			
+			More info: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
+		
+	
+	Availability Zones
+		aws ec2 describe-availability-zones --region region-name
+		aws ec2 describe-availability-zones --region us-east-1
+			6 zones
+		aws ec2 describe-availability-zones --region us-east-2
+			3 zones
+			
+	https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
+		Availability Zones are multiple, isolated locations within each Region.
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Azure: Virtual Machines, Virtual Network, Disk Storage.
+-------------------------------------------------------------------------------------------------------------------------
+
+Virtual Machines (VMs), Virtual Networks, and Disk Storage are fundamental components of cloud computing and data center infrastructure. Let's explore each of these components in more detail:
+Virtual Machines (VMs):
+
+    Definition: Virtual Machines are virtualized instances of physical servers. They allow you to run operating systems, applications, and workloads in isolated environments within a shared physical host.
+
+    Key Characteristics:
+        Isolation: VMs are isolated from each other and share the underlying physical hardware resources, making them suitable for running different workloads on a single server.
+        Scalability: VMs can be easily scaled up or down by provisioning or deprovisioning instances as needed.
+        Flexibility: VMs support various operating systems and can run a wide range of applications.
+        Resource Allocation: You can allocate specific CPU, memory, and storage resources to each VM.
+
+    Use Cases:
+        Hosting web applications and websites.
+        Running multiple operating systems on a single physical server (virtualization).
+        DevOps and test environments.
+        Legacy application support.
+        High-performance computing (HPC).
+
+Virtual Network:
+
+    Definition: A Virtual Network (VNet) is a logically isolated network environment within a cloud provider's infrastructure. It allows you to define your own network topology, IP addressing, and routing rules.
+
+    Key Characteristics:
+        Isolation: VNets provide network isolation, allowing you to create private networks for your resources.
+        Customization: You can define subnets, IP address ranges, and security groups to control network traffic.
+        Connectivity: VNets can be connected to on-premises networks or other VNets through virtual private network (VPN) or peering connections.
+        Security: Network security groups (NSGs) and firewalls help control traffic in and out of VNets.
+
+    Use Cases:
+        Creating isolated environments for applications and services.
+        Segmentation of resources for security and compliance.
+        Connecting on-premises data centers to the cloud.
+        Hosting multi-tier applications with public and private subnets.
+
+Disk Storage:
+
+    Definition: Disk Storage provides persistent storage for virtual machines and applications. Cloud providers offer various types of storage options to cater to different needs.
+
+    Key Characteristics:
+        Block Storage: Block storage provides raw storage volumes that can be attached to VMs. It's used for file systems, databases, and applications. You can choose from different disk types, such as standard HDD, standard SSD, premium SSD, etc.
+        Object Storage: Object storage is used for storing unstructured data, and it's accessed via APIs. It's suitable for storing files, images, videos, and backups.
+        File Storage: File storage systems provide shared file systems that can be accessed by multiple VMs simultaneously. They are used for data sharing among instances.
+        Snapshot and Backup: Most cloud providers offer snapshot and backup services to create point-in-time copies of your data for disaster recovery and data protection.
+
+    Use Cases:
+        Storing and managing data for applications.
+        Providing scalable and durable storage for cloud-native applications.
+        Backing up and archiving data.
+        Supporting databases and file sharing across VMs.
+
+These components are fundamental building blocks for creating and managing cloud infrastructure. The choice of VMs, virtual networks, and storage solutions depends on your specific use cases, performance requirements, scalability needs, and cost considerations. Cloud providers offer a variety of services and options to meet these diverse requirements.
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Launching VMs, setting up VPCs/Virtual Networks, and attaching storage
+-------------------------------------------------------------------------------------------------------------------------
+Try this: 
+
+Launching virtual machines (VMs), setting up Virtual Private Clouds (VPCs) or Virtual Networks, and attaching storage in Microsoft Azure involves several steps. Below is a high-level guide to performing these tasks:
+Launching VMs in Azure:
+
+    Sign in to Azure Portal:
+        Go to the Azure Portal and sign in with your Azure account.
+
+    Create a Resource Group:
+        Resource groups help organize and manage related Azure resources. Create a new resource group or use an existing one.
+
+    Create a Virtual Machine:
+        Click on "Create a resource" or the "+" button on the left-hand menu.
+        In the search box, type "Windows Virtual Machine" or "Linux Virtual Machine," and select the desired option.
+        Configure the VM settings, including:
+            Virtual machine name and region.
+            Operating system image (Windows or Linux).
+            Size of the VM (compute resources).
+            Administrative username and password (for Windows) or SSH key (for Linux).
+            Networking settings, such as virtual network and subnet.
+            Optional settings like extensions, tags, and monitoring.
+
+    Review and Create:
+        Review your VM configuration and click "Review + create."
+        Azure will validate the configuration for any errors or issues.
+
+    Create the VM:
+        After validation passes, click "Create" to provision the virtual machine.
+        Azure will deploy the VM based on your configuration.
+
+    Access the VM:
+        Once the VM is provisioned, you can access it using remote desktop (RDP) for Windows or SSH for Linux.
+        Connect to the VM using the credentials you specified during configuration.
+
+Setting Up Virtual Networks (VNets) in Azure:
+---------------------------------------------
+    Sign in to Azure Portal:
+        If not already signed in, go to the Azure Portal and log in.
+
+    Create a Virtual Network:
+        Click on "Create a resource" or the "+" button on the left-hand menu.
+        In the search box, type "Virtual Network" and select "Virtual Network."
+
+    Configure VNet Settings:
+        Provide a name for the VNet and select the subscription and resource group.
+        Choose the region for the VNet.
+        Specify the IP address space for the VNet and configure subnets within it.
+
+    Security and Routing:
+        Configure Network Security Groups (NSGs) to control inbound and outbound traffic.
+        Set up route tables if necessary to define custom routing.
+
+    Review and Create:
+        Review your VNet configuration and click "Review + create."
+        Azure will validate the configuration.
+
+    Create the VNet:
+        After validation, click "Create" to create the Virtual Network.
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+	3	Identity & Access Management (IAM)
+-------------------------------------------------------------------------------------------------------------------------
+AWS Identity and Access Management (IAM) 
+	web service 
+	securely control access to AWS resources. 
+	centrally manage permissions 
+	control which AWS resources 
+	IAM control 
+		who is authenticated (signed in) 
+	and 
+		authorized (has permissions) to use resources.
+
+create an AWS account
+	get one sign-in identity 
+	has complete access to all AWS services and resources 
+		called AWS account root user 
+	accessed by signing in with the 
+		email address and password 
+	Safeguard your root user credentials 
+	
+	
+
+IAM features
+------------
+	1. Shared access to your AWS account
+		can grant 
+			other people permission to 
+				administer and 
+				use resources in your AWS account 
+					without sharing 
+						password or 
+						access key.
+
+	2. Granular permissions
+	
+		grant different permissions 
+			to different people 
+				for different resources. 
+		For e.g.
+			full access to 
+				EC2
+				S3
+				DynamoDB
+				Amazon Redshift
+			allow 
+				read-only access to 
+					S3 buckets
+			administer just some EC2 instances
+			access your billing information but nothing else.
+
+	3. Secure access to AWS resources 
+		for applications that run on Amazon EC2
+		
+		securely provide credentials for 
+			applications that run on EC2 instances. 
+		provide permissions 
+			for your application 
+			to access other AWS resources. 
+		Examples 
+			access 
+				S3 buckets and DynamoDB tables
+				from ec2 applications.
+
+	4. Multi-factor authentication (MFA)
+		two-factor authentication to 
+			your account and 
+			to individual users 
+				for extra security. 
+		provide 
+			password or	access key 
+		and 
+			code from a specially configured device. 
+			
+	5. Identity federation
+		allow users 
+			who already have accounts elsewhere—
+			for example
+				in your corporate network or with an internet identity provider—
+				to get temporary access to your AWS account.
+
+	6. Identity information for assurance
+		use AWS CloudTrail, 
+			you receive log records 
+				include information like 
+					who made requests for resources 
+						based on IAM identities.
+
+	7. PCI DSS Compliance
+		IAM supports 
+			processing, 
+			storage, and 
+			transmission of credit card data 
+				by a merchant or service provider
+		validated as being compliant with Payment Card Industry (PCI) Data Security Standard (DSS). 
+
+	8. Integrated with many AWS services
+		https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
+		
+
+	9. Eventually Consistent
+		IAM
+			is eventually consistent. 
+		achieves high availability 
+			replicate data across multiple servers 
+			in Amazon's data centers around the world. 
+		change some data 
+			change is committed and safely stored. 
+		change must be replicated 
+			across IAM
+			can take some time. 
+		Such changes include 
+			creating or updating 
+				users, 
+				groups, 
+				roles, or 
+				policies. 
+		do not include such IAM changes in 
+			critical, 
+			high-availability 
+				code paths of your application. 
+		make IAM changes 
+			in a separate initialization or 
+			setup routine that you run less frequently. 
+		verify 
+			changes have propagated 
+				before production workflows depend on them. 
+		
+	10. Free to use
+		IAM and AWS Security Token Service (AWS STS) are 
+			features of your AWS account 
+			offered at no additional charge. 
+		charged only when you access other AWS services using 
+			your IAM users or AWS STS temporary security credentials. 
+
+	11. Accessing IAM
+		can work with IAM in following ways.
+
+		a. AWS Management Console
+			browser-based interface 
+				manage IAM and AWS resources. 
+				
+		b. AWS Command Line Tools
+			issue commands at your system's command line 
+			command line 
+				can be faster and 
+				more convenient 
+					than the console. 
+			can automate
+
+		c. AWS provides two sets of command line tools: 
+			AWS Command Line Interface (AWS CLI) 
+		and 
+			AWS Tools for Windows PowerShell. 
+			
+		d. AWS SDKs
+			AWS provides SDKs (software development kits) 
+			consist of 
+				libraries and 
+				sample code 
+					for various programming languages and 
+				platforms 
+					(Java, Python, Ruby, .NET, iOS, Android, etc.). 
+				convenient way to create programmatic access to 
+					IAM and AWS. 
+				
+		16. IAM HTTPS API
+			You can access IAM and AWS programmatically 
+				by using the IAM HTTPS API, 
+				issue HTTPS requests 
+					directly to the service. 
+			While using the HTTPS API
+				include code to digitally sign requests 
+					using your credentials. 
+					
+	https://catalog.workshops.aws/general-immersionday/en-US/basic-modules/30-iam
+
+
+AWS (flow chart)
+	Refer diagram in https://shunliz.gitbooks.io/aws-certificate-notes/content/iam.html
+
+	deny all by default.
+	if a policy/role is not present 
+		user can't do anything.
+	get all policies and roles
+		identify policies and roles associated with the current resource
+		ignore all others
+		consider all applicable
+	
+		if a deny policy exist
+			yes
+				ignore allow policies and deny
+			no
+				if there is a allow policy
+					allow
+		no policy applicable
+			deny
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+		
+		AWS IAM: Users, roles, policies.
+-------------------------------------------------------------------------------------------------------------------------
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html
+
+An AWS Identity and Access Management (IAM) user 
+	entity that you create in AWS. 
+	represents 
+		human user 
+	or 
+		workload who uses the IAM user 
+			to interact with AWS. 
+	consists of a 
+		name and 
+		credentials.
+Two types
+	Root user 
+	IAM user
+
+
+How AWS identifies an IAM user
+	A "friendly name"
+	An Amazon Resource Name (ARN)
+		arn:aws:iam::account-ID-without-hyphens:user/Richard
+	unique identifier for the IAM user	
+
+You can access AWS in different ways depending on the IAM user credentials:
+	Console password: 
+	Access keys
+	SSH keys for use with CodeCommit
+	Server certificates
+	
+Following options to administer passwords
+	Manage passwords for your IAM users. 
+	Manage access keys for your IAM users.
+	Enable multi-factor authentication (MFA) for the IAM user. 
+		Find unused passwords and access keys. 
+		security best practice 
+			remove passwords and access keys 
+				when users no longer need them.
+
+--------------------------------------------------------------------------------------------------------
+
+IAM Users
+	represents the 
+		person or 
+		service 
+			who uses the access to interact with AWS.
+	IAM Best Practice 
+		Create Individual Users
+	User credentials can consist of the following
+		Password
+			access through console
+		Access Key/Secret Access Key 
+			access AWS services through 
+				API, 
+				CLI or 
+				SDK
+	IAM user 
+		starts with no permissions 
+		should be granted permissions 
+			as per the job function requirement
+	IAM Best Practice – 
+		Grant least Privilege
+	Each IAM user 
+		associated with one and only one AWS account.
+	IAM User 
+		cannot 	be renamed from console
+		be done from CLI or SDK tools.
+	IAM handles the renaming of user w.r.t 
+		unique id, 
+		groups, 
+		policies 
+			where the user was mentioned as a principal. 
+		However, you need to handle the renaming in the policies where the user was mentioned as a resource	
+
+IAM users and permissions
+	By default, 
+		new IAM user 
+			has no permissions. 
+				except to login
+				
+	can assign 
+		permissions through 
+			roles
+			policies
+				
+	can also add a permissions boundary to your IAM users. 
+		advanced feature 
+		allows you to use 
+			AWS managed policies 
+			limit the maximum permissions 
+				policy can grant to an IAM user or role. 
+
+
+IAM users and accounts
+	Each IAM user 
+		is associated with one AWS account only. 
+		defined within your AWS account
+		don't need to have a payment method 
+		AWS activity performed by IAM users 
+			billed to root account.
+
+	The number and size of 
+		IAM resources in an AWS account 
+			are limited. 
+	
+IAM users as service accounts
+	An IAM user 
+		resource in IAM 
+		has associated 
+			credentials and 
+			permissions. 
+	An IAM user 
+		can represent 
+			a person or 
+			an application 
+				referred as a service account. 
+	do not embed access keys 
+		directly into your application code. 
+	put access keys in 
+		known locations 
+	
+	Most common features
+		Users
+		Groups
+		Policies
+		Roles
+		https://www.youtube.com/watch?v=jP-1qPe6P4s&list=PLv2a_5pNAko0Mijc6mnv04xeOut443Wnk&index=9
+	https://267092042432.signin.aws.amazon.com/console
+
+
+--------------------------------------------------------------------------------------------------------
+	Groups 
+
+IAM Groups
+	IAM group 
+		collection of IAM users
+	IAM groups 
+		specify permissions 
+			for a collection of users 
+				
+	IAM Best Practice – 
+		Use groups to assign permissions to IAM Users
+	A group 
+		not truly an identity 
+			because it cannot be identified as a Principal 
+			only a way to attach policies to multiple users at one time
+	A group to users
+		many-to-many
+		user can belong to multiple groups (10 max)
+	Groups cannot be nested 
+		can only have users within it
+	no default group 
+		if one is required 
+			it should be created with all users assigned to it.
+	Deletion of the groups requires you to detach users and managed policies and delete any inline policies before deleting the group. With AWS management console, the deletion and detachment is taken care of.
+
+--------------------------------------------------------------------------------------------------------
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html
+
+
+IAM user group 
+	collection of IAM users. 
+	specify permissions 
+		for multiple users
+	easier to manage the permissions for those users. 
+	For e.g.
+		give admin permission to a group.
+		add new user 
+		move a user out
+		
+	attach an identity-based policy 
+		to a user group 
+			all of the users in the user group 
+				receive the policy's permissions. 
+	cannot identify a user group as a Principal 
+		in a policy 
+			(such as a resource-based policy) 
+			because groups relate to permissions
+				not authentication
+				and principals are authenticated IAM entities. 
+	
+important characteristics of user groups:
+	can contain many users
+	user can belong to multiple user groups.
+	User groups can't be nested; 
+		can contain only users
+		not other user groups.
+	No default user group 
+		automatically includes all users in the AWS account. 
+	number and size of IAM resources 
+		like 
+			number of groups
+			number of groups that a user can be a member of, are limited. 
+	refer below		
+		https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html
+
+
+--------------------------------------------------------------------------------------------------------
+	Policies
+--------------------------------------------------------------------------------------------------------
+https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html
+
+Helps to define	
+	group of permissions
+	boundaries for them
+	
+	create policies 
+		attach them to IAM identities 
+			users
+			groups 
+			roles
+			or AWS resources. 
+	object in AWS 
+		associated with 
+			identity or 
+			resource, 
+				defines their permissions. 
+	AWS evaluates these policies 
+		when an IAM principal (user or role) 
+			makes a request. 
+	
+	Most policies 
+		stored in AWS as JSON documents. 
+	AWS supports six types of policies: 
+		identity-based policies, 
+		resource-based policies, 
+		permissions boundaries, 
+		Organizations SCPs, 
+		ACLs, and 
+		session policies.
+
+For example
+	if a policy allows 
+		GetUser 
+			user 
+				can get user information from 
+					AWS Management Console, 
+					AWS CLI
+					AWS API. 
+	
+	
+	
+	Policy types
+	------------
+The following 
+	policy types
+		listed in 
+			most frequently used to 
+			less frequently used, 
+			are available for use in AWS. 
+			
+(1) 
+Identity-based policies – 
+	Attach managed and inline policies to IAM identities 
+	
+	grant permissions to an identity.
+		AWS users, 
+		groups, and 
+		roles. 
+	
+	Give access to 
+		EC2 instances
+		S3 buckets
+		RDS databases
+			etc.
+
+		two types of identity-based policies 
+			AWS-managed policies and 
+			customer-managed policies.
+
+			AWS-managed policies 
+				predefined policies 
+					created by AWS 
+						we use to manage access to AWS resources. 
+						
+			Customer-managed policies
+				create and manage us. 
+				
+				can be attached to 
+					IAM users, 
+					groups, or 
+					roles
+					can be modified as needed to 
+						grant or 
+						restrict access to AWS resources.
+(2)
+Resource-based policies – 
+	Attach inline policies to resources. 
+	e.g. 
+		Amazon S3 bucket policies and 
+		IAM role trust policies. 
+		
+		grant permissions to  
+			principal specified in the policy. 
+			Principals can be 
+				same account 
+			or 
+				other accounts.
+---------------------------------------------------------------------
+Hands on: 
+a. Create a new user vilas1
+b. login as vilas1
+c. vilas1 cannot create a vpc
+d. As admin create the following policy 
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:AcceptVpcPeeringConnection",
+                "ec2:AcceptVpcEndpointConnections",
+                "ec2:AllocateAddress",
+                "ec2:AssignIpv6Addresses",
+                "ec2:AssignPrivateIpAddresses",
+                "ec2:AssociateAddress",
+                "ec2:AssociateDhcpOptions",
+                "ec2:AssociateRouteTable",
+                "ec2:AssociateSubnetCidrBlock",
+                "ec2:AssociateVpcCidrBlock",
+                "ec2:AttachClassicLinkVpc",
+                "ec2:AttachInternetGateway",
+                "ec2:AttachNetworkInterface",
+                "ec2:AttachVpnGateway",
+                "ec2:AuthorizeSecurityGroupEgress",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:CreateCarrierGateway",
+                "ec2:CreateCustomerGateway",
+                "ec2:CreateDefaultSubnet",
+                "ec2:CreateDefaultVpc",
+                "ec2:CreateDhcpOptions",
+                "ec2:CreateEgressOnlyInternetGateway",
+                "ec2:CreateFlowLogs",
+                "ec2:CreateInternetGateway",
+                "ec2:CreateLocalGatewayRouteTableVpcAssociation",
+                "ec2:CreateNatGateway",
+                "ec2:CreateNetworkAcl",
+                "ec2:CreateNetworkAclEntry",
+                "ec2:CreateNetworkInterface",
+                "ec2:CreateNetworkInterfacePermission",
+                "ec2:CreateRoute",
+                "ec2:CreateRouteTable",
+                "ec2:CreateSecurityGroup",
+                "ec2:CreateSubnet",
+                "ec2:CreateTags",
+                "ec2:CreateVpc",
+                "ec2:CreateVpcEndpoint",
+                "ec2:CreateVpcEndpointConnectionNotification",
+                "ec2:CreateVpcEndpointServiceConfiguration",
+                "ec2:CreateVpcPeeringConnection",
+                "ec2:CreateVpnConnection",
+                "ec2:CreateVpnConnectionRoute",
+                "ec2:CreateVpnGateway",
+                "ec2:DeleteCarrierGateway",
+                "ec2:DeleteCustomerGateway",
+                "ec2:DeleteDhcpOptions",
+                "ec2:DeleteEgressOnlyInternetGateway",
+                "ec2:DeleteFlowLogs",
+                "ec2:DeleteInternetGateway",
+                "ec2:DeleteLocalGatewayRouteTableVpcAssociation",
+                "ec2:DeleteNatGateway",
+                "ec2:DeleteNetworkAcl",
+                "ec2:DeleteNetworkAclEntry",
+                "ec2:DeleteNetworkInterface",
+                "ec2:DeleteNetworkInterfacePermission",
+                "ec2:DeleteRoute",
+                "ec2:DeleteRouteTable",
+                "ec2:DeleteSecurityGroup",
+                "ec2:DeleteSubnet",
+                "ec2:DeleteTags",
+                "ec2:DeleteVpc",
+                "ec2:DeleteVpcEndpoints",
+                "ec2:DeleteVpcEndpointConnectionNotifications",
+                "ec2:DeleteVpcEndpointServiceConfigurations",
+                "ec2:DeleteVpcPeeringConnection",
+                "ec2:DeleteVpnConnection",
+                "ec2:DeleteVpnConnectionRoute",
+                "ec2:DeleteVpnGateway",
+                "ec2:DescribeAccountAttributes",
+                "ec2:DescribeAddresses",
+                "ec2:DescribeAvailabilityZones",
+                "ec2:DescribeCarrierGateways",
+                "ec2:DescribeClassicLinkInstances",
+                "ec2:DescribeCustomerGateways",
+                "ec2:DescribeDhcpOptions",
+                "ec2:DescribeEgressOnlyInternetGateways",
+                "ec2:DescribeFlowLogs",
+                "ec2:DescribeInstances",
+                "ec2:DescribeInternetGateways",
+                "ec2:DescribeIpv6Pools",
+                "ec2:DescribeLocalGatewayRouteTables",
+                "ec2:DescribeLocalGatewayRouteTableVpcAssociations",
+                "ec2:DescribeKeyPairs",
+                "ec2:DescribeMovingAddresses",
+                "ec2:DescribeNatGateways",
+                "ec2:DescribeNetworkAcls",
+                "ec2:DescribeNetworkInterfaceAttribute",
+                "ec2:DescribeNetworkInterfacePermissions",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DescribePrefixLists",
+                "ec2:DescribeRouteTables",
+                "ec2:DescribeSecurityGroupReferences",
+                "ec2:DescribeSecurityGroupRules",
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeStaleSecurityGroups",
+                "ec2:DescribeSubnets",
+                "ec2:DescribeTags",
+                "ec2:DescribeVpcAttribute",
+                "ec2:DescribeVpcClassicLink",
+                "ec2:DescribeVpcClassicLinkDnsSupport",
+                "ec2:DescribeVpcEndpointConnectionNotifications",
+                "ec2:DescribeVpcEndpointConnections",
+                "ec2:DescribeVpcEndpoints",
+                "ec2:DescribeVpcEndpointServiceConfigurations",
+                "ec2:DescribeVpcEndpointServicePermissions",
+                "ec2:DescribeVpcEndpointServices",
+                "ec2:DescribeVpcPeeringConnections",
+                "ec2:DescribeVpcs",
+                "ec2:DescribeVpnConnections",
+                "ec2:DescribeVpnGateways",
+                "ec2:DetachClassicLinkVpc",
+                "ec2:DetachInternetGateway",
+                "ec2:DetachNetworkInterface",
+                "ec2:DetachVpnGateway",
+                "ec2:DisableVgwRoutePropagation",
+                "ec2:DisableVpcClassicLink",
+                "ec2:DisableVpcClassicLinkDnsSupport",
+                "ec2:DisassociateAddress",
+                "ec2:DisassociateRouteTable",
+                "ec2:DisassociateSubnetCidrBlock",
+                "ec2:DisassociateVpcCidrBlock",
+                "ec2:EnableVgwRoutePropagation",
+                "ec2:EnableVpcClassicLink",
+                "ec2:EnableVpcClassicLinkDnsSupport",
+                "ec2:ModifyNetworkInterfaceAttribute",
+                "ec2:ModifySecurityGroupRules",
+                "ec2:ModifySubnetAttribute",
+                "ec2:ModifyVpcAttribute",
+                "ec2:ModifyVpcEndpoint",
+                "ec2:ModifyVpcEndpointConnectionNotification",
+                "ec2:ModifyVpcEndpointServiceConfiguration",
+                "ec2:ModifyVpcEndpointServicePermissions",
+                "ec2:ModifyVpcPeeringConnectionOptions",
+                "ec2:ModifyVpcTenancy",
+                "ec2:MoveAddressToVpc",
+                "ec2:RejectVpcEndpointConnections",
+                "ec2:RejectVpcPeeringConnection",
+                "ec2:ReleaseAddress",
+                "ec2:ReplaceNetworkAclAssociation",
+                "ec2:ReplaceNetworkAclEntry",
+                "ec2:ReplaceRoute",
+                "ec2:ReplaceRouteTableAssociation",
+                "ec2:ResetNetworkInterfaceAttribute",
+                "ec2:RestoreAddressToClassic",
+                "ec2:RevokeSecurityGroupEgress",
+                "ec2:RevokeSecurityGroupIngress",
+                "ec2:UnassignIpv6Addresses",
+                "ec2:UnassignPrivateIpAddresses",
+                "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
+                "ec2:UpdateSecurityGroupRuleDescriptionsIngress"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+
+e. 	attach it to vilas1 (from Policy usage)
+---------------------------------------------------------------------
+(c)
+Permissions boundaries – 
+	Use a managed policy 
+		as the permissions boundary 
+			for an IAM entity 
+				(user or role). 
+		defines maximum permissions 
+			that the identity-based policies 
+				can grant to an entity
+				but does not grant permissions. 
+		Permissions boundaries 
+			do not define 
+				maximum permissions that a resource-based policy 
+					can grant to an entity.
+
+(d)
+Organizations SCPs (service control policy) – 
+	
+	maximum permissions 
+		for account members 
+			of an organization or organizational unit (OU). 
+			
+(e)
+Access control lists (ACLs) – 
+	control 
+		which principals 
+			in other accounts 
+				can access the resource 
+					to which the ACL is attached. 
+		similar to resource-based policies
+		only policy type that does not use the JSON policy document structure. 
+		cross-account permissions policies 
+		cannot grant permissions to entities within the same account.
+(f)
+Session policies – 
+	Pass advanced session policies 
+		when you use 
+			AWS CLI or 
+			AWS API 
+				to assume a role or a federated user. 
+	Session policies limit the permissions that the role or user's identity-based policies grant to the session. 
+	Session policies limit permissions for a created session, but do not grant permissions. For more information, see Session Policies.
+
+
+
+--------------------------------------------------------------------------------------------------------
+	Roles
+--------------------------------------------------------------------------------------------------------
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html
+
+
+
+https://www.knowledgehut.com/tutorials/aws/iam-roles
+	How to create an IAM role using the AWS Management Console?
+	
+	
+Role for an user from different account	
+	An IAM role 
+		can be created from	
+			AWS Management Console, 
+			AWS CLI, 
+			Tools for Windows PowerShell or 
+			IAM API.
+
+	Sign in to the AWS Management Console.
+	Open the IAM console.
+	Creating IAM roles
+	In the navigation pane of the console
+		click on the ‘Roles’ 
+		choose ‘Create role’ option.
+		Creating IAM roles
+	
+	Click on ‘Another AWS account’ role type.
+		For the ‘Account ID’
+			type the AWS Account ID 
+				to which permissions need to be granted.
+	The administrator of the account 
+		has the ability to grant permission 
+			to give this role to any IAM user of that account.
+
+AWS IAM Role
+	similar to user
+	an identity with permission policies 
+		determine what the identity 
+			can and 
+			cannot do 
+		identiy 
+			external account
+			resources
+				
+	not used to 
+		associate 
+			with a particular 
+				user, 
+				group.
+	does not have any static credentials 
+		password or access keys
+	whoever assumes the role 
+		provided with dynamic temporary credentials.
+		can access delegation 
+			to grant permissions to someone 
+			that allows access to resources that you control.
+	help to prevent accidental access 
+		to or modification of sensitive resources.
+	Modification of a Role 
+		can be done anytime 
+		changes propogate immediately.
+	Advantages of roles
+		Services like EC2 instances 
+			needs to access other 
+				AWS services
+				e.g. s3.
+		Cross-Account access – 
+			users from different AWS accounts 
+				have access to AWS resources 
+					in a different account
+			no need to create a user.
+		Identity Providers & Federation
+			Company uses a Corporate Authentication mechanism 
+				User doesn't need to authenticate twice 
+				or create duplicate users in AWS
+			(Federation)Applications allowing login 
+				through external authentication mechanisms 
+					e.g. Amazon, Facebook, Google, etc
+		Role can be assumed by
+			IAM user within the same AWS account
+			IAM user from a different AWS account
+			AWS services such as 
+				EC2, 
+				EMR 
+					to interact with other services
+		An external user authenticated 
+			by an external identity provider (IdP) service 
+				that is compatible with 
+					SAML 2.0 or 
+					OpenID Connect (OIDC), or 
+					a custom-built identity broker.
+		Role involves defining two policies
+	Trust policy
+		defines –
+			who can assume the role
+		involves 
+			setting up a trust 
+				between the account 
+					that owns the resource 
+						(trusting account) and 
+						account that owns the user 
+							that needs access to the resources (trusted account).
+	Permissions policy
+		defines – 
+			what they can access
+		determines 
+			authorization
+				grants the user of the role 
+					with the needed permissions 
+						to carry out the desired tasks on the resource
+		Federation is creating a trust relationship 
+			between an external Identity Provider (IdP) and AWS.
+		Users can 
+			sign in to an enterprise identity system 
+				that is compatible with SAML
+
+	Users can sign in to a 
+		web identity provider, 
+		such as Login with 
+			Amazon, 
+			Facebook, 
+			Google, or any 
+			IdP 
+				that is compatible with 
+					OpenID connect (OIDC).
+	When using 
+		OIDC and SAML 2.0 
+			to configure a trust relationship between these 
+				external identity providers and AWS
+					user is assigned an IAM role 
+					receives temporary credentials 
+					enable the user to access AWS resources.
+
+
+
+	
+	IAM 
+		consists of a list of 
+			AWS managed policies and 
+			customer managed policies 
+		A policy can be chosen from this or click on ‘Create Policy’ to open a new browser tab and create a new policy.
+	
+	Once the policy has been created
+		user needs to return to the original tab.
+	
+	Click on the check box which is present next to the permission policies
+		thereby indicating that the specific user has the permission to take up the role.
+	
+	policies can be attached to a role 
+		
+lab
+https://aws.amazon.com/premiumsupport/knowledge-center/ec2-instance-access-s3-bucket/
+
+https://www.youtube.com/watch?v=NHAuCWIHevk
+	Create role with s3 full access
+	click	
+		Create role
+		"Services" - ec2
+		add permission  
+			Search for S3FullAccess
+			Give a name
+			Create a role
+		Verify the permission
+		
+	Launch instance with role
+		While creating a new instance
+		select "<role you created>" in IAM Role
+	Access s3 bucket with cli commands
+		aws s3 mb s3://<bucketname>
+		aws s3 ls
+		aws s3 rb s3://<bucketname>
+
+
+
+Lab: Refer file AWSTOCNotes.txt - Creating and Managing (aws cli) line 1859 ownwards
+------------------------------------------------------------------------------------
+	
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Azure Active Directory & RBAC.
+-------------------------------------------------------------------------------------------------------------------------
+Azure Active Directory (Azure AD) and Role-Based Access Control (RBAC) are core identity and access management components in Microsoft Azure that enable you to manage user identities and control access to Azure resources. Here's an overview of each:
+Azure Active Directory (Azure AD):
+
+    Definition: Azure AD is Microsoft's cloud-based identity and access management service. It serves as the identity provider for Azure and other Microsoft services. Azure AD can be used for user authentication, single sign-on (SSO), and identity management.
+
+    Key Features:
+        User Identity Management: Azure AD allows you to create and manage user accounts, assign roles and permissions, and enable self-service password reset.
+        Single Sign-On (SSO): Users can access multiple applications with a single set of credentials, improving user experience and security.
+        Multi-Factor Authentication (MFA): Enhances security by requiring users to provide additional authentication factors beyond passwords.
+        Application Integration: Azure AD supports integration with thousands of SaaS applications, custom applications, and on-premises resources.
+        Azure AD B2B and B2C: Azure AD B2B allows collaboration with external partners, while Azure AD B2C enables customer identity and access management for applications.
+
+    Use Cases:
+        User Authentication: Authenticate users to access Azure resources, applications, and services.
+        Access Control: Assign users to roles and grant permissions to access Azure resources.
+        Single Sign-On: Provide seamless access to various applications and services.
+        Identity Protection: Implement security measures like MFA to protect user accounts.
+        Hybrid Identity: Integrate with on-premises Active Directory for a hybrid identity solution.
+
+Role-Based Access Control (RBAC):
+
+    Definition: RBAC is an authorization system used in Azure to manage permissions for Azure resources. It allows you to control who can access and manage resources in Azure by defining roles and assigning them to users or groups.
+
+    Key Features:
+        Roles: Azure provides built-in roles (e.g., Owner, Contributor, Reader) that define different levels of access to resources.
+        Custom Roles: You can create custom roles with specific permissions tailored to your organization's needs.
+        Scope: Roles can be assigned at different scopes, including subscription, resource group, and resource levels.
+        Role Assignments: Role assignments associate users, groups, or service principals with roles at a specific scope.
+
+    Use Cases:
+        Access Control: RBAC enables fine-grained access control to Azure resources, ensuring that users have the appropriate permissions.
+        Delegation: Administrators can delegate specific responsibilities to users or groups without granting excessive permissions.
+        Security: RBAC helps enforce the principle of least privilege, minimizing the risk of unauthorized access and resource mismanagement.
+        Compliance: RBAC aids in achieving compliance with security and regulatory requirements.
+
+In summary, Azure AD is responsible for user identity management and authentication, while RBAC focuses on controlling access to Azure resources. These two services work in conjunction to provide secure and efficient identity and access management within the Azure cloud environment. Properly configuring Azure AD and RBAC is crucial for ensuring the security and compliance of your Azure resources and applications.
+
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Setting up users, assigning roles, and configuring policies.
+-------------------------------------------------------------------------------------------------------------------------
+Try this: 
+Setting up users, assigning roles, and configuring policies in Azure Active Directory (Azure AD) and Role-Based Access Control (RBAC) involves several steps. Here's a step-by-step guide on how to perform these tasks:
+Setting Up Users in Azure AD:
+
+    Log in to Azure Portal:
+        Go to the Azure Portal (https://portal.azure.com/) and log in with your Azure AD administrator account.
+
+    Navigate to Azure Active Directory:
+        In the left-hand navigation pane, click on "Azure Entra ID." (AAD earlier)
+
+    Create New Users:
+		Search for users 
+        To create a new user, click on "Users" under the "Manage" section.
+        Click the "+ New user" button to add a new user.
+        Fill in the user's details, including their username and password.
+        Optionally, you can assign licenses and configure group membership.
+        Click "Create" to add the user.
+
+Assigning Roles in Azure RBAC:
+
+    Navigate to Azure RBAC:
+        In the Azure Portal, go to "All services," search for "Role assignments," and select it.
+
+    Assign a Role to a User:
+        Click on "+ Add" to create a new role assignment.
+        Select the scope (e.g., subscription, resource group, or specific resource) where you want to assign the role.
+        Choose the role you want to assign (e.g., Owner, Contributor, Reader).
+        Search for and select the user(s) or group(s) to assign the role.
+        Click "Save" to assign the role.
+
+Configuring Policies in Azure AD:
+
+Azure AD allows you to configure Conditional Access policies to control access to your applications and resources based on certain conditions. Here's how to set up a basic policy:
+
+    Navigate to Conditional Access:
+        In the Azure Portal, go to "Azure Active Directory," then select "Security" and finally "Conditional Access."
+
+    Create a New Policy:
+        Click on "+ New policy" to create a new Conditional Access policy.
+        Give the policy a name and configure the assignment. You can specify users, groups, or all users.
+
+    Assign Access Controls:
+        Under the "Access controls" section, specify the conditions for access. For example, you can require multi-factor authentication (MFA) for specific applications or locations.
+
+    Session Policies (Optional):
+        You can set session policies to control user sessions, such as session lifetime or persistent browser sessions.
+
+    Enable the Policy:
+        Once configured, click "On" to enable the policy.
+
+These are the basic steps to set up users, assign roles, and configure Conditional Access policies in Azure AD and RBAC. Depending on your organization's specific requirements, you can create more complex policies and configure additional settings to enhance security and access control. Always follow security best practices and regularly review and update your access and security policies as needed.
+
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+	4	Storage & Caching
+-------------------------------------------------------------------------------------------------------------------------
+
+Storage and caching are critical components in cloud computing, serving various purposes like data persistence, data retrieval speed optimization, and cost-effective resource management. Here, we'll explore storage and caching concepts in the cloud:
+Storage in the Cloud:
+
+    Object Storage:
+        Definition: Object storage is designed for storing and managing unstructured data, such as files, images, videos, and backups. Data is stored as objects in containers or buckets.
+        Examples: AWS S3, Azure Blob Storage, Google Cloud Storage.
+        Use Cases: Storing and serving media files, backups, static website content, and data archiving.
+
+    Block Storage:
+        Definition: Block storage provides raw storage volumes that can be attached to virtual machines. It's suitable for file systems, databases, and applications.
+        Examples: AWS EBS (Elastic Block Store), Azure Disk Storage, Google Persistent Disks.
+        Use Cases: Hosting databases, application storage, and high-performance I/O workloads.
+
+    File Storage:
+        Definition: File storage systems offer shared file systems that multiple virtual machines can access simultaneously. They are ideal for data sharing among instances.
+        Examples: AWS EFS (Elastic File System), Azure File Storage, Google Cloud Filestore.
+        Use Cases: Home directories, application file sharing, and content collaboration.
+
+    Database Storage:
+        Definition: Cloud providers offer managed database services with scalable and highly available storage for relational and NoSQL databases.
+        Examples: AWS RDS (Relational Database Service), Azure SQL Database, Google Cloud SQL.
+        Use Cases: Running and scaling databases in the cloud.
+
+Caching in the Cloud:
+
+    Caching Overview:
+        Definition: Caching involves storing frequently accessed data in a high-speed memory location (cache) to improve data retrieval performance and reduce the load on primary data storage.
+        Use Cases: Accelerating application performance, reducing database load, and enhancing user experience.
+
+    In-Memory Caching:
+        Definition: In-memory caching stores data in RAM for ultra-fast access. It's suitable for caching frequently used database queries or web page components.
+        Examples: Redis, Memcached.
+        Use Cases: Speeding up read-heavy workloads, session management, and API response caching.
+
+    Content Delivery Network (CDN):
+        Definition: CDNs are distributed networks of servers (edge locations) that cache and deliver content (e.g., web pages, images, videos) from locations closer to end-users.
+        Examples: AWS CloudFront, Azure CDN, Google Cloud CDN.
+        Use Cases: Reducing latency, improving content delivery speed, and handling traffic spikes.
+
+    Database Query Caching:
+        Definition: Database query caching caches the results of database queries, reducing the need to re-run expensive queries.
+        Use Cases: Improving database performance and reducing query load.
+
+    API Response Caching:
+        Definition: Caching API responses reduces the load on backend servers and improves API response times.
+        Use Cases: Enhancing API performance, especially for read-heavy APIs.
+
+Combining cloud storage with caching strategies can significantly enhance the performance, scalability, and cost-effectiveness of applications in the cloud. It's essential to choose the right storage and caching solutions based on your specific use case and performance requirements.
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+		AWS: S3 (object storage), Elasticache.
+-------------------------------------------------------------------------------------------------------------------------
+
+In Amazon Web Services (AWS), Amazon S3 (Simple Storage Service) and Amazon ElastiCache are two distinct services that serve different purposes but play important roles in cloud computing and application architecture. Let's delve into each of these services:
+Amazon S3 (Simple Storage Service):
+
+    Definition: Amazon S3 is a scalable and highly durable object storage service that allows you to store and retrieve data in the form of objects, such as files, images, videos, and backups. It provides a simple and cost-effective solution for storing and managing vast amounts of data.
+
+    Key Features:
+        Object-Based Storage: S3 stores data as objects in buckets, each with a unique name within a region.
+        Durability: Data stored in S3 is redundantly stored across multiple data centers, ensuring high durability.
+        Scalability: S3 can scale to handle virtually unlimited amounts of data, making it suitable for applications of all sizes.
+        Security: S3 offers access controls, encryption options, and audit logs to secure data.
+        Data Lifecycle Management: You can set policies to automate data archiving and deletion.
+        Static Website Hosting: S3 can host static websites with ease.
+        Integration: S3 integrates with other AWS services and external applications through APIs.
+
+    Use Cases:
+        Data Storage: Storing and serving data, including media files, backups, and logs.
+        Content Distribution: Hosting content for websites and applications using S3's Content Delivery Network (CDN) capabilities.
+        Data Archiving: Archiving data for long-term retention.
+        Data Lakes: Building data lakes for data analytics and big data processing.
+        Backup and Restore: Storing backups and enabling disaster recovery.
+
+Amazon ElastiCache:
+
+    Definition: Amazon ElastiCache is a managed in-memory caching service that helps improve the performance and scalability of applications by storing frequently accessed data in-memory.
+
+    Key Features:
+        In-Memory Caching: ElastiCache supports popular open-source in-memory data stores like Redis and Memcached.
+        High Availability: It provides automatic failover and backup capabilities for cache clusters.
+        Scaling: You can easily scale cache nodes vertically or horizontally to meet your application's requirements.
+        Security: ElastiCache offers encryption at rest and in transit, access control, and integration with AWS Identity and Access Management (IAM).
+        Monitoring and Metrics: You can monitor cache performance and health using Amazon CloudWatch.
+
+    Use Cases:
+        Caching: Caching frequently accessed data to reduce database load and improve application responsiveness.
+        Session Management: Storing session data in-memory for stateful applications.
+        Real-Time Analytics: Accelerating queries for real-time analytics.
+        Content Acceleration: Caching frequently requested content, such as images and API responses.
+        Gaming: Storing frequently used game data, such as leaderboards and user profiles.
+
+In summary, Amazon S3 is a versatile and highly durable object storage service designed for data storage and retrieval, while Amazon ElastiCache is a managed caching service that enhances application performance by caching frequently accessed data in-memory. These services can be used together in an architecture to optimize the performance and cost-efficiency of applications hosted in AWS.
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Azure: Blob Storage, Azure Cache.
+-------------------------------------------------------------------------------------------------------------------------
+In Microsoft Azure, Blob Storage and Azure Cache are two distinct services that serve different purposes but are essential components for building scalable and performant cloud-based applications. Here's an overview of each service:
+Blob Storage (Azure Blob Storage):
+
+    Definition: Azure Blob Storage is a scalable object storage service designed for storing and managing large volumes of unstructured data, such as documents, images, videos, backups, and logs.
+
+    Key Features:
+        Object Storage: Data is stored as blobs in containers, and each blob can be accessed via a unique URL.
+        Durability: Blob Storage offers high durability with redundant storage across multiple data centers.
+        Scalability: It can handle massive amounts of data and is suitable for applications of all sizes.
+        Data Lifecycle Management: Policies can be defined to automate data retention, archiving, and deletion.
+        Security: Blob Storage provides access controls, encryption, and integration with Azure Active Directory for identity and access management.
+        Integration: It seamlessly integrates with other Azure services and external applications through REST APIs.
+
+    Use Cases:
+        Data Storage: Storing and serving large files, media, and backups.
+        Content Distribution: Hosting static assets for websites and applications with Azure Content Delivery Network (CDN) integration.
+        Data Lakes: Creating data lakes for analytics and big data processing.
+        Archiving: Archiving data for long-term retention.
+        IoT Data: Storing data generated by IoT devices.
+
+Azure Cache (Azure Cache for Redis):
+
+    Definition: Azure Cache for Redis is a fully managed, highly available, and high-performance in-memory data store service based on the popular open-source Redis cache.
+
+    Key Features:
+        In-Memory Caching: Azure Cache for Redis stores data in-memory, allowing for extremely fast data retrieval.
+        High Availability: It provides built-in high availability with automatic failover and replication.
+        Scaling: You can vertically or horizontally scale your cache to meet your application's requirements.
+        Security: It supports encryption at rest and in transit, access control, and virtual network integration.
+        Monitoring and Metrics: You can monitor cache performance and health using Azure Monitor and other tools.
+
+    Use Cases:
+        Caching: Caching frequently accessed data to reduce database load and improve application responsiveness.
+        Session Management: Storing session data in-memory for stateful applications.
+        Real-Time Analytics: Accelerating queries for real-time analytics.
+        Content Acceleration: Caching frequently requested content, such as API responses and HTML fragments.
+        Message Broker: Implementing a message broker for distributed systems using Redis Pub/Sub.
+
+In summary, Azure Blob Storage is a versatile object storage service designed for data storage and retrieval, while Azure Cache for Redis is a managed caching service optimized for in-memory data storage and retrieval. These services can be used together to enhance the performance, scalability, and responsiveness of cloud-based applications hosted in Azure.
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Storing and retrieving data from S3/Blob, setting up caching.
+-------------------------------------------------------------------------------------------------------------------------
+Try this: 
+Storing and retrieving data from Amazon S3 (in AWS) or Azure Blob Storage (in Azure) and setting up caching with Amazon ElastiCache (in AWS) or Azure Cache (in Azure) involves several steps. Below, I'll provide a high-level overview of how to perform these tasks:
+Storing and Retrieving Data from Amazon S3 (AWS):
+
+Storing Data in Amazon S3:
+
+    Sign in to AWS Console:
+        Go to the AWS Management Console (https://aws.amazon.com/) and sign in with your AWS account.
+
+    Create an S3 Bucket:
+        In the AWS Console, navigate to Amazon S3.
+        Click "Create bucket" to create a new bucket to store your data.
+        Follow the prompts to configure the bucket settings, such as its name, region, and access permissions.
+
+    Upload Data to the S3 Bucket:
+        Select your bucket and click "Upload" to upload files or objects to the bucket.
+        Follow the prompts to select files from your local machine and upload them to S3.
+
+Retrieving Data from Amazon S3:
+
+    Accessing Data in S3:
+        To access data stored in S3, navigate to your bucket in the AWS S3 Console.
+        Click on the object (file) you want to retrieve.
+        You can use the provided URL to access the object programmatically or share it with others.
+
+Setting Up Caching with Amazon ElastiCache (AWS):
+
+Creating an ElastiCache Cluster:
+
+    Navigate to Amazon ElastiCache:
+        In the AWS Console, navigate to Amazon ElastiCache.
+
+    Create an ElastiCache Cluster:
+        Click "Create" to create a new ElastiCache cluster.
+        Select the Redis or Memcached engine depending on your caching requirements.
+
+    Configure the Cluster:
+        Set the cache node type, number of nodes, and other configuration settings.
+        Choose the appropriate VPC and security group settings.
+
+    Security and Access Control:
+        Configure security group rules to allow access to the cache cluster.
+        Optionally, enable encryption at rest and in transit.
+
+    Create the Cluster:
+        Review your configuration settings and create the ElastiCache cluster.
+
+Using ElastiCache for Caching:
+
+    Integration with Applications:
+        Update your application code to use the ElastiCache endpoint for caching data.
+
+    Cache Data:
+        Store frequently accessed data in the cache to improve application performance.
+
+Storing and Retrieving Data from Azure Blob Storage (Azure):
+
+Storing Data in Azure Blob Storage:
+
+    Sign in to Azure Portal:
+        Go to the Azure Portal (https://portal.azure.com/) and sign in with your Azure account.
+
+    Create an Azure Storage Account:
+        In the Azure Portal, create a new Azure Storage account to store your data.
+        Configure the storage account settings, including its name, region, and access permissions.
+
+    Upload Data to Blob Storage:
+        Select your storage account and navigate to "Containers" to create a new container.
+        Upload files or objects to the container.
+
+Retrieving Data from Azure Blob Storage:
+
+    Accessing Data in Blob Storage:
+        To access data stored in Azure Blob Storage, navigate to your storage account in the Azure Portal.
+        Click on the container and object you want to retrieve.
+        You can use the provided URL to access the object programmatically or share it with others.
+
+Setting Up Caching with Azure Cache (Azure):
+
+Creating an Azure Cache Instance:
+
+    Navigate to Azure Cache:
+        In the Azure Portal, navigate to Azure Cache.
+
+    Create a Cache Instance:
+        Click "Create" to create a new cache instance.
+        Choose the Redis or Memcached cache type based on your caching requirements.
+
+    Configure the Cache:
+        Set the cache size, pricing tier, and other configuration settings.
+        Choose the appropriate networking settings and access control options.
+
+    Security and Access Control:
+        Configure network security groups and access control to allow access to the cache.
+
+    Create the Cache Instance:
+        Review your configuration settings and create the Azure Cache instance.
+
+Using Azure Cache for Caching:
+
+    Integration with Applications:
+        Update your application code to use the Azure Cache endpoint for caching data.
+
+    Cache Data:
+        Store frequently accessed data in the cache to improve application performance.
+
+Please note that the specific steps and details may vary based on your AWS or Azure environment, the programming language and framework you are using, and your application's architecture. Be sure to refer to the official AWS and Azure documentation for more detailed and up-to-date instructions on using these services.
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+	5	Databases
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+Databases in the cloud, often referred to as cloud databases, are database management systems (DBMS) hosted and operated by cloud service providers. They offer scalable, flexible, and cost-effective solutions for storing, managing, and processing data. Here are key aspects of databases in the cloud:
+Types of Cloud Databases:
+
+    Relational Database Management Systems (RDBMS):
+        Cloud providers offer managed RDBMS services that support traditional relational databases like MySQL, PostgreSQL, SQL Server, and Oracle.
+        Examples: AWS RDS, Azure SQL Database, Google Cloud SQL.
+
+    NoSQL Databases:
+        NoSQL databases provide flexible and scalable data models for various use cases, such as document-oriented (MongoDB), key-value (Redis), column-family (Cassandra), and graph databases (Neo4j).
+        Examples: AWS DynamoDB, Azure Cosmos DB, Google Cloud Firestore.
+
+    In-Memory Databases:
+        In-memory databases store data in RAM, providing extremely fast read and write operations.
+        Examples: Amazon ElastiCache (Redis), Azure Cache for Redis, Google Cloud Memorystore.
+
+    Data Warehouses:
+        Data warehouses are used for analytical and reporting purposes, often with columnar storage and advanced query optimization.
+        Examples: Amazon Redshift, Azure Synapse Analytics, Google BigQuery.
+
+    Serverless Databases:
+        Serverless databases automatically handle scaling and resource management, allowing developers to focus on application logic.
+        Examples: AWS Aurora Serverless, Azure SQL Database Serverless, Google Cloud Firestore in Datastore mode.
+
+Advantages of Cloud Databases:
+
+    Scalability: Cloud databases can easily scale up or down based on demand, ensuring optimal performance and cost efficiency.
+
+    High Availability: Most cloud database services offer built-in high availability, automated backups, and failover mechanisms.
+
+    Managed Services: Cloud providers handle database maintenance tasks like patching, backups, and security, reducing administrative overhead.
+
+    Global Reach: Cloud databases are available in multiple regions, allowing data to be replicated for low-latency access worldwide.
+
+    Security: Cloud providers invest heavily in security measures, including encryption, authentication, and compliance certifications.
+
+    Cost Control: Pay-as-you-go pricing models let you control costs by only paying for the resources you use.
+
+    Integration: Cloud databases can be easily integrated with other cloud services, like serverless functions, storage, and analytics.
+
+Use Cases for Cloud Databases:
+
+    Web Applications: Cloud databases are ideal for web apps that require scalable and reliable data storage.
+
+    Mobile Apps: They can serve as the backend for mobile apps, supporting user profiles, content delivery, and real-time data synchronization.
+
+    E-commerce: Cloud databases handle product catalogs, order processing, and customer data for e-commerce platforms.
+
+    Analytics: Data warehousing solutions enable businesses to perform advanced analytics on large datasets.
+
+    IoT: Cloud databases store and analyze data generated by IoT devices.
+
+    Content Management: They manage and serve multimedia content for websites and applications.
+
+    Gaming: Cloud databases support game state, leaderboards, and player profiles for online gaming.
+
+When selecting a cloud database, consider factors like data model, scalability requirements, geographic distribution, and budget. Different cloud providers offer various database services, so evaluate which one best aligns with your specific needs and technical stack.
+
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+		AWS: RDS, DynamoDB.
+-------------------------------------------------------------------------------------------------------------------------
+
+Amazon Web Services (AWS) offers two popular database services: Amazon RDS (Relational Database Service) and Amazon DynamoDB. These services cater to different database needs and use cases. Here's an overview of both:
+Amazon RDS (Relational Database Service):
+
+Amazon RDS is a managed relational database service that makes it easier to set up, operate, and scale a relational database in the cloud. It supports several relational database engines, including MySQL, PostgreSQL, Oracle, SQL Server, and MariaDB. Key features and use cases include:
+
+    Managed Service: AWS handles administrative tasks such as patching, backups, and scaling, allowing you to focus on your application.
+
+    Multiple Database Engines: Choose from various database engines based on your application's requirements.
+
+    High Availability: RDS offers multi-AZ deployments for automatic failover and data replication to ensure high availability.
+
+    Scalability: You can scale your RDS instances vertically by changing the instance type or horizontally by adding read replicas.
+
+    Security: RDS provides security features like encryption at rest and in transit, IAM authentication, and VPC isolation.
+
+    Backup and Restore: Automated daily backups and database snapshots make it easy to recover data.
+
+    Migration Tools: RDS supports database migration from on-premises to the cloud or between different RDS database engines.
+
+    Use Cases: RDS is suitable for applications requiring structured, relational data, such as content management systems, e-commerce platforms, and line-of-business applications.
+
+Amazon DynamoDB:
+
+Amazon DynamoDB is a fully managed NoSQL database service that offers seamless scalability, low-latency data access, and high availability. It is designed for fast and predictable performance with automatic scaling. Key features and use cases include:
+
+    Managed NoSQL Database: DynamoDB abstracts the underlying infrastructure, making it easy to operate and scale NoSQL databases.
+
+    Serverless Option: You can use DynamoDB on-demand to pay only for the read and write capacity you consume.
+
+    Automatic Scaling: DynamoDB automatically scales to handle traffic spikes and adjusts capacity based on demand.
+
+    Low Latency: Single-digit millisecond latency ensures quick data access.
+
+    Global Tables: Replicate data across multiple AWS regions for low-latency access worldwide.
+
+    Security: DynamoDB supports encryption at rest and in transit, fine-grained access control, and integration with AWS Identity and Access Management (IAM).
+
+    Backup and Restore: On-demand and continuous backups with point-in-time recovery.
+
+    Use Cases: DynamoDB is ideal for applications requiring fast, highly available, and scalable NoSQL data storage, such as gaming, mobile apps, real-time analytics, and IoT applications.
+
+Choosing between Amazon RDS and Amazon DynamoDB depends on your specific application requirements. If you need a traditional relational database with structured data, RDS is a good choice. If you require a highly scalable, NoSQL database for unstructured or semi-structured data, DynamoDB is a strong option. Some applications may even use both services in combination to meet different data storage needs within the same architecture.
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Azure: Azure SQL Database, Cosmos DB.
+-------------------------------------------------------------------------------------------------------------------------
+
+In Microsoft Azure, Azure SQL Database and Azure Cosmos DB are two distinct database services, each designed to address specific data storage and management requirements. Here's an overview of both services:
+Azure SQL Database:
+
+Azure SQL Database is a managed relational database service that is part of Microsoft's Azure cloud platform. It's designed to provide a fully managed and scalable database solution for applications that require structured, transactional data storage. Key features and use cases include:
+
+    Managed Service: Azure SQL Database handles many administrative tasks, such as patching, backups, and high availability, allowing developers to focus on application development.
+
+    SQL Server Compatibility: It is based on the SQL Server database engine, providing compatibility with existing SQL Server applications and tools.
+
+    Scalability: Azure SQL Database can scale up or down based on demand, allowing you to adjust resources and performance as needed.
+
+    High Availability: It offers built-in high availability with automatic failover and geo-replication options for disaster recovery.
+
+    Security: Azure SQL Database provides robust security features, including encryption at rest and in transit, threat detection, and Azure Active Directory integration.
+
+    Elastic Pools: You can use elastic pools to manage and share resources among multiple databases, reducing costs and improving resource utilization.
+
+    Use Cases: Azure SQL Database is well-suited for applications that require a traditional relational database model, such as business-critical applications, e-commerce platforms, and line-of-business applications.
+
+Azure Cosmos DB:
+
+Azure Cosmos DB is a globally distributed, multi-model database service that is designed for building highly responsive and scalable applications with low-latency data access. It supports multiple data models, including document, key-value, graph, and column-family. Key features and use cases include:
+
+    Multi-Model Support: Azure Cosmos DB allows you to choose the data model that best fits your application's requirements, making it versatile for a wide range of use cases.
+
+    Global Distribution: Data can be replicated and accessed from multiple Azure regions, ensuring low-latency access for users worldwide.
+
+    Automatic Scaling: Cosmos DB can automatically scale throughput and storage based on workload demands, eliminating the need for manual capacity planning.
+
+    Consistency Models: It offers various consistency models, allowing you to choose between strong, eventual, or session consistency depending on your application's needs.
+
+    Multi-API Support: Azure Cosmos DB supports multiple APIs, including SQL, MongoDB, Cassandra, Gremlin, and Table, making it compatible with various development platforms and tools.
+
+    Security: It provides security features such as encryption, role-based access control, and integration with Azure AD for identity management.
+
+    Use Cases: Azure Cosmos DB is suitable for globally distributed applications, real-time analytics, IoT solutions, gaming leaderboards, and any application that requires seamless and low-latency access to data.
+
+Choosing between Azure SQL Database and Azure Cosmos DB depends on the specific requirements of your application. If you need a traditional relational database with structured data, Azure SQL Database is a solid choice. If you require a globally distributed, multi-model database with low-latency access for unstructured or semi-structured data, Azure Cosmos DB is a strong option. In some cases, applications may use both services in a complementary manner within a single architecture.
+User
+
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Launching a database instance, inserting and querying data.
+-------------------------------------------------------------------------------------------------------------------------
+
+Launching a database instance, inserting data, and querying data typically involve specific steps based on the database service you are using. Below, I'll provide a high-level overview of how to perform these tasks using Amazon RDS (AWS) and Azure SQL Database (Azure), which are managed relational database services.
+Launching a Database Instance:
+
+Amazon RDS (AWS):
+
+    Sign in to AWS Console:
+        Go to the AWS Management Console (https://aws.amazon.com/) and sign in with your AWS account.
+
+    Navigate to Amazon RDS:
+        In the AWS Console, navigate to Amazon RDS.
+
+    Create a DB Instance:
+        Click "Create database" to start the instance creation process.
+        Choose the database engine (e.g., MySQL, PostgreSQL, SQL Server).
+        Configure instance details such as DB instance size, storage, and security settings.
+
+    Create the Database:
+        Review your configuration settings and click "Create database" to launch the instance.
+
+Azure SQL Database (Azure):
+
+    Sign in to Azure Portal:
+        Go to the Azure Portal (https://portal.azure.com/) and sign in with your Azure account.
+
+    Navigate to Azure SQL Database:
+        In the Azure Portal, navigate to Azure SQL Database.
+
+    Create a Database:
+        Click "Create" to start the database creation process.
+        Choose the database engine (Azure SQL Database).
+        Configure settings such as server, resource group, and pricing tier.
+
+    Configure Firewall Rules:
+        Set up firewall rules to allow access to your database server from specific IP addresses.
+
+    Create the Database:
+        Review your configuration settings and click "Create" to create the database.
+
+Inserting Data:
+
+Amazon RDS (AWS):
+
+    Connect to the Database:
+        Use a database client or AWS provided tools to connect to your RDS instance.
+
+    Execute SQL Queries:
+        Insert data into tables using SQL INSERT statements. For example:
+
+        sql
+
+        INSERT INTO your_table (column1, column2, ...)
+        VALUES (value1, value2, ...);
+
+Azure SQL Database (Azure):
+
+    Connect to the Database:
+        Use a database client or Azure Data Studio to connect to your Azure SQL Database.
+
+    Execute SQL Queries:
+        Insert data into tables using SQL INSERT statements, just like with RDS.
+
+Querying Data:
+
+Amazon RDS (AWS):
+
+    Connect to the Database:
+        Use a database client or AWS provided tools to connect to your RDS instance.
+
+    Execute SQL Queries:
+        Retrieve data from tables using SQL SELECT statements. For example:
+
+        sql
+
+        SELECT * FROM your_table WHERE condition;
+
+Azure SQL Database (Azure):
+
+    Connect to the Database:
+        Use a database client or Azure Data Studio to connect to your Azure SQL Database.
+
+    Execute SQL Queries:
+        Retrieve data from tables using SQL SELECT statements, similar to RDS.
+
+These are high-level steps for launching a database instance, inserting data, and querying data. The exact steps and tools you use may vary based on your specific database engine and client preferences. Always refer to the official documentation for your chosen database service for detailed instructions and best practices.
+
+
+-------------------------------------------------------------------------------------------------------------------------
+				
+Week 2		Advanced Cloud Concepts & Introduction to DevOps
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+	1	Integration & Messaging
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		AWS: SQS (messaging), SNS (notifications).
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Azure: Azure Queue Storage, Azure Service Bus.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Setting up messaging queues and sending/receiving messages.
+	-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+			
+	2	DevOps and Agile
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Introduction to DevOps: Principles, lifecycle, benefits.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Overview of Agile methodology: Scrum, Kanban.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Setting up a basic Agile project board.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+	3	Version Control Systems
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Introduction to Git and GitHub.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Branching, merging, pull requests.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Cloning a repo, making changes, and creating pull requests
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+	4	Build Tools
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Overview of Maven and Gradle.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Introduction to Nexus and JFrog.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Building a simple Java project using Maven, storing artifacts in Nexus.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+	5	Continuous Integration & Continuous Delivery (CI/CD) Refresher
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		CI/CD concepts, benefits, challenges.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Introduction to Jenkins and GitHub Actions.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Setting up a basic CI/CD pipeline using Jenkins.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+Week 3		Advanced DevOps Practices & Automation
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+	1	Automation Tests
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Importance of automated testing in DevOps.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Introduction to Selenium for web testing.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Writing and executing a basic Selenium test.
+	-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+			
+	2	Monitoring
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Importance of monitoring in DevOps.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Introduction to Nagios and ELK stack.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Setting up basic monitoring using Nagios, visualizing logs with ELK.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+	3	Security in DevOps
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Introduction to SAST/DAST tools.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Importance of security in CI/CD pipelines.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Running a basic security scan on a sample application.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+	4	Containerization & Registries
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Basics of containerization.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Introduction to Docker and Container Registries.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Creating a Docker image, pushing it to a registry.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+	5	Advanced CI/CD Concepts
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Deep dive into GitHub Actions.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Integrating security, testing, and deployment into CI/CD.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Hands-on: Setting up a comprehensive CI/CD pipeline using GitHub Actions.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+Week 4		Hands-on Project & Recap
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+	1 - 3	Project
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Participants will work on an end-to-end project that encompasses all the concepts learned.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Setting up cloud infrastructure, building a sample application, automating tests, setting up CI/CD, monitoring
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+	4	Recap & Review
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Review of key concepts learned throughout the month.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Q&A session, addressing any doubts or clarifications.
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+	5	Feedback & Fixing gaps
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		Gathering feedback from participants
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+				
+		
