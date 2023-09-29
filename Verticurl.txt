@@ -1,6 +1,51 @@
 https://docs.google.com/spreadsheets/d/1UCocQ2Bq98HFT4zHRdf42J_hMeb0eJX58mQxSOttZRM/edit#gid=1450392222f
 
 
+Loadbalancer
+
+
+
+[09:14] Subash (Guest)
+B-Tech ECE-2023,Karunya University
+[09:15] Rohindh Kishore (Guest)
+Electronics & Communication Kgisl 2023
+[09:15] aditya trivedi  (Guest)
+computer science eng, from PSIT Kanpur(U.P), 2023 Passout
+[09:15] sandeepkumar.venkatesan@verticurl.com
+B.Tech -- IT - Hindusthan college of engineering and technology- 2023
+[09:15] Vanshgarg.Vikas@verticurl.com
+Information Technology
+Maharaja Agrasen Institute Of Technology (Delhi)
+2022
+[09:15] Mayur R S (Guest)
+M.Sc CS 
+Hindustan College of Arts & Science , Coimbatore
+2023
+[09:15] Jila Rasnat B (Guest)
+BE CSE
+KGiSL Institute of Technology
+2023
+[09:15] SINDHU (Guest)
+
+MSc Software Systems- kgisl (20230
+
+[09:15] Ayush singhal  (Guest)
+
+B-Tech CsE,psit kanpur 2023
+
+[09:15] SINDHU (Guest)
+
+2023
+
+[09:15] Suraj Karthic (Guest)
+
+B.E CSE - KGISL 2023
+
+[09:16] Stephen Adithya (Guest)
+
+MCA , Hindusthan college- 2023
+
+
 
 Breaks:
 	1:00 pm to 2:00 pm (Lunch)
@@ -42,29 +87,122 @@ Hybrid
 
 
 
+3 networks 
+	192.168.0.0/24		192.168.0.0 - 192.168.0.255
+	192.168.0.0/16		192.168.0.0 - 192.168.255.255
+	192.0.0.0/8			192.0.0.0 - 192.255.255.255
+	0.0.0.0/0			0.0.0.0 - 255.255.255.255
+	
+	192.168.0.0/23		192.168.0.0	- 192.168.1.255	
+	
+	192.168.0.0/20		192.168.0.0	- 192.168.15.255
+	
+	
+192.168.0.0/8	- Type A
+192.168.0.0/16	- Type B
+192.168.0.0/24	- Type C
+
+192.168.0.0/28
+
+	
+	
+	
+------------------------------------------------------------------------------------------------------------------	
+Network 	1		2		4		8		16		32		64		128		256
+Host		256		128		64		32		16		8		4		2		1
+Subnet 		/24		/25		/26		/27		/28		/29		/30		/31		/32
+------------------------------------------------------------------------------------------------------------------
+4096/256	= 16
+256 * 256
+
+/23	512
+/22	1024
+/21	2048
+/20	4096
+/19	8192
+/18	16384
+/17	32768
+/16	65536
+		16777216	
+			
+		4294967296	
+			
+0 - 255.0 - 255.0-255- 0- 255
+0000 0000
+
+000
+001
+010
+011
+100
+101
+110
+111
+
+VPC	- Virtual private cloud
+VNet	Virtual network 
+
+													IP (Internet protocol)
+													-----------------------------------------
+192.168.0.0/24													
+													Network ID 			Broadcast ID
+Engineering		192.168.0.1		- 192.168.0.62		192.168.0.0			192.168.0.63	
+HR				192.168.0.65	- 192.168.0.126     192.168.0.64	    192.168.0.127
+Reception		192.168.0.129	- 192.168.0.190     192.168.0.128       192.168.0.191
+Vilas			192.168.0.193 	- 192.168.0.254     192.168.0.192       192.168.0.255
+
+
+
+
+IaC (Infrastructure as Code)
+	Infrastructure provisioning tools
+		Terraform
+		CloudFormation
+		Azure ARM Templates 
+	Configuration management tools 
+		Pull 
+			Puppet
+			Chef
+		Push 
+			Ansible 
+				ssh and scp - defult in linux 
 
 
 
 
 
 
+EBS
+	Instance type 
+	EBS 
+	
+		Bootable 
+		Attach volume to instance 
+	Instance 	
+		Instance fails 
+			data lost 
+			temporary data 
+			store persistant data 
 
+Storage types 
+	Block Store 
+		aws: Elastic block store 
+		azure: azure disk 
+		typically one machine connects/edits 
+			other machines if allowed to connect to connect would read.
+		Bootable 
+			install o/s 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		
+	File store 
+		aws: Elastic file system
+		azure: azure files
+		allow multiple machines to connect 
+			can edit 
+		like network storage 	
+		not bootable 
+		
+	
 
 
 
@@ -1299,11 +1437,12 @@ Amazon cloud computing resources
 			aws ec2 describe-regions --all-regions
 
 --------------------------
-aws ec2 run-instances  --image-id ami-0cc87e5027adcdca8 --count 1  --instance-type t2.micro  --key-name vilas  --security-group-ids sg-07570e17ab8331f13 \
-    --subnet-id subnet-00b5ede5e160caa59 \
-    --block-device-mappings "[{\"DeviceName\":\"/dev/sdf\",\"Ebs\":{\"VolumeSize\":30,\"DeleteOnTermination\":false}}]" \
-    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=demo-server}]' 'ResourceType=volume,Tags=[{Key=Name,Value=demo-server-disk}]'	
+aws ec2 run-instances  --image-id ami-0cc87e5027adcdca8 --count 1  --instance-type t2.micro  --key-name verticurl  --security-group-ids sg-01df926c57ac13510 --subnet-id subnet-0a35682045e96d83d --block-device-mappings "[{\"DeviceName\":\"/dev/sdf\",\"Ebs\":{\"VolumeSize\":30,\"DeleteOnTermination\":false}}]"  	
 --------------------------
+aws ec2 terminate-instances --instance-ids i-1234567890abcdef0
+--------------------------
+
+--tag-specifications= 'ResourceType=instance,Tags=[{Key=Name,Value=demo-server}]' 'ResourceType=volume,Tags=[{Key=Name,Value=demo-server-disk}]'
 
 		Find name of the us-east-2 Region.
 			aws lightsail get-regions --query "regions[?name=='us-east-2'].displayName" --output text
@@ -1372,6 +1511,283 @@ aws ec2 run-instances  --image-id ami-0cc87e5027adcdca8 --count 1  --instance-ty
 
 
 
+Amazon Elastic Block Store (Amazon EBS) 
+---------------------------------------
+block storage service provided by AWS that is designed for use with EC2 (Elastic Compute Cloud) instances. EBS volumes are highly available and durable block-level storage devices that you can attach to your EC2 instances. Here are some detailed notes about Amazon EBS:
+
+
+Lab: 
+	
+
+
+	1. Create an ebs and (amazon) instance in the same subnet (availability zone)
+		diff in one availability zone (same region) cannot connect 
+		
+		Note down the device name - say "/dev/xvdf1" - /dev/xvdf 
+		
+	2. From the ebs dashboard attach the ebs to an instance 
+	3. Go to instance dashboard
+	4. Login to instance 
+	5. lsblk 
+		will display 
+	6. lsblk -fs
+		will disply - but not mounted or attached.
+		
+	To use this we need to create a partition and mount it.
+	7. mkdir /tmp/images
+	
+	See all disk 
+	8. fdisk -l 
+		will list device 
+	9. fdisk /dev/xvdf (Find this from the above command or noted earlier)
+	10. fdisk 
+		m - help 
+		n - add new parition
+		p - print partition table 
+			enter default 
+		w - write table to disk and exit 
+	11. partprobe 
+		inform kernel about partition changes 
+	12. mkfs.xfs /dev/xvdf1
+		format partition with xfs file system
+		if you get an error 
+			clear the directory using 
+			sudo mkfs -t ext3 /dev/xvdf
+			and retry mks.xfs command above.
+		
+	13. lsblk -fs 
+	14. mount /dev/xvdf1 /tmp/images 
+	15. lsblk -fs 
+	To make it persistent 
+	16. vi /etc/fstab
+	i 
+	/dev/xvdf1	/tmp/images 	xfs 	defaults 0 0 
+	(device name-	mount point dir name- 	filesystem name 	defaults 0 0) 
+	
+	go to the directory and save files 
+	cd /tmp/images
+		mkdir test 
+	df -h 
+	
+	unmount 
+	17. df -h # disk is still there 
+	17. umount /tmp/images  
+		(not unmount - umount)
+		this should be done from outside the disk 
+	18. lsblk -fs 
+
+	
+	Now we can detach and delete the ebs.
+
+	mount back 
+	19. mount -a 
+
+
+
+    Volume Types:
+        Amazon EBS provides several volume types
+			each optimized for different use cases:
+				General Purpose SSD (gp2): 
+					Suitable for most workloads, 
+					balance of price and performance.
+            Provisioned IOPS SSD (io1): 
+				Designed for I/O-intensive applications
+				can define desired number of IOPS (Input/Output Operations Per Second).
+				e.g. databases
+			Throughput Optimized HDD (st1): 
+				Best for frequently accessed, throughput-intensive workloads like 
+					big data and 
+					data warehouses.
+            Cold HDD (sc1): 
+				Ideal for less frequently accessed workloads with large, sequential I/O.
+            Magnetic (standard): 
+				Older, 
+				lower-cost option for workloads with low I/O requirements.
+
+    Volume Size:
+        EBS volumes can range in size from 
+			1 GB to 16 TB (varies by volume type). 
+		You can change the size of a volume on the fly, but you can't shrink it, only grow it.
+
+    Snapshots:
+        EBS snapshots are point-in-time backups of your EBS volumes. You can create snapshots manually or set up automated snapshot schedules.
+        Snapshots are incremental, meaning only the changed data is saved with each new snapshot, which saves storage costs.
+        You can use snapshots to create new EBS volumes or share them with other AWS accounts.
+
+    Encryption:
+        You can encrypt your EBS volumes using AWS Key Management Service (KMS) keys. Encrypted volumes provide additional data security.
+        You can encrypt both boot volumes and data volumes.
+
+    Performance:
+        The performance of EBS volumes depends on the volume type selected:
+            gp2 and io1 volumes are designed for low-latency, high-IOPS workloads.
+            st1 and sc1 volumes are optimized for throughput and are best for streaming data.
+            Magnetic volumes offer baseline performance with the ability to burst in performance when needed.
+
+    Use Cases:
+        EBS is commonly used for a wide range of applications, including running database systems (e.g., MySQL, PostgreSQL), application servers, and file storage.
+        It is also used for creating custom RAID arrays, hosting application logs, and storing backup data.
+
+    Attachment and Detachment:
+        EBS volumes can be attached to and detached from EC2 instances as needed. You can also detach a volume from one instance and attach it to another.
+        Attaching an EBS volume to an EC2 instance requires that the instance and volume are in the same Availability Zone.
+
+    Multi-Attach:
+        Some EBS volume types, like gp3, support multi-attach, which allows attaching a single EBS volume to multiple EC2 instances simultaneously. This is useful for shared storage scenarios.
+
+    RAID with EBS:
+        EBS volumes are often used in conjunction with RAID (Redundant Array of Independent Disks) configurations to improve performance, redundancy, and fault tolerance.
+
+    Costs:
+        You are charged for the provisioned capacity and IOPS, as well as any snapshots created from your EBS volumes.
+        EBS pricing varies depending on the volume type, size, and region.
+
+    Lifecycle Management:
+        You can use AWS Data Lifecycle Manager to automate the creation and retention of snapshots and set policies for volume deletion.
+
+    Volume Resizing:
+        You can resize EBS volumes, but it involves stopping the associated EC2 instance in most cases.
+
+    Elastic Volumes:
+        With Elastic Volumes, you can adjust the size, performance, and type of EBS volumes on the fly without requiring instance downtime.
+
+Amazon EBS is a fundamental component of AWS infrastructure, offering flexible, high-performance block storage for a variety of use cases, and it plays a crucial role in achieving data durability and availability within the AWS ecosystem.
+
+
+
+
+Azure Disk
+----------
+
+
+	managed block storage service 
+		by Microsoft Azure
+	scalable and high-performance storage 
+	can be attached to virtual machines (VMs) 
+	used to 
+		persist data, 
+		operating system disks, 
+		application data
+			etc. 
+	various types of disks available 
+	different performance characteristics to meet the needs of different workloads. 
+	
+	Types of Disks:
+		Azure Disk offers several types of disks, including:
+
+		Standard HDD: 
+			Standard Hard Disk Drives 
+			cost-effective and 
+			suitable for workloads with low I/O requirements.
+		Standard SSD: 
+			Standard Solid-State Drives 
+			better performance than HDDs 
+			slightly higher cost.
+		Premium SSD: 
+			Premium Solid-State Drives 
+			high-performance disks 
+			optimized for I/O-intensive workloads and mission-critical applications.
+		Ultra Disk: 
+			highest levels of performance 
+			designed for the most demanding applications.
+	Disk Sizes and Performance Tiers:
+		Azure Disk supports 
+			different sizes and 
+			performance tiers 
+				for each type of disk
+		can select the right combination of capacity and performance for your workloads.
+
+	Managed Disks:
+		Azure Disk offers managed disks
+		simplify disk management tasks like 
+			provisioning, 
+			scaling, and 
+			data replication. 
+		Managed disks 
+			associated with an Azure resource group 
+			automatically replicated 
+				to provide high availability.
+
+	Availability Zones and Availability Sets:
+		can use with 
+			Availability Zones or 
+			Availability Sets 
+				to ensure high availability of your applications. 
+	Availability Zones 
+		replicate your VMs and disks across datacenter availability zones 
+			for increased fault tolerance.
+
+	Snapshots:
+		Azure Disk supports creating snapshots
+			read-only copies of a disk at a point in time. 
+		can be used for 
+			backup, recovery, and 
+			creating new disks.
+
+	Disk Encryption:
+		encryption at rest by default
+			for security of your data. 
+		can also enable Azure Disk Encryption for additional security.
+
+	Scaling:
+		You can dynamically scale the size and performance of Azure Disks without downtime. 
+		This allows you to adapt to changing workload requirements.
+
+	Use Cases:
+		Azure Disk is suitable for a wide range of use cases, including hosting virtual machines, databases, application data, and more. It can be used with various Azure services and integrated into your Azure solutions.
+
+	Cost Management:
+		Azure Disk pricing is based on the type of disk, size, and performance tier you choose. Monitoring and cost management tools in Azure help you keep track of your disk usage and costs.
+
+	Geographic Redundancy:
+		Azure Disk provides options for geographic redundancy, allowing you to replicate your disks across different Azure regions for disaster recovery and high availability.
+
+	In summary, Azure Disk is a versatile and scalable storage solution that can be tailored to meet the specific requirements of your Azure-based applications and workloads. It offers a range of disk types, sizes, and performance options to accommodate various use cases while providing robust features for data protection and high availability.
+
+
+lab: 
+	Create a windows server azure vm
+	Create a disk 
+	
+	Login to azure vm using rdp
+		Run 
+			diskmgmt.msc 
+			Temporary storage 
+				volatile memory 
+				can loose data 
+	Back on browser 
+		vm 
+			disk 
+				Attach existing disk 
+	back on rdp
+		wait for some time 
+		automatically disk appears
+		right click 
+			initialize disk 
+			OK 
+		right click again 
+			new simple volume
+			Next 
+			give volume name in label 
+			
+		right click 
+			open 
+			work with it.
+			
+	Without loosing data increase disk size 
+		back in browser 
+			detach disk from vm from vm details 
+		goto to disk 
+			increase size and resize 
+		goto to vm
+			attach the disk back 
+			
+		back in rdp 
+			diskmgmt.msc
+			right click 
+				extend disk 
+					Next 
+					
 -------------------------------------------------------------------------------------------------------------------------
 				
 		Azure: Virtual Machines, Virtual Network, Disk Storage.
@@ -2381,7 +2797,7 @@ https://www.youtube.com/watch?v=NHAuCWIHevk
 		While creating a new instance
 		select "<role you created>" in IAM Role
 	Access s3 bucket with cli commands
-		aws s3 mb s3://<bucketname>
+		mb s3://<bucketname>
 		aws s3 ls
 		aws s3 rb s3://<bucketname>
 
@@ -2409,6 +2825,52 @@ Azure Active Directory (Azure AD):
         Multi-Factor Authentication (MFA): Enhances security by requiring users to provide additional authentication factors beyond passwords.
         Application Integration: Azure AD supports integration with thousands of SaaS applications, custom applications, and on-premises resources.
         Azure AD B2B and B2C: Azure AD B2B allows collaboration with external partners, while Azure AD B2C enables customer identity and access management for applications.
+		
+		
+		Identity
+			can be 
+				person 
+					vilasvarghese@ms.com
+				application 
+					payroll application 
+						rights to db 
+				device 
+					has access
+			
+			usually has 
+				password or
+				key or
+				certificate 
+		
+		
+		Identity management 
+			based on AAD now renamed to Azure Electra ID
+			
+		Traditional AD 
+			does not work on IP
+		Azure AD 
+			identity as a service 
+			application's can use Azure AD or 
+		
+	Adv of AAD
+		Security 
+			100*1000 companies 
+		Reduce dev. time 
+		Feature rich 
+			MFA
+			Conditional access
+			SSO
+			
+	how it works 
+		clients 
+			authenticate with AAD 
+				get a token 
+			provide token to applications
+			applications validate the token with AAD 
+			authenticate users 
+			
+			
+	
 
     Use Cases:
         User Authentication: Authenticate users to access Azure resources, applications, and services.
@@ -2502,30 +2964,75 @@ Storage and caching are critical components in cloud computing, serving various 
 Storage in the Cloud:
 
     Object Storage:
-        Definition: Object storage is designed for storing and managing unstructured data, such as files, images, videos, and backups. Data is stored as objects in containers or buckets.
-        Examples: AWS S3, Azure Blob Storage, Google Cloud Storage.
+        Definition: 
+			Object storage is designed for storing and managing unstructured data
+				files, 
+				images, 
+				videos, and 
+				backups. 
+			Data is stored as objects in containers or buckets.
+        Examples: 
+			AWS S3, 
+			Azure Blob Storage, 
+			Google Cloud Storage.
         Use Cases: Storing and serving media files, backups, static website content, and data archiving.
 
     Block Storage:
-        Definition: Block storage provides raw storage volumes that can be attached to virtual machines. It's suitable for file systems, databases, and applications.
-        Examples: AWS EBS (Elastic Block Store), Azure Disk Storage, Google Persistent Disks.
-        Use Cases: Hosting databases, application storage, and high-performance I/O workloads.
+        Definition: 
+			Block storage provides raw storage volumes 
+			Can be attached to virtual machines. 
+			It's suitable for 
+				file systems, 
+				databases, and 
+				applications.
+        Examples: 
+			AWS EBS (Elastic Block Store), 
+			Azure Disk Storage, 
+			Google Persistent Disks.
+        Use Cases: 
+			Hosting databases, 
+			application storage, and 
+			high-performance I/O workloads.
 
     File Storage:
-        Definition: File storage systems offer shared file systems that multiple virtual machines can access simultaneously. They are ideal for data sharing among instances.
-        Examples: AWS EFS (Elastic File System), Azure File Storage, Google Cloud Filestore.
-        Use Cases: Home directories, application file sharing, and content collaboration.
+        Definition: 
+			File storage systems (like NFS) 
+				shared file systems that 
+				multiple virtual machines can access simultaneously. 
+				They are ideal for data sharing among instances.
+        Examples: 
+			AWS EFS (Elastic File System), 
+			Azure File Storage, 
+			Google Cloud Filestore.
+        Use Cases: 
+			Home directories, 
+			application file sharing, and 
+			content collaboration.
 
     Database Storage:
-        Definition: Cloud providers offer managed database services with scalable and highly available storage for relational and NoSQL databases.
-        Examples: AWS RDS (Relational Database Service), Azure SQL Database, Google Cloud SQL.
-        Use Cases: Running and scaling databases in the cloud.
+        Definition: 
+			Cloud providers offer managed database services 
+				scalable and highly available storage for 
+					relational and NoSQL databases.
+        Examples: 
+			AWS RDS (Relational Database Service), 
+			Azure SQL Database, 
+			Google Cloud SQL.
+        Use Cases: 
+			Running and scaling databases in the cloud.
 
 Caching in the Cloud:
 
     Caching Overview:
-        Definition: Caching involves storing frequently accessed data in a high-speed memory location (cache) to improve data retrieval performance and reduce the load on primary data storage.
-        Use Cases: Accelerating application performance, reducing database load, and enhancing user experience.
+        Definition: 
+			Caching involves storing frequently accessed data 
+				in a high-speed memory location (cache) 
+				to improve data retrieval performance and 
+				reduce the load on primary data storage.
+        Use Cases: 
+			Accelerating application performance, 
+			reducing database load, and 
+			enhancing user experience.
 
     In-Memory Caching:
         Definition: In-memory caching stores data in RAM for ultra-fast access. It's suitable for caching frequently used database queries or web page components.
@@ -3007,10 +3514,173 @@ Week 2		Advanced Cloud Concepts & Introduction to DevOps
 				
 	1	Integration & Messaging
 -------------------------------------------------------------------------------------------------------------------------
+
+
+Cloud messaging is a communication paradigm that leverages cloud computing resources to facilitate the exchange of data, information, and messages between different components, services, and applications. It plays a crucial role in modern distributed computing environments, allowing systems to communicate seamlessly and asynchronously across various devices and platforms. Here's an introduction to cloud messaging:
+
+1. Asynchronous Communication:
+
+	Cloud messaging is designed for asynchronous communication, meaning that messages are sent and received independently of each other, and the sender and receiver do not need to be actively engaged at the same time.
+2. Key Components:
+
+	Messages: Messages contain data or information that needs to be exchanged between different components or services within a cloud-based system.
+
+	Publishers: Publishers are entities responsible for sending messages to a message broker or a messaging service within the cloud.
+
+	Message Brokers: Message brokers are cloud services or components that act as intermediaries, receiving, storing, and distributing messages to the appropriate recipients or subscribers.
+
+	Subscribers: Subscribers are entities that receive and process messages published to a message broker. Subscribers can be services, applications, devices, or other cloud resources.
+
+3. Pub-Sub Model:
+
+	Cloud messaging often follows a Publish-Subscribe (Pub-Sub) model, where publishers send messages to topics or channels, and subscribers express interest in specific topics. This model allows for efficient broadcasting of messages to multiple subscribers.
+4. Messaging Patterns:
+
+	Point-to-Point: In this pattern, a message is sent from one sender to a specific receiver or queue. Only one receiver processes the message.
+
+	Publish-Subscribe (Pub-Sub): In this pattern, messages are sent to a topic, and multiple subscribers receive and process the messages independently.
+
+	Request-Reply: In this pattern, a sender initiates a request, and a receiver responds with a reply message. It is often used in synchronous communication scenarios.
+
+5. Benefits of Cloud Messaging:
+
+	Decoupling: Cloud messaging decouples the components of a distributed system, allowing them to operate independently and asynchronously. This enhances system flexibility and scalability.
+
+	Reliability: Messages can be reliably delivered to subscribers even in the presence of network failures or system downtime.
+
+	Scalability: Cloud messaging systems are designed to scale horizontally to accommodate increasing message loads, making them suitable for high-throughput scenarios.
+
+	Event-Driven Architecture: Cloud messaging is a fundamental component of event-driven architectures, enabling systems to respond to events or triggers in real time.
+
+	Load Balancing: Messaging systems can distribute workloads across multiple consumers or subscribers, improving system performance and resource utilization.
+
+6. Use Cases:
+
+	Real-Time Notifications: Cloud messaging is used to send real-time notifications to users or applications. For example, push notifications to mobile devices or emails for new events.
+
+	Microservices Communication: In microservices architectures, cloud messaging helps different microservices communicate and collaborate asynchronously.
+
+	IoT (Internet of Things): IoT devices use cloud messaging to send and receive data from the cloud, enabling remote monitoring and control.
+
+	Big Data Processing: Messaging systems play a role in distributing data and processing tasks in big data analytics pipelines.
+
+7. Cloud Messaging Services:
+
+	Major cloud providers offer managed messaging services, such as Amazon SNS (Simple Notification Service), AWS SQS (Simple Queue Service), Google Cloud Pub/Sub, and Azure Service Bus, that simplify the implementation of cloud messaging in applications and systems.
+	Cloud messaging is a fundamental concept in modern distributed computing, enabling the creation of responsive, scalable, and loosely coupled systems. It plays a crucial role in various applications, from real-time communication to the coordination of distributed services and components in cloud environments.
+
+
 -------------------------------------------------------------------------------------------------------------------------
 				
 		AWS: SQS (messaging), SNS (notifications).
 -------------------------------------------------------------------------------------------------------------------------
+
+SQS
+---
+
+	Amazon Simple Queue Service (SQS) is a managed messaging service provided by Amazon Web Services (AWS). It is designed to facilitate the decoupling of the components of a cloud application, making it easier to build scalable and fault-tolerant distributed systems. Here's a detailed overview of AWS SQS:
+
+	1. Messaging Model:
+
+	Queue-Based: SQS follows a message queue model, where messages are placed in a queue and processed by consumers in a distributed manner. This decouples the sender and receiver, allowing asynchronous communication.
+	2. Key Features:
+
+	Managed Service: AWS SQS is fully managed, meaning AWS handles infrastructure provisioning, scaling, and maintenance, allowing developers to focus on building applications.
+
+	Distributed and Highly Available: SQS is distributed across multiple Availability Zones (AZs) within a region to provide high availability and fault tolerance.
+
+	At-Least-Once Delivery: SQS ensures that messages are delivered at least once. However, consumers must be designed to handle duplicate messages.
+
+	Message Retention: Messages are stored in the queue for a configurable retention period (1 minute to 14 days).
+
+	Visibility Timeout: When a message is pulled from the queue by a consumer, it becomes invisible for a specified period (visibility timeout). If the consumer doesn't delete or process the message within that time, it becomes visible again for another consumer to pick up.
+
+	Long Polling: Consumers can use long polling to reduce the number of empty responses and decrease costs.
+
+	Dead-Letter Queues: Messages that cannot be processed successfully after a specified number of retries can be sent to a dead-letter queue (DLQ) for further analysis.
+
+	Security: SQS integrates with AWS Identity and Access Management (IAM) for access control, and messages can be encrypted at rest and in transit.
+
+	3. Types of Queues:
+
+	Standard Queue: Offers high throughput, best-effort ordering (not guaranteed), and at-least-once delivery.
+
+	FIFO Queue (First-In-First-Out): Guarantees that messages are delivered exactly once and in the order they were sent. Suitable for applications that require strict message sequencing.
+
+	4. Use Cases:
+
+	Decoupling Components: SQS is used to decouple components of a distributed system, allowing them to operate independently and asynchronously.
+
+	Scalable Workload Processing: SQS is commonly used for processing workloads that can be parallelized, such as batch processing and data processing.
+
+	Event-Driven Architecture: SQS plays a crucial role in event-driven architectures, where it helps manage events and messages between microservices.
+
+	Asynchronous Communication: It is used for asynchronous communication between distributed components, improving system resilience and performance.
+
+	5. Integration:
+
+	SQS can be easily integrated with other AWS services, such as AWS Lambda, Amazon EC2, and Amazon S3, as well as with custom applications.
+	6. Pricing:
+
+	SQS charges based on the number of requests (sends, receives, deletes, etc.) and the amount of data transferred in and out of the service.
+	Amazon SQS is a reliable and highly scalable messaging service that plays a crucial role in building distributed and decoupled cloud applications. It simplifies the development of scalable and fault-tolerant systems by handling the complexities of message management and delivery
+
+
+
+SNS
+---
+
+	Amazon Simple Notification Service (SNS) is a fully managed messaging service provided by Amazon Web Services (AWS). SNS is designed to facilitate the publication and distribution of messages or notifications to a large number of recipients or subscribers. It is a key building block for creating event-driven and distributed systems. Here's a detailed overview of AWS SNS:
+
+	1. Messaging Model:
+
+	Publish-Subscribe (Pub-Sub): SNS follows a pub-sub messaging model, where publishers send messages to topics, and subscribers (including AWS services and custom applications) receive those messages.
+	2. Key Features:
+
+	Managed Service: AWS SNS is a fully managed service, which means AWS handles the infrastructure, scalability, and availability, allowing developers to focus on building applications.
+
+	Distributed and Highly Available: SNS is distributed across multiple Availability Zones (AZs) within a region for high availability and fault tolerance.
+
+	Multiple Protocols: SNS supports various protocols for message delivery, including HTTP/HTTPS, email/SMTP, SMS, application endpoints (for mobile apps), and more.
+
+	Fan-Out Messaging: SNS allows one message to be sent to multiple subscribers simultaneously, enabling fan-out messaging for broadcasting events.
+
+	Message Filtering: SNS offers message filtering capabilities based on attributes, allowing subscribers to receive only the messages that match their criteria.
+
+	Dead-Letter Queue (DLQ): You can configure a DLQ for topics to capture and retain messages that cannot be successfully delivered to subscribers.
+
+	Security: SNS integrates with AWS Identity and Access Management (IAM) for access control, and messages can be encrypted at rest and in transit.
+
+	3. Components:
+
+	Topic: A topic is a communication channel to which messages can be published. Subscribers subscribe to topics to receive messages. Topics can have one or more subscribers.
+
+	Publisher: Publishers are entities that send messages to topics. Publishers can be AWS services, mobile apps, or custom applications.
+
+	Subscriber: Subscribers are endpoints that receive messages published to topics. Subscribers can be AWS Lambda functions, SQS queues, HTTP/HTTPS endpoints, mobile devices (for push notifications), and more.
+
+	4. Use Cases:
+
+	Event-Driven Architectures: SNS is commonly used to implement event-driven architectures where events or messages trigger actions in various components of a system.
+
+	Real-Time Notifications: SNS is used for sending real-time notifications to users or systems when certain events occur, such as new emails or system alerts.
+
+	Decoupling Systems: SNS helps decouple the components of a distributed system, allowing them to operate independently and asynchronously.
+
+	Scalable and Responsive Applications: It is used for building applications that need to scale horizontally and react to changes or events in real time.
+
+	5. Integration:
+
+	SNS can be easily integrated with other AWS services, including AWS Lambda, Amazon SQS, Amazon S3, and more.
+	6. Pricing:
+
+	SNS pricing is based on the number of messages published, delivered, and the use of other features like message filtering and SMS deliveries.
+	Amazon SNS is a versatile and highly scalable messaging service that simplifies the process of sending messages and notifications to distributed components, applications, and users. It is a crucial building block for building event-driven and responsive cloud applications and systems.
+
+
+
+	
+
 -------------------------------------------------------------------------------------------------------------------------
 				
 		Azure: Azure Queue Storage, Azure Service Bus.

@@ -3,7 +3,7 @@ Resources:
   EC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      InstanceType: t2.micro
+      InstanceType: t2.medium
       AvailabilityZone: us-east-2b
-      ImageId: ami-069d73f3235b535bd
-      KeyName: bitsohio
+      ImageId: ami-0e8610cc48582e7e1
+      KeyName: vilasohio
