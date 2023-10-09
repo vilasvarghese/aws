@@ -5,5 +5,5 @@ Resources:
     Properties:
       InstanceType: t2.medium
       AvailabilityZone: us-east-2b
-      ImageId: ami-0e8610cc48582e7e1
+      ImageId: ami-0d406e26e5ad4de53
       KeyName: vilasohio
