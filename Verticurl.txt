@@ -5904,6 +5904,8 @@ Scrum:
 
     Sprint Planning: 
 		The team plans the work to be done during the sprint.
+		define current sprint goal 
+			
     Daily Scrum: 
 		A daily stand-up meeting 
 			team members discuss progress
@@ -5935,6 +5937,8 @@ Scrum:
 
 Agile Principles
 
+	https://www.agilealliance.org/agile101/12-principles-behind-the-agile-manifesto/
+
 To make a process Agile, the following principles need to be satisfied.
 
     Iterative Development: Agile projects are divided into short cycles called iterations, where a small portion of the project is developed and delivered. This approach allows teams to make regular improvements and gather feedback along the way.
@@ -5944,6 +5948,51 @@ To make a process Agile, the following principles need to be satisfied.
     Empowered Teams: Agile empowers cross-functional teams with the autonomy to make decisions. This autonomy enhances accountability, innovation, and ownership of the project's success.
 
 
+Exercise
+	1. Product Backlog 
+		a. Login
+		b. Customer can buy 
+		c. Make payment 
+		d. Admin can make offers
+		e. Partners can make offers
+		f. Track where my product is?
+		g. Search for products.
+		h. Partners can modify the specification 
+		i. Different language 
+		j. 
+
+	2. Spring backlog
+		a. Login view page 
+			identify which framework 
+			build wireframe
+			study 
+			
+			
+			out of scope: MFA
+			
+		b. Create account page / Sign up 
+		c. integrating authentication with external products 
+		d. Storing the data 
+			i. authentication 
+			ii.  authorization  
+				change password 
+			ii. which database?
+			iv. database schema design 
+			
+		e. update profile 
+			update password 
+		f. front end design 
+		g. forgot password 
+		h. captcha validation 
+		
+		middle layer separate study 
+		i. middle layer 
+			detailed requirment study 
+			design 
+			
+		
+		
+		
 
 Kanban:
 
@@ -5982,6 +6031,18 @@ https://businessmap.io/kanban-resources/getting-started/what-is-kanban
 				in a particular stage
 			WIP Limits 
 			
+			
+Continous deployment 
+Continous integration 
+Continous build 
+Continous testing
+Continous static analysis
+Continous delivery
+Continous development 
+
+	
+
+	
 					
     Limit Work in Progress: 
 		Teams set WIP limits 
@@ -6268,6 +6329,24 @@ In summary, both Maven and Gradle are powerful build automation tools with their
 		Introduction to Nexus and JFrog.
 -------------------------------------------------------------------------------------------------------------------------
 
+Why package management
+	Package versioining
+	easy deployment
+	security 
+	manage the package
+	build package
+	distribute package
+	avoid complexity 
+	package dependency management 
+	store artifacts
+	standard process and directory layout
+	saving time
+	integrity of package
+	enforces standard process
+	schedule maintanance
+	backup 
+	mirror 
+
 
 Nexus and JFrog are two popular artifact repository managers used in the software development and DevOps processes. They play a crucial role in managing and storing binary artifacts, such as libraries, dependencies, Docker images, and more. Here's a detailed introduction to both:
 
@@ -6345,6 +6424,162 @@ https://www.devopsschool.com/blog/how-to-upload-the-artifacts-in-sonatype-nexus/
 https://mincong.io/2018/08/04/maven-deploy-artifacts-to-nexus/
 https://rodolfombc.medium.com/deploying-java-artifacts-on-a-nexus-repository-with-maven-939a80406acf
 https://www.baeldung.com/maven-deploy-nexus
+
+
+docker run -d -p 8081:8081 --name nexus sonatype/nexus3
+
+click sign in 
+
+Click settings gear 
+Roles 
+	Create role 
+		Type: Nexus role 
+		Role ID: deploy
+		Role Name: deploy 
+		
+	create a deploy role with nx-all (no sub role)
+	
+Users 
+	Create a (local) user with that role 
+	
+	ID: deploy 
+	First name: deploy 
+	Last name: deploy 
+	Email: vilas_varghese@yahoo.com
+	Password: deploy@123
+	Confirm password: deploy@123
+	Status: Active 
+	Roles 
+		Move deploy role to right 
+		
+		Click - Create local user 
+		
+		
+	
+Repository
+	Create hosted repo. 
+	Name: vilashostedrepo
+	Online: check 
+	Version Policy: Release 
+	Layout policy: Strict
+	Add Content-Disposition header ... : inline 
+	Storage - Blob store: default
+	Strict Content Type Validation: check
+	Deployment policy: Allow redeploy
+	
+	
+	
+  yum update -y
+  yum install docker -y
+  systemctl start docker
+  docker run -d -p 8081:8081 --name nexus sonatype/nexus3
+  http://<ip:8081>
+	sometimes this can take sometime. Keep refereshing.
+	
+  
+  click on login/sign in 
+  docker ps
+  docker exec -it <container id> bash
+		get the pwd
+		
+		disable public access. 
+		
+  yum update -y
+  yum install maven
+  mvn archetype:generate   -DgroupId=com.mycompany   -DartifactId=demo   -DarchetypeArtifactId=maven-archetype-quickstart   -DinteractiveMode=false
+  cd demo/
+  vi pom.xml
+  
+content of pom.xml
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.mycompany</groupId>
+  <artifactId>demo</artifactId>
+  <packaging>jar</packaging>
+  
+#Change this version 
+  <version>1.0</version>
+  <name>demo</name>
+  <url>http://maven.apache.org</url>
+
+<!-- copy from below-->
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+    <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-deploy-plugin</artifactId>
+   </plugin>
+  </plugins>
+  </build>
+
+
+  <distributionManagement>
+    <repository>
+      <id>nexus-snapshots</id>
+      <url>http://18.117.235.153:8081/repository/mymaven-hosted/</url>
+    </repository>
+  </distributionManagement>
+</project>
+
+
+Change pom.xml version from 1.0SNAPSHOT to 1.0
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+  
+  
+  
+  cd ~/.m2/
+  vi settings.xml
+------------------------------------------------------------------------------------------------------------------------------------------------
+<settings>
+  <servers>
+    <server>
+      <id>nexus-snapshots</id>
+      <username>deploy</username>
+      <password>deploy@123</password>
+    </server>
+  </servers>
+</settings>
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+  cd -
+  mvn clean deploy
+
+find the url from the console output and try to get there 
+http://18.117.235.153:8081/#browse/browse:mymaven-hosted  
+	
 -------------------------------------------------------------------------------------------------------------------------
 				
 	5	Continuous Integration & Continuous Delivery (CI/CD) Refresher
@@ -7013,6 +7248,8 @@ Monitoring can be challenging due to the following factors:
 
 Effective monitoring requires a well-planned strategy, the right tools, and a focus on relevant metrics. It is an oning process that evolves with the changing needs of the organization and the technology landscape. Proper monitoring is essential for maintaining system reliability, optimizing performance, and delivering a positive user experience.
 
+
+
 -------------------------------------------------------------------------------------------------------------------------
 				
 		Importance of monitoring in DevOps.
@@ -7064,19 +7301,96 @@ Nagios, originally known as Nagios Core, is an open-source monitoring and alerti
 
 Key Features and Components of Nagios:
 
-    Core Engine: The core engine of Nagios is responsible for scheduling and executing checks, processing the results, and generating alerts based on predefined thresholds and configurations.
+    Core Engine: 
+		Responsible for 
+			scheduling and executing checks
+			processing the results
+			generating alerts based 
+				on predefined thresholds and configurations.
 
-    Plugins: Nagios relies on plugins to perform specific checks on hosts and services. These plugins can be custom-built or obtained from the Nagios Plugin Exchange and other sources.
+    Plugins: 
+		Nagios relies on plugins 
+			to perform specific checks 
+				on hosts and services. 
+		can be custom-built 
+		or 
+		obtained from the Nagios Plugin Exchange and other sources.
 
-    Configuration Files: Nagios is highly configurable through text-based configuration files. Users can define hosts, services, notification settings, and more in these files.
+    Configuration Files: 
+		Nagios is highly configurable 
+			through text-based configuration files. 
+		Users can define 
+			hosts, 
+			services, 
+			notification settings, and 
+			more in these files.
 
-    Web Interface: Nagios provides a web-based user interface for monitoring, reporting, and managing hosts and services. The interface offers real-time status updates and history.
+    Web Interface: 
+		user interface for 
+			monitoring, 
+			reporting, and 
+			managing hosts and services. 
+		The interface offers real-time status updates and history.
 
-    Alerting: Nagios can send alerts via various methods, including email, SMS, and custom scripts. It supports escalations and acknowledges alerts.
+    Alerting: 
+		Nagios can send alerts 
+			via various methods, 
+			including 
+				email, 
+				SMS, and 
+				custom scripts. 
+			It supports escalations and acknowledges alerts.
 
-    Dashboards: Nagios can be extended with third-party dashboards and visualization tools to provide more advanced reporting and data presentation.
+    Dashboards: 
+		Nagios can be extended with 
+			third-party dashboards 
+			and 
+			visualization tools 
+				to provide more advanced reporting and data presentation.
 
-    Scalability: Nagios can be scaled horizontally and vertically to monitor large and complex infrastructures. Tools like Nagios XI provide enterprise-level scalability and features.
+    Scalability: 
+		Nagios can be scaled horizontally and vertically 
+			to monitor large and complex infrastructures. 
+		Tools like Nagios XI provide enterprise-level scalability and features.
+
+	NagiOS Architecture
+	NagiOS Terminologies
+		Plugins:
+			Nagios plugins are small programs or scripts that perform the actual checks on hosts and services. These plugins are responsible for collecting information and reporting it back to Nagios. Common plugins include checking server uptime, disk space, or network connectivity.
+		Host:
+			In Nagios, a host represents a physical or virtual device that you want to monitor, such as a server, router, or switch.
+		Service:
+			A service is something running on a host that you want to monitor, such as a specific application, a web server, or a database service.
+		Users:
+			Nagios users are individuals or entities with permission to access the Nagios web interface and view monitoring data.
+		Contact:
+			A contact in Nagios is a person or entity that can be notified when a problem is detected with a host or service.
+		Contact Group:
+			A contact group is a collection of contacts. It allows you to group related contacts together for easier management of notifications.
+		Acknowledgement:
+			Acknowledgment is the process of recognizing and accepting a host or service problem. Acknowledging a problem indicates that the issue is known and being addressed.
+		Downtime:
+			Downtime is a period during which a host or service is temporarily not monitored. It's used to prevent unnecessary notifications during maintenance or planned outages.
+		Latency:
+			Latency refers to the delay between initiating a check on a host or service and receiving a response. Minimizing latency is important to ensure timely monitoring.
+		Statement:
+			This term isn't commonly associated with Nagios. It's possible that you are referring to configuration files or comments in the Nagios configuration.
+		Agent:
+			An agent in Nagios can refer to software installed on a remote host that collects and sends monitoring data back to the Nagios server. It's also known as a "NRPE (Nagios Remote Plugin Executor) agent."
+		Host Groups:
+			Host groups are used to organize and group related hosts together, making it easier to manage configuration and apply checks to multiple hosts at once.
+		Service Group:
+			Similar to host groups, service groups allow you to group related services together. This can simplify configuration and status monitoring.
+		Commands:
+			Nagios uses commands to execute plugins and define how checks are performed. Commands specify the plugins to run, parameters, and other details.
+		Templates:
+			Templates in Nagios are used to define common settings and attributes for hosts, services, and other objects. You can create templates to avoid repetitive configuration.
+
+		Active vs. Passive Check:
+			Active checks are initiated by the Nagios server, which actively sends requests to hosts and services to collect data. Passive checks, on the other hand, involve the hosts and services sending data to the Nagios server without being actively polled.
+
+		Soft vs. Hard State:
+			In Nagios, soft states typically indicate transient issues, while hard states represent persistent problems. Soft states can change to hard states if a problem persists for a defined period or reaches a certain threshold.
 
 	Use Cases and features of Nagios:
 
@@ -7116,11 +7430,43 @@ ELK Stack:
 
 The ELK Stack is a set of three open-source tools used for log management and log analysis. The acronym "ELK" stands for:
 
-    Elasticsearch: Elasticsearch is a distributed, RESTful search and analytics engine. It is used to store, search, and analyze large volumes of data, including logs and event data.
+    Elasticsearch: 
+		distributed
+		NOSQL database 
+		based on lucene search engine 
+			designed to store logs 
+		RESTful 
+			search and analytics engine. 
+		can 
+			store, 
+			process
+			search, and 
+			analyze 
+				large volumes of data
+				including logs and 
+				event data.
+				
 
-    Logstash: Logstash is a data processing pipeline that ingests, processes, and transforms log data from various sources and sends it to Elasticsearch for storage and analysis.
+    Logstash: 
+		Logstash is 
+			data processing pipeline 
+				ingests, 
+				processes, and 
+				transforms 
+					log data from various sources and 
+				sends it to Elasticsearch for storage and analysis.
+		pipeline tool 
+		accepts input from various sources 
+		exports data to various targets 
 
-    Kibana: Kibana is a visualization and exploration tool that provides a web interface for searching, analyzing, and visualizing log data stored in Elasticsearch. It allows users to create custom dashboards and reports.
+    Kibana: 
+		visualization and exploration tool 
+		provides a web interface for 
+			searching, 
+			analyzing, and 
+			visualizing 
+				log data stored in Elasticsearch. 
+		It allows users to create custom dashboards and reports.
 
 Key Features and Components of the ELK Stack:
 
@@ -7160,6 +7506,43 @@ Both Nagios and the ELK Stack are valuable tools in the IT operations and monito
 				
 		Hands-on: Setting up basic monitoring using Nagios, visualizing logs with ELK.
 -------------------------------------------------------------------------------------------------------------------------
+Nagios using docker 
+	Install docker, portainer 
+	Create nagios and nagvis container refer link below 
+	Add host on nagios monitoring server 
+	Create a map where you would monitoring host
+	https://blog.itsupport.com.bd/2023/02/step-by-step-to-build-network.html
+	https://mpolinowski.github.io/docs/DevOps/Zabbix/2020-07-12--nagios-docker-install/2020-07-12/
+	
+	
+	cd /usr/local/nagios/
+	cd etc
+	ls
+	cp nagios.cfg nagios.cfg.backup 
+	vi nagios.cfg
+	uncomment #monitoring a router/switch 
+	mkdir switches
+	ls 
+	cd switches 
+	vi setlrouter.cfg
+	
+	
+Adding a linux host 
+	https://www.tutorialspoint.com/how-to-add-linux-host-to-nagios-monitoring-server-using-nrpe-plugin
+
+https://www.tutorialspoint.com/nagios/index.htm	
+
+https://www.tutorialspoint.com/logstash/logstash_elk_stack.htm
+https://phoenixnap.com/kb/elk-stack-docker
+https://logz.io/learn/docker-monitoring-elk-stack/
+	
+echo "define host{ \
+   use                     linux-server \
+   host_name               linux-host \
+   alias                   Linux Host \
+   address                 Linux-Host-IP \
+} " >> hosts.cfg
+	
 
 Nagios
 	Setting up basic monitoring using Nagios involves several steps, including installing Nagios, configuring hosts and services to monitor, and setting up alerts. In this hands-on guide, I'll provide an overview of the process.
@@ -7172,6 +7555,7 @@ Nagios
 		Root or sudo access to the server.
 
 	Step 1: Install Nagios Core
+https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html#Ubuntu
 
 		Update your package list:
 
@@ -7229,7 +7613,6 @@ Nagios
 	For CentOS:
 
 	
-
 	sudo systemctl enable httpd
 	sudo systemctl start httpd
 
@@ -7301,6 +7684,103 @@ Nagios
 		sudo systemctl restart nagios
 
 	You have now set up basic monitoring using Nagios. You can continue to define more hosts and services, configure alerting rules, and customize your monitoring setup according to your specific requirements.
+
+	
+nagios
+https://assets.nagios.com/downloads/nagiosxi/docs/How-to-Monitor-Docker-Containers-with-Nagios-XI.pdf
+https://sysadminxpert.com/step-by-step-method-for-installing-nagios-in-amazon-linux/
+
+
+official elastic search install 
+-------------------------------
+https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html
+https://www.elastic.co/guide/en/elasticsearch/reference/8.10/install-elasticsearch.html
+
+
+docker network create elastic
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.10.3
+
+sudo sysctl -w vm.max_map_count=262144
+docker run -d --name es01 --net elastic -p 9200:9200 -it docker.elastic.co/elasticsearch/elasticsearch:8.10.3
+
+docker logs continer-id
+--------------
+Password for the elastic user (reset with `bin/elasticsearch-reset-password -u elastic`):
+  U=z=CXwJdc*AH9M01v23
+
+ℹ️  HTTP CA certificate SHA-256 fingerprint:
+  ce21d45b0c77d51e925b15f93f0b5a7cf05d6d819e2850d5979b75a9e13b5787
+
+ℹ️  Configure Kibana to use this cluster:
+• Run Kibana and click the configuration link in the terminal when Kibana starts.
+• Copy the following enrollment token and paste it into Kibana in your browser (valid for the next 30 minutes):
+  eyJ2ZXIiOiI4LjEwLjMiLCJhZHIiOlsiMTcyLjE4LjAuMjo5MjAwIl0sImZnciI6ImNlMjFkNDViMGM3N2Q1MWU5MjViMTVmOTNmMGI1YTdjZjA1ZDZkODE5ZTI4NTBkNTk3OWI3NWE5ZTEzYjU3ODciLCJrZXkiOiItOVJZSDRzQmFLM1JGS0F5TDhOZzp4d1I5QzJDTVJ2YW5MdFZPbXVpcy1nIn0=
+
+ℹ️ Configure other nodes to join this cluster:
+• Copy the following enrollment token and start new Elasticsearch nodes with `bin/elasticsearch --enrollment-token <token>` (valid for the next 30 minutes):
+  eyJ2ZXIiOiI4LjEwLjMiLCJhZHIiOlsiMTcyLjE4LjAuMjo5MjAwIl0sImZnciI6ImNlMjFkNDViMGM3N2Q1MWU5MjViMTVmOTNmMGI1YTdjZjA1ZDZkODE5ZTI4NTBkNTk3OWI3NWE5ZTEzYjU3ODciLCJrZXkiOiItZFJZSDRzQmFLM1JGS0F5TDhNdTo4WFBhR0U3WFQ2R0xFSjZJZHNSUkJBIn0=
+
+  If you're running in Docker, copy the enrollment token and run:
+  `docker run -e "ENROLLMENT_TOKEN=eyJ2ZXIiOiI4LjEwLjMiLCJhZHIiOlsiMTcyLjE4LjAuMjo5MjAwIl0sImZnciI6ImNlMjFkNDViMGM3N2Q1MWU5MjViMTVmOTNmMGI1YTdjZjA1ZDZkODE5ZTI4NTBkNTk3OWI3NWE5ZTEzYjU3ODciLCJrZXkiOiItZFJZSDRzQmFLM1JGS0F5TDhNdTo4WFBhR0U3WFQ2R0xFSjZJZHNSUkJBIn0=" docker.elastic.co/elasticsearch/elasticsearch:8.10.3`
+
+-----------------
+
+
+
+export ELASTIC_PASSWORD="U=z=CXwJdc*AH9M01v23"
+docker cp es01:/usr/share/elasticsearch/config/certs/http_ca.crt .
+curl --cacert http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200
+
+To add more elasticsearch node refer documentation 
+-----------------
+
+Kibana
+------
+
+
+docker pull docker.elastic.co/kibana/kibana:8.10.3
+
+docker run -d --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.10.3
+access 5601 port 
+	provide token 
+	bin\kibana-verification-code
+
+
+	if no response
+		check docker logs
+		refresh if required
+Logstash 		
+https://www.elastic.co/guide/en/logstash/8.10/docker.html
+
+
+
+docker pull docker.elastic.co/logstash/logstash:8.10.3
+https://salithachathuranga94.medium.com/integrate-elk-stack-into-spring-boot-application-ae38a6371f86
+	docker run -d --rm --link your_elasticsearch_container_id:elasticsearch docker.elastic.co/logstash/logstash:8.10.3
+
+References:
+https://stackoverflow.com/questions/60120210/kibana-not-connecting-to-elasticsearch-warning-elasticsearch-admin-pid/60122043#60122043
+
+	Create a spring boot application 
+		use logger to log item
+
+spring:
+  application:
+    name: vilas
+server:
+  port: 
+  
+logging:
+  file: /c/abc.txt
+  +ive and -ive should be loged to log file
+  
+
+elk-stack.log 
+create logstash.conf in logstash/bin 
+	mention the logfile location 
+	logstash -f logstash/conf 
+	run on port 9600
+
 
 
 -------------------------------------------------------------------------------------------------------------------------
@@ -8293,6 +8773,5 @@ Auto Scaling Group Attributes
 	• Min Size / Max Size / Initial Capacity
 	• Scaling Policies
 
-	
-	
+
 	
