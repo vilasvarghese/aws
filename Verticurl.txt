@@ -6358,19 +6358,29 @@ Nexus:
 
 2. Key Features:
 
-    Artifact Repository: Nexus is primarily used to store and manage binary artifacts like JAR files, Docker images, npm packages, and more.
-    Dependency Management: It supports dependency management for various technologies and languages, including Java, JavaScript, Ruby, and more.
-    Security: Nexus offers robust security features, including role-based access control, LDAP integration, and vulnerability scanning to ensure artifact security.
-    Proxying and Caching: Nexus can act as a proxy to external repositories like Maven Central, reducing the need to download artifacts repeatedly.
-    Repository Formats: It supports multiple repository formats, such as Maven, npm, Docker, PyPI, and more, making it versatile for various development ecosystems.
-    REST API: Nexus provides a RESTful API for automation and integration with other DevOps tools.
+    Artifact Repository: 
+		Nexus is primarily used to store and manage binary artifacts like JAR files, Docker images, npm packages, and more.
+    Dependency Management: 
+		It supports dependency management for various technologies and languages, including Java, JavaScript, Ruby, and more.
+    Security: 
+		Nexus offers robust security features, including role-based access control, LDAP integration, and vulnerability scanning to ensure artifact security.
+    Proxying and Caching: 	
+		Nexus can act as a proxy to external repositories like Maven Central, reducing the need to download artifacts repeatedly.
+    Repository Formats: 
+		It supports multiple repository formats, such as Maven, npm, Docker, PyPI, and more, making it versatile for various development ecosystems.
+    REST API: 
+		Nexus provides a RESTful API for automation and integration with other DevOps tools.
 
 3. Benefits:
 
-    Centralized Artifact Management: Nexus provides a centralized location for storing and managing artifacts, ensuring consistency across your organization.
-    Improved Build Speed: Proxying and caching external repositories can significantly improve build times by reducing download times.
-    Enhanced Security: Nexus helps you identify and mitigate security vulnerabilities in your artifacts.
-    Customizability: You can customize Nexus to meet your specific requirements and workflows.
+    Centralized Artifact Management: 
+		Nexus provides a centralized location for storing and managing artifacts, ensuring consistency across your organization.
+    Improved Build Speed: 
+		Proxying and caching external repositories can significantly improve build times by reducing download times.
+    Enhanced Security: 
+		Nexus helps you identify and mitigate security vulnerabilities in your artifacts.
+    Customizability: 
+		You can customize Nexus to meet your specific requirements and workflows.
 
 4. Editions:
 
@@ -6536,7 +6546,7 @@ content of pom.xml
     </pluginManagement>
     <plugins>
     <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
+		<groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-deploy-plugin</artifactId>
    </plugin>
   </plugins>
@@ -6589,29 +6599,40 @@ Continuous Integration and Continuous Delivery (CI/CD) are software development 
 
 Continuous Integration (CI):
 
-    Integration: CI involves integrating code changes from multiple contributors into a shared repository, such as Git, frequently and automatically. This integration happens multiple times a day.
+    Integration: 
+		CI involves integrating code changes from multiple contributors into a shared repository, such as Git, frequently and automatically. This integration happens multiple times a day.
 
-    Automated Build: Whenever code is pushed to the repository, an automated build process is triggered. The build process compiles the code, runs tests, and produces deployable artifacts.
+    Automated Build: 
+		Whenever code is pushed to the repository, an automated build process is triggered. The build process compiles the code, runs tests, and produces deployable artifacts.
 
-    Automated Testing: CI includes automated testing to ensure that code changes do not introduce new defects or regressions. Common types of tests include unit tests, integration tests, and end-to-end tests.
+    Automated Testing: 
+		CI includes automated testing to ensure that code changes do not introduce new defects or regressions. Common types of tests include unit tests, integration tests, and end-to-end tests.
 
-    Immediate Feedback: Developers receive immediate feedback on the quality of their code. If a build or test fails, the team can quickly identify and address issues.
+    Immediate Feedback: 
+		Developers receive immediate feedback on the quality of their code. If a build or test fails, the team can quickly identify and address issues.
 
-    Benefits: CI improves code quality, reduces integration problems, and accelerates development by catching and fixing issues early.
+    Benefits: 
+		CI improves code quality, reduces integration problems, and accelerates development by catching and fixing issues early.
 
 Continuous Delivery (CD):
 
-    Automated Deployment: CD extends CI by automating the deployment process. Once code passes CI tests, it is automatically deployed to a staging or pre-production environment.
+    Automated Deployment: 
+		CD extends CI by automating the deployment process. Once code passes CI tests, it is automatically deployed to a staging or pre-production environment.
 
-    Manual Approval: In CD pipelines, there is often a manual approval step before deploying to production. This allows teams to review changes and ensure they are ready for production.
+    Manual Approval: 
+		In CD pipelines, there is often a manual approval step before deploying to production. This allows teams to review changes and ensure they are ready for production.
 
-    Deployment to Production: After approval, the code is deployed to the production environment, making it available to end-users.
+    Deployment to Production: 
+		After approval, the code is deployed to the production environment, making it available to end-users.
 
-    Immutable Infrastructure: CD pipelines often use concepts like immutable infrastructure, where new deployments replace existing infrastructure rather than modifying it.
+    Immutable Infrastructure: 
+		CD pipelines often use concepts like immutable infrastructure, where new deployments replace existing infrastructure rather than modifying it.
 
-    Rollback: CD pipelines are designed to facilitate easy rollbacks in case of issues in the production environment.
+    Rollback: 
+		CD pipelines are designed to facilitate easy rollbacks in case of issues in the production environment.
 
-    Benefits: CD reduces the risk associated with manual deployments, shortens the time to market, and ensures that software is always in a deployable state.
+    Benefits: 
+		CD reduces the risk associated with manual deployments, shortens the time to market, and ensures that software is always in a deployable state.
 
 CI/CD Pipeline:
 
@@ -7297,7 +7318,24 @@ In summary, monitoring is an integral part of the DevOps lifecycle, enabling tea
 Nagios and the ELK Stack are two popular and powerful tools used in the realm of IT operations, monitoring, and log analysis. Let's explore each of them:
 Nagios:
 
-Nagios, originally known as Nagios Core, is an open-source monitoring and alerting system used to monitor the availability, performance, and status of various network resources, hosts, and services. It is highly extensible and has a vast community-driven ecosystem of plugins and extensions. Nagios is particularly valuable for system administrators and DevOps teams for ensuring the reliability and health of IT infrastructure.
+Nagios, originally known as Nagios Core
+	open-source monitoring and alerting system 
+	monitor the 
+		availability, 
+		performance, and 
+		status of various 
+			network resources, 
+			hosts, and 
+			services. 
+	highly extensible 
+	has a vast community-driven ecosystem of 
+		plugins and extensions. 
+	
+	valuable for 
+		system administrators and 
+		DevOps teams 
+			ensure 
+				reliability and health of IT infrastructure.
 
 Key Features and Components of Nagios:
 
@@ -7354,53 +7392,212 @@ Key Features and Components of Nagios:
 		Tools like Nagios XI provide enterprise-level scalability and features.
 
 	NagiOS Architecture
+	    Nagios Core Server:
+			The core component of the Nagios monitoring system 
+			It is installed on a central machine 
+			responsible for managing the monitoring system.
+			contains the core logic and scheduling engine. 
+			Handles the 
+				configuration, 
+				monitoring checks
+				notifications.
+
+
+		Nagios Plugins:
+			Nagios uses plugins 
+				perform actual monitoring checks. 
+			small executables or scripts 
+				run to check the status of hosts and services.
+			Nagios Core 
+				relies on a variety of plugins 
+					to monitor different types of 
+						services and devices
+					HTTP servers
+					database servers
+					network devices, and more.
+
+		Configuration Files:
+			Nagios Core 
+				highly configurable 
+					through text-based configuration files. 
+				These files define 
+					what should be monitored 
+					how often checks should be performed.
+			Configuration files specify 
+				hosts
+				services
+				dependencies
+				contact groups
+				notification settings. 
+			Administrators define these settings to customize monitoring for their specific infrastructure.
+
+		Status and Retention Files:
+			Nagios maintains 
+				status and 
+				retention files 
+					to keep track of the 
+						current state of hosts and services. 
+			These files store information about 
+				when a host or service last changed state and other historical data.
+			Status data is used for the web interface and for tracking events over time.
+
+		Nagios Web Interface:
+			Nagios provides a web-based interface 
+				allows administrators to 
+					configure and view monitoring results. 
+				This interface makes it easy to 
+					manage the monitoring system and 
+					access status information and reports.
+
+		NRPE (Nagios Remote Plugin Executor):
+			NRPE is a Nagios component 
+				used to monitor local resources on remote hosts. 
+				It allows Nagios to 
+					execute plugins on remote machines 
+					to check the status of services or resources.
+			NRPE is particularly useful for 
+				monitoring hosts 
+					that are not running Nagios agents.
+
+		Notifications:
+			Nagios can be configured 
+				to send notifications 
+				when a problem is detected. 
+			Notifications can be sent via 
+				email, 
+				SMS, 
+				other methods.
+			Notification settings are defined in the configuration files
+				including contact groups and escalation policies.
+
+		Plugins and Extensions:
+			Nagios supports various 
+				plugins and extensions. 
+			These add-ons can enhance its capabilities 
+			allow you to monitor 
+				specific applications
+				services
+				hardware devices.
+
+	
+		
 	NagiOS Terminologies
 		Plugins:
-			Nagios plugins are small programs or scripts that perform the actual checks on hosts and services. These plugins are responsible for collecting information and reporting it back to Nagios. Common plugins include checking server uptime, disk space, or network connectivity.
+			Nagios plugins 
+				are small programs or scripts 
+				perform the actual checks on hosts and services. 
+				These plugins are 
+					responsible for 
+						collecting information and 
+						reporting it back to Nagios. 
+				Common plugins include 
+					checking server uptime
+					disk space
+					network connectivity.
 		Host:
-			In Nagios, a host represents a physical or virtual device that you want to monitor, such as a server, router, or switch.
+			a physical or virtual device 
+				that you want to monitor like 
+					server, 
+					router, or 
+					switch.
 		Service:
-			A service is something running on a host that you want to monitor, such as a specific application, a web server, or a database service.
+			A service is something running on a host 
+				that you want to monitor like 
+					specific application
+					web server, or a 
+					database service.
 		Users:
-			Nagios users are individuals or entities with permission to access the Nagios web interface and view monitoring data.
+			Nagios users 
+				individuals or entities 
+					with permission to access the Nagios web interface and 
+					view monitoring data.
 		Contact:
-			A contact in Nagios is a person or entity that can be notified when a problem is detected with a host or service.
+			person or entity 
+				that can be notified 
+					when a problem is detected 
+					with a host or service.
 		Contact Group:
-			A contact group is a collection of contacts. It allows you to group related contacts together for easier management of notifications.
+			collection of contacts. 
+			It allows you to group related contacts together 
+				for easier management of notifications.
 		Acknowledgement:
-			Acknowledgment is the process of recognizing and accepting a host or service problem. Acknowledging a problem indicates that the issue is known and being addressed.
+			Acknowledgment is the process of recognizing and accepting a host or service problem. 
+			Acknowledging a problem indicates that the issue is known and being addressed.
 		Downtime:
-			Downtime is a period during which a host or service is temporarily not monitored. It's used to prevent unnecessary notifications during maintenance or planned outages.
+			Downtime is a period during which 
+				a host or service is temporarily not monitored. 
+				It's used to prevent 
+					unnecessary notifications 
+						during maintenance or planned outages.
 		Latency:
-			Latency refers to the delay between initiating a check on a host or service and receiving a response. Minimizing latency is important to ensure timely monitoring.
-		Statement:
-			This term isn't commonly associated with Nagios. It's possible that you are referring to configuration files or comments in the Nagios configuration.
+			Latency refers to the 
+				delay between initiating a check on a host or service and receiving a response. 
+				Minimizing latency is important to ensure timely monitoring.
 		Agent:
-			An agent in Nagios can refer to software installed on a remote host that collects and sends monitoring data back to the Nagios server. It's also known as a "NRPE (Nagios Remote Plugin Executor) agent."
+			An agent in Nagios 
+				can refer to software installed on a remote host 
+					that 
+						collects and 
+						sends 
+							monitoring data back to the Nagios server. 
+			It's also known as a "NRPE (Nagios Remote Plugin Executor) agent."
 		Host Groups:
-			Host groups are used to organize and group related hosts together, making it easier to manage configuration and apply checks to multiple hosts at once.
+			Host groups 
+				used to organize and group related hosts together
+				make easier to manage configuration 
+				apply checks to multiple hosts at once.
 		Service Group:
-			Similar to host groups, service groups allow you to group related services together. This can simplify configuration and status monitoring.
+			Similar to host groups
+				service groups allow you to group related services together. 
+				This can simplify configuration and status monitoring.
 		Commands:
-			Nagios uses commands to execute plugins and define how checks are performed. Commands specify the plugins to run, parameters, and other details.
+			Nagios uses commands 
+				to execute plugins and 
+				define how checks are performed. 
+			Commands specify the plugins to 
+				run
+				parameters, and 
+				other details.
 		Templates:
-			Templates in Nagios are used to define common settings and attributes for hosts, services, and other objects. You can create templates to avoid repetitive configuration.
+			Templates in Nagios 
+				are used to define common settings and attributes 
+					for 
+						hosts
+						services, and 
+						other objects. You can create templates to avoid repetitive configuration.
 
 		Active vs. Passive Check:
-			Active checks are initiated by the Nagios server, which actively sends requests to hosts and services to collect data. Passive checks, on the other hand, involve the hosts and services sending data to the Nagios server without being actively polled.
+			Active checks are initiated by the Nagios server
+				actively sends requests to hosts and services 
+					to collect data
+					
+			Passive checks
+				involve the hosts and services 
+					sending data to the Nagios 
+						server without being actively polled.
 
 		Soft vs. Hard State:
-			In Nagios, soft states typically indicate transient issues, while hard states represent persistent problems. Soft states can change to hard states if a problem persists for a defined period or reaches a certain threshold.
+			In Nagios, 
+				soft states typically indicate 
+					transient issues
+				hard states 
+					represent persistent problems. 
+			Soft states can change to hard states 
+				if a problem persists for a defined period or reaches a certain threshold.
 
 	Use Cases and features of Nagios:
 
-		Network Monitoring: Nagios can monitor network devices, such as routers, switches, and firewalls, to ensure they are functioning correctly.
+		Network Monitoring: 
+			Nagios can monitor network devices, such as routers, switches, and firewalls, to ensure they are functioning correctly.
 
-		Server Monitoring: Nagios can monitor server health, resource utilization (CPU, memory, disk space), and services running on servers.
+		Server Monitoring: 
+			Nagios can monitor server health, resource utilization (CPU, memory, disk space), and services running on servers.
 
-		Environmental Monitoring: Nagios can monitor environmental conditions such as temperature, humidity, and power supply in data centers.
+		Environmental Monitoring: 
+			Nagios can monitor environmental conditions such as temperature, humidity, and power supply in data centers.
 
-		Custom Monitoring: Users can create custom checks to monitor any aspect of their infrastructure or applications.
+		Custom Monitoring: 
+			Users can create custom checks to monitor any aspect of their infrastructure or applications.
 
 		Host and Service Monitoring: 
 			Nagios can monitor the status and performance of hosts (servers) and services (applications) using checks and plugins.
@@ -7506,26 +7703,75 @@ Both Nagios and the ELK Stack are valuable tools in the IT operations and monito
 				
 		Hands-on: Setting up basic monitoring using Nagios, visualizing logs with ELK.
 -------------------------------------------------------------------------------------------------------------------------
-Nagios using docker 
-	Install docker, portainer 
-	Create nagios and nagvis container refer link below 
-	Add host on nagios monitoring server 
-	Create a map where you would monitoring host
-	https://blog.itsupport.com.bd/2023/02/step-by-step-to-build-network.html
-	https://mpolinowski.github.io/docs/DevOps/Zabbix/2020-07-12--nagios-docker-install/2020-07-12/
+Install nagios 
+	Follow https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html#Ubuntu
 	
 	
-	cd /usr/local/nagios/
-	cd etc
-	ls
-	cp nagios.cfg nagios.cfg.backup 
-	vi nagios.cfg
-	uncomment #monitoring a router/switch 
-	mkdir switches
-	ls 
-	cd switches 
-	vi setlrouter.cfg
 	
+The check_ping command with the arguments "100.0,20%!500.0,60%" is used in Nagios (now Nagios Core) to define a check for monitoring network ping response times. This command is typically used to check the round-trip time (RTT) of network pings to a host or device.
+
+The format of "check_ping!100.0,20%!500.0,60%" is a set of thresholds and performance data in Nagios check command syntax. Let's break down what this means:
+
+    check_ping: This is the name of the check command. It specifies that you want to use the ping check to monitor a host.
+
+    100.0,20%: The first part of the argument (before the exclamation mark) specifies the warning threshold for the check. In this case, it means:
+        If the ping response time (RTT) exceeds 100.0 milliseconds (ms), a warning will be triggered.
+        Additionally, if 20% or more of the pings within the specified time frame (usually the check interval) exceed 100.0 ms, a warning will be triggered.
+
+    500.0,60%: The second part of the argument (after the exclamation mark) specifies the critical threshold for the check. This means:
+        If the ping response time (RTT) exceeds 500.0 ms, a critical alert will be triggered.
+        Additionally, if 60% or more of the pings within the specified time frame exceed 500.0 ms, a critical alert will be triggered.
+
+In summary, this Nagios check_ping command is used to monitor network ping response times for a host. It issues ICMP ping requests at regular intervals and checks the response times. If the response times exceed the specified thresholds, warning or critical alerts will be generated.
+
+For example, if the ping response time is consistently below 100.0 ms, the check will be considered "OK." If it falls between 100.0 ms and 500.0 ms, it will result in a "warning" status. If it consistently exceeds 500.0 ms or 60% of the pings exceed 500.0 ms, it will be considered "critical," indicating a potential issue with network latency or packet loss. The actual thresholds and percentages can be adjusted to suit your specific monitoring needs.	
+
+
+------------------------	
+  sudo dpkg -l selinux*
+    2  sudo apt-get update
+    3  sudo apt-get install -y autoconf gcc libc6 make wget unzip apache2 apache2-utils php5 libgd2-xpm-dev
+    4  sudo apt-get update
+    5  sudo apt-get install -y autoconf gcc libc6 make wget unzip apache2 php libapache2-mod-php7.4 libgd-dev
+    6  sudo apt-get install openssl libssl-dev
+    7  cd /tmp
+    8  wget -O nagioscore.tar.gz https://github.com/NagiosEnterprises/nagioscore/archive/nagios-4.4.14.tar.gz
+    9  tar xzf nagioscore.tar.gz
+   10  cd /tmp/nagioscore-nagios-4.4.14/
+   11  sudo ./configure --with-httpd-conf=/etc/apache2/sites-enabled
+   12  sudo make all
+   13  sudo make install-groups-users
+   14  sudo usermod -a -G nagios www-data
+   15  sudo make install
+   16  sudo make install-daemoninit
+   17  sudo make install-commandmode
+   18  sudo make install-config
+   19  sudo make install-webconf
+   20  sudo a2enmod rewrite
+   21  sudo a2enmod cgi
+   22  systemctl enable apache2
+   23  sudo ufw allow Apache
+   24  sudo ufw reload
+   25  sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+   26  sudo service apache2 restart
+   27  sudo systemctl start nagios.service
+   28  curl http://localhost
+   29  sudo apt-get install -y autoconf gcc libc6 libmcrypt-dev make libssl-dev wget bc gawk dc build-essential snmp libnet-snmp-perl gettext
+   30  cd /tmp
+   31  wget --no-check-certificate -O nagios-plugins.tar.gz https://github.com/nagios-plugins/nagios-plugins/archive/release-2.4.6.tar.gz
+   32  tar zxf nagios-plugins.tar.gz
+   33  cd /tmp/nagios-plugins-release-2.4.6/
+   34  sudo ./tools/setup
+   35  sudo ./configure
+   36  sudo make
+   37  sudo make install
+
+
+----------------------
+Docker monitoring (not working now NagiosXI has a better support)
+	https://www.linkedin.com/pulse/container-monitoring-nagios-vinay-thakur/
+
+---------------------------------------------------------------------
 	
 Adding a linux host 
 	https://www.tutorialspoint.com/how-to-add-linux-host-to-nagios-monitoring-server-using-nrpe-plugin
@@ -7535,6 +7781,10 @@ https://www.tutorialspoint.com/nagios/index.htm
 https://www.tutorialspoint.com/logstash/logstash_elk_stack.htm
 https://phoenixnap.com/kb/elk-stack-docker
 https://logz.io/learn/docker-monitoring-elk-stack/
+
+
+
+
 	
 echo "define host{ \
    use                     linux-server \
@@ -7559,7 +7809,7 @@ https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-so
 
 		Update your package list:
 
-		sql
+	
 
 	sudo apt update
 
@@ -7633,8 +7883,6 @@ https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-so
 
 			Define a host in localhost.cfg:
 
-			sql
-
 	define host {
 	  use       linux-server
 	  host_name localhost
@@ -7697,39 +7945,51 @@ https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.h
 https://www.elastic.co/guide/en/elasticsearch/reference/8.10/install-elasticsearch.html
 
 
+installation video 
+https://www.youtube.com/watch?v=6bXSfjwQVIc
+
 docker network create elastic
 docker pull docker.elastic.co/elasticsearch/elasticsearch:8.10.3
 
 sudo sysctl -w vm.max_map_count=262144
-docker run -d --name es01 --net elastic -p 9200:9200 -it docker.elastic.co/elasticsearch/elasticsearch:8.10.3
+docker run -d --name elasticsearch --net elastic -p 9200:9200 -p 9300:9300 -it docker.elastic.co/elasticsearch/elasticsearch:8.10.3
 
-docker logs continer-id
+docker run -d --name elasticsearch --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e "xpack.security.enabled=false" docker.elastic.co/elasticsearch/elasticsearch:8.10.3
+
+docker logs -f continer-id
 --------------
-Password for the elastic user (reset with `bin/elasticsearch-reset-password -u elastic`):
-  U=z=CXwJdc*AH9M01v23
+wait until message like below appear or if http://ip:9200/ is reachable 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Elasticsearch security features have been automatically configured!
+✅ Authentication is enabled and cluster connections are encrypted.
+
+ℹ️  Password for the elastic user (reset with `bin/elasticsearch-reset-password -u elastic`):
+  kbNhXHSxzgHVYDF1pQjN
 
 ℹ️  HTTP CA certificate SHA-256 fingerprint:
-  ce21d45b0c77d51e925b15f93f0b5a7cf05d6d819e2850d5979b75a9e13b5787
+  4153624fcfab50f928c956fac1faf1a4a78ddff3da7d846f74153f05dcf37483
 
 ℹ️  Configure Kibana to use this cluster:
 • Run Kibana and click the configuration link in the terminal when Kibana starts.
 • Copy the following enrollment token and paste it into Kibana in your browser (valid for the next 30 minutes):
-  eyJ2ZXIiOiI4LjEwLjMiLCJhZHIiOlsiMTcyLjE4LjAuMjo5MjAwIl0sImZnciI6ImNlMjFkNDViMGM3N2Q1MWU5MjViMTVmOTNmMGI1YTdjZjA1ZDZkODE5ZTI4NTBkNTk3OWI3NWE5ZTEzYjU3ODciLCJrZXkiOiItOVJZSDRzQmFLM1JGS0F5TDhOZzp4d1I5QzJDTVJ2YW5MdFZPbXVpcy1nIn0=
+  eyJ2ZXIiOiI4LjEwLjMiLCJhZHIiOlsiMTcyLjE4LjAuMjo5MjAwIl0sImZnciI6IjQxNTM2MjRmY2ZhYjUwZjkyOGM5NTZmYWMxZmFmMWE0YTc4ZGRmZjNkYTdkODQ2Zjc0MTUzZjA1ZGNmMzc0ODMiLCJrZXkiOiIxVzF6SklzQjE3NmxjUmRfWWRMWjpwUGlYQnlCVVJ1YWZJd2JnZkRlMzJBIn0=
 
 ℹ️ Configure other nodes to join this cluster:
 • Copy the following enrollment token and start new Elasticsearch nodes with `bin/elasticsearch --enrollment-token <token>` (valid for the next 30 minutes):
-  eyJ2ZXIiOiI4LjEwLjMiLCJhZHIiOlsiMTcyLjE4LjAuMjo5MjAwIl0sImZnciI6ImNlMjFkNDViMGM3N2Q1MWU5MjViMTVmOTNmMGI1YTdjZjA1ZDZkODE5ZTI4NTBkNTk3OWI3NWE5ZTEzYjU3ODciLCJrZXkiOiItZFJZSDRzQmFLM1JGS0F5TDhNdTo4WFBhR0U3WFQ2R0xFSjZJZHNSUkJBIn0=
+  eyJ2ZXIiOiI4LjEwLjMiLCJhZHIiOlsiMTcyLjE4LjAuMjo5MjAwIl0sImZnciI6IjQxNTM2MjRmY2ZhYjUwZjkyOGM5NTZmYWMxZmFmMWE0YTc4ZGRmZjNkYTdkODQ2Zjc0MTUzZjA1ZGNmMzc0ODMiLCJrZXkiOiIwMjF6SklzQjE3NmxjUmRfWWRMUDpEVHd4a19sSFEzQ2k1QTBVOU9CR19BIn0=
 
   If you're running in Docker, copy the enrollment token and run:
-  `docker run -e "ENROLLMENT_TOKEN=eyJ2ZXIiOiI4LjEwLjMiLCJhZHIiOlsiMTcyLjE4LjAuMjo5MjAwIl0sImZnciI6ImNlMjFkNDViMGM3N2Q1MWU5MjViMTVmOTNmMGI1YTdjZjA1ZDZkODE5ZTI4NTBkNTk3OWI3NWE5ZTEzYjU3ODciLCJrZXkiOiItZFJZSDRzQmFLM1JGS0F5TDhNdTo4WFBhR0U3WFQ2R0xFSjZJZHNSUkJBIn0=" docker.elastic.co/elasticsearch/elasticsearch:8.10.3`
-
------------------
-
+  `docker run -e "ENROLLMENT_TOKEN=<token>" docker.elastic.co/elasticsearch/elasticsearch:8.10.3`
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
-export ELASTIC_PASSWORD="U=z=CXwJdc*AH9M01v23"
-docker cp es01:/usr/share/elasticsearch/config/certs/http_ca.crt .
+
+
+export ELASTIC_PASSWORD=kbNhXHSxzgHVYDF1pQjN
+docker cp elasticsearch:/usr/share/elasticsearch/config/certs/http_ca.crt .
 curl --cacert http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200
+
+curl http://localhost:9200
 
 To add more elasticsearch node refer documentation 
 -----------------
@@ -7740,7 +8000,9 @@ Kibana
 
 docker pull docker.elastic.co/kibana/kibana:8.10.3
 
-docker run -d --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.10.3
+docker run -d --name kibana --link elasticsearch:elasticsearch --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.10.3
+docker logs -f container-id 
+	this should also show the code during setup 
 access 5601 port 
 	provide token 
 	bin\kibana-verification-code
@@ -7755,8 +8017,64 @@ https://www.elastic.co/guide/en/logstash/8.10/docker.html
 
 
 docker pull docker.elastic.co/logstash/logstash:8.10.3
+
+Create below config logstash.conf
+#this would read from command line input and insert into elastic
+--------------------------
+input{
+stdin {}
+}
+
+output{
+  elasticsearch { hosts => ["elasticsearch:9200"]}
+}
+--------------------------
+For spring boot 
+
+input{
+	tcp {
+        port => 5000
+    }
+	file {
+		path => [
+			"/home/ubuntu/elkdemo/elkdemo.log"
+		]
+		type => "log"
+		start_position => "beginning"
+	}
+}
+
+output{
+  elasticsearch { 
+	hosts => ["http://elasticsearch:9200"]
+  }
+}
+
+	docker run -h logstash --link elasticsearch:elasticsearch --net elastic -it -v "$PWD":/config-dir docker.elastic.co/logstash/logstash:8.10.3 -f /config-dir/logstash.conf
+
+to listen on a port create logstash1.conf
+https://www.youtube.com/watch?v=5s9pR9UUtAU	
+--------------------------
+input{
+tcp{
+	port => 9500
+}
+}
+
+
+output{
+  elasticsearch { hosts => ["elasticsearch:9200"]}
+}
+--------------------------
+
 https://salithachathuranga94.medium.com/integrate-elk-stack-into-spring-boot-application-ae38a6371f86
-	docker run -d --rm --link your_elasticsearch_container_id:elasticsearch docker.elastic.co/logstash/logstash:8.10.3
+docker run -d -h logstash --link elasticsearch:elasticsearch --net elastic -it -v "$PWD":/config-dir docker.elastic.co/logstash/logstash:8.10.3 -f /config-dir/logstashelk.conf
+
+
+docker run -h logstash --link elasticsearch:elasticsearch --net elastic -it -v "$PWD":/config-dir docker.elastic.co/logstash/logstash:8.10.3 -f /config-dir/logstash1.conf
+
+docker run -h logstash --link elasticsearch:elasticsearch --net elastic -p 5000:5000 -it -v /home/ubuntu/elkdemo/elkdemo.log:/config-dir -v "$PWD":/config-dir docker.elastic.co/logstash/logstash:8.10.3 -f /config-dir/logstash1.conf
+
 
 References:
 https://stackoverflow.com/questions/60120210/kibana-not-connecting-to-elasticsearch-warning-elasticsearch-admin-pid/60122043#60122043
@@ -7867,43 +8185,104 @@ Security in DevOps is an oning effort that requires continuous monitoring, asses
 		Introduction to SAST/DAST tools.
 -------------------------------------------------------------------------------------------------------------------------
 
-Static Application Security Testing (SAST) and Dynamic Application Security Testing (DAST) are two distinct but complementary approaches to identifying and mitigating security vulnerabilities in software applications. Here's an introduction to SAST and DAST tools:
-
+Static Application Security Testing (SAST) 
+Dynamic Application Security Testing (DAST) 
+	two distinct 
+	but complementary 
+		approaches 
+			to identifying and mitigating security vulnerabilities in software applications. 
+		
 Static Application Security Testing (SAST):
 
-SAST is a white-box testing method that analyzes the source code, bytecode, or binary code of an application to identify security vulnerabilities without executing the application. It examines the codebase for potential issues based on coding rules, security standards, and known vulnerability patterns. SAST tools are typically used during the development phase to catch issues early in the software development lifecycle.
+	SAST 
+		a white-box testing method 
+		analyzes the 
+			source code
+			bytecode
+			binary code 
+				of an application 
+				to identify security vulnerabilities 
+				without executing the application. 
+	Examines the codebase 
+		for potential issues based on 
+			coding rules, 
+			security standards, and 
+			known vulnerability patterns. 
+	SAST tools 
+		used during the development phase 
+		catch issues early in the software development lifecycle.
 
-Key features and characteristics of SAST tools include:
+	Key features and characteristics of SAST tools include:
 
-    Source Code Analysis: SAST tools analyze the application's source code to identify security vulnerabilities, coding errors, and potential weaknesses.
+		Source Code Analysis: 
+			SAST tools 
+				analyze the application's source code 
+				identify 
+					security vulnerabilities
+					coding errors
+					potential weaknesses.
 
-    Early Detection: SAST can identify issues in the code as soon as it is written, enabling developers to address them before they become ingrained in the application.
+		Early Detection: 
+			SAST 
+				can identify issues in the code 
+					as soon as it is written
+					enabling developers 
+						to address them 
+						before they become ingrained in the application.
 
-    High False Positives: SAST tools may produce false positive results, requiring manual review and validation to determine the true positives.
+		High False Positives: 
+			SAST tools may produce false positive results, requiring manual review and validation to determine the true positives.
 
-    Language and Platform Support: SAST tools support various programming languages and development platforms, making them versatile for different projects.
+		Language and Platform Support: SAST tools support various programming languages and development platforms, making them versatile for different projects.
 
-    Integration with IDEs: Some SAST tools integrate with integrated development environments (IDEs) to provide real-time feedback to developers as they write code.
+		Integration with IDEs: Some SAST tools integrate with integrated development environments (IDEs) to provide real-time feedback to developers as they write code.
 
-Examples of SAST tools include Checkmarx, Fortify (HP Fortify), Veracode, and SonarQube (which also provides SAST capabilities).
+Examples of SAST tools include 
+	Checkmarx, 
+	Fortify (HP Fortify), 
+	Veracode, and 
+	SonarQube (which also provides SAST capabilities).
+	FindBugs
 
 Dynamic Application Security Testing (DAST):
 
-DAST is a black-box testing method that assesses a running application from the outside to identify security vulnerabilities and weaknesses. Unlike SAST, DAST tools do not require access to the application's source code. Instead, they interact with the application in its deployed state, simulating attacks and analyzing the responses to identify potential vulnerabilities.
+	DAST is a black-box testing method 
+		assesses a running application 
+			from the outside 
+			to identify security vulnerabilities and weaknesses. 
+		DAST tools 
+			do not require access to the application's source code. 
+			Interact with the application 
+			in its deployed state
+			simulating attacks 
+			analyzing the responses 
+				to identify potential vulnerabilities.
 
 Key features and characteristics of DAST tools include:
 
-    Realistic Testing: DAST tools provide a real-world perspective by interacting with the application as an external attacker would.
+    Realistic Testing: 
+		DAST tools provide a real-world perspective 
+			by interacting with the application as an external attacker would.
 
-    Runtime Analysis: DAST tools analyze the application's behavior during runtime, which is valuable for identifying vulnerabilities that may not be evident in the source code.
+    Runtime Analysis: 
+		DAST tools analyze the application's behavior during runtime
+			valuable for identifying vulnerabilities 
+			that may not be evident in the source code.
 
-    Low False Positives: DAST tools typically produce fewer false positives compared to SAST, as they assess the application's actual behavior.
+    Low False Positives: 
+		DAST tools typically produce fewer false positives compared to SAST, as they assess the application's actual behavior.
 
-    Scanning Web Applications: DAST is commonly used for web application security testing, including testing web services, APIs, and web interfaces.
+    Scanning Web Applications: 
+		DAST is commonly used for web application security testing, including testing web services, APIs, and web interfaces.
 
-    Authentication Support: DAST tools can handle authentication mechanisms, such as login forms and session management, to assess authenticated areas of the application.
+    Authentication Support: 
+		DAST tools can handle authentication mechanisms, such as login forms and session management, to assess authenticated areas of the application.
 
-Examples of DAST tools include OWASP ZAP (Zed Attack Proxy), Burp Suite, Nessus, and Qualys.
+Examples of DAST tools include 
+	OWASP ZAP (Zed Attack Proxy), 
+	Burp Suite, 
+	Nessus, and 
+	Qualys.
 
 Complementary Use:
 
@@ -8007,6 +8386,75 @@ Qualys WAS is a cloud-based DAST tool that helps organizations identify and reme
 It offers scalability and easy integration with other Qualys security solutions.
 Remember that the choice of SAST and DAST tools may depend on factors such as the programming languages used, integration requirements, scalability, and budget. Additionally, many organizations use a combination of both SAST and DAST tools to achieve comprehensive security testing coverage. It's essential to evaluate these tools based on your specific needs and requirements to determine which ones are the best fit for your organization's application security testing strategy.
 
+
+
+
+OWASP ZAP overivew 
+------------------
+	OWASP ZAP (Zed Attack Proxy) is an open-source security testing tool used for finding vulnerabilities in web applications during the development and testing phases. It is one of the most popular and powerful web application security scanners and penetration testing tools. Here's an overview of OWASP ZAP:
+
+    Purpose:
+        OWASP ZAP is designed to help identify and fix security vulnerabilities in web applications. It can be used by developers, quality assurance teams, and security professionals to discover issues early in the development lifecycle.
+
+    Key Features:
+        Automated Scanning: 
+			ZAP can automatically scan web applications 
+				for common security vulnerabilities
+					including 
+						cross-site scripting (XSS), 
+						SQL injection, 
+						security misconfigurations etc.
+        Proxy Mode: 
+			ZAP can act as an intercepting proxy
+				allow users to 
+					inspect and 
+					manipulate 
+						web traffic between the browser and the web application. 
+			Useful for manual testing and understanding how a web application works.
+        Active Scanning: 
+			Actively scan a web application 
+				by sending various 
+					attack payloads and 
+					analyze the responses for vulnerabilities.
+        Passive Scanning: 
+			ZAP monitors and analyzes requests and responses passively 
+				to detect vulnerabilities without actively sending payloads.
+        Spidering: 
+			It can crawl a web application 
+				to identify and map out 
+					all the available pages and functionalities.
+        Scripting: 
+			ZAP supports scripting and automation through its extensive API and scripting capabilities.
+        Authentication Testing: 
+			It can handle various authentication mechanisms to test the application's security in authenticated states.
+        Session Management: 
+			ZAP can maintain sessions and manage cookies to simulate a real user's interactions.
+        Reporting: 
+			It provides detailed reports on identified vulnerabilities and can export them in various formats.
+
+    Use Cases:
+        Developers: ZAP can be used by developers to identify and fix security issues in their code before deployment.
+        Quality Assurance (QA) Teams: QA teams can use ZAP to ensure the security of web applications before they go live.
+        Security Professionals: Security professionals can use ZAP for in-depth penetration testing and security assessments of web applications.
+        Education and Training: ZAP is also used for teaching web application security and as a learning tool for security enthusiasts.
+
+    Extensibility and Community: ZAP has a strong and active community. It is highly extensible and allows users to develop custom add-ons and scripts to enhance its capabilities. Users can contribute to the project, and the tool is continuously updated and improved.
+
+    Installation:
+        OWASP ZAP is available for various operating systems and can be easily installed from the OWASP ZAP website or via package managers such as Docker, Homebrew, or apt.
+
+    Interoperability: ZAP can be used in conjunction with other security tools and is often integrated into DevSecOps pipelines for continuous security testing.
+
+    Licensing: OWASP ZAP is open source and released under the Apache License.
+
+Overall, OWASP ZAP is a versatile and widely used tool for web application security testing, helping organizations and individuals identify and address security vulnerabilities in web applications to enhance their security posture.
+
+
+Download from 
+	https://www.zaproxy.org/download/
+
+
+zap.sh --quickurl http://localhost:8080/endpoint --quickprogress -cmd
 
 
 -------------------------------------------------------------------------------------------------------------------------
