@@ -8028,6 +8028,8 @@ stdin {}
 output{
   elasticsearch { hosts => ["elasticsearch:9200"]}
 }
+
+	docker run -h logstash --link elasticsearch:elasticsearch --net elastic -it -v "$PWD":/config-dir docker.elastic.co/logstash/logstash:8.10.3 -f /config-dir/logstash.conf
 --------------------------
 For spring boot 
 
@@ -8050,7 +8052,52 @@ output{
   }
 }
 
-	docker run -h logstash --link elasticsearch:elasticsearch --net elastic -it -v "$PWD":/config-dir docker.elastic.co/logstash/logstash:8.10.3 -f /config-dir/logstash.conf
+docker run -h logstash --link elasticsearch:elasticsearch --net elastic -it -v /home/ubuntu/elkdemo/elkdemo.log:/home/ubuntu/elkdemo/elkdemo.log -v "$PWD":/config-dir docker.elastic.co/logstash/logstash:8.10.3 -f /config-dir/logstash.conf
+==============================
+
+
+
+Reference 
+
+input {
+        tcp {
+        port => 5000
+    }
+
+        file {
+                path => [
+                    "/Users/me/path/to/logs/appOne.log",
+                    "/Users/me/path/to/logs/appOneStackTrace.log",
+                    "/Users/me/path/to/logs/appTwo.log",
+                    "/Users/me/path/to/logs/appTwoStackTrace.log"
+                ]
+                type => "log"
+                start_position => "beginning"
+        }
+}
+
+output {
+    elasticsearch {
+        hosts => "elasticsearch:9200"
+    }
+}
+
+logstash:
+    build:
+      context: logstash/
+      args:
+        ELK_VERSION: $ELK_VERSION
+    volumes:
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - /Users/me/path/to/appOne/logs:/usr/share/appOneLogs # this bit
+      - /Users/me/path/to/appTwo/logs:/usr/share/appTwoLogs # and this bit
+    ports:
+      - "5000:5000
+==============================
+
+
+
 
 to listen on a port create logstash1.conf
 https://www.youtube.com/watch?v=5s9pR9UUtAU	

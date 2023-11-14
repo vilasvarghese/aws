@@ -1,0 +1,45 @@
+Reference: https://awstip.com/using-python-lambda-to-terminate-ec2-instances-12d9c41b5628
+
+
+Create a lambda 
+Attach if there is an existing role or create a new role.
+
+Copy paste the code below (written to work in north virginia
+
+
+-------------------------------------------
+import json
+
+import boto3
+
+ec2_resource = boto3.resource('ec2', region_name ='us-east-1')
+
+def lambda_handler(event, context):
+    ec2_instances = ec2_resource.instances.all() 
+
+    for ec2_instance in ec2_instances: 
+        ec2_instance_state = ec2_instance.state["Name"] 
+        tag = ec2_instance.tags 
+    
+        for tag in ec2_instance.tags:
+            if ("Dev" == tag['Value']) & (ec2_instance_state == 'running'): 
+                stop_ec2_instance = ec2_instance.stop() 
+            
+                print('The following EC2 instance has been stopped: ' + str(ec2_instance.id))
+    
+    return "success"
+-------------------------------------------
+
+
+Create an instance with the name "Dev"
+Run the test 
+
+
+Schedule it
+-----------
+"Run Trigger"	
+Source: Event Bridge Cloud Watch 
+Create a new rule 
+	Schedule expression: cron(0 17 ? * MON-FRI *)
+		for stopping at 5 pm.
+		NB: This is UTC time, so check UTC time before setting. 

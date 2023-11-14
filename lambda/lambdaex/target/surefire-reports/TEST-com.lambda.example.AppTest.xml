@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="0" failures="0" name="com.lambda.example.AppTest" time="0" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="java.vm.version" value="17.0.4+8-jvmci-22.2-b06"/>
+    <property name="sun.boot.library.path" value="D:\software\graalvm-ce-java17-windows-amd64-22.2.0\graalvm-ce-java17-22.2.0\bin"/>
+    <property name="maven.multiModuleProjectDirectory" value="D:/code1/lambdaex"/>
+    <property name="java.vm.vendor" value="GraalVM Community"/>
+    <property name="java.vendor.url" value="https://www.graalvm.org/"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="IN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\code1\lambdaex"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="java.runtime.version" value="17.0.4+8-jvmci-22.2-b06"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\vilas\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="jdk.internal.vm.ci.enabled" value="true"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="classworlds.conf" value="D:/software/apache-maven-3.8.6/apache-maven-3.8.6/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="D:\software\graalvm-ce-java17-windows-amd64-22.2.0\graalvm-ce-java17-22.2.0\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\vilas\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\vilas\bin;C:\Python311\Scripts;C:\Python311;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;C:\Program Files\Amazon\AWSCLIV2;C:\ProgramData\chocolatey\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\HashiCorp\Vagrant\bin;C:\Program Files\Go\bin;C:\Program Files\nodejs;C:\Program Files\dotnet;C:\Program Files\Kubernetes\Minikube;C:\Program Files\MySQL\MySQL Shell 8.1\bin;C:\Users\vilas\AppData\Local\Microsoft\WindowsApps;D:\software\apache-maven-3.8.6\apache-maven-3.8.6\bin;D:\software\kubernetes;C:\dapr;C:\Users\vilas\AppData\Local\Programs\Microsoft VS Code\bin;D:\software\terraform\terraform_1.3.4_windows_amd64;C:\Users\vilas\go\bin;C:\Users\vilas\AppData\Roaming\npm;D:\software\istio-1.17.0-rc.0\bin;C:\Users\vilas\AppData\Local\Microsoft\WindowsApps;C:\Users\vilas\.dotnet\tools;D:\tempDownloads\jdk-20_windows-x64_bin\jdk-20.0.1\bin;C:\Users\vilas\AppData\Local\Programs\Azure Data Studio\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;."/>
+    <property name="maven.conf" value="D:/software/apache-maven-3.8.6/apache-maven-3.8.6/conf"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="61.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="library.jansi.path" value="D:/software/apache-maven-3.8.6/apache-maven-3.8.6/lib/jansi-native"/>
+    <property name="user.home" value="C:\Users\vilas"/>
+    <property name="user.timezone" value="Asia/Calcutta"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.specification.version" value="17"/>
+    <property name="user.name" value="vilas"/>
+    <property name="java.class.path" value="D:/software/apache-maven-3.8.6/apache-maven-3.8.6/boot/plexus-classworlds-2.6.0.jar"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean package"/>
+    <property name="java.home" value="D:\software\graalvm-ce-java17-windows-amd64-22.2.0\graalvm-ce-java17-22.2.0"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="17.0.4"/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="GraalVM Community"/>
+    <property name="maven.home" value="D:\software\apache-maven-3.8.6\apache-maven-3.8.6"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.version.date" value="2022-07-19"/>
+    <property name="java.vendor.url.bug" value="https://github.com/oracle/graal/issues"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="java.vendor.version" value="GraalVM CE 22.2.0"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+</testsuite>

@@ -2,7 +2,9 @@ Get amazon linux 2 connecting to same security group
 	sudo su 
 	yum update -y 
 	yum install mysql -y
-	
+
+For other options 
+Reference: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToInstance.html	
 
 mysql -h <endpoint> -P 3306 -u root -p 
 mysql -h database-1.ca3hd2rqifcx.us-east-2.rds.amazonaws.com -P 3306 -u root -p 

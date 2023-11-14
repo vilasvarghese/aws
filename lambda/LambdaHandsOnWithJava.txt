@@ -1,0 +1,81 @@
+Create a maven 
+	java 11 
+	quick start project
+	package - jar 
+	
+	mvn archetype:generate -DgroupId=com.lambda.example -DartifactId=lambdaex -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+add in properties 
+	<properties>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+	</properties>
+
+add in dependencies
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter</artifactId>
+    <version>5.8.2</version>
+    <scope>test</scope>
+</dependency>
+
+
+add build plugin as mentioned in below github repo.
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.4</version>
+		<configuration>
+			<createDependencyReducedPom>false</createDependencyReducedPom>
+		</configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+
+Comment the test 
+
+
+https://github.com/danvega/newsletter-guide
+
+https://www.youtube.com/watch?v=MaHxZEBRcT4
+
+
+
+mvn clean package
+	install may not work as build plugin is configured for package
+	
+https://www.youtube.com/watch?v=MaHxZEBRcT4
+Implementation: D:\code1\lambdaex\src\main\java\com\lambda\example
+
+	
+	
+Create lambda
+	1. Author from scratch 
+	2. Runtime: 11
+	3. arm64
+	4. Create function 
+	
+	Upload code source (right side)
+		upload jar file 
+		
+	
+		Edit
+			Handle: package.Class::function
+		
+		
+	Click Test tab 
+		enter name
+		Event JSON: "" (remove default value)
+		
+		
