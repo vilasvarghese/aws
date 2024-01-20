@@ -34,6 +34,10 @@ def lambda_handler(event, context):
 Create an instance with the name "Dev"
 Run the test 
 
+Not authorized 
+	go to the role and give the role.
+	
+
 
 Schedule it
 -----------

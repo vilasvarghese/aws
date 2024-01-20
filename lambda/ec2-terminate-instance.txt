@@ -1,0 +1,16 @@
+import json
+ 
+import boto3
+ 
+ec2_resource = boto3.resource('ec2', region_name ='us-east-1')
+def lambda_handler(event, context):
+    ec2_instances = ec2_resource.instances.all()
+    for ec2_instance in ec2_instances: 
+        ec2_instance_state = ec2_instance.state["Name"] 
+        tag = ec2_instance.tags 
+        for tag in ec2_instance.tags:
+            if ("adi" == tag['Value']) & (ec2_instance_state == 'running'): 
+                terminate_ec2_instance = ec2_instance.terminate() 
+                print('The following EC2 instance has been terminated: ' + str(ec2_instance.id))
+
+    return "success"

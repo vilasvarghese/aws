@@ -3,7 +3,7 @@ Resources:
   EC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      InstanceType: t2.medium
+      InstanceType: t2.micro
       AvailabilityZone: us-east-1b
       ImageId: ami-0dbc3d7bc646e8516
-      KeyName: vilasnv
+      KeyName: bitsnvirginia
