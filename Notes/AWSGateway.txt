@@ -1,0 +1,2610 @@
+Introduction
+---------------------------------------------------------------------
+
+
+What is VPC?
+	Virtual network vs physical network 
+	routers 
+	switch 
+	
+	VPC 
+		scoped to region 
+		
+		subnet 
+			soped to az 
+			
+			Communication between subnets
+				use Routers 
+			Communication outise 
+				gateway 
+		
+		
+		
+What is Amazon VPC?		
+---------------------------------------------------------------------------------------------------------------
+
+Amazon VPC, or Virtual Private Cloud
+	service offered by Amazon Web Services (AWS) 
+	create a logically isolated network environment within the AWS cloud. 
+	private network inside the public cloud
+		give you more control over your resources.
+
+Here are some key features of Amazon VPC:
+
+    Isolation: 
+		Resources launched within your VPC 
+			isolated from 
+				other VPCs 
+				public internet by default. 
+		enhances security for your resources.
+    Customization: 
+		Granular control over your network configuration
+			include selecting your IP address range
+			create subnets, and 
+			configure security settings.
+    Connectivity: 
+		Can define how resources in your 
+			VPC communicate with 
+				internet, or 
+				other VPCs.
+
+---------------------------------------------------------------------------------------------------------------	
+• AWS Services scope in 
+	Region, 
+---------------------------------------------------------------------------------------------------------------
+
+AWS services can be categorized based on their geographic scope within AWS:
+
+    Global Services:
+
+ These services are available in all AWS regions and typically have a single control plane, though their data plane might be distributed. Examples include IAM (Identity and Access Management), Route53, CloudFront, and AWS Shield. These services generally process and store data globally, unless specified otherwise.
+
+Regional Services:  The majority of AWS services fall under this category. They are isolated to specific regions and provide resources within that region. Examples include S3 buckets, EC2 instances, and RDS databases. By default, regional services process and store customer data within the chosen region.
+
+Availability Zone (AZ) Specific Services: A smaller set of services are tied to a specific Availability Zone (AZ) within a region. These services are designed for high availability and fault tolerance. Placing them within an AZ ensures redundancy in case of an outage within that zone.  Amazon EC2 instances with specific placement options and Amazon Elastic Block Store (EBS) volumes are examples of AZ-bound services.
+
+---------------------------------------------------------------------------------------------------------------
+	AZ and 
+---------------------------------------------------------------------------------------------------------------
+
+there are a limited number of services that are specifically tied to an AZ for redundancy and high availability purposes.
+
+Here's a breakdown of AWS services in the context of AZ scope:
+
+    AZ-Specific Services: These services are deployed within a specific AZ and are designed to be fault-tolerant in case of an outage within that zone. Examples include:
+        Amazon EC2 Instances with placement groups: When you launch an EC2 instance and specify an Availability Zone placement group, the instance is deployed within that specific AZ.
+        Amazon Elastic Block Store (EBS) volumes: EBS volumes themselves are regional resources, but you can choose to place them within a specific AZ for redundancy with your EC2 instances.
+
+    Regional Services with AZ Placement: While most regional services like S3 buckets and RDS databases aren't limited to an AZ, you can often configure them to be deployed across multiple AZs within a region. This enhances fault tolerance as your resources are spread across geographically separate zones.
+
+Here are some key things to remember about AZ-specific services:
+
+    Limited selection: There are relatively few AWS services that are truly AZ-bound.
+    Focus on redundancy: These services are designed to ensure your resources remain available even if a single AZ experiences an outage.
+    Regional resources with AZ placement: Many regional services offer options to distribute resources across AZs within a region for redundancy, even if they aren't strictly AZ-specific.
+
+---------------------------------------------------------------------------------------------------------------
+	VPC
+---------------------------------------------------------------------------------------------------------------
+s), AWS services themselves don't have a direct scope within a VPC. Here's why:
+
+    VPC is a virtual network: A VPC is a logically isolated network environment you create within the AWS cloud. It doesn't restrict which AWS services you can use.
+    Services remain regional or global: An S3 bucket, for instance, remains a regional service regardless of whether it's accessed from within your VPC or the public internet.
+
+However, VPC plays a crucial role in controlling how resources communicate and access AWS services:
+
+    Security Groups: You define security groups within your VPC that control inbound and outbound traffic for your resources. This allows you to restrict access to specific AWS services based on their IP addresses or service endpoints.
+    AWS Service Endpoints: VPC enables you to utilize service endpoints, which route traffic to specific AWS services over the AWS internal network instead of the public internet. This enhances security and potentially reduces latency. There are two types of service endpoints:
+        Gateway endpoints: These provide private connectivity to supported AWS services like S3 and DynamoDB.
+        Interface endpoints: These offer private connectivity to services powered by PrivateLink, including other AWS services, your own services, or SaaS solutions.
+
+In essence, VPC acts as a secure gateway through which your resources can access AWS services. You can leverage security groups and service endpoints to control that access and potentially improve security and performance.
+
+Here are some additional points to consider:
+
+    Regional services within VPC: Even though a regional service like an EC2 instance resides within your VPC, it's still technically a regional resource. VPC doesn't change its scope, but it can control how the instance communicates with other resources and services.
+    Global services accessible from VPC: Global services like IAM are accessible from anywhere within the AWS cloud, including your VPC.
+
+---------------------------------------------------------------------------------------------------------------
+• VPC Addressing (CIDR)
+---------------------------------------------------------------------------------------------------------------
+
+VPC Addressing, specifically referring to CIDR (Classless Inter-Domain Routing), is a fundamental concept in creating and managing your Amazon Virtual Private Cloud (VPC). Here's a breakdown of what it means:
+
+    VPC: As mentioned earlier, a VPC is a logically isolated network environment you create within the AWS cloud. It provides you with more control over your resources compared to the default networking options.
+    CIDR Block: CIDR notation defines the IP address range for your VPC. It essentially combines an IP address prefix with a subnet mask to specify a pool of IP addresses that can be allocated to resources launched within your VPC.
+
+Key Points about VPC CIDR Blocks:
+
+    Selection: AWS recommends choosing a CIDR block from the private IP address ranges defined in RFC 1918. These include:
+        10.0.0.0/8 (usable range: 10.0.0.1 - 10.255.255.254)
+        172.16.0.0/12 (usable range: 172.16.0.1 - 172.31.255.254)
+        192.168.0.0/16 (usable range: 192.168.0.1 - 192.168.255.254)
+    Block Size: The allowed CIDR block size for your VPC falls between a /16 netmask (offering 65,536 IP addresses) and a /28 netmask (providing 16 IP addresses). /16 is the most common choice for flexibility, but you can choose a smaller block if you know your exact IP address needs.
+    Modification: After creating a VPC, you cannot modify its main CIDR block. However, you can add additional, secondary CIDR blocks to your VPC if you run out of addresses.
+
+Things to Consider When Choosing a VPC CIDR Block:
+
+    Number of Resources: Estimate the number of resources (EC2 instances, databases, etc.) you plan to launch within your VPC to ensure the CIDR block provides enough IP addresses.
+    Future Growth: Consider potential future growth and choose a CIDR block that can accommodate your anticipated needs.
+    Subnetting: You can further subdivide your VPC CIDR block into smaller subnets for better network organization and security.
+
+---------------------------------------------------------------------------------------------------------------
+• VPC Subnets and 
+	Route Tables (Public/Private)
+	---------------------------------------------------------------------------------------------------------------
+	
+	
+	VPC Subnets and Route Tables (Public/Private) are essential components for designing a secure and functional network architecture within your AWS Virtual Private Cloud (VPC). Here's a breakdown of each:
+
+VPC Subnets:
+
+    A subnet is a contiguous block of IP addresses within your VPC's CIDR block. It allows you to segment your VPC into logically isolated parts.
+    Benefits of using subnets:
+        Security: You can define different security policies for each subnet, allowing granular control over how resources communicate within your VPC and with the internet.
+        Scalability: You can easily add new subnets to your VPC as your network requirements grow.
+        Availability: You can distribute resources across multiple subnets in different Availability Zones (AZs) for redundancy and fault tolerance.
+
+Public vs. Private Subnets:
+
+    The key distinction between public and private subnets lies in their access to the internet:
+        Public Subnets: These subnets have a route table associated with them that includes a route to an internet gateway. This allows resources launched in a public subnet to directly access the internet and other public AWS services. Public subnets are ideal for web servers or resources that need inbound traffic from the internet.
+        Private Subnets: These subnets do not have a route to an internet gateway in their associated route table. Resources in private subnets cannot directly access the internet but can communicate with other resources within the VPC and with public AWS services using mechanisms like NAT gateways or VPC endpoints. Private subnets are suitable for database servers, application servers, and other resources that don't require direct internet access but need to communicate with other services within your VPC or the AWS cloud.
+
+Route Tables:
+
+    A route table is a set of rules that determines how network traffic is routed within your VPC. It directs traffic to the appropriate gateway (internet gateway, NAT gateway, VPC endpoint) based on the destination IP address.
+    Each subnet in your VPC must be associated with a route table.
+    A route table typically includes a default route that specifies the destination for traffic that doesn't match any other rule in the table.
+
+	
+---------------------------------------------------------------------------------------------------------------
+• IP Addresses (IPv4, IPv6, Private/Public/Elastic)
+---------------------------------------------------------------------------------------------------------------
+
+IP addresses act like identification tags for devices on a network, allowing them to communicate with each other. Here's a breakdown of the different types you've mentioned:
+
+IPv4 vs. IPv6:
+
+    These are the two main versions of the Internet Protocol (IP) that define formatting standards for IP addresses.
+    IPv4:
+        Most commonly used version currently, but facing depletion due to its limited address space.
+        It uses 32 bits to represent an IP address, written in a dotted decimal format (e.g., 192.168.1.1).
+    IPv6:
+        The next-generation IP addressing standard designed to address the limitations of IPv4.
+        It uses 128 bits, providing a significantly larger address space for future growth.
+        Represented in eight groups of hexadecimal digits separated by colons (e.g., 2001:0db8:0000:0000:0000:ff00:0042:83fe).
+
+Public vs. Private IP Addresses:
+
+    Public IP Addresses:
+        Uniquely identifiable addresses assigned to devices on the public internet.
+        They allow devices to communicate directly with each other across the internet.
+        Public IP addresses are assigned by internet service providers (ISPs) and are not permanent.
+    Private IP Addresses:
+        Not routable on the public internet and are used for internal network communication within a private network, like a home network or a VPC.
+        Defined in specific ranges reserved for private use (e.g., 10.0.0.0/8, 192.168.0.0/16).
+        Private IP addresses can be reused across different private networks without conflicts.
+
+Elastic IPs (Amazon Web Services):
+
+    A service offered by AWS that provides static public IP addresses for your EC2 instances.
+    Elastic IPs are not tied to a specific EC2 instance and can be easily associated with different instances as needed.
+    This offers flexibility compared to using the default ephemeral public IP addresses assigned to EC2 instances, which change upon instance stop/start.
+
+
+---------------------------------------------------------------------------------------------------------------
+• Security Groups and Network ACL
+---------------------------------------------------------------------------------------------------------------
+
+Security groups and network ACLs (Network Access Control Lists) are both fundamental security features within AWS that control inbound and outbound traffic for your resources. However, they operate at different levels and serve distinct purposes:
+
+Security Groups:
+
+    Scope: Security groups are associated with individual EC2 instances or ENIs (Elastic Network Interfaces). They act as firewalls, controlling traffic at the instance level.
+    Inbound & Outbound Rules: You can define rules within a security group to allow or deny specific traffic flows to and from the attached resource. Rules are based on source IP address/port range, destination port range, and protocol (TCP, UDP, ICMP, etc.).
+    Stateful Inspection: Security groups employ stateful inspection. This means that if a connection is allowed inbound, a corresponding outbound response is automatically allowed. You don't need an explicit outbound rule for the response traffic.
+
+Network ACLs (Network Access Control Lists):
+
+    Scope: Network ACLs are associated with subnets within your VPC. They act as firewalls at the subnet level, controlling traffic that enters or leaves the subnet.
+    Inbound & Outbound Rules: Similar to security groups, you define rules within a network ACL to allow or deny traffic. However, unlike security groups, network ACLs are stateless. You need to explicitly allow both inbound and outbound traffic for a specific communication flow.
+    Stateless Inspection: Network ACLs rely on stateless inspection. Each packet is evaluated independently based on the rules in the ACL.
+
+
+---------------------------------------------------------------------------------------------------------------
+• NAT gateway and NAT instance
+---------------------------------------------------------------------------------------------------------------
+
+Both NAT gateways and NAT instances are methods for enabling outbound internet access for resources within a private subnet of your VPC (Virtual Private Cloud) on AWS. However, they differ in terms of management, scalability, and cost:
+
+NAT Gateway (AWS Managed Service):
+
+    Function: A NAT gateway is a highly available, managed service that translates network addresses (NAT) for outbound traffic originating from instances in a private subnet. It allows these instances to initiate connections to the internet while restricting inbound traffic from the internet to those instances.
+    Management: NAT gateways are fully managed by AWS. You don't need to provision, patch, or maintain the underlying infrastructure.
+    Scalability: NAT gateways automatically scale to accommodate traffic fluctuations. They offer high bandwidth capabilities (up to 100 Gbps) and can handle unpredictable bursts of outbound traffic.
+    Cost: NAT gateways incur hourly charges based on the size of the gateway you select. There are no additional charges for data transfer.
+
+NAT Instance (User-Managed Solution):
+
+    Function: A NAT instance is a regular EC2 instance that you configure to perform NAT functions. It translates network addresses for outbound traffic from private subnet instances, similar to a NAT gateway.
+    Management: You are responsible for provisioning, configuring, patching, and maintaining the NAT instance. This includes managing the underlying instance health and security.
+    Scalability: Scaling a NAT instance requires manual intervention. You might need to launch additional NAT instances or migrate to a larger instance type to handle increased traffic demands.
+    Cost: You pay the on-demand or spot instance pricing for the EC2 instance you choose as your NAT instance. Additionally, you incur data transfer charges for both inbound and outbound traffic.
+
+---------------------------------------------------------------------------------------------------------------
+• VPC Firewall - Security Group
+---------------------------------------------------------------------------------------------------------------
+VPC Firewall and Security Groups are terms used interchangeably when referring to security within a Virtual Private Cloud (VPC) on AWS. They both function as firewalls, controlling inbound and outbound traffic for your resources.
+
+Here's a breakdown of the concept:
+
+    VPC Firewall concept of a VPC Firewall: This is a general term encompassing the security measures implemented to control traffic flow within your VPC. Security groups are the primary tool used to enforce these security policies.
+
+    Security Groups (Security Groups): These act as stateful firewalls attached to individual EC2 instances or Elastic Network Interfaces (ENIs) within your VPC. They define rules that allow or deny specific traffic flows to and from the attached resource. These rules are based on:
+        Source IP address/port range
+        Destination port range
+        Protocol (TCP, UDP, ICMP, etc.)
+
+Security groups provide granular control over traffic for your resources, essentially functioning as VPC firewalls. By configuring security groups with appropriate rules, you can restrict inbound and outbound traffic to specific ports and IP addresses, enhancing the security of your VPC environment.
+
+Here are some key points to remember about VPC firewalls (security groups):
+
+    Stateful Inspection: Security groups employ stateful inspection. This means that if a connection is allowed inbound, a corresponding outbound response is automatically permitted. There's no need for an explicit outbound rule for the response traffic.
+    Multiple Security Groups: An instance can be associated with one or more security groups, allowing you to combine rules from different groups for a comprehensive security posture.
+    Default Security Group: Every VPC comes with a default security group that allows all outbound traffic but restricts inbound traffic. It's recommended to create custom security groups with more restrictive rules for your instances.
+
+---------------------------------------------------------------------------------------------------------------
+• VPC Firewall - Network Access Control List (NACL)
+---------------------------------------------------------------------------------------------------------------
+
+VPC Firewalls encompass two main security mechanisms within your Virtual Private Cloud (VPC) on AWS:
+
+ Security Groups and Network Access Control Lists (NACLs). While they both serve the purpose of controlling traffic flow, they operate at different levels and offer distinct functionalities:
+
+Security Groups:
+
+    Scope: Security groups are attached to individual EC2 instances or Elastic Network Interfaces (ENIs) within your VPC. They act as stateful firewalls, controlling traffic at the instance level.
+    Inbound & Outbound Rules: You define rules within a security group to allow or deny specific traffic flows to and from the attached resource. Rules are based on source IP address/port range, destination port range, and protocol (TCP, UDP, ICMP, etc.).
+    Stateful Inspection: Security groups employ stateful inspection. If a connection is allowed inbound, a corresponding outbound response is automatically allowed.
+
+Network Access Control Lists (NACLs):
+
+    Scope: NACLs are associated with subnets within your VPC. They function as stateless firewalls, controlling traffic that enters or leaves the subnet.
+    Inbound & Outbound Rules: Similar to security groups, you define rules within a NACL to allow or deny traffic. However, unlike security groups, NACLs are stateless. Each packet is evaluated independently based on the rules in the ACL, requiring explicit rules for both inbound and outbound traffic for a specific communication flow.
+    Stateless Inspection: NACLs rely on stateless inspection, meaning every packet is evaluated independently based on the ACL rules.
+
+---------------------------------------------------------------------------------------------------------------
+• Default VPC
+---------------------------------------------------------------------------------------------------------------
+
+In AWS, a default VPC, or default Virtual Private Cloud, is a VPC that Amazon Web Services automatically creates for your account when you sign up for the first time (if your account was created after December 4, 2013). It provides a basic networking environment to get you started with launching EC2 instances (virtual servers) without the need for manual VPC configuration.
+
+Here are some key characteristics of a default VPC:
+
+    Automatic Creation: As mentioned earlier, AWS creates a default VPC in each region where your account operates, unless your account was created before December 4, 2013.
+
+    Predefined Components: The default VPC comes with pre-configured components, including:
+        A single VPC CIDR block (usually /16) which defines the IP address range for the VPC.
+        An internet gateway that enables resources within the VPC to access the public internet.
+        A default security group with permissive rules that allow all inbound and outbound traffic by default (it's recommended to create custom groups with more restrictive rules).
+        Public subnets in each Availability Zone within the region. These subnets have routes to the internet gateway, allowing resources launched in them to access public internet resources.
+
+    Benefits of Default VPC:
+        Simplicity: It offers a quick and easy way to launch resources without needing in-depth VPC knowledge.
+        Cost-Effectiveness: There are no additional charges for using the default VPC itself. You only pay for the resources you launch within the VPC (EC2 instances, etc.).
+---------------------------------------------------------------------------------------------------------------
+• Private and Public subnet 
+---------------------------------------------------------------------------------------------------------------
+In a Virtual Private Cloud (VPC) on AWS, public and private subnets are two fundamental concepts for creating secure and functional network architectures. They differ in terms of internet access and security posture:
+
+Public Subnets:
+
+    Internet Access: Public subnets have a route table associated with them that includes a route to an internet gateway. This allows resources launched in a public subnet to directly access the public internet and other public AWS services.
+    Use Cases: Public subnets are ideal for resources that need inbound traffic from the internet, such as:
+        Web servers
+        Bastion hosts for remote access
+        Public APIs
+
+Security Considerations:
+
+    Public subnets are inherently less secure compared to private subnets due to their direct internet access.
+    To mitigate risks, you should:
+        Use security groups to restrict inbound traffic to public subnets, allowing only authorized connections from specific IP addresses or ports.
+        Consider deploying web application firewalls (WAFs) for additional protection of web servers in public subnets.
+
+Private Subnets:
+
+    Internet Access: Private subnets do not have a route to an internet gateway in their associated route table. By default, resources in private subnets cannot directly access the internet.
+    Communication: There are two main ways for resources in private subnets to communicate with the internet or other public AWS services:
+        NAT Gateway: A NAT gateway acts as an intermediary, allowing outbound traffic from private subnets to the internet while restricting inbound traffic from the internet.
+        VPC Endpoints: VPC endpoints provide private connectivity between your resources in the VPC and specific AWS services, eliminating the need to route traffic through the internet.
+    Use Cases: Private subnets are suitable for resources that don't require direct internet access but need to communicate with other services within your VPC or the AWS cloud, such as:
+        Database servers
+        Application servers
+        Internal services
+
+Security Benefits:
+
+    Private subnets offer enhanced security compared to public subnets because they are not directly exposed to the public internet.
+    This reduces the attack surface and makes it more difficult for unauthorized access.
+
+Choosing Between Public and Private Subnets:
+
+The decision of where to place a resource (public vs. private subnet) depends on its specific needs:
+
+    If a resource requires inbound traffic from the internet, it should be placed in a public subnet.
+    If a resource does not require direct internet access but needs to communicate with other services within the VPC or AWS, a private subnet is the more secure option.
+
+Best Practices:
+
+    Design your VPC with a combination of public and private subnets for a balance between security and functionality.
+    Place resources in the most restrictive subnet that meets their requirements.
+    Utilize security groups to control inbound and outbound traffic for resources in both public and private subnets.
+    Consider using VPC endpoints for private connectivity to AWS services whenever possible.
+
+
+---------------------------------------------------------------------------------------------------------------
+• NAT Gateway
+---------------------------------------------------------------------------------------------------------------
+
+A NAT Gateway in AWS stands for Network Address Translation Gateway. It's a highly available, managed service that acts as an intermediary for outbound traffic originating from resources within a private subnet of your Virtual Private Cloud (VPC).
+
+Here's how it works:
+
+    Resources launched in a private subnet don't have public IP addresses by default and cannot directly access the public internet.
+    A NAT Gateway translates the private IP addresses of resources in the subnet to its own public IP address when they initiate outbound connections. This allows the traffic to traverse the internet and reach its destination (e.g., a web server on the public internet).
+    Responses from the internet are routed back to the NAT Gateway, which then translates them back to the private IP address of the originating resource within the subnet.
+
+Benefits of using a NAT Gateway:
+
+    Enables outbound internet access: Resources in private subnets can connect to the internet for essential tasks like software updates, license verification, or accessing public APIs.
+    Improved security: Private subnets offer enhanced security by design as they are not directly exposed to the public internet. The NAT Gateway acts as a single point of egress, allowing you to control outbound traffic with security groups.
+    Simplified management: NAT Gateways are fully managed by AWS. You don't need to provision, patch, or maintain the underlying infrastructure. They are highly scalable and can handle unpredictable bursts of outbound traffic.
+
+Here are some key points to remember about NAT Gateways:
+
+    Cost: NAT Gateways incur hourly charges based on the size of the gateway you select (e.g., small, medium, large). There are no additional charges for data transfer.
+    Scalability: NAT Gateways automatically scale to accommodate traffic fluctuations. They offer high bandwidth capabilities (up to 100 Gbps) and can handle unpredictable bursts of outbound traffic.
+    Multiple subnets: A single NAT Gateway can be associated with multiple private subnets within the same VPC.
+
+Alternatives to NAT Gateways:
+
+    NAT Instances: You can launch a regular EC2 instance configured to perform NAT functions. However, this option requires manual management and might not be as scalable as a NAT Gateway.
+    VPC Endpoints: For specific AWS services, you can leverage VPC endpoints to establish private connections without needing internet access or a NAT Gateway.
+
+Choosing the Right Option:
+
+    Use a NAT Gateway if:
+        You prefer a hands-off, managed solution with automatic scaling.
+        You anticipate unpredictable bursts of outbound traffic.
+        Cost is not a primary concern, or you find the simplicity of a managed service valuable.
+    Consider a NAT Instance if:
+        You have specific customization requirements for your NAT functionality.
+        You have a strong preference for managing your own infrastructure.
+        You are cost-sensitive and want to optimize instance type and data transfer charges.
+    Consider VPC Endpoints if:
+        You only need to connect to specific AWS services and want to avoid internet traffic altogether.
+
+---------------------------------------------------------------------------------------------------------------
+• NAT Gateway High Availability
+---------------------------------------------------------------------------------------------------------------
+
+High availability (HA) is a crucial aspect of ensuring your resources in a Virtual Private Cloud (VPC) on AWS remain accessible even in case of failures. When it comes to NAT Gateways, achieving high availability involves redundancy within the service itself and your overall network design.
+
+Here's a breakdown of NAT Gateway HA:
+
+    Redundancy Within a NAT Gateway: Each NAT Gateway is implemented with redundancy within its Availability Zone (AZ). This means that if a hardware failure occurs within the AZ, the NAT Gateway service automatically utilizes redundant components to ensure outbound traffic flow isn't interrupted.
+
+Important Note:
+
+While NAT Gateways themselves are designed with redundancy within an AZ, relying solely on a single NAT Gateway in a single AZ creates a potential single point of failure (SPOF) for outbound internet access in your VPC.
+
+Here's how to achieve high availability for outbound internet access:
+
+    Multiple NAT Gateways Across Availability Zones: Deploy NAT Gateways in each Availability Zone where you have private subnets. This ensures that if an entire AZ goes down, resources in other AZs can still leverage NAT Gateways in functioning AZs for outbound traffic.
+    Route Tables and Health Checks: Configure route tables associated with your private subnets to include routes to all the NAT Gateways across AZs. Utilize health checks within the route tables to automatically detect and remove unavailable NAT Gateways from the routing table. This ensures traffic is directed only to healthy NAT Gateways.
+
+Additional Considerations:
+
+    Scalability: NAT Gateways are designed to scale automatically to accommodate traffic fluctuations. By deploying NAT Gateways in multiple AZs, you further enhance the overall scalability of your outbound traffic handling capacity.
+    Cost: NAT Gateways incur hourly charges based on their size. Having multiple NAT Gateways will increase your costs. However, the benefits of high availability for critical applications often outweigh the cost consideration.
+
+Best Practices for NAT Gateway HA:
+
+    Deploy NAT Gateways in each Availability Zone where you have private subnets.
+    Configure route tables with health checks to ensure traffic utilizes only healthy NAT Gateways.
+    Regularly monitor the health of your NAT Gateways and VPC infrastructure.
+    Consider using CloudWatch metrics and alarms to receive notifications about potential issues with your NAT Gateways.
+
+By implementing these practices, you can design a highly available VPC architecture that ensures your resources have reliable outbound internet access even in case of failures within an Availability Zone.
+
+
+
+---------------------------------------------------------------------------------------------------------------
+• NAT Instance (EC2 based NAT)
+---------------------------------------------------------------------------------------------------------------
+A NAT Instance in AWS refers to a regular EC2 instance configured to act as a Network Address Translator (NAT) for resources within a private subnet of your Virtual Private Cloud (VPC). Unlike a NAT Gateway (AWS managed service), a NAT Instance requires manual configuration and management but offers more control and potentially lower costs in specific scenarios.
+
+Here's how a NAT Instance works:
+
+    Launch an EC2 Instance: You choose an appropriate EC2 instance type based on your anticipated traffic load.
+    Configuration: You configure the instance with software like iptables (Linux) or Windows Firewall (Windows) to forward outbound traffic from your private subnet. This translates the private IP addresses of resources in the subnet to the public IP address of the NAT Instance.
+    Outbound Traffic Flow: When a resource in the private subnet initiates a connection to the internet, the traffic is routed to the NAT Instance. The NAT Instance translates the private IP to its public IP and forwards the traffic outward.
+    Inbound Response: The response from the internet is routed back to the NAT Instance's public IP. The NAT Instance then translates the destination IP back to the private IP of the originating resource within the subnet and delivers the response.
+
+Advantages of NAT Instances:
+
+    Customization: You have more control over the NAT functionality compared to a NAT Gateway. You can configure specific firewall rules and routing policies on the NAT Instance.
+    Cost-Potential: In certain scenarios, NAT Instances can be more cost-effective than NAT Gateways. You can choose an EC2 instance type that precisely meets your traffic requirements, potentially saving on hourly charges compared to a NAT Gateway size that might be more than what you need. However, data transfer costs for the NAT Instance need to be factored in.
+
+Disadvantages of NAT Instances:
+
+    Management Overhead: You are responsible for provisioning, patching, maintaining, and troubleshooting the NAT Instance. This includes managing the underlying EC2 instance health and security.
+    Scalability: Scaling a NAT Instance manually requires launching additional instances or migrating to a larger instance type if traffic demands increase. NAT Gateways offer automatic scaling.
+    Security Considerations: Proper configuration of the NAT Instance with security groups and firewall rules is crucial to ensure its security and the security of your VPC.
+
+Choosing Between NAT Gateway and NAT Instance:
+
+    Use a NAT Gateway if:
+        You prefer a hands-off, managed solution with automatic scaling.
+        You anticipate unpredictable bursts of outbound traffic.
+        Cost is not a primary concern, or you find the simplicity of a managed service valuable.
+    Consider a NAT Instance if:
+        You have specific customization requirements for your NAT functionality.
+        You have a strong preference for managing your own infrastructure and want granular control.
+        You are very cost-sensitive and want to optimize instance type and data transfer charges (careful cost analysis is needed).
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+
+
+
+Virtual Private Cloud (VPC)
+• Amazon VPC = Amazon Virtual Private Cloud
+• Launch AWS resources into a virtual network that you've defined.
+• VPC closely resembles a traditional on-premises network
+• VPC benefits of using the scalable infrastructure of AWS
+
+
+
+VPC Level (Apply to the entire VPC):
+
+	Amazon VPC: 
+		foundation of your private network in AWS. 
+		Define the CIDR block (IP address range) for your VPC.
+	Internet Gateway: 
+		Allows resources in your VPC to access the internet.
+	Egress-only Internet Gateway: 
+		Enables outbound traffic 
+			from your VPC to the internet
+			but not inbound traffic.
+	AWS NAT Gateway: 
+		Provides outbound internet access 
+			for resources in private subnets 
+				without an internet gateway. 
+		Translates private IP addresses 
+			to public IP addresses for outbound traffic.
+	AWS Transit Gateway: 
+		Acts as a central hub to connect multiple VPCs 
+		Amazon Virtual Private Clouds (VPCs) 
+			across different regions.
+	VPC Peering: 
+		Connects two VPCs 
+			within the same AWS region 
+			or across different regions. 
+		Traffic between peered VPCs 
+			remains private within the AWS network.
+	AWS Route Tables: 
+		Define how traffic is routed within your VPC. 
+		Each VPC has a main route table by default
+			and you can create additional route tables for specific subnets.
+			
+	AWS VPC Endpoints: 
+		Enables private connectivity between your VPC and supported AWS services 
+			without using an 
+				internet gateway, 
+				VPN connection, 
+				NAT device, or 
+				firewall proxy.
+	AWS Security Groups (partially): 
+		Security groups can be applied at both the 
+			VPC level (default) and 
+			subnet level. 
+		They define inbound and outbound traffic rules 
+			for your network interfaces (NICs) 
+			attached to EC2 instances or other resources.
+
+
+
+
+
+Subnet Level:
+
+	Subnet: 
+		A range of IP addresses 
+			within your VPC 
+				that you can further segment your network. 
+		You should launch resources like EC2 instances into specific subnets.
+	Network Access Control Lists (NACLs): 
+		Filter inbound and outbound traffic at the subnet level
+			providing more granular control than security groups. 
+		NACLs apply stateless packet filtering rules.
+	AWS PrivateLink: 
+		Simplifies private connectivity 
+			between your VPC and services 
+			hosted by AWS or your own VPC endpoints 
+			without using public IP addresses or the internet.
+Additional Notes:
+
+	Some services like Amazon S3 
+		can be accessed from your VPC using 
+			VPC endpoints 
+				without needing an internet gateway or NAT.
+	AWS Lambda and other serverless services 
+		don't reside within your VPC 
+		but can be configured to access resources in your VPC 
+			using VPC Endpoints or other mechanisms.
+	IAM (Identity and Access Management) policies 
+		control access to AWS resources 
+			across various levels
+				including VPCs and subnets.
+
+
+
+IPSec (Internet Protocol Security) Overview
+	Set of protocols 
+		establishes secure communication channels over any IP network
+			including the public internet. 
+	It provides two main security features:
+		Confidentiality: 
+			Ensures data privacy 
+				by encrypting the content of your packets
+				making them unreadable 
+					to anyone who intercepts them.
+		Authentication: 
+			Verifies the identity of the 
+				sender and receiver of the data packets, 
+				prevent unauthorized access or spoofing.
+
+	Here's a breakdown of how IPSec works:
+
+		Security Association (SA) Establishment: 
+			The communicating devices 
+				negotiate the security parameters like 
+					encryption algorithms
+					hashing functions
+					keys using protocols like Internet Key Exchange (IKE). 
+			These parameters are used to create a Security Association (SA) on both sides.
+		Data Processing: 
+			Once the SA is established, data packets are:
+				Authenticated: 
+					A digital signature or message digest is 
+						added to the packet 
+						to verify its origin and integrity.
+				Encrypted (Optional): 
+					The data payload is encrypted 
+						using a symmetric key shared 
+							between the devices for confidentiality. 
+					Headers are typically not encrypted for efficiency.
+				Data Transmission: 
+					The secure packets are sent over the network.
+				Data Reception: 
+					The receiving device uses the SA information 
+						to decrypt and authenticate the received packets.
+	Benefits of using IPSec:
+		Secure Communication: 
+			Protects sensitive data 
+				from eavesdropping and 
+				tampering during transmission.
+		Authentication: 
+			Ensures you're communicating with the intended party and 
+			prevents spoofing attacks.
+		Confidentiality: 
+			Keeps the content of your communication private.
+		Interoperability: 
+			Works across various network devices and operating systems that support IPSec.
+	Things to Consider with IPSec:
+		Performance Overhead: 
+			Encryption and decryption 
+				add some processing overhead to network traffic.
+		Configuration Complexity: 
+			Setting up IPSec connections can be complex, 
+				especially for non-technical users.
+		Compatibility: 
+			Ensure all devices involved in the communication support 
+				the same IPSec standards and algorithms.
+
+
+
+
+	lab: VPC getting started 
+		
+
+			2. Create VPC
+				a. Go to VPC service => Your VPCs => Create VPC (Name: MyVPC, CIDR: 10.100.0.0/16) => Create
+			3. Create Internet Gateway
+				a. Internet Gateways => Create internet gateway
+			4. Attach Internet Gateway to VPC
+				a. Select Internet gateway => Actions => Attach to VPC => Select your VPC
+			5. Create Subnet
+				a. Subnets => Create subnet (Name: MyVPC-Public, VPC: MyVPC, AZ: Select first AZ - ap-south-1a, CIDR: 10.100.0.0/24)
+				b. Select Subnet => Action => Modify Auto Assign Public IP => Enable => Save
+			6. Create Route table
+				a. Route Tables => Create Route Table (Name: MyVPC-Public, VPC: MyVPC)
+				b. Select Route table => Routes => Edit => Add another route (Destination: 0.0.0.0/0, Target: Internet gateway => igw-xxx) => Save
+
+
+			1. Create a Private subnet
+				a. Create subnet (Name: MyVPC-Private, VPC: MyVPC, AZ: Select different AZ (ap-south-1b), CIDR:10.100.1.0/24)
+			2. Create Private route table
+				a. Route Tables => Create Route Table (Name: MyVPC-Private, VPC: MyVPC)
+			3. Associate Route table with Subnet to make it Private subnet
+				a. Select Route table => Subnet Associations => Edit => Check the MyVPC-Private subnet => Save
+			4. Launch another EC2 instance in same VPC but in newly created Private subnet.
+				a. Tag this instance with Name=EC2-B
+				b. New security group
+				• Add rule SSH for CIDR of Public Subnet source CIDR
+				• Add rule All-ICMP IPv4 for Public Subnet source CIDR
+			5. Note down EC2-B private IP address
+				6. Try to ping EC2-B Private IP from EC2-A instance => Should work
+			7. Try to connect to EC2-B instance from EC2-A (Permissions denied..Why?)
+				a. $ssh ec2-user@10.100.1.x (Replace this ip with your EC2-B IP address)
+			6. Get your ssh .pem file on EC2-A instance
+				a. Open local .pem file with nodepad and copy the content (CTRLA => CTRL+C)
+				b. On EC2 A terminal => vi key.pem => enter => press i => paste using right click => esc => :wq
+				=> enter
+			c. chmod 600 key.pem
+				d. ssh -i key.pem ec2-user@10.100.1.x => should be able to connect
+			6. Try to ping google.com from EC2-B instance
+				a. ping google.com (You should not be able to ping. Why?)
+			
+		NAT Gateway 
+			connect a private vpc to outgoing internet
+			
+			17 (slide 68) 
+			Create a NAT Gateway in your VPC
+			• VPC => NAT Gateways => Create NAT Gateway
+			• Subnet: MyVPC-Public (Must select Public Subnet)
+			• EIP: Create New EIP
+			• Create NAT Gateway
+			• It takes 5-10 minutes for NAT Gateway to be Active
+			• Add a route in Private subnet for internet traffic and route through NAT Gateway
+			• Route Tables => Select MyVPC-Private route table
+			• Routes => Edit => Add another route
+			• Destination: 0.0.0.0/0
+			• Target: nat-gateway
+			• Save
+			• Now again try to ping google.com from EC2-B
+			• ping google.com
+
+	lab: VPC peering 
+			ensure to add the security group rule as well.
+	
+	ENI 
+		Ethernet card of aws 
+
+
+
+	
+	VPC Endpoint 
+		Gateway endpoint 
+		Interface endpoint 
+		
+
+
+• Overview of AWS Gateway Services
+---------------------------------------------------------------------
+
+
+AWS offers several gateway services
+	for serving different purposes:
+
+		Amazon API Gateway: 
+			create, 
+			publish, 
+			maintain, 
+			monitor, and 
+			secure 
+				APIs at any scale. 
+			It acts as a front-end service for applications to access 
+				api's 
+				data, 
+				business logic, or 
+				functionality from backend services like 
+					AWS Lambda, 
+					HTTP endpoints, or 
+					other AWS services.
+
+		AWS Direct Connect: 
+			establishes a dedicated network connection between your 
+				premises and AWS. 
+			Very consistent network experience 
+				compared to internet-based connections
+			offer 
+				higher throughput and 
+				potentially lower latency. 
+			Useful for scenarios where you require 
+				consistent network performance or 
+				need to transfer large volumes of data 
+					to and from AWS.
+
+		AWS VPN (Virtual Private Network): 
+			Establish secure and encrypted connections 
+				between 
+					your network and AWS. 
+			Very useful for 
+				extending 
+					on-premises data center 
+						into the AWS Cloud 
+				or 
+					secure communication between 
+						remote offices and 
+						AWS resources.
+
+		AWS Storage Gateway: 
+			Enables 
+				hybrid cloud storage 
+					between 
+						on-premises environments and 
+						AWS storage services like 
+							Amazon S3, 
+							Amazon Glacier, and 
+							Amazon EBS. 
+			Seamlessly integrate 
+				on-premises applications with 
+					cloud storage
+				provide low-latency access to data 
+				offload 
+					storage and 
+					backup 
+						tasks to the cloud.
+
+		Amazon CloudFront: 
+			Not actually a "gateway" service
+			Acts as a content delivery network (CDN) 
+			accelerate the delivery of your web content to end-users. 
+			Caches content at edge locations worldwide
+			reduce latency and 
+			improve performance for users 
+				accessing your web applications or websites.
+
+These gateway services are essential for various scenarios, including:
+
+    Scalability: 
+		Scale infrastructure very fast and seamlessly.
+    Security: 
+		secure and encrypted communication channels 
+			between 
+				your infrastructure and 
+				AWS services.
+    Hybrid Cloud: 
+		Facilitate 
+			integration and interoperability 
+				between 
+					on-premises environments and 
+					AWS Cloud
+		Enable hybrid cloud architectures.
+    Performance: 
+		Improve performance of your applications and services 
+			reduce latency
+			optimize data transfer
+			cache content closer to end-users.
+
+
+
+Amazon API Gateway: 
+	This service 
+		create, 
+		publish, 
+		maintain, 
+		monitor
+		secure APIs at any scale. 
+		
+	"front door" for applications to 
+		access data
+		business logic
+		functionality from your backend services
+			which can be running on AWS or elsewhere.
+
+
+	key features of Amazon API Gateway:
+		Supports RESTful and WebSocket APIs: 
+			can create APIs 
+				conform to the REST architectural style 
+					for stateless interactions 
+				or leverage WebSockets for real-time
+					two-way communication.
+		
+		Integration with various backends: 
+			can connect to various backend services like 
+				AWS Lambda functions
+				Amazon EC2 instances
+				Amazon ECS clusters
+				even web services outside of AWS.
+		
+		Traffic Management: 
+			Manage traffic flow 
+				to your backend services. 
+			Define throttling rules to 
+				limit 
+					number of requests per second
+				implement caching 
+					for frequently accessed data
+				configure API versioning 
+					for managing different versions of your API.
+		
+		Security Features: 
+			Built-in security features like 
+				access control with AWS IAM policies, 
+				API key authentication
+				authorization using Lambda authorizer functions.
+		Monitoring and Logging: 
+			Service provides 
+				comprehensive monitoring and 
+				logging capabilities. 
+			You can track 
+				API usage metrics
+				analyze request and response logs
+				set up alarms for potential issues.
+	AWS Storage Gateway: 
+		Can act as a hybrid storage solution
+			offer a seamless connection 
+				between on-premises storage and 
+				AWS cloud storage services like 
+					S3, 
+					S3 Glacier, 
+					EBS, and 
+					FSx for Windows File Server.
+
+
+Here's a breakdown of its functionalities:
+	Cache on-premises data: 
+		Storage Gateway 
+			maintains a local cache 
+				of recently 
+					accessed or 
+					written data
+			applications can access frequently used data 
+				with low latency
+				
+	Supports multiple protocols: 
+		It can utilize various protocols like 
+			NFS, 
+			SMB, and 
+			iSCSI 
+				for integration 
+				with existing on-premises storage infrastructure.
+	Data transfer optimization: 
+		Storage Gateway 
+			ensure secure and efficient data transfer 
+				between on-premises and cloud storage. 
+				It can handle 
+					data encryption
+					throttling, and 
+					bandwidth management.
+	Multiple Gateway options: 
+		AWS offers different Storage Gateway 
+			types catering to specific needs
+			such as caching volumes for 
+				frequently accessed data (S3 File Gateway)
+				archive rarely used data (Tape Gateway)
+				provide on-premises storage for disaster recovery (Volume Gateway).
+
+---------------------------------------------------------------------
+AWS API Gateway
+•Introduction to API Gateway
+---------------------------------------------------------------------
+
+An Generic API Gateway 
+	key component in modern software architecture 
+	acts as an intermediary between clients and backend services. 
+	Provides 
+		single entry point 
+			for accessing various microservices 
+		or 
+			backend systems
+		Unified interface for developers 
+			to consume and manage APIs. 
+	
+1. Gateway to Microservices:
+
+In microservices architecture
+	applications are composed of 
+		small, 
+		independent 
+			services 
+	communicate with each other over the network. 
+	API Gateway 
+		entry point for clients to access these services.
+
+Don't expose individual services to clients
+	can lead to 
+		complexity and 
+		tight coupling
+	API Gateway 
+		aggregates and 
+		abstracts 
+			the underlying services
+		provide a unified API for clients to interact with.
+
+2. Features and Capabilities:
+
+	Routing and Load Balancing: 
+		API Gateways 
+			Route incoming requests 
+				to the appropriate backend service 
+					based on predefined rules. 
+		`	Distribute incoming traffic 
+				across multiple instances 
+			improve scalability and reliability.
+	Authentication and Authorization: 
+		API Gateways 
+			often provide mechanisms 
+				for authenticating clients and 
+				enforcing access control policies. 
+		This can include support for 
+			OAuth, 
+			JWT, 
+			API keys, and 
+			integration with identity providers.
+	Request Transformation: 
+		API Gateways 
+			can modify incoming requests or responses 
+			to meet the requirements of backend services or clients. 
+			e.g. 
+				data format conversion
+				protocol translation, or 
+				payload validation.
+	Rate Limiting and Throttling: 
+		API Gateways 
+			can enforce 
+				rate limits and 
+				throttling policies 
+					to prevent abuse or overload of backend services. 
+			This helps ensure fair usage of resources and 
+			protects against denial-of-service attacks.
+	Logging and Monitoring: 
+		API Gateways 
+			may offer logging and monitoring capabilities to 
+				track API usage
+				detect errors or anomalies, 
+				generate metrics 
+					for performance analysis and troubleshooting.
+
+3. Benefits of Using an API Gateway:
+
+	Simplified Client Experience: 
+		Provide a single entry point for accessing services
+	Improved Security: 
+		API Gateways centralize security enforcement
+			easier to implement 
+				authentication, 
+				authorization, and 
+				other security measures consistently across services.
+	Enhanced Scalability and Resilience: 
+		API Gateways 
+			can improve the 
+				scalability and resilience of microservices architectures 
+					by offloading cross-cutting concerns such as 
+						routing, 
+						load balancing, and error handling.
+	Operational Insights: 
+		API Gateways 
+			provide visibility into 
+				API usage patterns
+				performance metrics, and 
+				error rates, 
+				enable operators 
+					to monitor and optimize their systems more effectively.
+4. Use Cases:
+
+	Building API-driven Applications: 
+		API Gateways 
+			used to build API-driven applications
+				frontend clients interact with backend services through a unified API layer.
+	Service Mesh Integration: 
+		In service mesh architectures
+			API Gateways acts as
+				edge gateway to the mesh
+				provide ingress and egress traffic management, 
+				security, and observability.
+	Legacy System Integration: 
+		API Gateways can also facilitate 
+			integration of legacy systems or 
+				monolithic applications with modern microservices architectures 
+					by exposing legacy functionality through APIs.
+
+In summary, 
+	API Gateway plays a crucial role 
+		in modern software architectures by 
+			provide 
+				centralized entry point for accessing microservices
+			enforce security policies
+			manage traffic, and 
+			monitor API usage. 
+		It enables developers to build 
+			scalable, 
+			resilient, and 
+			secure applications 
+				while abstracting away the complexities of the underlying infrastructure.
+
+
+
+	supports 
+		REST api 
+			for web applications
+		websocket api 
+			for chat etc.
+			
+
+
+AWS API Gateway and Lambda 
+--------------------------
+
+API Gateway:
+----------
+	front-end for your serverless applications.
+	Enables 
+		create and manage RESTful APIs.
+	Provides a common URL domain that developers can use to access your API.
+	Offers features like:
+		Security: 
+			Implement 
+				authentication and 
+				authorization 
+					to control access to your API.
+		Throttling: 
+			Manage traffic and prevent overload.
+		Monitoring: 
+			Track API usage and performance.
+		Easier integration with other aws services 
+		
+Lambda:
+
+	A serverless compute service.
+	Run code 
+		without provisioning or managing servers.
+	Supports many programming languages like 
+		Python, Node.js, Java, etc.
+	Responds to events triggered by API Gateway requests or other AWS services.
+	
+	
+Working Together:
+
+Create a Lambda function: 
+	contain the code 
+		that executes in response to API requests.
+Create an API in API Gateway: 
+	Define the API resources
+		methods (GET, POST, etc.), and 
+		how they map to your Lambda function.
+API Gateway receives a request: 
+	A developer sends an HTTP request 
+		to the API Gateway endpoint.
+API Gateway routes the request: 
+	Based on the API configuration
+		it identifies the appropriate Lambda function.
+Lambda function executes: 
+	The request is sent to your Lambda function for processing.
+Lambda function responds: 
+	The Lambda function processes the request and returns a response.
+API Gateway returns the response: 
+	API Gateway sends the Lambda function's response back to the developer.
+
+
+Combination
+-----------
+1. No infra maintainanace required
+2. Easy IaC support 
+3. Support WebSocket Protocol 
+4. Handle 
+	API version (v1, v2)
+	categories of env. 
+		dev, prod, stage etc.
+	Security 
+		(Auth and Auth)
+5. Create API key 
+	request throttling 
+6. Swagger / Open API import 
+	quickly define API 
+7. Transform and validate requests and responses 
+8. Generate SDK and API spec.
+8. Cache API responses
+
+
+
+API Gateway types 
+-----------------
+Edge optimized 
+	default 
+	requests routed through cloud front edge locations 
+		improve latency 
+	Gateway present in only one region 
+Regional 
+	Region specific 
+	can route to services in same region 
+	manually combine with cloudfront 
+		more control over caching strategy 
+			and distribution 
+Private 
+	private to a vpc 
+	access limited to VPC
+		using vpc endpoint 
+	use resource policy to define access 
+	
+API Gateway Security 
+--------------------
+User authentication 
+	through 
+		IAM roles 
+			(best for internal application)
+		Cognito 
+			Identity for external users 
+				e.g. mobile users 
+		Custom authorizer 
+			provide our own logic
+	
+	Custom domain names 
+		https 
+			security through integration with aws 
+	Certificate manager (ACM)
+		For ege-optimized endpoint 
+			certificate should be in us-east-1
+		For regional endpoint 
+			certificate should be in Api gateway region 
+		Must setup 
+			CNAME 
+		or 
+			A-alias 
+				record in Route 53.
+	
+
+	API methods
+		GET 
+		PUT 
+		POST 
+		DELETE 
+	
+				
+Lab: 
+	Create a regional api gateway 
+		REST api 
+	integrate with lambda 
+	
+	
+Create a lambda 
+	python 3.11
+	
+	
+		API type
+			HTTP API
+				 OIDC 
+					identity layer on top of the OAuth 2.0 authorization framework. 
+					Designed to simplify the process of verifying a user's identity and obtaining their basic profile information 
+						when they log in to an application. 
+						
+				 OAuth2
+					pronounced "OAuth Two"
+					industry-standard authorization framework 
+					applications can obtain limited access to user accounts on an HTTP service
+						like a 
+							social media platform or 
+							cloud storage provider. 
+					It allows users to grant specific permissions to an application 
+						without sharing their entire login credentials.
+				 native CORS 
+			WebSocket API
+			REST API
+			REST API Private
+		API endpoint type
+			Regional APIs 
+				deployed in the current AWS Region. 
+			Edge-optimized APIs 
+				route requests to the nearest CloudFront Point of Presence. 
+			Private APIs 
+				only accessible from VPCs.
+	
+
+		APIs: 
+			Core element of API Gateway. 
+			Collection of related functionalities that your application can expose. 
+			Can define different APIs for various purposes 
+				within your application ecosystem.
+		Custom Domain Names: 
+			By default
+				API Gateway assigns a system-generated URL to your API. 
+				You can configure custom domain names for 
+					a more memorable user experience.
+		VPC Links: 
+			Connect your API Gateway resources 
+				to a specific private services/instances in Amazon Virtual Private Cloud (VPC). 
+			Enables secure communication between 
+				API and other resources within your VPC 
+					without exposing them to the public internet.
+		Resources: 
+			Resources in api (e.g. user in api for user crud operation )
+			Resources represent the individual components or functionalities within your API. 
+			You define paths, methods 
+				(e.g., GET, POST, PUT, DELETE), and 
+				integrate them with your backend services to create a cohesive API structure.
+		Stages: 
+			Stages provide a way to manage different versions of your API. You can create separate stages for development, testing, and production environments, allowing you to deploy updates or bug fixes without affecting ongoing traffic on other stages.
+		Authorizers: 
+			Authorizers are security mechanisms 
+				control access to your API resources. 
+			Can configure them to require authentication 
+				(e.g., using API keys, IAM roles) or 
+				authorization (specifying which users or roles can access specific resources) before processing API requests.
+		Gateway Responses: 
+			These pre-defined responses allow you to handle various scenarios like errors or custom messages consistently across your API. You can define error codes, response headers, and body content for different situations.
+		Models: 
+			Models define the data structure for request and response payloads within your API. This helps enforce data validation and simplifies integration with client applications by providing clear expectations for data format.
+		Resource Policy: 
+			Resource policies define additional authorization rules beyond authorizers. You can specify IAM users, roles, or groups allowed to access specific resources or methods within your API.
+		Documentation: 
+			API Gateway allows you to create and manage documentation for your APIs directly within the service. This documentation can describe your API endpoints, request/response formats, and usage examples, making it easier for developers to integrate with your API.
+		Dashboard: 
+			The API Gateway dashboard provides an overview of your APIs, including metrics on traffic, latency, errors, and throttling. It helps you monitor API health and identify potential issues.
+		API Settings: 
+			This section allows you to configure various settings for your API as a whole, such as enabling CORS (Cross-Origin Resource Sharing) for allowing requests from different origins, throttling limits to prevent API overload, and caching options.
+		Usage Plans: 
+			Usage plans allow you to control how your API is accessed and billed. You can create different usage plans with varying throttling limits, quotas, and pricing structures for different types of users or applications.
+		API Keys: 
+			API keys are a simple way to grant programmatic access to your API. You can generate API keys and associate them with specific usage plans to control access and track usage.
+		Client Certificates: 
+			Client certificates offer an additional layer of security for API access. You can configure your API to require client certificates from authorized applications, enhancing protection against unauthorized access.
+		Settings: 
+			This section provides options for managing general settings related to your API Gateway account, such as enabling CloudWatch logging to track API activity and configuring throttling quotas across all your APIs.
+	
+	
+	Lab: 
+		type: REST api -> Build
+		API details - API details
+		API endpoint type	: Regional 
+			Next
+		Click Resource 
+			Create Resource 
+				Create method 
+					GET
+					
+			
+		
+1. Create VPC with Public and Private Subnet
+2. Launch EC2 instances in both the subnets
+3. Add IAM role to EC2 instance in Private Subnet to allow access to S3
+4. Create VPC Gateway endpoint for S3
+5. Modify Private subnet route table to route traffic to S3 via VPC gateway endpoint
+6. Login to Public EC2 instance and from there SSH to Private EC2 instance
+7. Test the connectivity to S3 by uploading/downloading some files
+	
+------------
+
+REST APIs Vs WebSocket APIs 
+	Two different ways for applications to communicate with each other. 
+Communication Style:
+--------------------
+REST API: 
+	Relies on a request-response style. 
+	The client (like a mobile app) 
+		initiates a request to the server (e.g., to get data), 
+		waits for a response, 
+			and then disconnects. 
+	This is like a two-way conversation 
+		where each person waits for the other 
+			to finish speaking before responding.
+WebSocket API: 
+	Enables real-time, 
+		two-way communication. 
+	A persistent connection is established between the client and server
+		allow data to flow in both directions simultaneously. 
+	Imagine a real-time chat where people can talk and listen at the same time.
+
+	
+---------------------------------------------------------------------
+• Creating and Managing APIs
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+• API Gateway Integration with Lambda
+---------------------------------------------------------------------
+	---------------------------------------------------------------------
+•API Gateway Custom Authorizers
+---------------------------------------------------------------------
+		
+---------------------------------------------------------------------
+•API Gateway Usage Plans
+---------------------------------------------------------------------
+
+
+AWS API Gateway Usage Plans 
+	manage access and throttling requests 
+		to your APIs hosted on API Gateway. 
+	define 
+		who can access your API and 
+		how much they can use it. 
+	Here's a breakdown of key concepts:
+
+What are Usage Plans?
+
+	A Usage Plan acts as a container that specifies:
+		API Key Source: 
+			How API keys are obtained 
+				(e.g., 
+					generated by API Gateway 
+				or 
+					imported from a CSV file).
+		Throttling Limits: 
+			Define 
+				maximum number of requests an API key 
+					can make within a specific time period 
+						(e.g., 
+							requests per second or 
+							requests per minute).
+		Quotas: 
+			Sets a total limit on the number of requests 
+				allowed for an API key over a defined period 
+				(e.g., daily or monthly quotas).
+
+Benefits of Usage Plans:
+
+	Control API Access: 
+		Grant access to specific users or applications 
+			by assigning them API keys 
+				associated with a Usage Plan.
+	Manage API Usage: 
+		Throttle request rates 
+		set quotas to prevent abuse and manage API costs.
+	Multiple Plans for Different Needs: 
+		Create various Usage Plans with different throttling limits and quotas to cater to diverse API user requirements.
+	Improved Monitoring: 
+		Track API usage metrics associated with each Usage Plan for better control and cost visibility.
+
+How Usage Plans Work:
+
+	Client Acquires API Key: 
+		An API user or application 
+			obtains an API key aligned with a specific Usage Plan.
+	API Request with Key: 
+		The client includes the API key 
+			in the request header 
+				when accessing your API endpoint.
+	API Gateway Validation: 
+		API Gateway validates the API key and 
+			checks if it's associated with a valid Usage Plan.
+	Throttling and Quota Checks: 
+		API Gateway verifies if the request adheres to the throttling limits and quota restrictions 
+			defined in the associated Usage Plan.
+	Request Processing: 
+		If everything checks out, 
+			the API request is processed and the API responds accordingly.
+
+Creating and Configuring Usage Plans:
+
+	Usage Plans can be created and managed through the 
+		AWS Management Console, 
+		AWS CLI, or 
+		AWS SDKs.
+	You can define 
+		throttling limits (rate and burst), 
+		quotas (request limits), and the 
+		API key source for each Usage Plan.
+
+Use Cases for Usage Plans:
+
+	Public vs. Private APIs: 
+		Create separate Usage Plans for 
+			public and private APIs
+				with stricter throttling and quotas for public access.
+	Free vs. Paid Tiers: 
+		Implement tiered Usage Plans with varying throttling 
+			limits and quotas for free and paid API access models.
+	Partner Access Control: 
+		Define Usage Plans with specific limits for partner applications integrating with your API.
+	
+---------------------------------------------------------------------
+
+AWS VPN Gateway
+•Overview of VPN Gateway
+---------------------------------------------------------------------
+
+
+VPN 
+	allows hosts to communicate 
+		privately over an untrusted
+		intermediary network like internet, 
+			in encrypted form
+
+	• AWS supports Layer 3 VPN (not Layer 2)
+----------
+A Layer 3 VPN
+	known as a routed VPN
+	operates at Layer 3 (Network Layer) of the Open Systems Interconnection (OSI) model. 
+	Creates a secure tunnel 
+		over a public network 
+		(usually the internet) 
+			to connect geographically separated private networks. 
+	
+Functionality:
+
+Layer 3 Focus: 
+	Unlike Layer 2 VPNs 
+		tunnel data link layer (Layer 2) frames
+	Layer 3 VPNs work on the network layer (Layer 3). 
+		encapsulate IP packets
+			including source and destination IP addresses
+				within the tunnel.
+Routing Protocols: 
+	Layer 3 VPNs rely on routing protocols like 
+		Border Gateway Protocol (BGP) or 
+		Open Shortest Path First (OSPF) 
+			to exchange routing information 
+				between the connected networks.
+Independent Routing: 
+	Each connected network 
+		maintains its own routing table 
+		independently determines the best path 
+			for traffic within the VPN tunnel.
+Benefits:
+
+	Scalability: 
+		Well-suited for large and complex networks 
+			due to their reliance on routing protocols 
+			for dynamic route updates.
+	Flexibility: 
+		Enables granular control over routing policies 
+			for traffic within the VPN. 
+		You can define which traffic flows through the VPN tunnel.
+	Security: 
+		Encrypts data packets 
+			traveling through the public network
+			ensure confidentiality and data integrity.
+---------------	
+	
+	• VPN has 2 forms – 
+		Site to Site VPN and 
+		Client to Site VPN
+	• Site to Site VPN 
+		connects 2 different networks.
+	• Client to Site VPN 
+		connects the client device like laptop 
+			to the private network
+	• VPN types
+	• IPSec (IP Security) VPN 
+		is supported by AWS managed VPN
+	• Other VPNs like GRE and DMVPN 
+		are not supported by AWS managed VPN.
+
+
+AWS VPN Gateway: 
+	Secure Connectivity to Your VPC
+
+An AWS VPN Gateway 
+	managed VPN (Virtual Private Network) service 
+	can establish secure connections 
+		between your Virtual Private Cloud (VPC) and 
+		various resources:
+			On-premises Network: 
+				Connect your VPC to your own data center or corporate network 
+					for secure data transfer 
+					between your on-premises infrastructure and AWS resources.
+			Another VPC: 
+				Create secure connections between 
+					VPCs within the 
+						same AWS account 
+					or 
+						across different accounts 
+							for private communication between resources in those VPCs.
+			AWS Service: 
+				Utilize VPN connections 
+					to access specific AWS services like 
+						AWS Storage Gateway 
+					or 
+						AWS Direct Connect 
+							that might require a VPN for communication.
+
+Key functionalities of AWS VPN Gateway:
+
+	Supported VPN Protocols: 
+		AWS VPN Gateway 
+			supports industry-standard protocols like 
+				IPsec (Internet Protocol security) 
+					for secure communication.
+	Multiple Tunnel Options: 
+		You can configure multiple VPN tunnels 
+			for redundancy and increased bandwidth.
+	High Availability: 
+		AWS manages the VPN infrastructure
+		ensure high availability and scalability.
+	Flexible Deployment Options: 
+		Choose from various deployment models based on your needs:
+			Site-to-Site VPN: 
+				Connects your VPC to an on-premises network.
+			Client VPN: 
+				Allows remote users to securely connect to your VPC resources.
+			VPN CloudHub: 
+				Provides a managed VPN solution for connecting to 
+					multiple VPCs or on-premises networks.
+
+Benefits of using AWS VPN Gateway:
+	Secure Communication: 
+		VPN Gateway encrypts data traffic between your VPC and 
+			connected resources, 
+			ensure data confidentiality and integrity.
+	Scalability: 
+		Easily scale your VPN connection by 
+			adding more tunnels as your bandwidth requirements increase.
+	Managed Service: 
+		AWS takes care of managing the underlying VPN infrastructure
+			free you from administrative tasks.
+	Cost-Effective: 
+		Pay only for the VPN bandwidth you use, making it a cost-efficient solution.
+
+Steps involved in creating a VPN connection using AWS VPN Gateway:
+	Choose VPN Type: 
+		Decide on the type of VPN connection you need (Site-to-Site, Client VPN, etc.).
+	Configure VPN Gateway: 
+		Create a VPN Gateway resource in your desired VPC.
+	Configure Customer Gateway: 
+		Set up a customer gateway device on the other end of the VPN connection (on-premises network or another VPC).
+	Establish VPN Connection: 
+		Configure the VPN connection by specifying parameters like IP address ranges, encryption settings, and pre-shared keys.
+	Route Traffic: 
+		Update route tables in your VPC and on the other end of the connection to route traffic through the VPN tunnel.
+	While AWS VPN Gateway offers a convenient and secure way to connect your VPC to external resources, 
+		it's important to consider alternative options like 
+			AWS Direct Connect for dedicated and potentially higher-bandwidth connections in specific scenarios.
+
+Further references:
+
+AWS Documentation on AWS VPN Gateway: https://docs.aws.amazon.com/vpn/
+Comparison of AWS Direct Connect and VPN Gateway: https://aws.amazon.com/directconnect/
+
+
+AWS services scope with respect to VPC
+
+VPC Building blocks
+	● CIDR
+	● Subnets
+	● Route Tables
+	● Internet Gateway
+	● Security Groups
+	● Network ACL
+	● Domain Name Server (DNS)
+	● AWS DNS Server (Route53 Resolver) *
+
+
+IPv4 and IPv6 addresses
+● IP address is the identity of the each host in the network
+● There are 2 types of IP addresses
+● IPv4 (32 bit)
+● IPv6 (128 bit)
+● IPv4 address
+● Represented as four octets (4 x 8 bits)
+● Each octet represented in decimal value 0-255. Example: 192.168.56.212
+
+
+
+CIDR – Classless Inter Domain Routing
+● IP addressing scheme that replaces old address style of Class A, B, C
+● Represented as a IP address and prefix
+Example: IPv4 CIDR 192.168.0.0/16
+
+Understanding CIDRs - Little exercise
+	• 192.168.0.0/24 = … ?
+	• 192.168.0.0 – 192.168.0.255 (256 IP)
+	• 192.168.0.0/16 = … ?
+	• 192.168.0.0 – 192.168.255.255 (65,536 IP)
+	• 134.56.78.123/32 = … ?
+	• Just 134.56.78.123
+	• 0.0.0.0/0
+		• All IP!
+
+
+Subnets, Route Tables and Internet Gateway
+
+	Region 
+		VPC 
+			AZ	
+				Subnet 
+				
+				
+	Two instances in diff. subnet but same vpc can talk 
+		through a router 
+				
+		Yes, 
+			by default, 
+				EC2 instances in different subnets 
+				but within the same VPC can talk to each other. 
+			All subnets within a VPC 
+				share the same underlying (virtual) network infrastructure.
+
+		Two factors that can restrict communication between these instances:
+
+			Security Groups: 
+				Act like firewalls
+				controll inbound and outbound traffic for your EC2 instances. 
+				By default
+					security group 
+						allows all traffic within the VPC (internal traffic). 
+					Can configure your security groups 
+						to only allow specific ports or IP addresses
+						
+			Route Tables: 
+				Route tables 
+					determine how traffic is routed within your VPC. 
+				Each subnet can be associated with a route table
+					defines how packets are directed to their destinations. 
+				Default route table in a VPC 
+					allows communication within the VPC
+					can create custom route tables with more specific rules. 
+				If the route tables for the subnets are not configured correctly
+					communication might be blocked.
+
+		Here's a breakdown of how communication typically works:
+
+			Initiating Communication: 
+				An EC2 instance in one subnet 
+					sends a packet to another instance in a different subnet.
+			Security Group Check: 
+				The source instance's security group 
+					checks its rules to see 
+						if the outbound traffic is allowed based on 
+							port, 
+							protocol, and 
+							destination (either IP address or CIDR block).
+			Route Table Lookup: 
+				If the security group allows the traffic, 
+					the source instance's route table 
+						is consulted to determine the next hop for the packet.
+			Packet Forwarding: 
+				The packet is routed through the VPC's internal network infrastructure to the destination subnet.
+			Security Group Check (Again): 
+				The destination instance's security group checks 
+					its rules to see if the inbound traffic is allowed based on 
+						port, 
+						protocol, and 
+						source (either IP address or CIDR block).
+			Delivery (if Allowed): 
+				If both security groups allow the traffic, the packet is delivered to the destination instance.
+						
+
+
+Route Table
+	• Contains rules to route the traffic in/out of Subnets/VPC
+		• Main route table at VPC level
+		• Optiona Custom route table at Subnet level
+	
+	• Each route table contains default immutable local route for VPC
+	• If no custom route table is defined,
+		then new subnets are associated
+		with Main route table
+	• We can modify main route table
+
+
+Subnets
+	• Public Subnet
+		• Has route for Internet
+		• Instances with Public IP can communicate to internet
+		* Connected to NAT gw 
+		* Instances has public ip 
+		* Has routes allowing traffic as appropriate
+		• Ex: NAT, Web servers, Load balancer
+
+
+	Private Subnet
+		• No route to Internet
+		• Instances receive private IPs
+		• Typically uses NAT for instances to have internet access
+		• Ex: Database, App server
+
+
+Subnets - IPv4
+	• AWS reserves 5 IPs address 
+		(first 4 and last 1 IP address) in each Subnet
+	• These 5 IPs are not available for use and cannot be assigned to an instance
+	• Ex, if CIDR block 10.0.0.0/24, reserved IP are:
+		• 10.0.0.0: Network address
+		• 10.0.0.1: Reserved by AWS for the VPC router
+		• 10.0.0.2: Reserved by AWS for mapping to Amazon-provided DNS
+		• 10.0.0.3: Reserved by AWS for future use
+		• 10.0.0.255: Network broadcast address. AWS does not support broadcast in a VPC, therefore the address is reserved
+
+IP Addresses in VPC
+	Private, Public and Elastic IP (EIP)
+
+
+
+	Private 
+		Communication within VPC
+		Address range Gets IP address from subnet range. Ex: 10.200.0.1
+		Once assigned cannot be changed
+		Released when instance is terminated
+		Receives private ip on launch on EC2 instance
+		Application servers, databases 
+	Public 
+		Can communicate over internet
+		Gets IP address from Amazon Pool within region
+		Changes over instance stop/start (Not restart)
+		Released to POOL when instance is stopped or terminated
+		Receives public ip on launch on EC2 instance if “Public ip addressing attribute” is set to true for subnet
+		Web servers, Load Balancers, Websites
+	Elastic
+		Can communicate over
+		Gets IP address from Amazon Pool within region
+		Do not change over instance restart. Can be removed anytime.
+		Not released. Remains in your account. (Billed)
+		Have to explicitly allocate and attach EIP to EC2 instance. Can be reattached to other EC2
+		Web servers, Load Balancers, Websites
+
+
+Firewalls inside VPC
+	• Security Groups
+	• Network Access Control List (NACL)
+
+
+Security Groups
+	• Security Groups are the fundamental of network security in AWS
+	• They control how traffic is allowed into or out of our EC2 Machines.
+	• It is the most fundamental skill to learn to troubleshoot networking issues
+	• In this lecture, we’ll learn how to use them to allow, inbound and outbound ports
+
+	• They regulate:
+		• Access to Ports
+		• Authorised IP ranges – IPv4 and IPv6
+		• Control of inbound network (from other to the instance)
+		• Control of outbound network (from the instance to other)
+	• Security groups are stateful
+		i.e. if there is an inbound traffic allowed then the response to that incoming request is enabled by default.
+			No seperate egress required.
+	• You can reference another Security group as source
+
+	• Can be attached to multiple instances
+	• Locked down to a Region / VPC combination
+	• Does live “outside” the EC2 – if traffic is blocked the EC2 instance won’t see it
+	• If your application is not accessible (time out), 
+		then it can be a security group issue
+	• If your application gives a “connection refused“ error, then it’s an application error or it’s not yet in running state
+	• All inbound traffic is blocked by default
+	• All outbound traffic is authorised by default
+
+Network Access Control List (NACL)
+
+	• Works at Subnet level – Hence automatically applied to all instances
+	• Stateless – We need to explicitly open outbound traffic
+		both ingress and egress should be added.
+			default response to ingress is not available.
+	• Contains both Allow and Deny rules
+	• Rules are evaluated in the order of rule number
+	• Default NACL allows all inbound and outbound traffic
+	• NACL are a great way of blocking a specific IP at the subnet level
+	* At VPC/subnet level 
+	
+	
+Security group vs nacl
+
+	security group 
+		operates at ec2 instance level 
+		supports allow rules only 
+		stateful 
+		all rules evaluated and has equal preference
+	nacl 
+		operates at subnet level 
+		supports allow and deny rules 
+		stateless
+		rule order decides the priority 
+		
+		
+	Default VPC
+		• AWS Creates Default VPC in each AWS region
+		• Creates VPC with CIDR - 172.31.0.0/16
+		• Creates Subnets in every AZ with CIDR /20
+		• Creates Internet Gateway
+		• Main route table with route to Internet which make all subnets public	
+
+Default VPC
+	• If deleted, you can recreate default VPC
+	• Console
+		-> VPC Service
+		-> Your VPCs
+		-> Action
+		->Create Default VPC
+
+
+Lab: 
+	Create vpc with public subnet 
+	
+	Create a private subnet 
+	
+	
+	
+	
+---------------------------------------------------------------------------------------------------------
+hybrid network 
+	network environment 
+		that combines your on-premises infrastructure with the AWS cloud. 
+	connect your resources in both locations and 
+		leverage the benefits of both for your applications.
+
+Here's a breakdown of key concepts in a hybrid network with AWS:
+
+Benefits:
+
+	Flexibility: 
+		Manage a mix of 
+			on-premises workloads and 
+			cloud-based services 
+				based on your specific needs.
+	Scalability: 
+		Easily scale your resources up or down in the cloud to meet fluctuating demands.
+	Cost Optimization: 
+		Pay only for the AWS resources you use, 
+		potentially reducing overall IT infrastructure costs.
+	Data Security: 
+		Maintain control over sensitive data residing on-premises while leveraging cloud services for specific tasks.
+Connectivity Options:
+
+	AWS Direct Connect: 
+		Dedicated private connection 
+			between 
+				on-premises network and AWS. 
+		high bandwidth and 
+		low latency 
+		for critical applications.
+	VPN Connection: 
+		Creates a secure tunnel 
+			over the internet to 
+				connect your on-premises network to AWS. 
+		This is a cost-effective option for moderate data transfer needs.
+	AWS Transit Gateway : 
+		Acts as a central hub to 
+			manage
+				multiple VPC (Virtual Private Cloud) connections and 
+				on-premises network connections. 
+		It simplifies routing traffic across complex hybrid network architectures.	
+	
+	
+	
+Static and dynamic routing 
+	how routes for traffic traveling through the VPN tunnel are established and maintained. 
+	
+	
+Network has a unique way to identify 
+	Called 
+		Autonomous systems (AS)
+		ID used for this 
+			Autonomous systems Number(ASN)
+			can be 
+				public 
+					assigned by IANA 
+					range from 1-64495
+				private 
+					range from 64512 - 65534
+
+	
+Static VPN Routing:
+	
+		Network A connected to Network B
+			If Network B is connected to C
+			Try to send a message from A to C will fail 
+				as route entries are not present in A for C.
+		
+
+	Manual Configuration: 
+		Requires manual configuration of routes on both sides of the VPN connection. 
+		You need to specify the subnet or network behind the VPN endpoint and the next hop 
+		(usually the VPN tunnel interface) for traffic destined there.
+	Simple for Small Networks: 
+		Works well for 
+			small, 
+			stable networks 
+				where the IP addresses and network topology don't change frequently.
+	Manual Maintenance: 
+		Any changes to the network, like 
+			adding a new subnet, 
+			require manual updates to the routing tables on 
+			both sides of the VPN. 
+		This can be cumbersome and error-prone.
+	Limited Scalability: 
+		Not ideal for large or dynamic networks where frequent changes occur.
+Dynamic VPN Routing:
+		Network A connected to Network B
+			If Network B is connected to C
+			Try to send a message from A to C will NOT fail 
+				as route entries will be automatically added between A for C.
+	
+	Automated Routing Protocols: 
+		Utilizes routing protocols like 
+			OSPF or 
+			BGP 
+				to automatically exchange routing information between VPN endpoints.
+	Scalable and Adaptable: 
+		Automatically adapts to network changes like 
+			new subnets or 
+			link failures. 
+		This is essential for large and dynamic networks.
+	Reduced Configuration: 
+		Less manual configuration needed compared to static routing.
+	Complexity: 
+		Requires understanding and configuration of routing protocols
+			more complex for some users.
+	Security Considerations: 
+		Routing protocols 
+			introduce additional security considerations 
+				as they exchange routing information across the network. 
+		Proper configuration is crucial to prevent unauthorized access.	
+
+
+
+Border Gateway Protocol (BGP) 
+-----------------------------
+	Helps dynamic  routing 
+		using Path-Vector protocol
+			exchange best path to destination 
+				between peers or AS (ASPATH)
+	two type 
+			iBGP	
+				routing within AS
+			eBGP
+				routing between AS's 
+	Routing decision can be influenced by 
+		weight 
+			supported only by Cisco routers 
+		ASPATH 
+			Series of AS to traverse the path 
+			between AS's 
+		Local Preference LOCAL_PREF
+			with in AS 
+		MED 
+			Multi-Exit Discriminator 
+		
+	workhorse of internet routing
+	responsible for exchanging 
+		routing information and 
+		determine the best paths for data to travel 
+			across different networks. 
+Function:
+
+	BGP 
+		operates between Autonomous Systems (AS)
+		groups of interconnected networks 
+			under a single administrative control. 
+	Internet 
+		collection of interconnected ASes.
+	BGP routers in different ASes 
+		communicate with each other 
+			to 
+				advertise available routes and 
+				exchange reachability information 	
+					for various destinations (IP prefixes).
+	Based on these advertisements, 
+		BGP routers select the best path to route traffic. 
+	This selection considers factors like:
+		Path length (hop count): 
+			Shorter paths are generally preferred.
+		Local policy: 
+			Network administrators can configure BGP 
+				to prioritize certain paths 
+					based on factors like 
+						cost
+						reliability, or 
+						security.
+						
+						
+Benefits of BGP:
+
+	Scalability: 
+		BGP enables efficient routing 
+			across the vast and ever-growing internet.
+	Policy Control: 
+		Network administrators have control over 
+			how traffic is routed within their AS.
+	Flexibility: 
+		BGP can adapt to changes in network topology
+			such as link failures or new connections.
+BGP Routing Process:
+
+	BGP Peers Establish Connection: 
+		Routers advertising BGP routes become BGP peers. 
+		They establish a peering session using TCP port 179.
+	Route Advertisement: 
+		BGP routers periodically send out advertisements 
+			that announce the IP prefixes 
+				they can reach and 
+				the path to reach those prefixes.
+	Path Selection: 
+		BGP routers 
+			analyze the received advertisements and 
+			select the best path based on configured criteria.
+	Route Table Updates: 
+		The chosen paths are incorporated into the router's routing table
+			which determines how packets are forwarded.
+
+BGP Considerations:
+
+	Complexity: 
+		BGP is a complex protocol with various configuration options. 
+		Understanding BGP routing concepts and best practices is essential for network engineers.
+	Security: 
+		BGP is susceptible to routing attacks like route hijacking, 
+			where malicious actors can manipulate routing information to redirect traffic. 
+		Implementing security measures like route filtering and authentication is crucial.
+---------------------------------------------------------------------
+•Creating Virtual Private Gateways (VGWs)
+---------------------------------------------------------------------
+
+lab:
+1. Create VPCs in two different regions as shown in the diagram. One acts as an AWS network and other as a on premises DC network.
+
+2. Launch EC2 instances in both the VPCs. For VPC-DC, launch it using Amazon Linux 2023 AMI so that you can install Libreswan. In Security group for both EC2 instances allow ICMP traffic from the other network. EC2-VPN will have Public IP. You should also open SSH from MyIP or 0.0.0.0/0.
+
+
+3. Create a Virtual Private Gateway (VGW) in Mumbai region and associate it with the VPC-AWS. Add route in VPC-AWS Private subnet route table to route all the traffic (0.0.0.0/0) via the VGW. Create Customer gateway using the EC2-VPN Public IP.
+4. Create a VPN connection in Mumbai region. Use EC2-VPN Public IP with static routing with VPC-DC CIDR.
+5. Download VPN configuration file for Openswan from VPN connection console.
+6. Install Libreswan on EC2-VPN. You need to add Libreswan fedora repository. After you install libreswan follow the
+instructions in VPN configuration file. You need to replace values for various fields like IP and CIDR range as per your
+environment, start the IPSec VPN service.
+7. Access the AWS side EC2-A instance Private IP from EC2-VPN. You 7 should be able to.
+
+
+
+
+Virtual Private Gateways (VGWs) 
+	components in an AWS environment 
+		establish secure connections 
+			between 
+				Virtual Private Cloud (VPC) and 
+				resources outside the VPC. 
+Step-by-step guide on creating a VGW:
+
+	Prerequisites:
+
+		An active AWS account.
+		An existing VPC where you want to connect the VGW.
+
+	Steps:
+
+		Access the AWS Management Console: 
+			Navigate to the AWS Management Console and log in to your AWS account.
+		Go to the VPC Service: 
+			Search for "VPC" in the search bar and select "Amazon VPC" from the search results.
+
+		Select your VPC:  
+			In the VPC dashboard, choose the VPC where you want to create the VGW.
+		Navigate to VGWs:  
+			From the VPC navigation menu, select "Virtual Private Gateways".
+		Create VGW: Click on the "Create Virtual Private Gateway" button.
+		Choose VGW Type: 
+			Select the desired VGW type. 
+			Here's a breakdown of the options:
+				Internet Gateway: 
+					Connects your VPC to the public internet.
+				Transit Gateway: 
+					Provides centralized connectivity management for multiple VPCs and other AWS services. 
+					(Note: Transit Gateway creation involves additional steps.)
+
+Configure Options (Optional):
+
+	Name: Assign a descriptive name for your VGW for easy identification.
+	ASN (Optional): You can optionally specify an Autonomous System Number (ASN) for Border Gateway Protocol (BGP) routing if required for specific configurations.
+	Create VGW:  Once you've chosen the type and configured any optional settings, click on the "Create Virtual Private Gateway" button.
+	Attach VGW to VPC:  A newly created VGW is in a detached state. To connect it to your VPC, navigate back to the VPC list, select your VPC, and go to the "Subnet Associations" section. Here, you can associate the created VGW with your VPC subnets.
+
+	Additional Considerations:
+
+	Security Groups: Ensure proper security groups are configured to control inbound and outbound traffic flow through the VGW.
+	Route Tables: Update route tables in your VPC subnets to route traffic through the VGW for desired destinations.
+	Connecting to On-Premises Network (Optional): If you want to connect your VPC to an on-premises network, you can utilize a VPN connection or AWS Direct Connect alongside the VGW.
+	By following these steps, you can successfully create and configure a VGW in your AWS VPC. Remember to adjust the configuration options based on your specific needs and security requirements.
+
+	Here are some additional resources that you might find helpful:
+
+AWS Documentation on VPC Endpoints: https://docs.aws.amazon.com/whitepapers/latest/aws-privatelink/what-are-vpc-endpoints.html
+AWS Documentation on AWS Direct Connect: https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html
+---------------------------------------------------------------------
+•Configuring Site-to-Site VPN Connections
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+•Configuring Client VPN Connections
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+
+AWS Direct Connect Gateway
+•Introduction to Direct Connect Gateway
+---------------------------------------------------------------------
+
+Introduction to AWS Direct Connect Gateway
+AWS Direct Connect Gateway 
+	service that simplifies managing connections 
+		between 
+			on-premises network and 
+			Virtual Private Clouds (VPCs) 
+				across different AWS Regions or even AWS accounts. 
+				It acts as a central hub for Direct Connect connections, 
+				offering several advantages:
+
+Centralized Connectivity Management:
+	Instead of managing individual Direct Connect connections 
+		for each VPC or Region
+		you can establish a single connection 
+			to the Direct Connect Gateway.
+	This 
+		simplifies configuration and 
+		reduces complexity
+			especially for multi-VPC or 
+			multi-Region deployments.
+Scalability and Flexibility:
+	Direct Connect Gateway 
+		connect on-premises network 
+		to 
+			multiple VPCs and 
+			Transit Gateways 
+				across different Regions or accounts.
+	Provides greater flexibility in 
+		scaling your network connectivity as 
+			your AWS environment grows.
+
+Improved Security:
+	Direct Connect Gateway 
+		utilizes private virtual interfaces (VIFs) 
+			to connect to VPCs or Transit Gateways.
+	This ensures private and secure communication 
+		between your on-premises network and AWS resources.
+Simplified Routing:
+	You can configure 
+		routing policies 
+			within the Direct Connect Gateway 
+				to control traffic flow 
+					between 
+						on-premises network and 
+						connected VPCs 
+					or 
+						Transit Gateways.
+	No need for complex routing configurations within individual VPCs.
+
+Here's a breakdown of how Direct Connect Gateway works:
+
+	Direct Connect Connection: 
+		You establish a dedicated physical connection between your on-premises network and an AWS Direct Connect location.
+	Direct Connect Gateway: 
+		Create a Direct Connect Gateway resource in a specific Region within your AWS account.
+	Private Virtual Interfaces (VIFs): 
+		You configure VIFs to connect your Direct Connect connection to the Direct Connect Gateway.
+	VPC or Transit Gateway Associations: 
+		Associate VPCs or a Transit Gateway with the Direct Connect Gateway to enable connectivity between your on-premises network and those resources.
+Benefits of using AWS Direct Connect Gateway:
+
+	Simplified management: 
+		Centralized control over Direct Connect connections.
+	Scalability: 
+		Supports connections to multiple VPCs and Transit Gateways across Regions and accounts.
+	Improved security: 
+		Utilizes private VIFs for secure communication.
+	Simplified routing: 
+		Centralized routing policy configuration for efficient traffic flow.
+	
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Additional 
+----------
+AWS Direct Connect and AWS VPN Gateway are connectivity options for connecting your on-premises network to your AWS resources in the cloud, but they differ in their approach, security, cost, and use cases. Here's a breakdown of the key differences:
+
+Connection Method:
+
+Direct Connect: Establishes a dedicated physical connection between your on-premises network and an AWS Direct Connect location. This provides a more direct and private route for data transfer.
+VPN Gateway: Creates a secure tunnel over the public internet to connect your on-premises network to your VPC (Virtual Private Cloud) in AWS.
+Security:
+
+Direct Connect: Offers a more secure connection compared to VPN as it utilizes a dedicated physical line, less susceptible to public internet vulnerabilities.
+VPN Gateway: Relies on encryption to secure data transfer over the public internet, which can be inherently less secure than a dedicated line.
+Cost:
+
+Direct Connect: Has a fixed monthly recurring charge for the dedicated connection plus data transfer charges.
+VPN Gateway: Charges are based on the data transfer out of your VPC. There are no fixed monthly costs associated with using a VPN Gateway itself.
+Use Cases:
+
+Direct Connect: Ideal for scenarios requiring high bandwidth, low latency, and the highest level of security for data transfer between your on-premises network and AWS resources. This is often used for large enterprises or organizations transferring critical data.
+VPN Gateway: A good choice for occasional or low-bandwidth connections to AWS resources, or for establishing temporary connections during migration or testing phases. It's also suitable for geographically dispersed locations where setting up a dedicated Direct Connect line might be impractical.
+Here's a table summarizing the key differences:
+
+Feature	AWS Direct Connect	AWS VPN Gateway
+Connection Method	Dedicated physical line	Encrypted tunnel over public internet
+Security	Higher security	Lower security (encrypted)
+Cost	Fixed monthly fee + data transfer	Data transfer out only
+Use Cases	High bandwidth, low latency, critical data transfer	Occasional use, low bandwidth, geographically dispersed locations
+Additional factors to consider:
+
+Setup Complexity: Direct Connect typically requires more complex setup and configuration compared to a VPN Gateway.
+Scalability: Both options offer scalability, but Direct Connect might offer more predictable performance for high-bandwidth needs.
+Ultimately, the choice between AWS Direct Connect and AWS VPN Gateway depends on your specific requirements for security, bandwidth, cost, and complexity.
+------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------
+•Creating and Managing Direct Connect Gateways
+
+	same as above
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+•Associating Virtual Private Gateways (VGWs) with Direct Connect Gateways
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+•Configuring Direct Connect Connections
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+
+AWS Transit Gateway
+•Overview of Transit Gateway
+---------------------------------------------------------------------
+
+AWS Transit Gateway: 
+	Centralized Connectivity for Scalable Networks
+	central hub 
+		for connecting 
+			multiple 
+				Virtual Private Clouds (VPCs) and 
+				on-premises networks within your AWS environment. 
+	Simplifies managing complex network topologies 
+		with numerous VPCs and connections
+		offering several key advantages:
+
+Advantages
+	Centralized Connectivity:
+
+		Eliminates the need for complex 
+			peer-to-peer VPC connections.
+		VPCs and on-premises networks 
+			connect to the Transit Gateway
+			establishing a central connection point.
+	Scalability and Flexibility:
+		Transit Gateway 
+			can connect thousands of VPCs and 
+			on-premises networks 
+				in a single AWS Region.
+		This offers significant scalability for growing network infrastructures.
+
+	Simplified Management:
+
+		You can manage and monitor all 
+			VPC and 
+			on-premises network connections 
+				from a single location 
+				within the Transit Gateway console.
+		This reduces complexity and simplifies network administration.
+	Improved Security:
+
+		Transit Gateway utilizes private Virtual Private Cloud (VPC) attachments 
+			for connections with VPCs.
+		This ensures secure communication within your network.
+	Route Table Management:
+		Transit Gateway route tables 
+			define how traffic flows between connected VPCs and on-premises networks.
+		This centralized approach simplifies route management compared to configuring individual VPC route tables.
+	Here's a breakdown of how AWS Transit Gateway works:
+
+		Create Transit Gateway: You provision a Transit Gateway resource in a specific Region within your AWS account.
+		VPC and On-Premises Network Attachments: Attach your VPCs and on-premises networks (using AWS Direct Connect or VPN connections) to the Transit Gateway.
+		Route Table Configuration: Define route tables within the Transit Gateway to control traffic flow between connected resources.
+	Flexibility: Enables diverse connection options for VPCs and on-premises networks.
+
+Benefits of using AWS Transit Gateway:
+
+	Simplified network management: Centralized control over VPC and on-premises network connections.
+	Scalability: Supports connections for a large number of VPCs and on-premises networks.
+	Improved security: Utilizes private VPC attachments and centralizes route management.
+	Flexibility: Enables diverse connection options for VPCs and on-premises networks.
+Here are some use cases for AWS Transit Gateway:
+
+	Multi-VPC architectures: Connect multiple VPCs within a Region for secure communication between resources.
+	Hybrid cloud deployments: Establish secure connections between your VPCs and on-premises network.
+	Large-scale network environments: Manage complex network topologies with numerous VPCs and connections.
+	While AWS Transit Gateway offers a powerful solution for centralized network management, it's important to consider its resource requirements and potential costs compared to simpler VPC peering for smaller deployments.
+
+Here are some additional resources you might find helpful:
+
+AWS Documentation on AWS Transit Gateway: https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-transit-gateway.html
+Comparison of AWS Transit Gateway and VPC Peering: https://medium.com/awesome-cloud/aws-difference-between-vpc-peering-and-transit-gateway-comparison-aws-vpc-peering-vs-aws-transit-gateway-3640a464be2d
+
+---------------------------------------------------------------------
+•Creating and Managing Transit Gateways
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+•Attaching VPCs to Transit Gateways
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+•Transit Gateway Route Propagation
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Additional 
+
+
+AWS Transit Gateway, AWS Direct Connect Gateway, and AWS VPN Gateway -  connect your on-premises network to your AWS resources, but they differ significantly in functionality, use cases, and complexity. Here's a breakdown of the key distinctions:
+
+1. Connection Method:
+
+Direct Connect Gateway: Creates a point-to-point connection between your on-premises network and a single VPC (Virtual Private Cloud) in AWS using AWS Direct Connect. It acts as an endpoint for the Direct Connect connection.
+VPN Gateway: Establishes a secure tunnel encrypted over the public internet to connect your on-premises network to a VPC in AWS.
+Transit Gateway: Functions as a central hub for connecting multiple VPCs, Direct Connect gateways, and VPN connections within a single AWS Region. It doesn't directly connect to your on-premises network itself.
+2. Use Cases:
+
+Direct Connect Gateway: Ideal for simple, point-to-point connections with high bandwidth and low latency requirements between your on-premises network and a specific VPC. Well-suited for dedicated and secure data transfer for a single VPC.
+VPN Gateway: A cost-effective option for occasional or low-bandwidth connections to a VPC, particularly for geographically dispersed locations or temporary connections during migration.
+Transit Gateway: Perfect for complex network architectures with numerous VPCs and on-premises network connections. It simplifies central management, routing, and security for large-scale deployments where multiple VPCs need to communicate with each other and your on-premises network.
+3. Scalability and Complexity:
+
+Direct Connect Gateway: Manages a single VPC connection, offering limited scalability for multi-VPC scenarios. Setup is relatively straightforward.
+VPN Gateway: Can connect to multiple VPCs, but requires individual connections for each, potentially leading to management complexity with a growing number of VPCs. Setup is simpler compared to Transit Gateway.
+Transit Gateway: Highly scalable, supporting connections for thousands of VPCs and on-premises networks. However, it introduces additional configuration complexity for routing and managing multiple connections.
+4. Cost:
+
+Direct Connect Gateway: Inherits costs associated with AWS Direct Connect (fixed monthly fee + data transfer).
+VPN Gateway: Charges are based on data transfer out of your VPC. No fixed monthly costs.
+Transit Gateway: Has a separate pricing model with charges based on the number of VPC connections, Direct Connect Gateway connections, and data transfer out of the Transit Gateway.
+Here's an analogy to visualize the difference:
+
+Direct Connect Gateway: Imagine a single dedicated bridge connecting your on-premises network to a specific building (VPC) in a large office complex (AWS).
+VPN Gateway: Think of a secure tunnel established over a public road (internet) to connect your location to different buildings (VPCs) within the office complex.
+Transit Gateway: Consider it a central hub within the office complex that interconnects all the buildings (VPCs) and provides access from external locations (on-premises network) through dedicated bridges (Direct Connect) or secure tunnels (VPN).
+Choosing the Right Option:
+
+For simple, point-to-point connections with a single VPC, Direct Connect Gateway is a good choice.
+For occasional or low-bandwidth connections, VPN Gateway offers a cost-effective solution.
+For complex network architectures with numerous VPCs and on-premises network connections that require centralized management and routing, AWS Transit Gateway is the way to go.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------
+
+AWS Storage Gateway
+•Introduction to Storage Gateway
+---------------------------------------------------------------------
+
+
+
+Introduction to AWS Storage Gateway: 
+	Bridging On-Premises and Cloud Storage
+
+AWS Storage Gateway 
+	hybrid storage solution 
+	provides seamless connectivity between 
+		on-premises storage infrastructure and 
+		various AWS cloud storage services like 
+			S3, 
+			S3 Glacier, 
+			EBS, and 
+			FSx for 
+			Windows File Server. 
+	It acts as a 
+		gateway appliance 
+		or 
+		virtual software
+			offering several functionalities:
+
+				1. Cache on-premises data: 
+					Storage Gateway 
+						maintains a local cache of recently accessed 
+							on your on-premises storage devices. 
+						Applications can access 
+							frequently used data 
+								with low latency
+									even if the primary storage resides in the AWS cloud.
+				2. Supports multiple protocols: 
+					Storage Gateway integrates with 
+						existing on-premises storage environments 
+							by supporting various storage protocols like 
+								NFS (Network File System), 
+								SMB (Server Message Block), and 
+								iSCSI (Internet Small Computer System Interface).
+				3. Data transfer optimization: 
+					Storage Gateway ensures 
+						secure and efficient data transfer between 
+							on-premises storage and 
+							cloud storage. 
+						Can 
+							data encrypt, 
+							throttle to regulate data transfer speeds, and bandwidth management 
+								for optimal resource utilization.
+				4. Multiple Gateway options: 	
+					AWS offers different Storage Gateway types catering to specific storage needs:
+						S3 File Gateway: 
+							Caching frequently accessed files 
+								stored in Amazon S3 buckets.
+						Volume Gateway: 
+							Cached volumes 
+								(frequently accessed data) and 
+							stored volumes 
+								(full backups to the cloud).
+						Tape Gateway: 
+							Enables 
+								archiving rarely used data 
+								to cost-effective S3 Glacier storage 
+									for long-term retention.
+						Amazon FSx File Gateway: 
+							Offers caching for on-premises file 
+								shares backed by 
+								Amazon FSx for Windows File Server.
+
+Benefits of using AWS Storage Gateway:
+	Reduced Storage Costs: 
+		Tier rarely accessed data to 
+			low-cost cloud storage options 
+			like S3 Glacier.
+	Improved Performance: 
+		Local cache ensures 
+			low latency access for frequently used data.
+	Simplified Data Management: 
+		Centralized management console 
+			for all Storage Gateway appliances or 
+			software instances.
+	Disaster Recovery: 
+		Gateway options like Volume Gateway 
+			support periodic backups to the cloud 
+			for disaster recovery purposes.
+
+Here's a typical use case for AWS Storage Gateway:
+
+An organization has a large archive of infrequently accessed files stored on-premises. 
+	These files can be migrated to S3 Glacier using Tape Gateway, freeing up valuable on-premises storage space and reducing storage costs. However, critical and frequently accessed files can remain cached locally using S3 File Gateway, ensuring fast access for applications.
+In essence, AWS Storage Gateway bridges the gap between on-premises storage and AWS cloud storage solutions, providing caching, data transfer optimization, protocol support, and various gateway options to cater to diverse storage needs.
+
+---------------------------------------------------------------------
+•Configuring File Gateway
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+•Configuring Volume Gateway
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+•Configuring Tape Gateway
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+
+AWS App Runner
+•Overview of AWS App Runner
+---------------------------------------------------------------------
+
+AWS App Runner: Simplified Deployment for Containerized Applications
+AWS App Runner is a managed service designed to streamline the deployment and management of containerized web applications and APIs on AWS. It offers a serverless approach, eliminating the need for you to manage underlying infrastructure or container orchestration tools. Here's an overview of its key features:
+
+Simplified Deployment:
+
+Deploy from Source Code or Container Images: App Runner allows you to deploy your application directly from source code repositories like GitHub or by using existing container images.
+Automatic Scaling: The service automatically scales your application instances based on traffic demands, ensuring optimal performance and cost-efficiency.
+Built-in Load Balancing: App Runner provides integrated load balancing for handling incoming traffic and distributing it across your application instances.
+HTTPS Connections with Automatic TLS Certificates: App Runner establishes secure HTTPS connections with automatic TLS certificate management for your applications.
+Benefits of using AWS App Runner:
+
+Faster Time to Market: The simplified deployment process enables quicker launches of your containerized applications.
+Reduced Operational Overhead: App Runner eliminates the need to manage servers, container orchestration tools, or scaling configurations.
+Cost-Effective: You only pay for the resources your application consumes, making it cost-efficient for applications with varying traffic patterns.
+Focus on Development: By reducing infrastructure management tasks, App Runner allows developers to focus on application logic and business functionalities.
+Here's a breakdown of how AWS App Runner works:
+
+Create an App Runner Service: Define your application configuration within the App Runner console or using AWS CloudFormation templates.
+Specify Deployment Source: Choose to deploy from your code repository or provide a container image URL.
+Automatic Build and Deployment: App Runner automatically builds your container image (if deploying from source code) and deploys it to the AWS cloud.
+Load Balancing and Scaling: The service takes care of load balancing traffic and automatically scaling your application instances based on requirements.
+Who should consider AWS App Runner?
+
+Developers and organizations looking for a quick and easy way to deploy containerized web applications and APIs.
+Teams seeking to reduce operational overhead associated with managing containerized applications on AWS.
+Users who want a cost-effective solution for applications with fluctuating traffic patterns.
+Here are some additional points to consider:
+
+AWS App Runner is a relatively new service, so its feature set might still be evolving.
+It's well-suited for stateless containerized applications. Stateful applications might require additional considerations.
+For more complex deployments or container orchestration needs, other AWS services like Amazon ECS (Elastic Container Service) or Amazon EKS (Elastic Kubernetes Service) might be more appropriate.
+Overall, AWS App Runner offers a compelling solution for simplifying the deployment and management of containerized web applications and APIs on AWS. It allows developers to focus on building great applications while App Runner handles the underlying infrastructure and scaling complexities.
+---------------------------------------------------------------------
+•Deploying Applications with App Runner
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+•Configuring Continuous Deployment with App Runner
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+•Monitoring and Scaling with App Runner
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+
+AWS Global Accelerator
+•Introduction to Global Accelerator
+
+---------------------------------------------------------------------
+
+
+
+
+Introduction to AWS Global Accelerator: 
+	Boost Performance and Availability 
+		for Global Users
+
+AWS Global Accelerator 
+	network layer service 
+		designed to improve  
+			performance and 
+			availability of 
+				internet-facing applications for users worldwide. 
+	
+	Acts as a 
+		traffic routing gateway
+		direct user requests to 
+			optimal regional endpoint 
+				within your AWS infrastructure. 
+	
+	key functionalities:
+		Enhanced Performance: 
+			Global Accelerator 
+				utilizes a globally distributed network 
+					of edge locations 
+					to route user traffic 
+						closer to their geographic location. 
+			Reduce latency 
+			improve response times 
+			
+		Increased Availability: 
+			Offers high availability 
+				by continuously monitoring the health of your endpoint destinations 
+					(like 
+						Application Load Balancers, 
+						Network Load Balancers
+						or EC2 instances) 
+						in different AWS Regions. 
+				If an endpoint becomes unhealthy, Global Accelerator automatically routes traffic to healthy backup endpoints, ensuring service continuity for your users.
+		Deterministic Routing (Optional): 
+			Traditional DNS resolution
+				can introduce some variability 
+					in routing due to caching mechanisms, 
+				Global Accelerator 
+					optional feature called 
+						"static routing." 
+					Can define how user traffic is directed 
+						based on factors like 
+							user location or 
+							custom weighting for endpoints.
+		Improved Security: 
+			Global Accelerator leverages the AWS global network for 
+				traffic routing, 
+				offering inherent security benefits. 
+			Additionally
+				it can be integrated with 
+					AWS WAF (Web Application Firewall) for 
+					advanced security measures at the edge of your network.
+
+Benefits of using AWS Global Accelerator:
+
+	Reduced Latency for Global Users: 
+		Users worldwide 
+			experience faster application response times 
+				due to geographically closer endpoint routing.
+	Highly Available Applications: 
+		Automatic failover to healthy endpoints 
+			ensures service continuity 
+			even if regional outages occur.
+	Improved User Experience: 
+		Faster loading times and 
+		better overall responsiveness 
+			enhance the user experience for your global audience.
+	Simplified Management: 
+		Global Accelerator 
+			provides a centralized console 
+			for managing routing configurations and monitoring endpoint health.
+
+Here's a typical use case for AWS Global Accelerator:
+
+A company has a web application hosted on AWS with regional deployments in the US, Europe, and Asia. By utilizing Global Accelerator, users from any location will be directed to the closest regional endpoint, minimizing latency and improving the overall user experience.
+In essence, AWS Global Accelerator acts as a traffic control center for your internet-facing applications, optimizing performance, availability, and user experience for a global audience.
+---------------------------------------------------------------------
+•Creating and Managing Accelerators
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+•Configuring Endpoints and Listener Policies
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+•Health Checks and Anycast Routing
+---------------------------------------------------------------------
+---------------------------------------------------------------------
