@@ -1,0 +1,136 @@
+Reference: 
+	https://www.youtube.com/watch?v=vyLvmPkQZkI
+	
+	mkdir temp 
+	write the script 
+	
+	
+----------------------------------------------------------------
+to test this locally 
+	
+import pymysql
+
+# RDS settings
+endpoint = 'vilasdb.ccogndo84hft.us-east-1.rds.amazonaws.com'
+db_name = 'classicmodels'
+db_user_name = 'root'
+password = 'Vilas9731588933'
+#port = 3306
+
+def test():
+#def lambda_handler(event, context):
+#    try:
+        connection = pymysql.connect(
+            endpoint,
+            user=db_user_name,
+            passwd=password,
+            db=db_name)
+
+        with connection.cursor() as cursor:
+            cursor.execute('select * from customers')
+            result = cursor.fetchall()
+
+            for row in result:
+                print("{0} {1} {2}".format(row[0], row[1], row[2]))
+	
+----------------------------------------------------------------
+
+
+import pymysql
+
+# RDS settings
+endpoint = 'copy-end-point'
+db_name = 'classicmodels'
+db_user_name = 'root'
+password = 'Test'	#Change it
+#port = 3306
+
+def lambda_handler(event, context):
+    connection = pymysql.connect(
+        host=endpoint,
+        user=db_user_name,
+        passwd=password,
+        db=db_name)
+
+    with connection.cursor() as cursor:
+        cursor.execute('select * from customers')
+        result = cursor.fetchall()
+
+        for row in result:
+            print("{0} {1} {2}".format(row[0], row[1], row[2]))
+	
+	
+	
+----------------------------------------------------------------
+	
+	sudo yum -y install python-pip
+	pip install -t $PWD pymysql 
+	ls 
+		2 folders 
+		pymysql 
+		PyMySQL-....
+		
+	
+zip the folder 
+
+	
+	
+	
+Inorder to run rds from private subnet 	
+	remove public access from rds 
+	update the role of lambda to have 
+		ec2fullaccess (new machine needs to be created)
+		rdsfull access 
+		AWSLambdaVPCAccessExecutionRole 
+		
+	check the security group 
+		if both are connected different security group 
+			give permission for ingress of rds for lambda sg
+
+--------------------------------
+Official doc: https://docs.aws.amazon.com/lambda/latest/dg/example_serverless_connect_RDS_Lambda_section.html
+import json
+import os
+import boto3
+import pymysql
+
+# RDS settings
+proxy_host_name = os.environ['PROXY_HOST_NAME']
+port = int(os.environ['PORT'])
+db_name = os.environ['DB_NAME']
+db_user_name = os.environ['DB_USER_NAME']
+aws_region = os.environ['AWS_REGION']
+
+
+# Fetch RDS Auth Token
+def get_auth_token():
+    client = boto3.client('rds')
+    token = client.generate_db_auth_token(
+        DBHostname=proxy_host_name,
+        Port=port
+        DBUsername=db_user_name
+        Region=aws_region
+    )
+    return token
+
+def lambda_handler(event, context):
+    token = get_auth_token()
+    try:
+        connection = pymysql.connect(
+            host=proxy_host_name,
+            user=db_user_name,
+            password=token,
+            db=db_name,
+            port=port,
+            ssl={'ca': 'Amazon RDS'}  # Ensure you have the CA bundle for SSL connection
+        )
+        
+        with connection.cursor() as cursor:
+            cursor.execute('SELECT %s + %s AS sum', (3, 2))
+            result = cursor.fetchone()
+
+        return result
+        
+    except Exception as e:
+        return (f"Error: {str(e)}")  # Return an error message if an exception occurs 	
+	
