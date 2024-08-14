@@ -4,9 +4,22 @@ Introduction to AWS ECS
 
 The lifecycle of a container goes through three stages:
 
-Build - Gather up your application and all of its dependencies. The gathered pieces are turned into one immutable artifact called the container image.
-Push - Upload the container image artifact into a registry.
-Run - Download the container image artifact from its registry onto some compute, extract it, and run the application in its own isolated environment.
+Build - 
+	Gather 
+		application and 
+		its dependencies. 
+	The gathered pieces 
+		turned into one immutable artifact 
+			called the container image.
+Push - 
+	Upload the container image artifact into a registry.
+Run - 
+	Download the container image artifact 
+		from its registry to
+			compute, 
+			extract it, and 
+			run the application 
+				in its own isolated environment.
 
 
 
@@ -37,9 +50,10 @@ Core Components:
 		restart 
 		destroy 
 		scale 
-	Deploy and load-balance application across multiple servers
+	Deploy and load-balance 
+		application across multiple servers
 	Autoscale 
-	Roll out changes to application
+		Roll out changes to application
 	
 
 	
@@ -129,6 +143,13 @@ Additional Important Concepts:
 				to access AWS resources. 
 			Implement security measures 
 				within your containers themselves.
+				
+			https://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance_IAM_role.html
+				AmazonECSContainerInstanceIAMRole
+				Additionally consider giving 
+					S3
+					EFS
+				
 	Networking: 
 		ECS tasks 
 			can be assigned Elastic Network Interfaces (ENIs) 
@@ -1149,9 +1170,18 @@ AWS Fargate spot
 
 In AWS ECS (Elastic Container Service), base and weight are settings used within a capacity provider strategy to control how ECS distributes tasks across multiple capacity providers associated with your cluster.
 
-	Base: This defines the minimum number of tasks that must run on a specific capacity provider within the strategy. There can only be one capacity provider with a base value defined in a strategy.
+	Base: This defines the 
+		minimum number of tasks 
+			that must run on a specific capacity provider within the strategy. 
+			There can only be one capacity provider with a base value defined in a strategy.
 
-	Weight: This is a relative weighting assigned to each capacity provider.  It determines the proportion of remaining tasks (after fulfilling any defined bases) that should be placed on that provider. Here's how weight works:
+	Weight: 
+		This is a relative weighting 
+			assigned to each capacity provider.  
+		It determines the proportion of remaining tasks 
+			(after fulfilling any defined bases) that 
+				should be placed on that provider. 
+		Here's how weight works:
 
 Higher weight -> More tasks placed on that provider relative to others.
 Weight of 0 -> No tasks will be placed on that provider unless it's the only one with a non-zero weight.

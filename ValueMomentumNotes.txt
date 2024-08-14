@@ -1,0 +1,1535 @@
+
+Day 1(4 hours)
+	Overview of Typical network architecture in aws 
+	-----------------------------------------------------------------------------------------------------------------
+	
+	Core Components of AWS Network Architecture
+	VPC (Virtual Private Cloud): 
+		Logically isolated section 
+			can launch AWS resources like 
+				EC2 instances, 
+				databases etc.
+
+	It functions as a virtual data center.
+	Subnet: A range of IP addresses within a VPC. Subnets can be public (accessible from the internet) or private (isolated from the internet).
+		Security Groups: 
+			Virtual firewalls for 
+				EC2 instances, 
+				controlling 
+					inbound and 
+					outbound traffic.
+		NACLs (Network Access Control Lists): 
+			Additional layer of security by 
+				controlling traffic at the 
+					subnet level.
+		Internet Gateway: 
+			Enables instances in a public subnet to communicate with the internet.
+		NAT Gateway: 
+			Instances in a private subnet 
+				to access the internet 
+					without having a public IP address.
+		Elastic Load Balancing: 
+			Distributes incoming traffic 
+				across multiple instances.
+		VPN Connection: 
+			Connects your 
+				on-premises network to your VPC.
+
+
+		Direct Connect: 
+			Provides a dedicated network connection 
+				between your on-premises network and AWS.
+		AWS Transit Gateway: 
+			Connects multiple VPCs and on-premises networks together.
+
+	Common Network Architectures
+	Basic VPC Architecture
+		Single VPC with 
+			public and 
+			private subnets.
+		Public subnets 
+			for internet-facing applications 
+				(
+					web servers, 
+					load balancers).
+		Private subnets 
+			internal services (
+				databases, 
+				application servers).
+		Security groups and 
+		NACLs to control traffic.
+	Multi-Tier Architecture
+		Multiple VPCs for different environments (
+			development, 
+			testing, 
+			production).
+		Load balancers for distributing traffic across instances.
+		Auto Scaling groups for scaling instances based on demand.
+	Hub-and-Spoke Architecture
+		A central VPC (hub) connected to multiple VPCs 
+			(spokes) using AWS Transit Gateway.
+		Provides centralized network management and routing.
+	Hybrid Cloud Architecture
+		Combines on-premises and cloud resources.
+		Uses VPN or Direct Connect to connect on-premises networks to AWS.
+		Includes hybrid networking features like 
+			AWS Site-to-Site VPN and 
+			AWS Direct Connect.
+	Additional Considerations
+		High Availability: 
+			Use multiple Availability Zones for redundancy.
+		Security: 
+			Implement best practices for 
+				security groups, 
+				NACLs, and 
+				IAM roles.
+		Cost Optimization: 
+			Choose 
+				appropriate instance types and 
+				network services 
+					based on workload requirements.
+		Performance: 
+			Optimize 
+				network latency and 
+				throughput 
+					using AWS services like AWS Global Accelerator.
+
+	
+	-----------------------------------------------------------------------------------------------------------------
+	Discuss
+		security 
+		salability
+		fault tolerance
+		etc.
+	-----------------------------------------------------------------------------------------------------------------
+	
+	
+	Network Segmentation: 
+		Isolate different components of the network using 
+			VPCs, 
+			subnets, and 
+			security groups.
+	Firewall Rules: 
+		Implement granular firewall rules 
+			to control 
+				inbound and 
+				outbound traffic.
+	Intrusion Detection and Prevention Systems (IDPS): 
+		Deploy tools like 
+			AWS WAF, 
+			AWS GuardDuty 
+				to detect and prevent threats.
+	Encryption: 
+		Encrypt 
+			data at 
+				rest and 
+				in transit 
+					using AWS Key Management Service (KMS) and SSL/TLS.
+	IAM: 
+		Use IAM to manage user access and permissions.
+	Vulnerability Management: 
+		Regularly scan for vulnerabilities and patch systems.
+	Logging and Monitoring: 
+		Implement robust logging and monitoring to detect anomalies and security incidents.
+	Scalability
+		Auto Scaling: 
+			Utilize AWS 
+				Auto Scaling to 
+					automatically adjust the number of instances based on demand.
+		Load Balancing: 
+			Distribute traffic across multiple instances using Elastic Load Balancing.
+		Database Scaling: 
+			Employ database scaling solutions 
+				like Amazon RDS with 
+					Multi-AZ or 
+					Aurora for 
+						high availability and performance.
+		Network Scalability: 
+			Leverage 
+				AWS Direct Connect or 
+				VPN connections 
+					to accommodate growing network traffic.
+	Fault Tolerance
+		High Availability: 
+			Design systems with 
+				redundancy and failover mechanisms.
+		Region and Availability Zone (AZ) Distribution: 
+			Distribute resources 
+				across multiple regions and 
+				AZs for disaster recovery.
+		Redundant Components: 
+			Use redundant components like 
+				load balancers, 
+				network interfaces, and 
+				storage volumes.
+		Regular Testing: 
+			Conduct failover tests and 
+			disaster recovery drills.
+		Other Important Requirements
+	Performance: 
+		Optimize 
+			network latency and 
+			throughput 
+				using AWS Global Accelerator and 
+				content delivery networks (CDNs).
+		Cost Optimization: 
+			Analyze resource utilization and 
+			implement cost-saving measures 
+				like 
+					reserved instances, 
+					spot instances, and 
+					rightsizing.
+	Compliance: 
+		Adhere to 
+			industry regulations and 
+			standards (e.g., PCI DSS, HIPAA, GDPR).
+	Monitoring and Logging: 
+		Implement 
+			comprehensive monitoring and 
+			logging to 
+				track system performance and 
+				identify issues.
+	DevOps Practices: 
+		Adopt DevOps practices for 
+			efficient development, 
+			deployment, and 
+			management.
+Example Architecture
+	typical AWS network architecture with multiple 
+		VPCs, 
+		subnets, 
+		load balancers, 
+		auto scaling groups, and 
+		security measures
+	Additional Considerations
+		Network Topology: 
+			Choose the appropriate network topology 
+				(
+					hub-and-spoke, 
+					star, 
+					mesh) 
+					based on your application requirements.
+		Hybrid Cloud: 
+			Integrate on-premises infrastructure with 
+				AWS using 
+					VPN or 
+					Direct Connect.
+		Serverless Computing: 
+			Consider using 
+				AWS Lambda for 
+				event-driven architectures.
+		Containerization: 
+			Utilize Amazon Elastic Container Service (ECS) or 
+			Amazon Elastic Kubernetes Service (EKS) 
+				for containerized applications.
+	
+	-----------------------------------------------------------------------------------------------------------------		
+		
+	Services Used:
+	-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+		VPC (Virtual Private Cloud):
+		-----------------------------------------------------------------------------------------------------------------
+		A VPC is essentially a 
+			virtual network within the 
+				AWS cloud that you have complete control over.
+
+It's like having your own private data center in the cloud. You can define your own IP address range, create subnets, set up routing tables, and control network access through security groups and network access control lists (NACLs).
+
+Key Components of a VPC
+	Subnets: 
+		Range of IP addresses within a VPC. 
+		Can have 
+			multiple subnets in a VPC
+			They must reside in a single Availability Zone.
+	Security Groups: 
+		Act as virtual firewalls for 
+			EC2 instances, 
+			controlling 
+				inbound and 
+				outbound traffic.
+	NACLs: 
+		Provide an 
+			additional layer of security 
+			by 
+				controlling traffic at the subnet level.
+	Internet Gateway: 
+		Enables instances in a public subnet to 
+			communicate with the internet.
+	NAT Gateway: 
+		Enables instances in a private subnet 
+			to access the internet 
+				without having a public IP address.
+	Route Tables: 
+		Determine how traffic is routed within the VPC.
+Benefits of Using VPC
+	Isolation: 	
+		Your resources are isolated from other AWS customers.
+	Security: 
+		You have granular control over network access through security groups and NACLs.
+	Flexibility: 
+		You can customize your network environment to meet your specific needs.
+	Scalability: 
+		You can easily expand your VPC as your application grows.
+	Cost-Effective: 
+		You pay only for the resources you use.
+Common Use Cases
+	Development and Testing Environments: 
+		Create 
+			isolated VPCs for 	
+				different stages of development.
+	Production Environments: 
+		Deploy critical applications in secure VPCs 
+			with multiple Availability Zones for redundancy.
+	Hybrid Cloud Environments: 
+		Connect your on-premises network to a 
+			VPC using VPN or Direct Connect.
+
+		
+	-----------------------------------------------------------------------------------------------------------------	
+		Create a secure and isolated network environment for your application resources.
+	-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+		Subnet (Subnets):
+			Divide your VPC into logical subnets for specific purposes, 
+				such as a 
+					public subnet for web servers and 
+					private subnet for database instances.
+		-----------------------------------------------------------------------------------------------------------------
+		
+lab: 		
+		Step-by-Step Guide
+1. Create a VPC
+	Log in to the AWS Management Console and navigate to the VPC service.
+	Click on "Create VPC".
+		Choose a name for your VPC (e.g., "MyVPC").
+		Specify an IPv4 CIDR block. 
+			Range of IP addresses for your VPC. 
+			Choose a block that doesn't overlap with your 
+				on-premises network. 
+			For example, 10.0.0.0/16.
+		Click "Create VPC".
+2. Create Public Subnet
+	In the VPC dashboard, select your newly created VPC.
+	Click on "Subnets".
+	Click "Create subnet".
+	Choose the VPC you created.
+	Select an Availability Zone for your subnet (e.g., us-east-1a).
+	Specify a CIDR block for the subnet. This should be a smaller range within your VPC's CIDR block. For example, 10.0.1.0/24.
+	Give your subnet a name (e.g., "PublicSubnet").
+	Click "Create subnet".
+3. Create Private Subnet
+	Follow the same steps as creating a public subnet, 
+		but select a different Availability Zone (e.g., us-east-1b) and a 
+		different CIDR block (e.g., 10.0.2.0/24) for the private subnet. 
+	Give it a name like "PrivateSubnet".
+4. Create an Internet Gateway
+	In the VPC dashboard, click on "Internet Gateways".
+	Click "Create Internet Gateway".
+	Give it a name (e.g., "MyInternetGateway").
+	Click "Create Internet Gateway".
+5. Attach Internet Gateway to VPC
+	Select the Internet Gateway you created.
+	Choose "Actions" -> "Attach to VPC".
+	Select the VPC you created.
+	Click "Attach".
+6. Create a Route Table
+	In the VPC dashboard, click on "Route Tables".
+	Click "Create route table".
+	Choose the VPC you created.
+	Click "Create route table".
+7. Associate Route Table with Public Subnet
+	Select the route table you created.
+	Click "Actions" -> "Associate with subnet".
+	Choose the public subnet you created.
+	Click "Associate".
+8. Create a Route for Internet Access
+	Select the route table associated with the public subnet.
+	Click "Edit routes".
+	Add a new route:
+	Destination: 0.0.0.0/0
+	Target: Select the Internet Gateway you created.
+	Save the route.
+
+Note:
+
+	This is a basic setup for a VPC with public and private subnets. You might need additional components like NAT gateways, security groups, and NACLs for more complex scenarios.
+	It's recommended to use different Availability Zones for public and private subnets to increase availability.
+	Always follow AWS best practices for security and cost optimization.
+	
+9. Create a route for the private subnet 
+	associate it with private subnet 
+	no new rule needs to be added.
+	
+	default two ec2 in same vpc can talk to each other 
+	
+10. Create an ec2 in private and public subnet 
+	
+	
+	-----------------------------------------------------------------------------------------------------------------		
+		Internet Gateway (IG):
+			Provide internet access to resources in the public subnet.
+		-----------------------------------------------------------------------------------------------------------------
+		
+		An Internet Gateway (IG) 
+			horizontally scaled, 
+			redundant, and 
+			highly available VPC component 
+				allows communication between your 
+					VPC and the 
+					internet.
+
+
+
+How it Works
+	Enables two-way communication: 
+		It allows resources in your public subnets to initiate outbound connections and accept inbound connections from the internet.
+	Requires public IP address: 
+		Instances in public subnets need a public IPv4 address or IPv6 address to communicate with the internet.
+	Route table configuration: 
+		You must configure a route in the route table associated with your public subnet to direct internet-bound traffic to the internet gateway.
+Key Points
+	Managed resource: 
+		AWS manages the internet gateway, requiring no configuration from your end.
+	Horizontal scaling: 
+		It automatically scales to handle increasing traffic.
+	High availability: 
+		It is designed for redundancy and fault tolerance.
+	Supports IPv4 and IPv6: 
+		It can handle both IPv4 and IPv6 traffic.
+	Not required for private subnets: 
+		Instances in private subnets cannot directly communicate with the internet using an internet gateway. You'll need a NAT gateway or NAT instance for this.
+
+	Use Cases
+		Public-facing applications: 
+			Web servers, load balancers, and other applications that need to be accessible from the internet.
+		Connecting to external services: 
+			Accessing cloud-based services or on-premises systems from your VPC.
+		Important Considerations
+			Security: 
+				Ensure proper security measures (security groups, NACLs) to protect your VPC.
+			Cost: 
+				Consider the cost implications of using an internet gateway, especially for high-traffic applications.
+			Alternative options: 
+				For outbound internet access from private subnets, explore NAT gateways or NAT instances.
+
+		
+	-----------------------------------------------------------------------------------------------------------------
+
+
+
+Day 2(4 hours)
+	Load Balancer (Elastic Load Balancing):
+		Distribute incoming traffic across multiple EC2 instances (web servers) for scalability and redundancy.
+			-----------------------------------------------------------------------------------------------------------------
+			
+		Elastic Load Balancing (ELB) in AWS
+Elastic Load Balancing (ELB) 
+	service that automatically distributes 
+		incoming application traffic across multiple targets,
+
+	like  
+		EC2 instances, 
+		containers, and 
+		IP addresses, 
+			in one or more Availability Zones. 
+	This helps improve the availability and scalability of your applications.
+
+Types of Load Balancers
+AWS offers three primary types of load balancers:
+
+1. Application Load Balancer
+	Distributes traffic based on application-layer information, such as the content of request headers and URLs.
+	Supports HTTP and HTTPS protocols.
+	Offers features like sticky sessions, path-based routing, and content-based routing.
+		https://valuem.com/login 
+	
+	Ideal for web applications and microservices architectures.
+2. Network Load Balancer
+	Distributes traffic based on the destination port and IP address.
+	Supports TCP, UDP, and TLS protocols.
+	Offers extremely low latency and high performance.
+	Ideal for applications requiring low latency and high throughput, such as gaming, video streaming, and high-performance computing workloads.
+3. Gateway Load Balancer
+	Designed to terminate SSL/TLS connections and route traffic to other load balancers or instances.
+	Supports HTTP, HTTPS, and TLS protocols.
+	Often used as an entry point for traffic into a VPC.
+
+How ELB Works
+-------------
+	Registers targets: 
+		You register your EC2 instances or other targets with the load balancer.
+	Distributes traffic: 
+		ELB distributes incoming traffic across multiple targets based on the load balancing algorithm.
+	Health checks: 
+		ELB continuously monitors the health of your targets and routes traffic only to healthy targets.
+	Auto-scaling: 
+		ELB can be integrated with Auto Scaling groups to automatically adjust the number of instances based on traffic load.
+Benefits of Using ELB
+	Increased availability: 
+		Distributes traffic across multiple instances, reducing the risk of downtime.
+	Improved performance: 
+		Optimizes application performance by distributing load across multiple servers.
+	Enhanced scalability: 
+		Automatically adjusts to changes in traffic load.
+	Simplified management: 
+		Manages and monitors multiple instances through a single point of control.
+
+Key Features
+------------
+	Health checks: 
+		Monitors the health of registered targets and routes traffic only to healthy instances.
+	Sticky sessions: 
+		Maintains client-server affinity for specific applications.
+	Security groups: 
+		Protects your load balancer and instances with security groups.
+	Auto scaling integration: 
+		Automatically scales the number of instances based on traffic load.
+	Cross-zone load balancing: 
+		Distributes traffic across multiple Availability Zones for high availability.
+	
+			
+	-----------------------------------------------------------------------------------------------------------------
+		S3 (Simple Storage Service):
+			Store static content (images, CSS, JavaScript) for efficient delivery.
+			-----------------------------------------------------------------------------------------------------------------
+			
+			
+			S3 for Storing and Delivering Static Content
+Understanding S3 for Static Content
+Amazon S3 (Simple Storage Service) 
+	ideal platform for 
+		storing and 
+		delivering 
+			static content like 
+				images, 
+				CSS, 
+				JavaScript, and 
+				HTML files. 
+	
+Key Benefits of Using S3 for Static Content:
+	
+	High durability:
+	Availability:
+		99. 11 9's
+	High Performance: 
+		S3 is optimized for delivering large amounts of data at high speeds, ensuring fast loading times for your website.
+	Scalability: 
+		Automatically scales to accommodate increasing traffic and data volume.
+	Cost-Effective: 
+		Pay only for the storage you use, with additional costs for data transfer and requests.
+	Global Reach: 
+		S3 offers multiple regions worldwide, allowing you to distribute content closer to your users for reduced latency.
+	Security: 
+		Provides robust security features like access control, encryption, and data integrity checks.
+	Steps to Host Static Content on S3
+Create an S3 Bucket:
+
+	Log in to the AWS Management Console and navigate to the S3 service.
+	Click "Create bucket".
+	Choose a unique bucket name (globally unique).
+	Select an appropriate region based on your target audience.
+	Configure bucket properties as needed (e.g., versioning, encryption).
+Upload Static Content:
+
+	Use the S3 console, AWS CLI, or SDKs to upload your static files (HTML, CSS, JavaScript, images) to the bucket.
+	Organize your files in a logical directory structure within the bucket.
+Configure Static Website Hosting:
+
+	Go to the bucket properties and enable "Static website hosting".
+	Specify the index document (e.g., index.html) and error document (optional).
+	Obtain the bucket's website endpoint URL.
+Configure DNS:
+
+Set up a DNS record to point your domain name to the S3 bucket's endpoint.
+
+
+Give permission 
+
+
+create ec2 
+
+aws s3 ls: Lists your S3 buckets or the contents of a specific bucket
+aws s3 ls
+aws s3 ls s3://my-bucket-name 
+
+To list all objects recursively within a bucket, use --recursive
+aws s3 ls s3://my-bucket-name --recursive
+
+
+	-----------------------------------------------------------------------------------------------------------------
+		Lambda (AWS Lambda):
+		
+			Implement serverless backend functions to handle dynamic 
+				content requests, 
+				product searches, or 
+				shopping cart updates, 
+				reducing server costs.
+			-----------------------------------------------------------------------------------------------------------------
+			
+			
+Lambda (AWS Lambda):
+Implement serverless backend functions to handle dynamic
+content requests,
+product searches, or
+shopping cart updates,
+reducing server costs.
+
+
+Show drafts
+
+
+Lambda with python 
+-------------------
+python example 
+https://www.youtube.com/watch?v=Ng_zi11N4_c
+	RDS 
+		mysql 
+			free tier 
+			name: 
+			password:
+			size: db.t3.micro
+			type: ssd
+			storage: 20
+			default vpc 
+			public accessible 
+			security: default (existing)
+			password authentication 
+			
+			go to default security group 
+				open port 
+				
+			
+			note: endpoint and port 
+			
+			hostname: url endpoint 
+			port: 3306
+			use: admin
+			password: you gave 
+			
+			create db 
+			
+		To connect: 
+			D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\rds
+
+https://www.youtube.com/watch?v=vyLvmPkQZkI
+https://docs.aws.amazon.com/lambda/latest/dg/example_serverless_connect_RDS_Lambda_section.html
+
+C# example 
+https://www.youtube.com/watch?v=oLyjp7T5rpw
+https://www.youtube.com/watch?v=SeRJzNBbC0c
+https://www.youtube.com/watch?v=LDGgAkSf8-Y
+http://docs.aws.amazon.com/lambda/latest/dg/vpc-rds.html
+
+4 yr old: https://www.youtube.com/watch?v=zQUK7ttCkq4
+
+AWS Lambda: 
+	Serverless Backend Functions
+
+Understanding AWS Lambda
+AWS Lambda 
+	serverless compute service 
+	can run code 
+		without 
+			provisioning or 
+			managing servers. 
+	Pay only for the compute time you consume - 
+		no charge when your code is not running. 
+	With Lambda, 
+		run code for virtually any type of application or backend service with zero administration.
+
+Implementing Serverless Backend Functions
+1. Identify Functions:
+	Dynamic content requests: 
+		Handling personalized content, user preferences, or dynamic data fetching.
+	Product searches: 
+		Implementing search functionalities, filtering, and sorting products.
+	Shopping cart updates: 
+		Managing cart items, calculating totals, and applying discounts.
+2. Develop Lambda Functions:
+	Choose a runtime: 
+		Select a suitable programming language (Python, Node.js, Java, etc.) based on your team's expertise and the function's requirements.
+	Write code: 
+		Implement the logic for each function, using AWS SDKs to interact with other AWS services if needed (e.g., DynamoDB for product data, S3 for static content).
+	Package and deploy: 
+		Create a deployment package and upload it to Lambda.
+3. Trigger Lambda Functions:
+	API Gateway: 
+		Create REST APIs to expose Lambda functions as HTTP endpoints.
+	S3 Events: 
+		Trigger functions based on object creation, modification, or deletion in S3 buckets.
+	DynamoDB Streams: 
+		Trigger functions based on changes in DynamoDB tables.
+	Other AWS Services: 
+		Integrate with various AWS services to trigger Lambda functions based on specific events.
+4. Handle Data:
+	Use Serverless Databases: 
+		Consider using DynamoDB or Amazon Aurora Serverless for storing and retrieving data efficiently.
+	Leverage S3: 
+		Store static content or large datasets in S3 and access it from Lambda functions.
+5. Monitor and Optimize:
+	Lambda Metrics: 
+		Use CloudWatch to monitor function performance, errors, and invocations.
+	Optimize Code: 
+		Refactor code for better performance and reduce execution time.
+	Consider Provisioned Concurrency: 
+		For high-traffic functions, use provisioned concurrency to improve response times.
+	Example: 
+		Product Search Function
+	Trigger: 
+		API Gateway endpoint for search queries.
+	Function:
+	Extracts search keywords from the API request.
+Queries a DynamoDB table containing product information.
+	Filters and ranks products based on search criteria.
+	Returns search results as API response.
+	Data Storage: DynamoDB for product data, with appropriate indexes for efficient querying.
+	Optimization: Consider using AWS Elasticsearch Service for complex search functionalities.
+Benefits of Using Lambda
+	Cost-Efficiency: Pay only for the compute time used, eliminating idle server costs.
+	Scalability: Automatically scales to handle varying workloads.
+	Focus on Code: Developers can focus on application logic without managing infrastructure.
+	High Availability: Built-in redundancy and fault tolerance.
+				
+	-----------------------------------------------------------------------------------------------------------------
+		EC2 (Elastic Compute Cloud):
+			Host your web application servers that dynamically generate HTML pages and interact with the database.
+			
+			ec2 instance 
+				docker talks to docker mysql 
+				
+	
+	IAM (Identity and Access Management):
+		Define granular permissions for users, applications, and services to access AWS resources securely.
+			-----------------------------------------------------------------------------------------------------------------
+			users
+				give users permission 
+			applications
+				
+			services
+				ec2 instance getting permission on s3 
+				
+	-----------------------------------------------------------------------------------------------------------------
+Day 3(8 hours)		
+	CloudWatch:
+		Monitor application performance, resource utilization, and errors to gain insights and identify potential issues.
+			-----------------------------------------------------------------------------------------------------------------
+
+CloudWatch Metrics 
+			
+	lab: 
+		aws cloudwatch put-metric-data --namespace myns --metric-name CPUUtilization --value 50 --unit Percent --dimensions Name=InstanceId,Value=i-1234567890abcdef0
+		
+		aws cloudwatch put-metric-data --namespace myns --metric-name Buffers --value 231434333 --unit Bytes --dimensions InstanceID=1-123456,InstanceType=t2.micro 
+
+aws cloudwatch put-metric-data 
+	publish metric data to Amazon CloudWatch. 
+	Data can be used for 
+		monitoring, 
+		alerting, and 
+		analysis.
+			
+
+
+Cloudwatch Logs 
+
+	-----------------------------------------------------------------------------------------------------------------
+	DB (Amazon RDS - Relational Database Service):
+		Store product data, customer information, and order details using a managed database service 
+			(e.g., MySQL) for scalability and ease of management.
+		You can also explore Amazon DynamoDB for 
+			NoSQL data storage with high performance and scalability.
+		Create this in a private subnet
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+	Lab Steps:
+	VPC and Subnet Creation:
+		Create a VPC with a CIDR block (e.g., 10.0.0.0/16).
+		Create two subnets: 
+			a public subnet for web servers (e.g., 10.0.1.0/24) with an internet gateway attached, and a private subnet for the database (e.g., 10.0.2.0/24) with a route table directing traffic to an internet gateway in a different VPC (for private database access).
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+	Security Groups:
+		Create security groups:
+			Web server security group allowing inbound HTTP traffic from the internet and outbound traffic to the database and S3.
+			Database security group restricting inbound traffic only to authorized sources (e.g., web server security group) and outbound traffic to anywhere.
+				-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+	EC2 Instances:
+		Launch EC2 instances (e.g., t2.micro) in the public subnet with your web application code pre-installed. Configure them to use an IAM role with access to S3 and the database.
+		
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+	S3 Bucket:
+		Create an S3 bucket to store static content (images, CSS, JavaScript) with appropriate access control settings (e.g., public read access for static content).
+		-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+Day 4(4 hours)		
+	
+	Lambda Function:
+		Create a Lambda function to handle dynamic content requests (e.g., product searches, shopping cart updates). The function can interact with the database and S3 as needed. Configure an IAM role for the Lambda function with appropriate permissions.
+		
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+	Load Balancer:
+		Create an Application Load Balancer to distribute traffic across your EC2 instances. Configure it to point to the health check endpoint of your web application to ensure only healthy instances receive traffic.
+	-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+
+Day 5(4 hours)		
+	Amazon RDS:
+		Create an RDS database instance (e.g., MySQL) in the private subnet with appropriate storage and instance class based on your expected traffic and data volume. Configure security groups to restrict access only from authorized sources.
+	-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+	IAM Roles:
+		Create IAM roles for your EC2 instances, Lambda function, and any other resources that require access to AWS services. Grant them least privilege permissions based on their specific needs.
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+Day 6 ( 4 hours)	
+	CloudWatch:
+		Set up CloudWatch alarms to monitor application performance metrics (CPU usage, memory, database latency), resource utilization (EC2 instance CPU, network traffic), and errors. Configure notifications to alert you of potential issues.
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+	Auto Scaling: Implement auto scaling
+		Containerization model which consists of Docker. (same pattern as above more labs)
+		Containerizing a microservice which talks to mysql database container
+			-----------------------------------------------------------------------------------------------------------------
+			
+
+
+Create a Launch Template 
+#!/bin/bash
+sudo apt update 
+sudo apt install apache2
+echo $HOSTNAME
+echo IP Address: $(hostname)
+
+
+Create an auto scaling group.
+			
+			
+	-----------------------------------------------------------------------------------------------------------------
+	Reference: my github
+		Gain practical experience with container orchestration on AWS.
+		Understand the core concepts and use cases of ECS, EKS, Fargate, and ECR.
+		Deploy containerized applications using various AWS container deployment options.
+		Manage container lifecycles, scaling, and monitoring.
+		Secure your containerized deployments using best practices.
+		Cloud professionals interested in deploying and managing containerized applications on AWS.
+	-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+
+Day 7(4 hours)
+	Labs:
+	1. Introduction to AWS Container Services (ECS, Fargate, EKS):
+		Understand the differences between ECS, EKS, and Fargate.
+		Identify use cases for each service.
+		Explore the AWS Management Console and AWS CLI for container management.
+			-----------------------------------------------------------------------------------------------------------------
+	
+
+Understanding the Differences
+AWS offers 
+	three primary services for managing containers: 
+		ECS, 
+		Fargate, and 
+		EKS.
+
+Let's break down their key differences:  
+
+	Amazon Elastic Container Service (ECS)
+		Fully managed 
+			container orchestration service 
+			provided by AWS.  
+		Handles 
+			deployment, 
+			scaling, and 
+			management of 
+				containerized applications.  
+		Offers fine-grained control over 
+			container instances, 
+			network configurations, and 
+			security groups.  
+		Can be used with 
+			EC2 instances or 
+			Fargate 
+				for compute resources.  
+	AWS Fargate
+		Serverless compute engine for containers.  
+		Abstracts away 
+			underlying infrastructure, 
+			focus on container workloads.  
+		Automatically 
+			provisions and 
+			manages 
+				compute resources needed to run your containers.  
+		Ideal for applications with 
+			varying workloads or 
+			those that don't require 
+				granular control over infrastructure.
+		Can be used with both ECS and EKS.  
+	Amazon Elastic Kubernetes Service (EKS)
+		Managed Kubernetes service on AWS.
+		Provides a fully managed Kubernetes 
+			control plane, 
+			Can run Kubernetes applications on AWS.  
+		Compatibile with the Kubernetes ecosystem and tools.  
+		Suitable for organizations with 
+			existing Kubernetes expertise or 
+			those who prefer the flexibility of Kubernetes.  
+		Can be used with EC2 instances or Fargate for compute resources.
+
+
+
+ECS
+	Fine-grained control over infrastructure: 
+		When you need 
+			precise control over 
+				instance types, 
+				networking, and 
+				security.  
+	Batch processing jobs: 
+		For workloads with 
+			predictable and 
+			consistent resource requirements.
+	Legacy applications: 
+		Migrating existing applications 
+			to containers without adopting Kubernetes.
+	Fargate
+	Serverless computing: 
+		For applications with unpredictable workloads or those that require rapid scaling.
+	Cost optimization: 
+		When you want to avoid managing infrastructure and pay only for resource usage.
+	Rapid development: 
+		For quickly deploying and scaling applications without infrastructure management overhead.  
+
+EKS
+	Kubernetes expertise: 
+		If your team has strong Kubernetes knowledge and prefers the Kubernetes ecosystem.
+	Complex container orchestrations: 
+		For applications requiring advanced Kubernetes features and capabilities.
+	Portability: 
+		If you want to run your applications on multiple Kubernetes environments (on-premises, cloud).
+	AWS Management Console and AWS CLI
+		Both the AWS Management Console and AWS CLI provide tools for managing container services:
+
+AWS Management Console
+	User-friendly interface for 
+		creating, 
+		configuring, and 
+		managing ECS, 
+		Fargate, and 
+		EKS clusters and tasks.
+	Suitable for users with basic to intermediate container management needs.
+AWS CLI
+	Command-line interface for automating container management tasks.  
+	Offers more flexibility and control compared to the console.
+	Ideal for scripting, automation, and integration with other tools.	
+			
+			
+	-----------------------------------------------------------------------------------------------------------------
+	2. Setting Up Amazon ECR:
+		Create an ECR repository to store your Docker images.
+		Push Docker images to your ECR repository.
+		Manage image versions and tags within ECR.
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+	3. Building a Multi-container Application with Docker Compose:
+		Design a sample application with multiple interacting microservices.
+		Create Dockerfiles for each microservice.
+		Utilize Docker Compose to define and manage the multi-container application.
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+Day 8(4 hours)			
+	4. Deploying a Containerized Application to ECS (EC2 Launch Type):
+		Create an ECS cluster with an EC2 launch type.
+		Define an ECS task definition for your Docker Compose application.
+		Create an ECS service to deploy and manage your containerized application.
+		Scale your service up and down based on demand.
+		Monitor the health and performance of your containerized application.
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+	5. Deploying a Containerized Application to ECS (Fargate Launch Type):
+		Create an ECS cluster with the Fargate launch type.
+		Configure Fargate task definitions with resource limits (CPU, memory).
+		Deploy your application as an ECS service using the Fargate launch type.
+		Leverage serverless benefits of Fargate for automatic scaling and cost optimization.
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+Day 9(8 hours)		
+	6. Introduction to Amazon EKS:
+		Provision a managed Kubernetes cluster on AWS using EKS.
+		Connect to your EKS cluster using kubectl.
+		Understand core Kubernetes concepts (pods, deployments, services).
+		Deploy database as Statefulset
+		Deply frontend as Deployments
+		Implement HPA
+		Put load and see it scaling
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+	7. Deploying a Containerized Application to EKS:
+		Create Kubernetes deployment YAML manifests for your Docker Compose application.
+		Deploy your application to the EKS cluster using kubectl.
+		Access your application and verify functionality.
+		Manage deployments, scaling, and rollbacks using kubectl commands.
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+	8. Security Best Practices for Container Deployments:
+		Implement IAM roles for containerized applications with least privilege.
+		Implement certificate based RBAC
+		Implement service account between services
+		Secure container images by scanning for vulnerabilities.
+		Configure network policies within ECS or EKS to restrict container access.
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+Day 10(4 hours)		
+	9. Monitoring and Logging for Containerized Applications:
+		Leverage Amazon CloudWatch for container monitoring and logging.
+		Set up CloudWatch container insights to gather metrics from your containers.
+		View container logs and troubleshoot issues.
+		Configure alerts for critical events within your containerized application.
+		GitHub/Git Lab and Terraform (terraform only to provision the resource and necessary action items )
+			-----------------------------------------------------------------------------------------------------------------
+		refer spacelift.io below	
+	-----------------------------------------------------------------------------------------------------------------
+	1. Setting Up a GitHub Repository:
+		Create a new repository on GitHub to store your Terraform code.
+		Initialize a Git repository locally on your machine.
+		Connect your local Git repository to the remote repository on GitHub.
+			-----------------------------------------------------------------------------------------------------------------
+			
+		refer spacelift.io below 	
+	-----------------------------------------------------------------------------------------------------------------
+	2. Create Terraform script to create network stack with an ec2 instance
+		Execute Terraform lifecycle commands and see it working
+		Integrate GitHub and ECR with use case (end to end development to build and deploy) container image should be deployed into pods which are running in EKS and Fargate.
+		Use jenkins to pull code from GitLab/GitHub
+		Build a docker image
+		Push it to ECR
+		One use case with Java spring boot with microservice based which includes API strategy and some authentication model(cognito or SSO).
+			-----------------------------------------------------------------------------------------------------------------
+			
+		refer spacelift.io below 	
+	-----------------------------------------------------------------------------------------------------------------
+Day 11(4 hours)		
+	I. Introduction:
+		Overview of microservices architecture and its benefits.
+		Project goals and functionalities.
+			-----------------------------------------------------------------------------------------------------------------
+			
+	https://spacelift.io/blog/terraform-ecs		
+			
+	-----------------------------------------------------------------------------------------------------------------
+	II. Technology Stack:
+		Backend: Java Spring Boot
+		Microservices: Breakdown of services (e.g., Company Service, Rating Service)
+		API Gateway (Optional): AWS API Gateway for centralized API management.
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+	III. Database: Choose a database solution (e.g., MySQL, PostgreSQL)
+		Dockerize them
+		Push the images to ECR
+		Deploy it on ECR
+		Deploy it on EKS
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+	IV. Deployment:
+		Deployment options (e.g., containerization with Docker, serverless with AWS Lambda).
+		One use case with Core Dotnet application with microservice based which includes API strategy and some authentication model.
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+Day 12(4 hours)		
+			
+	I. Introduction:
+		Overview of microservices architecture and its benefits.
+		Project Goals: Develop a scalable and maintainable blog platform.
+			-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+	II. Technology Stack:
+		Backend: ASP.NET Core
+		Microservices:
+		Posts Service: Manages blog posts (creation, retrieval, update, deletion).
+		Comments Service: Handles comments on blog posts (creation, retrieval, moderation).
+		Users Service: Manages user accounts (registration, login, profile management).
+		Dockerize them
+		Push the images to ECR
+		Deploy it on ECR
+		Deploy it on EKS
+	-----------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------
+	
+	
+	Example adv. of Terraform over Boto
+	-----------------------------------
+	Use Case 1: Dynamic Resource Creation Based on Runtime Conditions
+Problem: You need to create AWS resources based on conditions determined at runtime, such as user input, external API responses, or real-time data processing.
+
+Solution: Boto allows you to directly interact with AWS APIs, enabling you to make decisions and create resources on the fly. For instance, you could create EC2 instances based on CPU utilization metrics or dynamically provision databases based on incoming data volume.
+
+Why Boto is better suited: Terraform operates on a declarative model, defining the desired state upfront. Boto provides the flexibility to make decisions and create resources based on runtime conditions, which is often challenging with Terraform.
+
+Use Case 2: Complex Workflow Orchestration with Custom Logic
+Problem: You need to implement a complex workflow involving multiple AWS resources and custom logic that cannot be easily expressed in Terraform's declarative syntax.
+
+Solution: Boto's ability to directly interact with AWS APIs allows you to create custom scripts or functions to orchestrate complex workflows. This might involve conditional logic, error handling, retry mechanisms, and other advanced programming techniques.
+
+Why Boto is better suited: While Terraform offers modules and custom providers for some level of customization, complex workflows with intricate logic often require the flexibility of a programming language like Python and the Boto library.
+
+Use Case 3: Interacting with AWS Services Not Fully Supported by Terraform
+Problem: You need to use AWS services that are not yet fully supported by Terraform or require advanced configurations not covered by existing Terraform providers.
+
+Solution: Boto provides direct access to the AWS API, allowing you to interact with these services directly. For example, you might need to use custom IAM policies, manage AWS Glue jobs with specific configurations, or interact with AWS Athena in a way not supported by Terraform.
+
+Why Boto is better suited: While Terraform's ecosystem is growing rapidly, there might be gaps in coverage for certain AWS services or advanced features. Boto offers a fallback option for these scenarios.
+
+Use Case 4: Debugging and Troubleshooting AWS Resources
+Problem: You need to investigate issues with AWS resources or perform ad-hoc actions for troubleshooting purposes.
+
+Solution: Boto can be used to inspect resource configurations, modify settings, or trigger actions directly from the command line or within a script. This can be helpful for diagnosing problems or performing one-off tasks.
+
+Why Boto is better suited: While Terraform is excellent for managing infrastructure as code, Boto provides a more interactive way to work with AWS resources when troubleshooting or performing ad-hoc operations.
+
+
+
+--------------------------------------
+Complete labs
+-------------
+
+Lambda with python to rds 
+-------------------
+Host your web application servers that dynamically generate HTML pages and interact with the database.
+
+Define granular permissions for 
+	users
+	applications and 
+	services to 
+		access AWS resources securely.
+		
+		
+	
+		#https://enlear.academy/data-encryption-on-aws-8d6be6033351
+		https://enlear.academy/a-beginners-guide-to-setting-up-an-aws-rds-mysql-database-dba169ba0359
+			D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\rds\connect-to-rds.txt
+		Create rds using 	
+			D:\PraiseTheLord\HSBGInfotech\Others\vilas\terraform-tutorial\4g_RDS\rds_free
+			
+		lab: 
+		lab1: 
+			https://www.youtube.com/watch?v=zSUUBAxjIbk
+		lab2:
+		DO THIS ON AMAZON EC2 INSTANCE
+			WILL NOT WORK ON WINDOWS WITH GITBASH ALSO (ALTHOUGH NO ERRORS ARE THROWN)
+			https://enlear.academy/data-encryption-on-aws-part-02-ecb5b1e15451
+	-------------------------------------------------------------------------------------------------------------------------
+	
+Lab: 	
+	Defining granular permissions in AWS 
+		create and manage policies 
+			that control what actions 
+				users, 
+				applications, and 
+				services 
+					can perform on specific AWS resources. 
+		AWS Identity and Access Management (IAM) 
+			service used  
+		Detailed steps to define 
+			granular permissions, such as allowing read but not write access.
+
+Step 1: Understand AWS IAM Policies
+	AWS IAM policies 
+		JSON documents that define permissions. 
+	Each policy contains 
+		one or more statements
+		each statement 
+			grants or 
+			denies 
+				permission to perform actions on specific resources.
+
+Step 2: Create a Custom IAM Policy
+	Sign in to the AWS Management Console:
+
+	Navigate to the IAM service.
+	In the left navigation pane, click on "Policies."
+	Create a New Policy:
+
+	Click on "Create policy."
+	Choose the "JSON" tab to define a custom policy or use the "Visual editor."
+	Define the Policy for Read-Only Access:
+
+	Here’s an example JSON policy for granting read-only access to S3:
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::your-bucket-name",
+                "arn:aws:s3:::your-bucket-name/*"
+            ]
+        }
+    ]
+}
+	This policy allows GetObject (read) and ListBucket actions on the specified S3 bucket.
+	Review and Create Policy:
+
+	Click "Next: Tags" (optional) and then "Next: Review."
+	Name your policy (e.g., S3ReadOnlyPolicy) and add a description.
+	Click "Create policy."
+Step 3: Attach the Policy to Users, Groups, or Roles
+	Navigate to Users, Groups, or Roles:
+
+	In the IAM console, go to "Users," "Groups," or "Roles" depending on where you want to attach the policy.
+	Attach Policy to a User:
+
+	Select the user or group.
+		Click on the "Permissions" tab.
+		Click "Add permissions" and then "Attach policies."
+		Search for the custom policy you created (e.g., S3ReadOnlyPolicy).
+		Select the policy and click "Next: Review" and then "Add permissions."
+		Attach Policy to an Application or Service:
+
+		For applications or services (e.g., EC2 instances), create an IAM Role.
+		Attach the custom policy to this role.
+		Attach the role to the application or service that needs access.
+Step 4: Test and Validate Permissions
+	Access AWS Resources:
+
+	Log in as the user or service account with the attached policy.
+	Attempt to perform the allowed actions (e.g., list and read S3 objects).
+	Test Unauthorized Actions:
+
+	Try performing actions that are not allowed (e.g., writing or deleting S3 objects).
+	Ensure that access is denied for unauthorized actions.
+Step 5: Monitor and Audit IAM Policies
+	Use IAM Access Analyzer:
+
+	IAM Access Analyzer can help you identify overly permissive policies and ensure they follow the principle of least privilege.
+	Enable CloudTrail:
+
+	Set up AWS CloudTrail to log and monitor all API calls made by the users, applications, and services. This helps in auditing access and detecting any unauthorized activities.
+
+
+
+-----------------------
+Step 6: Implement Fine-Grained Permissions for Applications and Services
+	Use IAM Roles with Service-Linked Policies:
+
+	For services like Lambda or EC2, create service-specific IAM roles with minimal permissions.
+	Attach fine-grained policies that allow only the necessary actions (e.g., dynamodb:Query but not dynamodb:DeleteItem).
+	Limit Privileges with Conditions:
+
+	Use conditions in IAM policies to further restrict access. For example, you can allow access to S3 only from a specific IP range or during a certain time.
+
+Copy code
+{
+    "Effect": "Allow",
+    "Action": "s3:GetObject",
+    "Resource": "arn:aws:s3:::your-bucket-name/*",
+    "Condition": {
+        "IpAddress": {
+            "aws:SourceIp": "203.0.113.0/24"
+        }
+    }
+}
+
+Step 7: Regularly Review and Update Permissions
+	Conduct Regular Security Audits:
+
+	Regularly review IAM policies and remove unnecessary permissions.
+	Update policies as application or service requirements change.
+	Use AWS Managed Policies:
+
+	AWS offers managed policies that are regularly updated to follow best practices. Use these when applicable to simplify management.
+	By following these steps, you can define and manage granular permissions for users, applications, and services in AWS, ensuring secure and compliant access to resources.
+	
+	-----------------------------------------------------------------------------------------------------------------------------	
+
+CloudWatch:
+		Monitor application performance, resource utilization, and errors to gain insights and identify potential issues.
+auto scaling group 
+
+	-------------------------------------------------------------------------------------------------------------------------
+Difference between anomaly detector and metric filter in cloudwatch 
+		
+		Anomaly Detector
+		Purpose:
+
+			Automatically identifies unusual patterns in your metrics.  
+				Functionality: Leverages statistical and machine learning algorithms to establish a baseline for normal behavior.  
+				Output: Detects anomalies and generates alerts when metric values deviate significantly from the expected range.  
+				Use Case: Ideal for detecting unexpected spikes, drops, or trends in metrics like CPU utilization, network traffic, or error rates.
+			Metric Filter
+				Purpose: Extracts specific information from log data and converts it into metrics.  
+				Functionality: Defines patterns and terms to search for within log data and creates corresponding metrics.  
+				Output: Generates numerical metrics based on matching log events.  
+				Use Case: Useful for creating custom metrics from log data, such as error rates, request counts, or latency.
+				Key Differences
+-------------------------------------------------------------------------------------------------				
+Feature				Anomaly Detector				Metric Filter
+-------------------------------------------------------------------------------------------------
+Data Source			Numeric metrics					Log data
+Processing			Statistical and machine 		Pattern matching
+						learning algorithms		
+Output				Anomalies 						Numerical metrics
+						(deviations from 	
+							normal behavior)	
+Use Case			Detecting unusual 				Extracting metrics from log data
+						metric patterns		
+-------------------------------------------------------------------------------------------------	
+
+	-------------------------------------------------------------------------------------------------------------------------
+	
+	simple s3 demo 
+	-------------------------------------------------------------------------------------------------------------------------	-------------------------------------------------------------------------------------------------------------------------Create an Application Load Balancer to distribute traffic across your EC2 instances. Configure it to point to the health check endpoint of your web application to ensure only healthy instances receive traffic.
+	
+	Grant them least privilege permissions based on their specific needs.
+	-------------------------------------------------------------------------------------------------------------------------	-------------------------------------------------------------------------------------------------------------------------
+	CloudWatch alarms 
+		performance metrics (
+			CPU usage, 
+			memory, 
+			database latency), 
+			resource utilization (EC2 instance CPU, network traffic), and 
+			errors
+			
+	-------------------------------------------------------------------------------------------------------------------------
+lab
+CloudWatch 
+	Default metrics 
+	Custom metrics
+		https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/put-metric-data.html	
+			on cloudshell
+			
+
+
+
+Monitoring in AWS
+• AWS CloudWatch:
+	• Metrics: Collect and track key metrics
+	• Logs: Collect, monitor, analyze and store log files
+	• Events: Send notifications when certain events happen in your AWS
+	• Alarms: React in real-time to metrics / events
+• AWS X-Ray:
+	• Troubleshooting application performance and errors
+	• Distributed tracing of microservices
+• AWS CloudTrail:
+	• Internal monitoring of API calls being made
+	• Audit changes to AWS Resources by your users	
+	
+
+AWS CloudWatch Metrics
+	• CloudWatch provides metrics for every services in AWS
+	• Metric is a variable to monitor (CPUUtilization, NetworkIn…)
+	• Metrics belong to namespaces
+	• Dimension is an attribute of a metric (instance id, environment, etc…).
+	• Up to 30 dimensions per metric
+	• Metrics have timestamps
+	• Can create CloudWatch dashboards of metrics	
+
+
+
+EC2 Detailed monitoring
+	• EC2 instance metrics have metrics “every 5 minutes”
+	• With detailed monitoring (for a cost), you get data “every 1 minute”
+	• Use detailed monitoring if you want to scale faster for your ASG!
+	• The AWS Free Tier allows us to have 10 detailed monitoring metrics
+	• Note: EC2 Memory usage is by default not pushed 
+		(must be pushed	from inside the instance as a custom metric)
+		should install agent for this.
+		
+CloudWatch Custom Metrics
+	• Possibility to define and send your own custom metrics to CloudWatch
+	• Example: memory (RAM) usage, disk space, number of logged in users …
+	• Use API call PutMetricData
+	• Ability to use dimensions (attributes) to segment metrics
+	• Instance.id
+	• Environment.name
+	• Metric resolution (StorageResolution API parameter – two possible value):
+	• Standard: 
+		1 minute (60 seconds)
+	• High Resolution: 1/5/10/30 second(s) – Higher cost
+	• Important: 
+		Accepts metric data points two weeks in the past and two hours in the
+	future (make sure to configure your EC2 instance time correctly)
+
+
+CloudWatch Logs
+	• Log groups: arbitrary name, usually representing an application
+	• Log stream: instances within application / log files / containers
+	• Can define log expiration policies (never expire, 30 days, etc..)
+	• CloudWatch Logs can send logs to:
+		• Amazon S3 (exports)
+		• Kinesis Data Streams
+		• Kinesis Data Firehose
+		• AWS Lambda
+		• OpenSearch
+
+CloudWatch Logs - Sources
+	• SDK, CloudWatch Logs Agent, CloudWatch Unified Agent
+	• Elastic Beanstalk: collection of logs from application
+	• ECS: collection from containers
+	• AWS Lambda: collection from function logs
+	• VPC Flow Logs: VPC specific logs
+	• API Gateway
+	• CloudTrail based on filter
+	• Route53: Log DNS queries
+
+
+
+
+
+	need to push the role before doing this.
+		
+		https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/put-metric-data.html
+
+		aws cloudwatch put-metric-data --namespace myns --metric-name CPUUtilization --value 50 --unit Percent --dimensions Name=InstanceId,Value=i-1234567890abcdef0
+		
+		aws cloudwatch put-metric-data --namespace myns --metric-name Buffers --value 231434333 --unit Bytes --dimensions InstanceID=1-123456,InstanceType=t2.micro
+			The command sends a custom metric named Buffers with a value of 231434333 bytes to CloudWatch. This metric is placed under the namespace myns and is associated with two dimensions: InstanceID with a value of 1-123456, and InstanceType with a value of t2.micro. This allows you to track this specific data point within CloudWatch and use it for monitoring or alarms based on your application's requirements.
+
+		https://www.youtube.com/watch?v=U7X3ehGZYwQ
+
+1. Update the Package Repository
+First, ensure your package repository is up-to-date.
+
+	sudo yum update -y
+2. Install the CloudWatch Agent
+Amazon Linux 2 includes the CloudWatch agent package in its default repository.
+
+	sudo yum install -y amazon-cloudwatch-agent
+3. Create the CloudWatch Agent Configuration File
+
+Create a CloudWatch agent configuration file that specifies what logs and metrics to push to CloudWatch. You can generate a configuration file interactively or create it manually.
+
+Option A: Interactive Configuration Wizard
+Run the interactive setup to create the configuration file:
+
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
+	File created in /opt/aws/amazon-cloudwatch-agent/bin/config.json 
+This will guide you through a series of questions to create a configuration file.
+
+Option B: Manually Create a Configuration File
+You can create the configuration file manually. The file should be located at /opt/aws/amazon-cloudwatch-agent/bin/config.json. Here is an example configuration that pushes logs:
+
+{
+  "logs": {
+    "logs_collected": {
+      "files": {
+        "collect_list": [
+          {
+            "file_path": "/var/log/messages",
+            "log_group_name": "my-log-group",
+            "log_stream_name": "{instance_id}/messages",
+            "timestamp_format": "%b %d %H:%M:%S"
+          }
+        ]
+      }
+    }
+  }
+}
+
+4. Start the CloudWatch Agent
+Start the CloudWatch agent using the configuration file.
+
+	sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+	  -a start \
+	  -m ec2 \
+	  -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
+5. Verify the CloudWatch Agent is Running
+You can check the status of the CloudWatch agent to ensure it’s running.
+
+	sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a status
+	
+	sudo yum update
+	sudo yum install stress
+	stress --cpu 2
+	
+6. View Logs in CloudWatch
+After the agent is running, the specified logs should begin appearing in the CloudWatch Logs service.
+
+Go to the CloudWatch Console:
+In the AWS Management Console, navigate to CloudWatch.
+	Go to Logs in the left-hand menu.
+	You should see the log group (e.g., my-log-group) and log stream (e.g., {instance_id}/messages) specified in your configuration file.
+7. Set Up IAM Role/Permissions (If Not Already Set Up)
+	Ensure your EC2 instance has an IAM role attached with the necessary permissions to publish logs and metrics to CloudWatch.
+
+The role should have the AmazonEC2RoleforSSM, CloudWatchAgentServerPolicy policy attached. If you don't have this set up:
+
+Create or Attach the IAM Role:
+Go to the IAM console.
+Create a new role with EC2 as the trusted entity.
+Attach the CloudWatchAgentServerPolicy managed policy.
+Attach this role to your EC2 instance.
+This ensures that the CloudWatch agent can push logs and metrics to CloudWatch
+	-------------------------------------------------------------------------------------------------------------------------		
+	Amazon ECR
+	
+	Multi-container Application with Docker Compose	
+	-------------------------------------------------------------------------------------------------------------------------	-------------------------------------------------------------------------------------------------------------------------
+	Deploying a Containerized Application to ECS
+		scale 
+			auto scale 
+		monitor health 
+	-------------------------------------------------------------------------------------------------------------------------
+• Amazon Elastic Container Service (Amazon ECS)
+	• Amazon’s own container platform
+• Amazon Elastic Kubernetes Service (Amazon EKS)
+	• Amazon’s managed Kubernetes (open source)
+• AWS Fargate
+	• Amazon’s own Serverless container platform
+	• Works with ECS and with EKS
+• Amazon ECR:
+	• Store container images
+
+
+Amazon ECS - EC2 Launch Type
+	• ECS = Elastic Container Service
+	• Launch Docker containers on AWS
+		Launch ECS Tasks on ECS Clusters
+	• EC2 Launch Type: 
+		provision & 
+		maintain 
+			the infrastructure (the EC2 instances)
+	• Each EC2 Instance must run the ECS Agent to register in the ECS Cluster
+	• AWS takes care of starting / stopping containers	
+	
+
+Amazon ECS – Fargate Launch Type
+	• Launch Docker containers on AWS
+	• Don't need to provision the infrastructure 
+		(no EC2 instances to manage)
+	• It’s all Serverless!
+	• You just create task definitions
+	• AWS just runs ECS Tasks for you based on the CPU / RAM you need
+	• To scale, just increase the number of	tasks. 
+		Simple - no more EC2 instances	
+
+
+Amazon ECS – IAM Roles for ECS
+	• EC2 Instance Profile (EC2 Launch Type only):
+		• Used by the ECS agent
+		• Makes API calls to ECS service
+		• Send container logs to CloudWatch Logs
+		• Pull Docker image from ECR
+		• Reference sensitive data in Secrets Manager or SSM Parameter Store
+	
+	SSM Parameter Store
+		• ECS Task Role:
+		• Allows each task to have a specific role
+		• Use different roles for the different ECS Services you run
+		• Task Role is defined in the task definition	
+
+
+D:\PraiseTheLord\HSBGInfotech\Others\vilas\aws\ecs\Notes.txt	
+	
+	-------------------------------------------------------------------------------------------------------------------------	
+	Amazon EKS
+-------------------------------------------------------------------------------------------------------------------------	-------------------------------------------------------------------------------------------------------------------------
+cognito or SSO		
+-------------------------------------------------------------------------------------------------------------------------	-------------------------------------------------------------------------------------------------------------------------

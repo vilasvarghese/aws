@@ -27,4 +27,8 @@ public class Rating {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
+	
+	public String toString(){
+		return "Id: "+id+", Rating: "+rating;
+	}
 }

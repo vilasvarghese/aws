@@ -1,10 +1,44 @@
-Get amazon linux 2 connecting to same security group
-	sudo su 
-	yum update -y 
-	yum install mysql -y
+Create instance 
+		RDS 
+		mysql 
+			free tier 
+			name: 
+			password:
+			size: db.t2.micro
+			type: ssd
+			storage: 20
+			default vpc 
+			public accessible 
+			security: default (existing)
+			password authentication 
+			
+			go to default security group 
+				open all traffic to all world  
+				
+			
+			note: endpoint and port 
+			
+			hostname: url endpoint 
+			port: 3306
+			use: root (changed)
+			password: you gave 
+			
+			create db 
 
-For other options 
-Reference: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToInstance.html	
+To connect 
 
-mysql -h <endpoint> -P 3306 -u root -p 
-mysql -h database-1.ca3hd2rqifcx.us-east-2.rds.amazonaws.com -P 3306 -u root -p 
+	Get amazon linux 2 (amazon will not work) connecting to same security group
+		sudo su 
+		yum update -y 
+		yum install mysql -y
+
+	For other options 
+	Reference: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToInstance.html	
+
+	mysql -h <endpoint> -P 3306 -u root -p 
+	mysql -h database-1.ca3hd2rqifcx.us-east-2.rds.amazonaws.com -P 3306 -u root -p 
+	
+	mysql -h vilasdb.ccogndo84hft.us-east-1.rds.amazonaws.com -P 3306 -u root -p 
+	
+	
+	
